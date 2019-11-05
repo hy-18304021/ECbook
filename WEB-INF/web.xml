@@ -1,8 +1,19 @@
 <web-app>
     
-  <filter>
+    <filter>
         <filter-name>logincheckfilter</filter-name>
-        <filter-class>ttc.LoginCheckFilter</filter-class>
+        <filter-class>filter.LoginCheckFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>logincheckfilter</filter-name>
+        <url-pattern>/</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>logincheckmanager</filter-name>
+        <filter-class>filter.LoginCheckManager</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
@@ -13,7 +24,7 @@
 
     <filter>
         <filter-name>authenticatefilter</filter-name>
-        <filter-class>ttc.AuthenticateFilter</filter-class>
+        <filter-class>filter.AuthenticateFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>

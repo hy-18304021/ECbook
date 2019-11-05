@@ -14,7 +14,11 @@ import work.crypt.BCrypt;
 
 public class LogonDBBean{
 
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 0b69b5798994897a717149cdce3633d86c212bae
 	private static LogonDBBean instance = new LogonDBBean();
 
 	//LogonDBBeanをreturnする

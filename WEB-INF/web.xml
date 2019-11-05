@@ -1,5 +1,4 @@
 <web-app>
-<<<<<<< HEAD
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<jsp-file>/login.jsp</jsp-file>
@@ -25,7 +24,6 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginservlet</url-pattern>
 	</servlet-mapping>
-=======
     
     <filter>
         <filter-name>logincheckfilter</filter-name>

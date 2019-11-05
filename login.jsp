@@ -8,7 +8,7 @@
 <body>
 	<form method='Post' action='/ecbook${requestScope.target}'>
 		ID:<input type="text" name="id">
-		Password:<input type="text" name="password">
+		Password:<input type="text" name="pass">
 		<input type="submit" value="Send....">
 	</form>	
 </body>

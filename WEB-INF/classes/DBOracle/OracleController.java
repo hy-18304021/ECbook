@@ -37,9 +37,9 @@ public class OracleController{
 	}
 
 	//Normal user connect to Oracle
-	public static Connection connect(String id, String password){
+	public static Connection connect(String id, String pass){
 		try{
-			conn=new OracleController(id,password).getConnection();
+			conn=new OracleController(id,pass).getConnection();
 			System.out.println("Connected");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -64,10 +64,10 @@ public class OracleController{
 		}
 	}
 	// Create new Oracle's account
-	public static void regist(String id,String password){
+	public static void regist(String id,String name,String pass,int tel, String mail, int sex, int birth){
 		Connection admin=null;
 
-		String sql = "insert into UserTable values('"+id+"','"+password+"')";
+		String sql = "insert into UserTable values('"+id+"','"+name+"','"+pass+"','"+tel+"','"+mail+"','"+sex+"','"+birth+"')";
 		try{
 			admin = connectAsAdmin();
 			admin.setAutoCommit(false);
@@ -87,18 +87,18 @@ public class OracleController{
 	}
 
 	//
-	public static int userCheck(String id, String password){
+	public static int userCheck(String id, String pass){
 		Connection admin = connectAsAdmin();
 		PreparedStatement pstmt = null;
 		int x = -1;
 		try{
-			pstmt = admin.prepareStatement("select password from UserTable where id = ?");
+			pstmt = admin.prepareStatement("select pass from UserTable where id = ?");
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 
 			if(rs.next()){
-				String realPass = rs.getString("password");
-				if(realPass.equals(password)){
+				String realPass = rs.getString("pass");
+				if(realPass.equals(pass)){
 					x=1;
 				}else{
 					x=0;

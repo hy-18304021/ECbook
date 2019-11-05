@@ -8,7 +8,7 @@
 <body>
 	<form action="loginservlet" method="get">
 		ID:<input type="text" name="id">
-		Password:<input type="text" name="password">
+		Password:<input type="text" name="pass">
 		<input type="submit" value="Send....">
 	</form>	
 </body>

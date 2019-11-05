@@ -1,5 +1,4 @@
 <web-app>
-<<<<<<< HEAD
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<jsp-file>/login.jsp</jsp-file>

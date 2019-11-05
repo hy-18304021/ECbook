@@ -17,7 +17,7 @@ import java.sql.Statement;
 import java.sql.SQLException;
 
 
-public class LoginCheckFilter implements Filter{
+public class LoginCheckManager implements Filter{
     private FilterConfig config;
     public void init(FilterConfig config)throws ServletException{}
     public void destroy(){}
@@ -45,10 +45,10 @@ public class LoginCheckFilter implements Filter{
                 ///EBUSERからとってきた
                 //idとpassのチェック
                 if(id.equals(dbid)&&pass.equals(dbpass)){
-                    if(){
+                    if(dbid=="ECBookM"&&dbpass=="manager"){
                         //認証されたら認証トークンをセット
                         HttpSession session=((HttpServletRequest)req).getSession();
-                        session.setAttribute("token","OK");
+                        session.setAttribute("manager","OK");
                     }
                 }
             }

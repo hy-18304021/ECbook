@@ -1,18 +1,19 @@
 ・ページ
-ホーム
-ログイン=>ID登録
-ID登録
-管理者
-ログインしてたら=>ユーザー画面（中にカート）
-商品ページ
-検索ページ（タグ先）
-購入画面
-購入確定画面
-エラーページ
+ホーム												index.jsp
+ログイン=>ID登録									login.jsp
+ID登録												register.jsp
+管理者												manager.jsp
+ログインしてたら=>ユーザー画面（中にカート）		userstore.jsp
+商品ページ											shop.jsp
+検索ページ（タグ先）								shoplist.jsp
+購入画面											buy.jsp
+購入確定画面										buycheck.jsp
+エラーページ										error404.jsp||error500.jsp
 
 ・プログラム
-ID登録
-ログイン
-管理者登録
-購入処理
-
+ID登録												UserRegister.java
+ログイン											UserLogin.java
+商品登録											BookRegister.java
+購入処理											BookBuyCheck.java
+検索												BookSearch.java
+タグ検索											TagSearch.java

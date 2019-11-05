@@ -6,7 +6,7 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/productorder.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -17,7 +17,7 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/productorder.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -28,13 +28,13 @@
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/productordermanager.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/productorder.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

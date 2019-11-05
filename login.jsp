@@ -6,7 +6,7 @@
 	<title>Login</title>
 </head>
 <body>
-	<form action="loginservlet" method="get">
+	<form method='Post' action='/ecbook${requestScope.target}'>
 		ID:<input type="text" name="id">
 		Password:<input type="text" name="pass">
 		<input type="submit" value="Send....">

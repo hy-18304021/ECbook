@@ -24,6 +24,7 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginservlet</url-pattern>
 	</servlet-mapping>
+=======
     
     <filter>
         <filter-name>logincheckfilter</filter-name>
@@ -31,7 +32,7 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>/productorder.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -42,7 +43,7 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>/productorder.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -59,7 +60,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/loginresult</url-pattern>
+        <url-pattern>/productorder.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

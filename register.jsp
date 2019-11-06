@@ -20,8 +20,8 @@
     <li>Mail:<input type="text" name="mail">
     <li>
         Sex:
-        男<input type="radio" value="男"name="sex">
-        女<input type="radio" value="女" name="sex">
+        男<input type="radio" value="1"name="sex">
+        女<input type="radio" value="2" name="sex">
     
     <li>birth:<input type="date" name="birth">
         

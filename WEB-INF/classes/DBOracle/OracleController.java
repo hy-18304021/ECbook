@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 public class OracleController{
 	private static Connection conn = null;
 	private static Statement st = null;
+	private static PreparedStatement pstmt=null;
 	private static ResultSet rs = null;
 
 	private Connection getConnection(){
@@ -63,10 +65,10 @@ public class OracleController{
 			}
 		}
 	}
-	// Create new Oracle's account
-	public static void regist(String id,String name,String pass,int tel, String mail, int sex, int birth){
+	// Create new ECBook application's account
+	public static int regist(String id,String name,String pass,String tel, String mail, int sex, String birth){
 		Connection admin=null;
-
+		int isRegisted=0;
 		String sql = "insert into UserTable values('"+id+"','"+name+"','"+pass+"','"+tel+"','"+mail+"','"+sex+"','"+birth+"')";
 		try{
 			admin = connectAsAdmin();
@@ -76,6 +78,7 @@ public class OracleController{
 			if(i==1){
 				admin.commit();
 				System.out.println("Registed!");
+				isRegisted=1;
 			}
 		}catch(SQLException e){
 			System.out.println("This id has already exited!");
@@ -84,12 +87,12 @@ public class OracleController{
 		}finally{
 			disconnect(admin,st,rs);
 		}
+		return isRegisted;
 	}
 
 	//
 	public static int userCheck(String id, String pass){
 		Connection admin = connectAsAdmin();
-		PreparedStatement pstmt = null;
 		int x = -1;
 		try{
 			pstmt = admin.prepareStatement("select pass from UserTable where id = ?");
@@ -112,4 +115,27 @@ public class OracleController{
 
 		return x;
 	}
+
+	public static ArrayList fetch(String id){
+		ArrayList<Object> information=new ArrayList<>();
+		Connection admin = connectAsAdmin();
+		try{
+			pstmt = admin.prepareStatement("select * from usertable where id = ?");
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+
+			if(rs.next()){
+				for(int i =1;i<=7;i++){
+					information.add(rs.getString(i));
+				}
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,pstmt,rs);
+		}
+		return information;
+	}
+
+	public static void updateInformation(){};
 }

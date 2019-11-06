@@ -6,19 +6,24 @@
 	<title>register</title>
 </head>
 <body>
+    <h1>会員登録</h1>
+    <ul>
 	<form action="loginservlet" method="get">
-        ID:<input type="text" name="id">
-        Name:<input type="text" name="name">
-        Password:<input type="text" name="pass">
-        Tel:<input type="text" name="tel">
-        Mail:<input type="text" name="mail">
-       <p>
-        Sex:<input type="radio" value="男"name="sex">
-        <input type="radio" value="女" name="sex">
-    </p>
-        birth:<input type="text" name="birth">
+    <li>ID:<input type="text" name="id">
+    <li>Name:<input type="text" name="name">
+    <li>  Password:<input type="text" name="pass">
+    <li>    Tel:<input type="text" name="tel">
+    <li>Mail:<input type="text" name="mail">
+    <li>
+        Sex:
+        男<input type="radio" value="男"name="sex">
+        女<input type="radio" value="女" name="sex">
+    
+    <li>birth:<input type="text" name="birth">
         
-		<input type="submit" value="Send....">
-	</form>	
+        <input type="submit" value="Send....">
+        
+    </form>	
+</ul>
 </body>
 </html>

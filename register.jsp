@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>register</title>
+    <title>register</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="register.js"></script>
 </head>
 <body>
     <h1>会員登録</h1>
@@ -11,15 +13,17 @@
 	<form action="loginservlet" method="get">
     <li>ID:<input type="text" name="id">
     <li>Name:<input type="text" name="name">
-    <li>  Password:<input type="text" name="pass">
-    <li>    Tel:<input type="text" name="tel">
+    <li>Password:<input type="password" id="pass" name="pass" onkeyup=" passwordCheckFunction()">
+    <li>PasswordCheck<input type="password" id="pass2" name="pass2" onkeyup=" passwordCheckFunction()">
+        <br><h5 style="color: red;"  id="passwordCheckMessage"></h5>
+    <li>Tel:<input type="text" name="tel">
     <li>Mail:<input type="text" name="mail">
     <li>
         Sex:
         男<input type="radio" value="男"name="sex">
         女<input type="radio" value="女" name="sex">
     
-    <li>birth:<input type="text" name="birth">
+    <li>birth:<input type="date" name="birth">
         
         <input type="submit" value="Send....">
         

@@ -24,7 +24,6 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginservlet</url-pattern>
 	</servlet-mapping>
-=======
     
     <filter>
         <filter-name>logincheckfilter</filter-name>

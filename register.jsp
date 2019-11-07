@@ -10,7 +10,7 @@
 <body>
     <h1>会員登録</h1>
     <ul>
-	<form action="loginservlet" method="get">
+	<form action="registservlet" method="get">
     <li>ID:<input type="text" name="id">
     <li>Name:<input type="text" name="name">
     <li>Password:<input type="password" id="pass" name="pass" onkeyup=" passwordCheckFunction()">

@@ -25,8 +25,7 @@ public class LoginServlet extends HttpServlet{
 		}else {
 			result = "Login Completed!";
 			OracleProfile user = new OracleProfile();  //xxxx
-			user.setId(id);
-			user.setPassword(password);
+			user.setAll(OracleController.getUserInfo(id));
 			ss.setAttribute("user",user);
 		}
 		ss.setAttribute("flag",i);			//cai bien

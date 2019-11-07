@@ -7,7 +7,7 @@ public class OracleProfile{
 	private String tel;
 	private String mail;
 	private int sex;
-	private int birth; 
+	private String birth;
 
 	public String getId(){
 		return id;
@@ -45,10 +45,10 @@ public class OracleProfile{
 	public void setSex(int sex){
 		this.sex=sex;
 	}
-	public int getBirth(){
+	public String getBirth(){
 		return birth;
 	}
-	public void setBirth(int birth){
+	public void setBirth(String birth){
 		this.birth=birth;
 	}
 
@@ -59,6 +59,6 @@ public class OracleProfile{
 		setTel((String)information.get(3));
 		setMail((String)information.get(4));
 		setSex(Integer.parseInt((String)information.get(5)));
-		setBirth(Integer.parseInt((String)information.get(6)));
+		setBirth((String)information.get(6));
 	}
 }

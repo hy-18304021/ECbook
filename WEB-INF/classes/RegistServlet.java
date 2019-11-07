@@ -31,7 +31,7 @@ public class RegistServlet extends HttpServlet{
 		req.setAttribute("result",result);
 
 		OracleProfile oc = new OracleProfile();
-		oc.setAll(OracleController.fetch(id));
+		oc.setAll(OracleController.getUserInfo(id));
 
 		HttpSession ss = req.getSession();
 		ss.setAttribute("user",oc);

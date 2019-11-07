@@ -84,7 +84,7 @@
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/productordermanager.jsp</url-pattern>
+        <url-pattern>/productordermanager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -94,6 +94,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+    
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
         <url-pattern>/</url-pattern>

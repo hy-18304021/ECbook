@@ -12,10 +12,10 @@ public class OracleConnector{
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			//Connectionインターフェイスを実装するクラスをロード
+			//
 			cn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",user,pass);
 			
-			System.out.println("接続完了");
+			System.out.println("Connection complete");
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 		}catch(SQLException e){

@@ -1,4 +1,6 @@
 <web-app>
+
+    <!-- login -->
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<jsp-file>/login.jsp</jsp-file>
@@ -24,7 +26,36 @@
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/loginservlet</url-pattern>
 	</servlet-mapping>
+
+    <!-- regist -->
+    <servlet>
+        <servlet-name>regist</servlet-name>
+        <jsp-file>/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>regist</servlet-name>
+        <url-pattern>/regist</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>registresult</servlet-name>
+        <jsp-file>/registerresult.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registresult</servlet-name>
+        <url-pattern>/registresult</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>registservlet</servlet-name>
+        <servlet-class>RegistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registservlet</servlet-name>
+        <url-pattern>/registservlet</url-pattern>
+    </servlet-mapping>
     
+
+
+    <!-- login filter -->
     <filter>
         <filter-name>logincheckfilter</filter-name>
         <filter-class>filter.LoginCheckFilter</filter-class>
@@ -53,7 +84,7 @@
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/productordermanager.jsp</url-pattern>
+        <url-pattern>/productordermanager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -63,6 +94,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+    
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
         <url-pattern>/</url-pattern>
@@ -99,5 +131,4 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
->>>>>>> 0b69b5798994897a717149cdce3633d86c212bae
 </web-app>

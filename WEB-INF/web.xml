@@ -1,5 +1,12 @@
 <web-app>
-
+    <context-param>
+        <param-name>ManagerID</param-name>
+        <param-value>ECBookM</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ManagerPass</param-name>
+        <param-value>manager</param-value>
+    </context-param>
     <!-- login -->
 	<servlet>
 		<servlet-name>login</servlet-name>
@@ -17,6 +24,15 @@
 		<servlet-name>loginresult</servlet-name>
 		<url-pattern>/loginresult</url-pattern>
 	</servlet-mapping>
+        <!-- manager -->
+    <servlet>
+        <servlet-name>manager</servlet-name>
+        <jsp-file>/manager.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manager</servlet-name>
+        <url-pattern>/manager</url-pattern>
+    </servlet-mapping>
 
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
@@ -84,7 +100,7 @@
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/productordermanager.jsp</url-pattern>
+        <url-pattern>/productordermanager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -94,6 +110,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+    
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
         <url-pattern>/</url-pattern>
@@ -130,5 +147,4 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
->>>>>>> 0b69b5798994897a717149cdce3633d86c212bae
 </web-app>

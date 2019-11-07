@@ -116,7 +116,7 @@ public class OracleController{
 		return x;
 	}
 
-	public static ArrayList fetch(String id){
+	public static ArrayList getUserInfo(String id){
 		ArrayList<Object> information=new ArrayList<>();
 		Connection admin = connectAsAdmin();
 		try{
@@ -137,5 +137,7 @@ public class OracleController{
 		return information;
 	}
 
-	public static void updateInformation(){};
+	public static void updateUserInfo(){
+
+	}
 }

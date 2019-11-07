@@ -14,9 +14,10 @@ public class LoginServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException, ServletException{
 		String id = req.getParameter("id");
-		String password = req.getParameter("password");
+		String pass = req.getParameter("pass");
 		HttpSession ss = req.getSession();
-		int i = OracleController.userCheck(id,password);
+
+		int i = OracleController.userCheck(id,pass);
 		String result = "";
 		if(i == 0 ){
 			result = "Wrong pass";

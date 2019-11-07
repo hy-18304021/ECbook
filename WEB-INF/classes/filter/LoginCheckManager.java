@@ -24,11 +24,11 @@ public class LoginCheckManager implements Filter{
         //パスワード取得
         String pass=req.getParameter("pass");
 
-                    if(id=="ECBookM"&&pass=="manager"){
-                        //認証されたら認証トークンをセット
-                        HttpSession session=((HttpServletRequest)req).getSession();
-                        session.setAttribute("manager","OK");
-                    }
+        if(id=="ECBookM"&&pass=="manager"){
+            //認証されたら認証トークンをセット
+            HttpSession session=((HttpServletRequest)req).getSession();
+            session.setAttribute("manager","OK");
+        }
         //本来のURLへ
         chain.doFilter(req,res);
         

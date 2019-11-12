@@ -20,6 +20,10 @@
 		<servlet-name>loginresult</servlet-name>
 		<jsp-file>/loginresult.jsp</jsp-file>
 	</servlet>
+	
+	
+	
+	
 	<servlet-mapping>
 		<servlet-name>loginresult</servlet-name>
 		<url-pattern>/loginresult</url-pattern>
@@ -33,7 +37,16 @@
         <servlet-name>manager</servlet-name>
         <url-pattern>/manager</url-pattern>
     </servlet-mapping>
-
+    
+    <servlet>
+        <servlet-name>mngrlogin</servlet-name>
+        <jsp-file>/mngrlogin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mngrlogin</servlet-name>
+        <url-pattern>/mngrlogin</url-pattern>
+    </servlet-mapping>
+    
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>LoginServlet</servlet-class>
@@ -76,6 +89,7 @@
         <filter-name>logincheckfilter</filter-name>
         <filter-class>filter.LoginCheckFilter</filter-class>
     </filter>
+    
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/login</url-pattern>
@@ -86,10 +100,18 @@
     <filter>
         <filter-name>logincheckmanager</filter-name>
         <filter-class>filter.LoginCheckManager</filter-class>
+        <init-param>
+	        <param-name>ManagerID</param-name>
+	        <param-value>ECBookM</param-value>
+	    </init-param>
+	    <init-param>
+	        <param-name>ManagerPass</param-name>
+	        <param-value>manager</param-value>
+	    </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/login</url-pattern>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/manager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

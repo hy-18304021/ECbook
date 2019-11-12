@@ -22,11 +22,10 @@ public class AuthenticateManager implements Filter{
         HttpSession session=((HttpServletRequest) req).getSession();
 
         //認証トークンを取得
-        String flag=(String)session.getAttribute("manager");
-        
+        String flag=(String)session.getAttribute("mToken");
+        System.out.println("soto");
         //認証トークンがあるか判定
         if(flag==null){
-
             //HttpServletRequest型にキャストしてreqを入れる
             HttpServletRequest hreq=(HttpServletRequest)req;
 
@@ -37,7 +36,7 @@ public class AuthenticateManager implements Filter{
             hreq.setAttribute("target",servletPath);
 
             //ないならログインへ
-            RequestDispatcher dip=req.getRequestDispatcher("/orderlogin");
+            RequestDispatcher dip=req.getRequestDispatcher("/mngrlogin");
             dip.forward(req,res);
         }else{
             //本来のURLへ

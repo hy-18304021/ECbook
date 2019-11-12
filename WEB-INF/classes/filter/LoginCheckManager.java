@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 
 public class LoginCheckManager implements Filter{
     private FilterConfig config;
-    public void init(FilterConfig config)throws ServletException{}
+    public void init(FilterConfig config)throws ServletException{
+        this.config=config;
+    }
     public void destroy(){}
     public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
      throws IOException,ServletException{
@@ -26,11 +28,13 @@ public class LoginCheckManager implements Filter{
 
         String mid=config.getInitParameter("ManagerID");
         String mpss=config.getInitParameter("ManagerPass");
-
-        if(id==mid&&pass==mpss){
+        HttpSession session=((HttpServletRequest)req).getSession();
+        session.setAttribute("mToken",null);
+        if(id.equals(mid)&&pass.equals(mpss)){
+            System.out.println("naka");
             //認証されたら認証トークンをセット
-            HttpSession session=((HttpServletRequest)req).getSession();
-            session.setAttribute("manager","OK");
+            
+            session.setAttribute("mToken","OK");
         }
         //本来のURLへ
         chain.doFilter(req,res);

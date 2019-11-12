@@ -24,7 +24,10 @@ public class LoginCheckManager implements Filter{
         //パスワード取得
         String pass=req.getParameter("pass");
 
-        if(id=="ECBookM"&&pass=="manager"){
+        String mid=config.getInitParameter("ManagerID");
+        String mpss=config.getInitParameter("ManagerPass");
+
+        if(id==mid&&pass==mpss){
             //認証されたら認証トークンをセット
             HttpSession session=((HttpServletRequest)req).getSession();
             session.setAttribute("manager","OK");

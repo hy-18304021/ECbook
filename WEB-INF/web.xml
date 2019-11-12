@@ -106,11 +106,11 @@
     </filter-mapping>    
 
      <filter>
-        <filter-name>authenticatefilter</filter-name>
+        <filter-name>authenticatemanager</filter-name>
         <filter-class>filter.AuthenticateManager</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
+        <filter-name>authenticatemanager</filter-name>
         <url-pattern>/manager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>

@@ -78,7 +78,7 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/productorder.jsp</url-pattern>
+        <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -89,7 +89,7 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/productorder.jsp</url-pattern>
+        <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -100,50 +100,18 @@
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/productordermanager</url-pattern>
+        <url-pattern>/loginresult</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
+    </filter-mapping>    
+
+     <filter>
+        <filter-name>authenticatefilter</filter-name>
+        <filter-class>filter.AuthenticateManager</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/productorder.jsp</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    
-    <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/manager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

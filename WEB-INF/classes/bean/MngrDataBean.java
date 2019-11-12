@@ -1,9 +1,8 @@
 package bean;
 
 public class MngrDataBean {
-	private int book_id; //本の登録番後
+	private int book_id; //本の名前
 	private String book_kind; //本のジャンル
-	private String book_title; //本名
 	private int book_price; //本の価額
 	private short book_count; //在庫
 	private String book_image; //本のimage
@@ -21,13 +20,6 @@ public class MngrDataBean {
 	}
 	public void setBook_kind(String book_kind) {
 		this.book_kind = book_kind;
-	}
-
-	public String getBook_title() {
-		return book_title;
-	}
-	public void setBook_title(String book_title) {
-		this.book_title = book_title;
 	}
 
 	public int getBook_price() {

@@ -20,15 +20,13 @@
 		<servlet-name>loginresult</servlet-name>
 		<jsp-file>/loginresult.jsp</jsp-file>
 	</servlet>
-	
-	
-	
-	
 	<servlet-mapping>
 		<servlet-name>loginresult</servlet-name>
 		<url-pattern>/loginresult</url-pattern>
 	</servlet-mapping>
-        <!-- manager -->
+	
+	
+<!-- manager -->
     <servlet>
         <servlet-name>manager</servlet-name>
         <jsp-file>/manager.jsp</jsp-file>
@@ -47,6 +45,15 @@
         <url-pattern>/mngrlogin</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>bookregisterform</servlet-name>
+        <jsp-file>/bookregisterform.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookregisterform</servlet-name>
+        <url-pattern>/manager/bookregisterform</url-pattern>
+    </servlet-mapping>
+
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>LoginServlet</servlet-class>

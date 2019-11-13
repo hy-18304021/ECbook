@@ -8,6 +8,9 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import DBOracle.OracleController;
 import DBOracle.OracleProfile;
+import DBOracle.SelectOracle;
+import bean.SelectOracleBean;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -18,21 +21,23 @@ public class SelectServlet{
 		req.setCharacterEncoding("Windows-31J");
 		
 		//データベースからリストをもらいたい
-		List<ResClreate> plist=getList();
+		List<SelectOracleBean> plist=getList();
 		
 		
 		//パラメータをJSPに転送したい↓
 		req.setAttribute("resindx",plist);
 		
 		//転送先のJSPを指定
-		RequestDispatcher dis=req.getRequestDispatcher("/Thread");
+		RequestDispatcher dis=req.getRequestDispatcher("/");
 		
 		//パラメータをJSPに転送
 		dis.forward(req,res);
 		
 	}
-	public List<ResClreate> getList(){
-		List<ResClreate> plist=QueryTest.getResList();
+	public List<SelectOracleBean> getList(){
+        String id="info";
+        String pass="pro";
+		List<SelectOracleBean> plist=SelectOracle.getResList(id,pass);
 		
 		return plist;
 	}

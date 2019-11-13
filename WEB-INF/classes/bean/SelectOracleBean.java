@@ -5,10 +5,10 @@ public class SelectOracleBean{
     int book_price;//本値段
     int book_count;//本在庫
     String book_image;//本画像
-    String book_name;//本題名
+    String book_isbn;//ISBNコード     
+    String book_name;//本題名    
     String small_genre_name;//小ジャンル名
     String lage_genre_name;//大ジャンル名
-    String book_isbn;//ISBNコード
 
     public SelectOracleBean(){}
 

@@ -5,8 +5,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <title>Manager</title>
-    <script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
+	<title>Manager</title>
+	<script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
 	<script src="manager/page.js"></script>
     <style>
             #paging {
@@ -27,19 +27,18 @@
                 color: #0080ff;
         }
         
-    </style>
-         
+    </style> 
 </head>
 <body>
 <table border="1">
     <tr>
-        <td align="center"  width="100">本名</td> 
-        <td align="center"  width="100">ジャンル</td> 
-        <td align="center"  width="100">価額</td>
-        <td align="center"  width="100">在庫</td> 
-        <td align="center"  width="100">イメージ</td> 
-        <td align="center"  width="100">ISBNコード</td>
-        <td align="center"  width="100">修正</td>
+        <td align="center"  width="100">ID</td> 
+        <td align="center"  width="100">Name</td> 
+        <td align="center"  width="100">Password</td>
+        <td align="center"  width="100">Tel</td> 
+        <td align="center"  width="100">mail</td> 
+        <td align="center"  width="100">sex</td>
+        <td align="center"  width="100">birth</td>
         <td align="center"  width="100">削除</td>          
       </tr>
     </table>

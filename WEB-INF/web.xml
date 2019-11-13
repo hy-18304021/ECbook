@@ -1,12 +1,4 @@
 <web-app>
-    <context-param>
-        <param-name>ManagerID</param-name>
-        <param-value>ECBookM</param-value>
-    </context-param>
-    <context-param>
-        <param-name>ManagerPass</param-name>
-        <param-value>manager</param-value>
-    </context-param>
     <!-- login -->
 	<servlet>
 		<servlet-name>login</servlet-name>
@@ -47,11 +39,28 @@
     
     <servlet>
         <servlet-name>bookregisterform</servlet-name>
-        <jsp-file>/bookregisterform.jsp</jsp-file>
+        <jsp-file>/manager/bookregisterform.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>bookregisterform</servlet-name>
-        <url-pattern>/manager/bookregisterform</url-pattern>
+        <url-pattern>/bookregisterform</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>booklist</servlet-name>
+        <jsp-file>/manager/booklist.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>booklist</servlet-name>
+        <url-pattern>/booklist</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>userlist</servlet-name>
+        <jsp-file>/manager/userlist.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userlist</servlet-name>
+        <url-pattern>/userlist</url-pattern>
     </servlet-mapping>
 
 	<servlet>
@@ -141,6 +150,24 @@
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/manager</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenticatemanager</filter-name>
+        <url-pattern>/bookregisterform</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenticatemanager</filter-name>
+        <url-pattern>/booklist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenticatemanager</filter-name>
+        <url-pattern>/userlist</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

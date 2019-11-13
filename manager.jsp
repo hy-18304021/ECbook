@@ -18,10 +18,15 @@
 			<li><button id="registProduct">商品登録</button>
 			<li><button id="updateProduct">商品修正/削除</button>
 		 </ul>
+	<ul>
+		<li>会員情報</li>
+		<li><button id ="userProduct">会員情報</button></li>
+	</ul>
 		 <ul>
 			<li>購入した目録
 			<li><button id="orderedProduct">全体購入目録確認</button>
 		 </ul>
+
 		
 	</div>
 </body>

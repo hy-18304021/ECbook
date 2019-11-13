@@ -12,11 +12,14 @@
         <button id="bookList">目録</button>
     </div>
 <ul>
-        <li><label for="book_kind">ジャンル選択</label>
+        <li><label for="book_kind">大ジャンル選択</label>
             <select id="book_kind" name="book_kind">
-              <option value="100">1</option>
-              <option value="200">2</option>
-              <option value="300">3</option>
+              <option value="100">雑誌</option>
+              <option value="200">専門書</option>
+              <option value="300">小説</option>
+              <option value="300">児童向け</option>
+              <option value="300">外国書</option>
+              <option value="300">成人向け</option>
             </select>
          <li><label for="book_id">本名</label>
             <input id="book_id" name="book_id" type="text" 

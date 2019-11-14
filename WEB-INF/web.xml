@@ -1,4 +1,5 @@
 <web-app>
+
     <!-- login -->
 	<servlet>
 		<servlet-name>login</servlet-name>
@@ -110,7 +111,6 @@
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
     <filter>
@@ -127,9 +127,8 @@
     </filter>
     <filter-mapping>
         <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/manager</url-pattern>
+        <url-pattern>/mngrlogin</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
     <filter>

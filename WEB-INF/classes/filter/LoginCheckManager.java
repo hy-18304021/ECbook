@@ -29,12 +29,13 @@ public class LoginCheckManager implements Filter{
         String mid=config.getInitParameter("ManagerID");
         String mpss=config.getInitParameter("ManagerPass");
         HttpSession session=((HttpServletRequest)req).getSession();
-        session.setAttribute("mToken",null);
-        if(id.equals(mid)&&pass.equals(mpss)){
-            System.out.println("naka");
-            //認証されたら認証トークンをセット
+        if(mid!=null&&mpss!=null){
+            if(id.equals(mid)&&pass.equals(mpss)){
+                System.out.println("naka");
+                //認証されたら認証トークンをセット
             
-            session.setAttribute("mToken","OK");
+                session.setAttribute("mToken","OK");
+            }
         }
         //本来のURLへ
         chain.doFilter(req,res);

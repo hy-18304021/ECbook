@@ -41,7 +41,7 @@ public class LoginCheckManager implements Filter{
             if(id.equals(mid)&&pass.equals(mpss)){
                 //認証されたら認証トークンをセット
                 HttpSession session=((HttpServletRequest)req).getSession();
-                session.setAttribute("token","OK");
+                session.setAttribute("flag","OK");
             }
         }
             

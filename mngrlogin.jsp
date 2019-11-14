@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form action="/ecbook/manager" method="post">
+        <form action="/ecbook${requestScope.target}" method="post">
             id<input type="text" name ="name">
             password<input type="text" name="pass"><br><br>
             <input type="submit" value="Login"> 

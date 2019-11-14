@@ -147,6 +147,30 @@
         <filter-class>filter.AuthenticateManager</filter-class>
     </filter>
     <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/manager</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/bookregisterform</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/booklist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/userlist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/manager</url-pattern>
         <dispatcher>REQUEST</dispatcher>

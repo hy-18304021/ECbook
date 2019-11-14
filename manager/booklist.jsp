@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
 	<meta charset="UTF-8">
     <title>Manager</title>

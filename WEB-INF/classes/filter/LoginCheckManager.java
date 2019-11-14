@@ -28,6 +28,8 @@ public class LoginCheckManager implements Filter{
 
         String mid=config.getInitParameter("ManagerID");
         String mpss=config.getInitParameter("ManagerPass");
+        System.out.println(mid);
+        System.out.println(mpss);
         HttpSession session=((HttpServletRequest)req).getSession();
             if(id.equals(mid)&&pass.equals(mpss)){
                 System.out.println("naka");

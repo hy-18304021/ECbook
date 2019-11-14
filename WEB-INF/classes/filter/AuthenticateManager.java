@@ -24,6 +24,7 @@ public class AuthenticateManager implements Filter{
         //認証トークンを取得
         String flag=(String)session.getAttribute("mToken");
         System.out.println("soto");
+        System.out.println(flag);
         //認証トークンがあるか判定
         if(flag==null){
             //HttpServletRequest型にキャストしてreqを入れる

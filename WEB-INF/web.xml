@@ -171,4 +171,16 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
+
+    <!-- bookRegist -->
+    <servlet>
+        <servlet-name>BookRegist</servlet-name>
+        <servlet-class>BookRegistServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookRegist</servlet-name>
+        <url-pattern>/registbook.do</url-pattern>
+    </servlet-mapping>
 </web-app>

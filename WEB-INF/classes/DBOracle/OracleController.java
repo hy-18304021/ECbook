@@ -140,4 +140,29 @@ public class OracleController{
 	public static void updateUserInfo(){
 
 	}
+
+	public static int registBook(int kind, String name,int price,int count,String id){
+		Connection admin=null;
+		int isRegisted=0;
+		String sql = "insert into EBBook values("+kind+",'"+name+"',"+price+","+count+",'"+id+"')";
+		// System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Registed!");
+				isRegisted=1;
+			}
+		}catch(SQLException e){
+			System.out.println("This book has already exited!");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isRegisted;
+	}
 }

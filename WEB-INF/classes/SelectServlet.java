@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
-import DBOracle.OracleController;
-import DBOracle.OracleProfile;
 import DBOracle.SelectOracle;
 import bean.SelectOracleBean;
 
@@ -28,7 +26,7 @@ public class SelectServlet{
 		req.setAttribute("resindx",plist);
 		
 		//転送先のJSPを指定
-		RequestDispatcher dis=req.getRequestDispatcher("/");
+		RequestDispatcher dis=req.getRequestDispatcher("/manager/booklist.jsp");
 		
 		//パラメータをJSPに転送
 		dis.forward(req,res);

@@ -37,7 +37,7 @@ public class AuthenticateFilter implements Filter{
             hreq.setAttribute("target",servletPath);
 
             //‚È‚¢‚È‚çƒƒOƒCƒ“‚Ö
-            RequestDispatcher dip=req.getRequestDispatcher("/manager");
+            RequestDispatcher dip=req.getRequestDispatcher("/login");
             dip.forward(req,res);
         }else{
             //–{—ˆ‚ÌURL‚Ö

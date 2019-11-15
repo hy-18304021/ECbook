@@ -47,7 +47,7 @@ public class LoginCheckFilter implements Filter{
                 if(id.equals(dbid)&&pass.equals(dbpass)){
                     //認証されたら認証トークンをセット
                     HttpSession session=((HttpServletRequest)req).getSession();
-                    session.setAttribute("token","OK");
+                    session.setAttribute("mToken","OK");
                 }
             }
         }

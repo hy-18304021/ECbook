@@ -5,6 +5,7 @@
 <head>
     <title>register</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="register.js"></script>
     <script type="text/javascript">
 
         function passwordCheckFunction(){
@@ -18,16 +19,13 @@
             
         }
         
-        </script>
-        
-        
+    </script>            
 </head>
 <body>
     <h1>会員登録</h1>
     <ul>
-	<form action="registservlet" method="get">
+	<form name="register" action="registservlet" method="get">
     <li>ID:<input type="text" name="id">
-    <li>Name:<input type="text" name="name">
     <li>Password:<input type="password" id="pass" name="pass" onkeyup="passwordCheckFunction()">
     <li>PasswordCheck<input type="password" id="pass2" name="pass2" onkeyup="passwordCheckFunction()">
         <br><h5 style="color: red;"  id="passwordCheckMessage"></h5>

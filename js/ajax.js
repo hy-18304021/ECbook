@@ -21,18 +21,6 @@ function getXMLHttpRequest() {
 	return xmlHttpReq;
 }
 /*
- * AJAX call starts with this function
- */
-function makeRequest() {
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST", "helloWorld.do", true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
-	xmlHttpRequest.send(null);
-}
-
-/*
  * Returns a function that waits for the state change in XMLHttpRequest
  */
 function getReadyStateHandler(xmlHttpRequest) {

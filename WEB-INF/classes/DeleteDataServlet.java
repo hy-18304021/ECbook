@@ -18,7 +18,7 @@ public class DeleteDataServlet extends HttpServlet{
 		String tablename = (String)session.getAttribute("tablename");
 		// System.out.println("Servlet: tablename=" +tablename);
 
-		String name = req.getParameter("name");
+		String name = req.getParameter("data");
 		int i = OracleController.deleteData(tablename,name);
 
 		String result = "";

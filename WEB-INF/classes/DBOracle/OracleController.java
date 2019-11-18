@@ -169,10 +169,15 @@ public class OracleController{
 		return isRegisted;
 	}
 
-	public static int deleteData(String tablename, String name){
+	public static int deleteData(String tablename, String data){
 		Connection admin=null;
 		int isDeleted=0;
-		String sql = "delete from " + tablename+ " where name ='"+name+"'";
+		String sql = "";
+		if("ebbook".equals(tablename)){
+			sql = "delete from " +tablename+" where isbn='"+data+"'";
+		}else if("ebuser".equals(tablename)){
+			sql = "delete from " +tablename+" where id='"+data+"'";
+		}
 		System.out.println(sql);
 		try{
 			admin = connectAsAdmin();
@@ -193,6 +198,42 @@ public class OracleController{
 			disconnect(admin,st,rs);
 		}
 		return isDeleted;
+	}
+
+	public static int updateBook(int kind, String name,int price,int count,String isbn){
+		Connection admin = null;
+		int isUpdated=0;
+		String sql = "update ebbook set kind="+kind;
+		if(name!=null){
+			sql =sql+",name='"+name+"'";
+		}
+		if(price!=-1){
+			sql = sql+",price="+price;
+		}
+		if(count!=-1){
+			sql = sql+",count="+count;
+		}
+		sql=sql+" where isbn='"+isbn+"'";
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Updated");
+				isUpdated=1;
+			}
+		}catch(SQLException e){
+			System.out.println("Updating was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isUpdated;
 	}
 
 	public static ArrayList getAllTableInfo(String tablename){

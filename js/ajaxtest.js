@@ -38,6 +38,8 @@ function getReadyStateHandler(xmlHttpRequest) {
 	};
 }
 
+
+// book regist
 function regist(){
 	var xmlHttpRequest = getXMLHttpRequest();
 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
@@ -71,10 +73,12 @@ function findTrTagIndex(){ //by clicking button 削除
 	return index;
 }
 
+
+// delete book or user
 function deleteData(){
 
 	var index = findTrTagIndex();
-	var name = document.getElementsByTagName('th')[index].innerText;
+	var data = document.getElementsByTagName('th')[index].innerText;
 
 	var xmlHttpRequest = getXMLHttpRequest();
 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
@@ -82,39 +86,47 @@ function deleteData(){
 	xmlHttpRequest.setRequestHeader("Content-Type",
 			"application/x-www-form-urlencoded");
 
-	param = 'name='+name;
+	param = 'data='+data;
 	alert(param);
+	xmlHttpRequest.send(param);
 
 	//remove 'tr' row from table
 	document.getElementsByTagName('tr')[index].remove();
-	
-	xmlHttpRequest.send(param);
-
 }
 
 
-// $(document).ready(function(){
-//         $(".add-row").click(function(){
-//             var name = $("#name").val();
-//             var email = $("#email").val();
-//             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
-//             $("table tbody").append(markup);
-//         });
-         
-//         // Find and remove selected table rows
-//         $(".delete-row").click(function(){
-//             $("table tbody").find('input[name="record"]').each(function(){
-//                 if($(this).is(":checked")){
-//                     $(this).parents("tr").remove();
-//                 }
-//             });
-//         });
-//     });    
+//make update form appear
+function appear(){
+	document.getElementById("update").style.display='block';
+	var index = findTrTagIndex();
+	isbn = document.getElementsByTagName('th')[index].innerText;
+	alert(isbn);
+	return isbn;
+}
+
+//make update form disappear
+function disappear(){
+	document.getElementById("update").style.display='none';
+}
+
+// update book
+function updateBookData(){
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","updatebook.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+	var book_kind=document.getElementById("book_kind").value;
+	var book_name=document.getElementById("book_name").value;
+	var book_price=document.getElementById("book_price").value;
+	var book_count=document.getElementById("book_count").value;
+	var params = "book_kind="+book_kind
+				+"&book_name="+book_name
+				+"&book_price="+book_price
+				+"&book_count="+book_count
+				+"&book_isbn="+isbn;
+	alert(params);
+	xmlHttpRequest.send(params);
+}
 
 
-
-        // $(document).ready(function(){
-        //     $("table tbody").find('button[name="delete"]').click(function(){
-        //         $(this).parents("tr").remove();
-        //     });
-        // });

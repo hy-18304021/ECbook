@@ -45,8 +45,8 @@
       </tr>
     <c:forEach var="user" items="${sessionScope.users}">
     <tr>
-        <td>${user.id}</td>
-        <th>${user.name}</th>
+        <th>${user.id}</th>
+        <td>${user.name}</td>
         <td>${user.pass}</td>
         <td>${user.tel}</td>
         <td>${user.mail}</td>

@@ -6,7 +6,7 @@
 <<<<<<< HEAD
         <!-- <script src="../js/jquery-1.11.0.min.js"></script>
 	    <script src="bookregisterform.js"></script> -->
-        <script type="text/javascript" language="javascript" src="js/ajax.js"></script>
+        <script type="text/javascript" language="javascript" src="js/ajaxtest.js"></script>
 =======
         <link rel="stylesheet" type="text/css" href="manager/style.css">
         <script src="http://code.jquery.com/jquery-1.11.0.js"> </script>

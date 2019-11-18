@@ -98,16 +98,16 @@
         <url-pattern>/registbook.do</url-pattern>
     </servlet-mapping>
 
-    <!-- LoadTableServlet -->
-    <!-- <servlet>
-        <servlet-name>LoadTable</servlet-name>
-        <servlet-class>LoadTableServlet</servlet-class>
+    <!-- UpdateBookServlet -->
+    <servlet>
+        <servlet-name>UpdateBook</servlet-name>
+        <servlet-class>UpdateBookServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoadTable</servlet-name>
-        <url-pattern>/loadtable.do</url-pattern>
-    </servlet-mapping> -->
+        <servlet-name>UpdateBook</servlet-name>
+        <url-pattern>/updatebook.do</url-pattern>
+    </servlet-mapping>
 
     <!-- DeleteBookServlet -->
     <servlet>

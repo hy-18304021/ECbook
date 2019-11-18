@@ -84,6 +84,8 @@ function deleteData(){
 
 	param = 'name='+name;
 	alert(param);
+
+	//remove 'tr' row from table
 	document.getElementsByTagName('tr')[index].remove();
 	
 	xmlHttpRequest.send(param);
@@ -108,3 +110,11 @@ function deleteData(){
 //             });
 //         });
 //     });    
+
+
+
+        // $(document).ready(function(){
+        //     $("table tbody").find('button[name="delete"]').click(function(){
+        //         $(this).parents("tr").remove();
+        //     });
+        // });

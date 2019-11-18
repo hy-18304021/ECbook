@@ -20,7 +20,7 @@
         <button id="bookList">目録</button>
     </div>
 <ul>
-      <!--  <li><label for="book_kind">大ジャンル選択</label>
+       <li><label for="book_kind">大ジャンル選択</label>
             <select id="book_kind" name="book_kind">
               <option value="100">雑誌</option>
               <option value="200">専門書</option>
@@ -28,13 +28,8 @@
               <option value="300">児童向け</option>
               <option value="300">外国書</option>
               <option value="300">成人向け</option>
-<<<<<<< HEAD
             </select>
-         <li><label for="book_name">本名</label>
-            <input id="book_name" name="book_name" type="text" 
-=======
-            </select> -->
-<li>
+        <li>
     <label for="book_kind">大カテゴリ</label>
         <input type="radio" name="target" value="m" onchange="showMagazine();" checked>雑誌
         <input type="radio" name="target" value="p" onchange="showProfessional();" checked>専門書
@@ -98,7 +93,7 @@
             <input id="book_isbn" name="book_idbn" type="text" 
              size="50" placeholder="本名" maxlength="50">
          
-        <div id="regist"></div><button type="button" onclick="regist()">登録</button>
+        <div id="result"></div><button type="button" onclick="regist()">登録</button>
 </ul>
 </body>
 </html>

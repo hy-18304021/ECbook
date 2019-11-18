@@ -8,6 +8,9 @@ import javax.servlet.RequestDispatcher;
 import DBOracle.OracleController;
 import DBOracle.OracleProfile;
 
+import bean.EBBookBean;
+import java.util.ArrayList;
+
 public class BookRegistServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws IOException,ServletException{
@@ -19,6 +22,7 @@ public class BookRegistServlet extends HttpServlet{
 		String id = req.getParameter("book_isbn");
 
 		String result = "";
+		HttpSession session = req.getSession();
 		int isRegisted = OracleController.registBook(kind,name,price,count,id);
 		if(isRegisted==1){
 			result="Registed";

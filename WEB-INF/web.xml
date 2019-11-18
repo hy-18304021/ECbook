@@ -1,6 +1,6 @@
 <web-app>
-
-    <!-- login -->
+<!-- USER -->
+    <!-- user login -->
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<jsp-file>/login.jsp</jsp-file>
@@ -17,63 +17,17 @@
 		<servlet-name>loginresult</servlet-name>
 		<url-pattern>/loginresult</url-pattern>
 	</servlet-mapping>
-	
-	
-<!-- manager -->
-    <servlet>
-        <servlet-name>manager</servlet-name>
-        <jsp-file>/manager.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>manager</servlet-name>
-        <url-pattern>/manager</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>mngrlogin</servlet-name>
-        <jsp-file>/mngrlogin.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>mngrlogin</servlet-name>
-        <url-pattern>/mngrlogin</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>bookregisterform</servlet-name>
-        <jsp-file>/manager/bookregisterform.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>bookregisterform</servlet-name>
-        <url-pattern>/bookregisterform</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>booklist</servlet-name>
-        <jsp-file>/manager/booklist.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>booklist</servlet-name>
-        <url-pattern>/booklist</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>userlist</servlet-name>
-        <jsp-file>/manager/userlist.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>userlist</servlet-name>
-        <url-pattern>/userlist</url-pattern>
-    </servlet-mapping>
-
 	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>LoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/loginservlet</url-pattern>
-	</servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginservlet</url-pattern>
+    </servlet-mapping>
 
-    <!-- regist -->
+
+    <!-- user regist -->
     <servlet>
         <servlet-name>regist</servlet-name>
         <jsp-file>/register.jsp</jsp-file>
@@ -98,21 +52,125 @@
         <servlet-name>registservlet</servlet-name>
         <url-pattern>/registservlet</url-pattern>
     </servlet-mapping>
-    
 
 
-    <!-- login filter -->
+<!-- MANAGER -->
+    <!-- manager login-->
+    <servlet>
+        <servlet-name>manager</servlet-name>
+        <jsp-file>/manager.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manager</servlet-name>
+        <url-pattern>/manager</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mngrlogin</servlet-name>
+        <jsp-file>/mngrlogin.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mngrlogin</servlet-name>
+        <url-pattern>/mngrlogin</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <!-- book regist -->
+    <servlet>
+        <servlet-name>bookregisterform</servlet-name>
+        <jsp-file>/manager/bookregisterform.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookregisterform</servlet-name>
+        <url-pattern>/bookregisterform</url-pattern>
+    </servlet-mapping>
+
+    <!-- BookRegistServlet -->
+    <servlet>
+        <servlet-name>BookRegist</servlet-name>
+        <servlet-class>BookRegistServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookRegist</servlet-name>
+        <url-pattern>/registbook.do</url-pattern>
+    </servlet-mapping>
+
+    <!-- LoadTableServlet -->
+    <!-- <servlet>
+        <servlet-name>LoadTable</servlet-name>
+        <servlet-class>LoadTableServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoadTable</servlet-name>
+        <url-pattern>/loadtable.do</url-pattern>
+    </servlet-mapping> -->
+
+    <!-- DeleteBookServlet -->
+    <servlet>
+        <servlet-name>DeleteData</servlet-name>
+        <servlet-class>DeleteDataServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteData</servlet-name>
+        <url-pattern>/deletedata.do</url-pattern>
+    </servlet-mapping>
+
+    <!-- book list -->
+    <servlet>
+        <servlet-name>booklist</servlet-name>
+        <jsp-file>/manager/booklist.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>booklist</servlet-name>
+        <url-pattern>/booklist</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!-- user list -->
+    <servlet>
+        <servlet-name>userlist</servlet-name>
+        <jsp-file>/manager/userlist.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userlist</servlet-name>
+        <url-pattern>/userlist</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <!-- user login filter -->
     <filter>
         <filter-name>logincheckfilter</filter-name>
         <filter-class>filter.LoginCheckFilter</filter-class>
     </filter>
-    
+
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
+    <filter>
+        <filter-name>authenticatefilter</filter-name>
+        <filter-class>filter.AuthenticateFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authenticatefilter</filter-name>
+        <url-pattern>/loginresult</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+
+
+    <!-- (manager login) checkfilter -->
     <filter>
         <filter-name>logincheckmanager</filter-name>
         <filter-class>filter.LoginCheckManager</filter-class>
@@ -131,63 +189,63 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
-    <filter>
-        <filter-name>authenticatefilter</filter-name>
-        <filter-class>filter.AuthenticateFilter</filter-class>
-    </filter>
     <filter-mapping>
-        <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/loginresult</url-pattern>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/manager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>    
+    </filter-mapping>
 
+    <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/bookregisterform</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/booklist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>logincheckmanager</filter-name>
+        <url-pattern>/userlist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+
+
+    <!-- (manager login) authenticate filter -->
      <filter>
         <filter-name>authenticatemanager</filter-name>
         <filter-class>filter.AuthenticateManager</filter-class>
     </filter>
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/manager</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/bookregisterform</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/booklist</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/userlist</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
+
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/manager</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/bookregisterform</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/booklist</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/userlist</url-pattern>
@@ -196,14 +254,23 @@
     </filter-mapping>
 
 
-    <!-- bookRegist -->
-    <servlet>
-        <servlet-name>BookRegist</servlet-name>
-        <servlet-class>BookRegistServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>BookRegist</servlet-name>
-        <url-pattern>/registbook.do</url-pattern>
-    </servlet-mapping>
+    <!-- LoadTableFilter -->
+     <filter>
+        <filter-name>LoadTableFilter</filter-name>
+        <filter-class>filter.LoadTableFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LoadTableFilter</filter-name>
+        <url-pattern>/booklist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>LoadTableFilter</filter-name>
+        <url-pattern>/userlist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
 </web-app>

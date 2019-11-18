@@ -1,6 +1,9 @@
 import DBOracle.OracleController;
+import java.util.ArrayList;
+import bean.EBBookBean;
 public class Test{
 	public static void main(String[] args){
-		OracleController.regist("kim","Kimm","kkk","888700","kim@gmail.com",1,"");
+		int i = OracleController.deleteBook("hhhhh");
+		System.out.println(i);
 	}
 }

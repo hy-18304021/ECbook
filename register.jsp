@@ -26,6 +26,7 @@
     <ul>
 	<form name="register" action="registservlet" method="get">
     <li>ID:<input type="text" name="id">
+    <li>Name:<input type="text" name="name">
     <li>Password:<input type="password" id="pass" name="pass" onkeyup="passwordCheckFunction()">
     <li>PasswordCheck<input type="password" id="pass2" name="pass2" onkeyup="passwordCheckFunction()">
         <br><h5 style="color: red;"  id="passwordCheckMessage"></h5>

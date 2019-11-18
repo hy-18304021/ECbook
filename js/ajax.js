@@ -30,7 +30,7 @@ function getReadyStateHandler(xmlHttpRequest) {
 	return function() {
 		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200) {
-				document.getElementById("regist").innerHTML = xmlHttpRequest.responseText;
+				document.getElementById("result").innerHTML = xmlHttpRequest.responseText;
 			} else {
 				alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 			}
@@ -57,3 +57,54 @@ function regist(){
 	alert(params);
 	xmlHttpRequest.send(params);
 }
+
+
+
+function findTrTagIndex(){ //by clicking button 削除
+	var tag = Array.prototype.slice.call(document.getElementsByTagName('tr'));
+
+	var thisTag = document.activeElement;
+	var trTagParent = thisTag.parentNode.parentNode;
+
+	var index = tag.indexOf(trTagParent);
+	alert(index);
+	return index;
+}
+
+function deleteData(){
+
+	var index = findTrTagIndex();
+	var name = document.getElementsByTagName('th')[index].innerText;
+
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","deletedata.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+
+	param = 'name='+name;
+	alert(param);
+	document.getElementsByTagName('tr')[index].remove();
+	
+	xmlHttpRequest.send(param);
+
+}
+
+
+// $(document).ready(function(){
+//         $(".add-row").click(function(){
+//             var name = $("#name").val();
+//             var email = $("#email").val();
+//             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
+//             $("table tbody").append(markup);
+//         });
+         
+//         // Find and remove selected table rows
+//         $(".delete-row").click(function(){
+//             $("table tbody").find('input[name="record"]').each(function(){
+//                 if($(this).is(":checked")){
+//                     $(this).parents("tr").remove();
+//                 }
+//             });
+//         });
+//     });    

@@ -26,6 +26,16 @@
         <url-pattern>/loginservlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Logoutservlet</servlet-name>
+        <servlet-class>LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logoutservlet</servlet-name>
+        <url-pattern>/logoutservlet</url-pattern>
+    </servlet-mapping>
+
+
 
     <!-- user regist -->
     <servlet>

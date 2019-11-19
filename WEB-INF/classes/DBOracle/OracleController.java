@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
+import bean.EBBookBean;
+
 public class OracleController{
 	private static Connection conn = null;
 	private static Statement st = null;
@@ -69,7 +71,8 @@ public class OracleController{
 	public static int regist(String id,String name,String pass,String tel, String mail, int sex, String birth){
 		Connection admin=null;
 		int isRegisted=0;
-		String sql = "insert into UserTable values('"+id+"','"+name+"','"+pass+"','"+tel+"','"+mail+"','"+sex+"','"+birth+"')";
+		String sql = "insert into ebuser values('"+id+"','"+name+"','"+pass+"','"+tel+"','"+mail+"',"+sex+",'"+birth+"')";
+		System.out.println(sql);
 		try{
 			admin = connectAsAdmin();
 			admin.setAutoCommit(false);
@@ -95,7 +98,7 @@ public class OracleController{
 		Connection admin = connectAsAdmin();
 		int x = -1;
 		try{
-			pstmt = admin.prepareStatement("select pass from UserTable where id = ?");
+			pstmt = admin.prepareStatement("select pass from ebuser where id = ?");
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 
@@ -120,7 +123,7 @@ public class OracleController{
 		ArrayList<Object> information=new ArrayList<>();
 		Connection admin = connectAsAdmin();
 		try{
-			pstmt = admin.prepareStatement("select * from usertable where id = ?");
+			pstmt = admin.prepareStatement("select * from ebuser where id = ?");
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 
@@ -139,5 +142,143 @@ public class OracleController{
 
 	public static void updateUserInfo(){
 
+	}
+
+	public static int registBook(int kind, String name,int price,int count,String id){
+		Connection admin=null;
+		int isRegisted=0;
+		String sql = "insert into EBBook values("+kind+",'"+name+"',"+price+","+count+",'"+id+"')";
+		// System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Registed!");
+				isRegisted=1;
+			}
+		}catch(SQLException e){
+			System.out.println("This book has already exited!");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isRegisted;
+	}
+
+	public static int deleteData(String tablename, String data){
+		Connection admin=null;
+		int isDeleted=0;
+		String sql = "";
+		if("ebbook".equals(tablename)){
+			sql = "delete from " +tablename+" where isbn='"+data+"'";
+		}else if("ebuser".equals(tablename)){
+			sql = "delete from " +tablename+" where id='"+data+"'";
+		}
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Deleted");
+				isDeleted=1;
+			}
+		}catch(SQLException e){
+			System.out.println("Deleting was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isDeleted;
+	}
+
+	public static int updateBook(int kind, String name,int price,int count,String isbn){
+		Connection admin = null;
+		int isUpdated=0;
+		String sql = "update ebbook set kind="+kind;
+		if(name!=null){
+			sql =sql+",name='"+name+"'";
+		}
+		if(price!=-1){
+			sql = sql+",price="+price;
+		}
+		if(count!=-1){
+			sql = sql+",count="+count;
+		}
+		sql=sql+" where isbn='"+isbn+"'";
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Updated");
+				isUpdated=1;
+			}
+		}catch(SQLException e){
+			System.out.println("Updating was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isUpdated;
+	}
+
+	public static ArrayList getAllTableInfo(String tablename){
+		//Runtime Exception!!
+		Connection admin = null;
+		ArrayList array = new ArrayList();
+		String sql = "select * from "+tablename;
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+			st = admin.createStatement();
+			rs = st.executeQuery(sql);
+			if("ebbook".equals(tablename.toLowerCase())){
+				while(rs.next()){
+					EBBookBean book = new EBBookBean();
+					book.setBook_kind(rs.getInt(1));
+					book.setBook_name(rs.getString(2));
+					book.setBook_price(rs.getInt(3));
+					book.setBook_count(rs.getInt(4));
+					book.setBook_isbn(rs.getString(5));
+					System.out.println(rs.getInt(1)+rs.getString(2)+rs.getInt(3)+rs.getInt(4)+rs.getString(5));
+					array.add(book);
+				}
+			}else if("ebuser".equals(tablename.toLowerCase())){
+				while(rs.next()){
+					OracleProfile user = new OracleProfile();
+					user.setId(rs.getString(1));
+					user.setName(rs.getString(2));
+					user.setPass(rs.getString(3));
+					user.setTel(rs.getString(4));
+					user.setMail(rs.getString(5));
+					user.setSex(rs.getInt(6));
+					user.setBirth(rs.getString(7));
+					array.add(user);
+				}
+			}else{
+				System.out.println("Table name is not existed");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return array;
 	}
 }

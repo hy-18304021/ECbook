@@ -12,23 +12,27 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import DBOracle.*;
+
+import bean.*;
+import java.util.ArrayList;
 
 public class LoginCheckManager implements Filter{
     private FilterConfig config;
     public void init(FilterConfig config)throws ServletException{
-        //‰Šú‰»‚·‚é‚½‚ß‚Ìinit“à‚ÅƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ö‚ÌŠi”[
+        //Ââ€°Å Ãºâ€°Â»â€šÂ·â€šÃ©â€šÂ½â€šÃŸâ€šÃŒinitâ€œÃ â€šÃ…Æ’CÆ’â€œÆ’XÆ’^Æ’â€œÆ’Xâ€¢ÃÂâ€â€šÃ–â€šÃŒÅ iâ€[
         this.config=config;
     }
     public void destroy(){}
     public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
      throws IOException,ServletException{
 
-        //idæ“¾
+        //idÅ½Ã¦â€œÂ¾
         String id=req.getParameter("name");
-        //ƒpƒXƒ[ƒhæ“¾
+        //Æ’pÆ’XÆ’ÂÂ[Æ’hÅ½Ã¦â€œÂ¾
         String pass=req.getParameter("pass");
 
-        //‰Šú’lƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚é
+        //Ââ€°Å Ãºâ€™lÆ’pÆ’â€°Æ’ÂÂ[Æ’^â€šÃ°Å½Ã¦â€œÂ¾â€šÂ·â€šÃ©
         String mid=config.getInitParameter("ManagerID");
         String mpss=config.getInitParameter("ManagerPass");
 
@@ -36,16 +40,24 @@ public class LoginCheckManager implements Filter{
         System.out.println(mpss);
 
         if(id!=null&&pass!=null){
-            //‰Šú’lƒpƒ‰ƒ[ƒ^‚©‚ç‚Æ‚Á‚Ä‚«‚½
-            //ƒ†[ƒU[–¼‚ÆƒpƒXƒ[ƒh‚Ìƒ`ƒFƒbƒN
+            //Ââ€°Å Ãºâ€™lÆ’pÆ’â€°Æ’ÂÂ[Æ’^â€šÂ©â€šÃ§â€šÃ†â€šÃâ€šÃ„â€šÂ«â€šÂ½
+            //Æ’â€ Â[Æ’UÂ[â€“Â¼â€šÃ†Æ’pÆ’XÆ’ÂÂ[Æ’hâ€šÃŒÆ’`Æ’FÆ’bÆ’N
             if(id.equals(mid)&&pass.equals(mpss)){
-                //”FØ‚³‚ê‚½‚ç”FØƒg[ƒNƒ“‚ğƒZƒbƒg
+                //â€FÂÃ˜â€šÂ³â€šÃªâ€šÂ½â€šÃ§â€FÂÃ˜Æ’gÂ[Æ’NÆ’â€œâ€šÃ°Æ’ZÆ’bÆ’g
                 HttpSession session=((HttpServletRequest)req).getSession();
                 session.setAttribute("flag","OK");
+
+                // ArrayList array = OracleController.getAllTableInfo("ebbook");
+                // ArrayList<EBBookBean> books =(ArrayList<EBBookBean>) array;
+                // session.setAttribute("books",books);
+
+                // ArrayList uarray = OracleController.getAllTableInfo("usertable");
+                // ArrayList<OracleProfile> users =(ArrayList<OracleProfile>) uarray;
+                // session.setAttribute("users",users);
             }
         }
             
-        //–{—ˆ‚ÌURL‚Ö
+        //â€“{â€”Ë†â€šÃŒURLâ€šÃ–
         chain.doFilter(req,res);
         
     }

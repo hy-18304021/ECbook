@@ -29,5 +29,7 @@
 
 		
 	</div>
+
+	<h1><a href="/ecbook/logoutservlet">ログアウト</a></h1>
 </body>
 </html>

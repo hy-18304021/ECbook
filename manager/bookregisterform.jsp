@@ -3,10 +3,16 @@
 <html>
     <head>
         <title>bookregister</title>
+<<<<<<< HEAD
+        <!-- <script src="../js/jquery-1.11.0.min.js"></script>
+	    <script src="bookregisterform.js"></script> -->
+        <script type="text/javascript" language="javascript" src="js/ajaxtest.js"></script>
+=======
         <link rel="stylesheet" type="text/css" href="manager/style.css">
         <script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
         <script src="manager/bookregisterform.js"></script>
         
+
     </head>
 <body>
 <div id="listHeader">
@@ -14,7 +20,7 @@
         <button id="bookList">目録</button>
     </div>
 <ul>
-      <!--  <li><label for="book_kind">大ジャンル選択</label>
+       <li><label for="book_kind">大ジャンル選択</label>
             <select id="book_kind" name="book_kind">
               <option value="100">雑誌</option>
               <option value="200">専門書</option>
@@ -22,8 +28,8 @@
               <option value="300">児童向け</option>
               <option value="300">外国書</option>
               <option value="300">成人向け</option>
-            </select> -->
-<li>
+            </select>
+        <li>
     <label for="book_kind">大カテゴリ</label>
         <input type="radio" name="target" value="m" onchange="showMagazine();" checked>コミック
         <input type="radio" name="target" value="p" onchange="showProfessional();" checked>ライトノベル
@@ -74,8 +80,8 @@
         </select>-->
 </li>
             
-         <li><label for="book_id">本名</label>
-            <input id="book_id" name="book_id" type="text" 
+         <li><label for="book_name">本名</label>
+            <input id="book_name" name="book_name" type="text"
              size="50" placeholder="本名" maxlength="50">
          <li><label for="book_price">価額</label>
             <input id="book_price" name="book_price" type="text" 
@@ -86,10 +92,10 @@
          <li><label for="book_image">イメージ</label>
             <input id="book_image" name="book_image" type="file">  
          <li><label for="book_isbn">ISBNコード</label>
-            <input id="book_id" name="book_id" type="text" 
+            <input id="book_isbn" name="book_idbn" type="text" 
              size="50" placeholder="本名" maxlength="50">
-         <li class="label2">
-                <input type="submit" id="registBook" value="登録">
+         
+        <div id="result"></div><button type="button" onclick="regist()">登録</button>
 </ul>
 </body>
 </html>

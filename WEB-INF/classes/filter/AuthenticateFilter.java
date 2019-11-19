@@ -22,7 +22,7 @@ public class AuthenticateFilter implements Filter{
         HttpSession session=((HttpServletRequest) req).getSession();
 
         //認証トークンを取得
-        String flag=(String)session.getAttribute("token");
+        String flag=(String)session.getAttribute("mToken");
         
         //認証トークンがあるか判定
         if(flag==null){

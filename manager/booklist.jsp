@@ -7,7 +7,8 @@
 	<meta charset="UTF-8">
     <title>Manager</title>
     <script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
-	<script src="manager/page.js"></script>
+    <script src="manager/page.js"></script>
+    <script src="manager/booklist.js"></script>
     <style>
             #paging {
                 list-style-type:none;
@@ -31,6 +32,9 @@
          
 </head>
 <body>
+<div id="listHeader">
+    <button id="bookMain">管理者メイン</button>
+</div>
 <table border="1">
     <tr>
         <td align="center"  width="100">本名</td> 

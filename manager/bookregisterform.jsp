@@ -25,30 +25,32 @@
             </select> -->
 <li>
     <label for="book_kind">大カテゴリ</label>
-        <input type="radio" name="target" value="m" onchange="showMagazine();" checked>雑誌
-        <input type="radio" name="target" value="p" onchange="showProfessional();" checked>専門書
-        <input type="radio" name="target" value="n" onchange="showNovel();" checked>小説
-        <input type="radio" name="target" value="c" onchange="showChildren();" checked>児童向け
-        <input type="radio" name="target" value="f" onchange="showForeign();" checked>外国書
-        <input type="radio" name="target" value="a" onchange="showAdult();" checked>成人向け
+        <input type="radio" name="target" value="m" onchange="showMagazine();" checked>コミック
+        <input type="radio" name="target" value="p" onchange="showProfessional();" checked>ライトノベル
+    <!--    <input type="radio" name="target" value="n" onchange="showNovel();" checked>少女コミック
+        <input type="radio" name="target" value="c" onchange="showChildren();" checked>女性コミック
+        <input type="radio" name="target" value="f" onchange="showForeign();" checked>4コママンガ
+        <input type="radio" name="target" value="a" onchange="showAdult();" checked> -->
 </li>
 <li>
     <label for="book_kind">小カテゴリ</label>
         <select id="magazine_area" class="active">
-                <option value="100">スポーツ</option>
-                <option value="200">女性向け</option>
-                <option value="300">男性向け</option>
-                <option value="300">写真集</option>
+                <option value="100">少年</option>
+                <option value="200">青年</option>
+                <option value="300">少女</option>
+                <option value="300">4コママンガ</option>
+                <option value="300">BL</option>
+                <option value="300">アダルト</option>
         </select>
 
-        <select id="professional_area" class="active">
+    <!--     <select id="professional_area" class="active">
                 <option value="100">技術書</option>
                 <option value="200">実用書</option>
                 <option value="300">レシピ本</option>
                 <option value="300">参考書</option>
         </select>
 
-        <select id="novel_area" class="active">
+       <select id="novel_area" class="active">
                 <option value="100">ライトノベル</option>
                 <option value="200">ミステリー</option>
                 <option value="300">SF</option>
@@ -69,7 +71,7 @@
                 <option value="200">グラビア</option>
                 <option value="300">同人誌</option>
                 <option value="300">漫画</option>
-        </select>
+        </select>-->
 </li>
             
          <li><label for="book_id">本名</label>

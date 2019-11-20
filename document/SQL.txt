@@ -19,7 +19,6 @@ DROP TABLE ebuser;
 CREATE TABLE ebuser(
 id    VARCHAR2(100) CONSTRAINT pk_ebuser PRIMARY KEY,
 pass  VARCHAR2(255) NOT NULL,
-tel   VARCHAR2(11)    NOT NULL,
 mail  VARCHAR2(30)  NOT NULL,
 sex   NUMBER(1)     DEFAULT 0,
 birth DATE          NOT NULL

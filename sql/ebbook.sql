@@ -1,5 +1,5 @@
-DROP TABLE ebuser;
-CREATE TABLE ebuser(
+DROP TABLE ebbook;
+CREATE TABLE ebbook(
   id    VARCHAR2(100),
   name  VARCHAR2(100)     NOT NULL,
   pass  VARCHAR2(255)     NOT NULL,
@@ -8,13 +8,14 @@ CREATE TABLE ebuser(
   birth DATE              NOT NULL,
   CONSTRAINT  pk_ebuser   PRIMARY KEY(id)
 );
-insert into ebuser values(
-  'watashidesu',
-  'éÑ',
-  'mypass',
-  'mail@mail.com',
-  1,
-  '2000/11/20'
+
+insert into ebbook values(
+'watashidesu',
+'„Çè„Åü„Åó',
+'mypass',
+'mail@mail.com',
+1,
+'2000/11/20'
 );
 commit;
 exit

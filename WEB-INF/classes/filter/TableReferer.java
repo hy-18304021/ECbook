@@ -11,9 +11,9 @@ public class TableReferer{
 	ResultSet rs=null;
 	Statement st=null;
 	
-	public TableReferer(Connection cn){
+	public TableReferer(Connection cn,String id){
 		this.cn=cn;
-		String sql ="SELECT id,pass FROM EBUSER";
+		String sql ="SELECT pass FROM EBUSER WHERE id="+id;
 		
 		try{
 			st=cn.createStatement();
@@ -23,37 +23,16 @@ public class TableReferer{
 		}
 	}
 
-	public String getId(int i){
-		String id=null;
-		try{
-		id=rs.getString(i);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return id;
-	}
-
-	public String getPass(int i){
+	public String getPass(){
 		String pass=null;
 		try{
-			pass=rs.getString(i);
+			pass=rs.getString(1);
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
-			return pass;
-		}
-
-	public int getRecord(){
-		int record=0;
-		try{
-			rs.last();
-			record=rs.getRow();
-			rs.beforeFirst();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return record;
+		return pass;
 	}
+
 	public void Trclose(){
 		try{
 		st.close();

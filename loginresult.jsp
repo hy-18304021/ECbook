@@ -9,6 +9,12 @@
    </head>
    <body>
    	<h1>Login result: ${sessionScope.result}</h1>
-   	<h1>Login as: ${sessionScope.user.id}</h1>
+       <h1>Login as: ${sessionScope.user.id}</h1>
+       ${sessionScope.user.pass}
+       <br>${sessionScope.user.name}
+       <br>${sessionScope.user.mail}
+       <br>${sessionScope.user.sex}
+       <br>${sessionScope.user.birth}
+       <button>情報修正</button>
    </body>
    </html>

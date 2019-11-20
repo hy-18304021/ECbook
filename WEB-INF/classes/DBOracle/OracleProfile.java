@@ -27,12 +27,12 @@ public class OracleProfile{
 	public void setPass(String pass){
 		this.pass = pass;
 	}
-	public String getTel(){
-		return tel;
-	}
-	public void setTel(String tel){
-		this.tel=tel;
-	}
+	// public String getTel(){
+	// 	return tel;
+	// }
+	// public void setTel(String tel){
+	// 	this.tel=tel;
+	// }
 	public String getMail(){
 		return mail;
 	}
@@ -56,9 +56,9 @@ public class OracleProfile{
 		setId((String)information.get(0));
 		setName((String)information.get(1));
 		setPass((String)information.get(2));
-		setTel((String)information.get(3));
-		setMail((String)information.get(4));
-		setSex(Integer.parseInt((String)information.get(5)));
-		setBirth((String)information.get(6));
+		// setTel((String)information.get(3));
+		setMail((String)information.get(3));
+		setSex(Integer.parseInt((String)information.get(4)));
+		setBirth((String)information.get(5));
 	}
 }

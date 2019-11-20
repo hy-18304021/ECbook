@@ -19,7 +19,7 @@
 	<form method='Post' action='loginservlet'>
 		ID:<input type="text" name="id" required>
 		Password:<input type="text" name="pass" required>
-		<button id="regist">regist</button>
+		<!-- <button id="regist">regist</button> -->
 		<input type="submit" value="Send....">
 	</form>	
 </body>

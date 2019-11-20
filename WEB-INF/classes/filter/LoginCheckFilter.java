@@ -25,27 +25,27 @@ public class LoginCheckFilter implements Filter{
      throws IOException,ServletException{
 
         Connection cn=null;
-        //id取得
+        //id?擾
         String id=req.getParameter("name");
-        //パスワード取得
+        //?p?X???[?h?擾
         String pass=req.getParameter("pass");
 
-        cn=new OracleConnector("info","pro").getCn();
+        cn=new OracleConnector("ebtest","ebpass").getCn();
 		
 		TableReferer tr=new TableReferer(cn);
-        //EBUSERのレコード取得
+        //EBUSER????R?[?h?擾
         int record=tr.getRecord();
 
-        for(int i=0;i>=record;i++){
-            //EBUSERのidとpassを取得する
+        for(int i=1;i<=record;i++){
+            //EBUSER??id??pass???擾????
             String dbid=tr.getId(i);
             String dbpass=tr.getPass(i);
 
             if(dbid!=null&&dbpass!=null){
-                ///EBUSERからとってきた
-                //idとpassのチェック
+                ///EBUSER???????????
+                //id??pass??`?F?b?N
                 if(id.equals(dbid)&&pass.equals(dbpass)){
-                    //認証されたら認証トークンをセット
+                    //?F???????F??g?[?N?????Z?b?g
                     HttpSession session=((HttpServletRequest)req).getSession();
                     session.setAttribute("mToken","OK");
                 }
@@ -57,7 +57,7 @@ public class LoginCheckFilter implements Filter{
         }catch(SQLException e){
             e.printStackTrace();
         }
-        //本来のURLへ
+        //?{????URL??
         chain.doFilter(req,res);
         
     }

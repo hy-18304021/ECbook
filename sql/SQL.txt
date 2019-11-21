@@ -1,0 +1,52 @@
+CREATE USER ebtest
+   IDENTIFIED BY ebpass
+   DEFAULT TABLESPACE users
+   TEMPORARY TABLESPACE temp
+   QUOTA 100M ON USERS;
+/* 仮ユーザー。権限適当。ユーザー名ebtest。パスワードebpass */
+
+GRANT CREATE SESSION,CREATE TABLE,CREATE SEQUENCE,CREATE VIEW,CREATE ANY INDEX TO EBTEST;
+
+//困らない程度の権限付与。必要があれば絞ったり追加。
+
+conn ebtest//ebpass
+
+//初期化用DROP文s
+DROP TABLE ebuser;
+
+
+/********************順序*************************/
+CREATE SEQUENCE book_id_seq(
+INCREMENT BY	1
+MAXVALUE 9999999
+NOCACHE
+NOCYCLE;
+)
+
+
+/*******************table*************************/
+CREATE TABLE ebuser(
+id		VARCHAR2(100)
+name		VARCHAR2(100)	NOT NULL,
+pass		VARCHAR2(255)	NOT NULL,
+mail		VARCHAR2(30)	NOT NULL,
+sex		NUMBER(1)	DEFAULT 0,
+birth		DATE		NOT NULL,
+
+CONSTRAINT	pk_ebuser	PRIMARY KEY,
+);
+
+CREATE TABLE ebbook(
+book_id		NUMBER(7)	DEFAULT book_id_seq.nextval,
+book_count	NUMBER(4)	DEFAULT 0,
+book_image	VARCHAR2(40),
+book_isbn	VARCHAR2(13)	NOT NULL,
+genre_id	NUMBER(4)	NOT NULL
+
+CONSTRAINT	pk_ebbook	PRIMARY KEY,
+CONSTRAINT	ck_ebbook_count	CHECK(book_count >= 0),
+CONSTRAINT	fk_ebbook_isbn	FOREIGN KEY
+
+
+
+

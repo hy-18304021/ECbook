@@ -13,7 +13,7 @@ public class OracleConnector{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			//
-			cn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",user,pass);
+			cn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","ebtest","ebpass");
 			
 			System.out.println("Connection complete");
 		}catch(ClassNotFoundException e){

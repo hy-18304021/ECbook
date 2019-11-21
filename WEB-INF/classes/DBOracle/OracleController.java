@@ -32,7 +32,7 @@ public class OracleController{
 		Connection admin = null;
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			admin=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","info","pro");
+			admin=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","ebtest","ebpass");
 			System.out.println("Connected as Admin");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -68,10 +68,10 @@ public class OracleController{
 		}
 	}
 	// Create new ECBook application's account
-	public static int regist(String id,String name,String pass,String tel, String mail, int sex, String birth){
+	public static int regist(String id,String name,String pass, String mail, int sex, String birth){
 		Connection admin=null;
 		int isRegisted=0;
-		String sql = "insert into ebuser values('"+id+"','"+name+"','"+pass+"','"+tel+"','"+mail+"',"+sex+",'"+birth+"')";
+		String sql = "insert into ebuser values('"+id+"','"+name+"','"+pass+"','"+mail+"',"+sex+",'"+birth+"')";
 		System.out.println(sql);
 		try{
 			admin = connectAsAdmin();
@@ -128,7 +128,7 @@ public class OracleController{
 			rs=pstmt.executeQuery();
 
 			if(rs.next()){
-				for(int i =1;i<=7;i++){
+				for(int i =1;i<=6;i++){
 					information.add(rs.getString(i));
 				}
 			}
@@ -263,10 +263,10 @@ public class OracleController{
 					user.setId(rs.getString(1));
 					user.setName(rs.getString(2));
 					user.setPass(rs.getString(3));
-					user.setTel(rs.getString(4));
-					user.setMail(rs.getString(5));
-					user.setSex(rs.getInt(6));
-					user.setBirth(rs.getString(7));
+					// user.setTel(rs.getString(4));
+					user.setMail(rs.getString(4));
+					user.setSex(rs.getInt(5));
+					user.setBirth(rs.getString(6));
 					array.add(user);
 				}
 			}else{

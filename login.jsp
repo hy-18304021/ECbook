@@ -19,8 +19,11 @@
 	<form method='Post' action='/ecbook${requestScope.target}'>
 		ID:<input type="text" name="id" required>
 		Password:<input type="text" name="pass" required>
-		<button id="regist">regist</button>
+		<!-- <button id="regist">regist</button> -->
 		<input type="submit" value="Send....">
 	</form>	
 </body>
-</html>
+</html> 
+
+
+

@@ -20,6 +20,7 @@ public class LoginCheckFilter implements Filter{
     public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
      throws IOException,ServletException{
 
+<<<<<<< HEAD
 
         //idŽæ“¾
         String id=req.getParameter("id");
@@ -48,6 +49,42 @@ public class LoginCheckFilter implements Filter{
         }
 
         //–{—ˆ‚ÌURL‚Ö
+=======
+        Connection cn=null;
+        //id?ï
+        String id=req.getParameter("name");
+        //?p?X???[?h?ï
+        String pass=req.getParameter("pass");
+
+        cn=new OracleConnector("ebtest","ebpass").getCn();
+		
+		TableReferer tr=new TableReferer(cn);
+        //EBUSER????R?[?h?ï
+        int record=tr.getRecord();
+
+        for(int i=1;i<=record;i++){
+            //EBUSER??id??pass???ï????
+            String dbid=tr.getId(i);
+            String dbpass=tr.getPass(i);
+
+            if(dbid!=null&&dbpass!=null){
+                ///EBUSER???????????
+                //id??pass??`?F?b?N
+                if(id.equals(dbid)&&pass.equals(dbpass)){
+                    //?F???????F??g?[?N?????Z?b?g
+                    HttpSession session=((HttpServletRequest)req).getSession();
+                    session.setAttribute("mToken","OK");
+                }
+            }
+        }
+        tr.Trclose();
+        try{
+            cn.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        //?{????URL??
+>>>>>>> b4016e80a7543f4dcb6fd91e3fdfea5034d7b9f0
         chain.doFilter(req,res);
         
     }

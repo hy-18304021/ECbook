@@ -23,6 +23,7 @@ public class AuthenticateFilter implements Filter{
 
         //認証トークンを取得
         String flag=(String)session.getAttribute("mToken");
+        System.out.println(flag);
         
         //認証トークンがあるか判定
         if(flag==null){

@@ -12,7 +12,6 @@ public class OracleConnector{
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			//
 			cn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",user,pass);
 			
 			System.out.println("Connection complete");

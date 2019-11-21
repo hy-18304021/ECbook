@@ -12,10 +12,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.SQLException;
-
 
 public class LoginCheckFilter implements Filter{
     private FilterConfig config;
@@ -24,34 +20,33 @@ public class LoginCheckFilter implements Filter{
     public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
      throws IOException,ServletException{
 
-        Connection cn=null;
+
         //id取得
-        String id=req.getParameter("name");
+        String id=req.getParameter("id");
         //パスワード取得
         String pass=req.getParameter("pass");
 
-        cn=new OracleConnector("info","pro").getCn();
 		
-		TableReferer tr=new TableReferer(cn,id);
-            
+        TableReferer tr=new TableReferer();
+
+
         //EBUSERのidとpassを取得する
-        String dbpass=tr.getPass();
+        String dbpass=tr.getPass(id);
+        System.out.println(dbpass);
+        System.out.println(pass);
 
         if(dbpass!=null){
             ///EBUSERからとってきた
             //idとpassのチェック
+            System.out.println("ok1");
             if(pass.equals(dbpass)){
                 //認証されたら認証トークンをセット
+                System.out.println("ok2");
                 HttpSession session=((HttpServletRequest)req).getSession();
-                session.setAttribute("mToken","OK");  
-            }
+                session.setAttribute("mToken","OK");
+           }
         }
-        tr.Trclose();
-        try{
-            cn.close();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+
         //本来のURLへ
         chain.doFilter(req,res);
         

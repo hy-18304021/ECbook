@@ -166,6 +166,12 @@
         <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>logincheckfilter</filter-name>
+        <url-pattern>/loginresult</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
 
     <filter>
         <filter-name>authenticatefilter</filter-name>

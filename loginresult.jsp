@@ -10,5 +10,7 @@
    <body>
    	<h1>Login result: ${sessionScope.result}</h1>
    	<h1>Login as: ${sessionScope.user.id}</h1>
+   	
+   		<h1><a href="/ecbook/logoutservlet">ログアウト</a></h1>
    </body>
    </html>

@@ -14,7 +14,7 @@ public class LogoutServlet extends HttpServlet{
         session.removeAttribute("flag");
 
         //ÉzÅ[ÉÄÇ÷
-		RequestDispatcher dis=req.getRequestDispatcher("/manager");
+		RequestDispatcher dis=req.getRequestDispatcher("/index");
 		dis.forward(req,res);
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res)

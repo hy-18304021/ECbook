@@ -12,13 +12,9 @@ CREATE TABLE ebbook(
   CONSTRAINT  fk_ebbook_genre_id   FOREIGN KEY(genre_id) REFERENCES EBGENRE_S(small_genre_id),
 );
 
-insert into ebbook values(
-'watashidesu',
-'わたし',
-'mypass',
-'mail@mail.com',
-1,
-'2000/11/20'
+insert into ebbook (book_isbn,genre_id)values(
+'9784798125831',
+''
 );
 commit;
 exit

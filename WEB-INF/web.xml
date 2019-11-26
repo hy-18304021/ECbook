@@ -1,4 +1,13 @@
 <web-app>
+
+    <servlet>
+		<servlet-name>index</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
 <!-- USER -->
     <!-- user login -->
 	<servlet>

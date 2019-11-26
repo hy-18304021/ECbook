@@ -156,7 +156,7 @@
 
 
     <!-- user login filter -->
-    <!-- <filter>
+    <filter>
         <filter-name>logincheckfilter</filter-name>
         <filter-class>filter.LoginCheckFilter</filter-class>
     </filter>
@@ -182,7 +182,7 @@
         <url-pattern>/loginresult</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
-    </filter-mapping> -->
+    </filter-mapping>
 
 
 
@@ -199,11 +199,11 @@
 	        <param-value>manager</param-value>
 	    </init-param>
     </filter>
-<!--     <filter-mapping>
+    <filter-mapping>
         <filter-name>logincheckmanager</filter-name>
         <url-pattern>/mngrlogin</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-    </filter-mapping> -->
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>logincheckmanager</filter-name>

@@ -170,7 +170,6 @@
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/loginresult</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
     <filter>

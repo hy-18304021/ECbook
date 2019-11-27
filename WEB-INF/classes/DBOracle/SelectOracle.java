@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import bean.SelectOracleBean;
 public class SelectOracle{
-    public static List<SelectOracleBean> getResList(String dbid,String pass){
+    public static List<SelectOracleBean> getBookList(String dbid,String pass){
 		
         List<SelectOracleBean> resList = new ArrayList<>();
         

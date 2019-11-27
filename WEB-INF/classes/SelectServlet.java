@@ -12,7 +12,7 @@ import bean.SelectOracleBean;
 import java.util.List;
 import java.util.ArrayList;
 
-public class SelectServlet{
+public class SelectServlet extends HttpServlet{
     public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 		
@@ -35,7 +35,7 @@ public class SelectServlet{
 	public List<SelectOracleBean> getList(){
         String id="info";
         String pass="pro";
-		List<SelectOracleBean> plist=SelectOracle.getResList(id,pass);
+		List<SelectOracleBean> plist=SelectOracle.getBookList(id,pass);
 		
 		return plist;
 	}

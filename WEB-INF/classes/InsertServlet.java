@@ -9,7 +9,7 @@ import javax.servlet.RequestDispatcher;
 import DBOracle.InsertOracle;
 import bean.SelectOracleBean;
 
-public class InsertServlet{
+public class InsertServlet extends HttpServlet{
     public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 		

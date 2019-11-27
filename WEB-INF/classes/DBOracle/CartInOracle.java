@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertOracle{
-    public static void insertBook(int id,int price,int count,String image,String isbn){
+public class CartInOracle{
+    public static void insertCart(String user,String isbn,int zaiko){
         
-        Connection cn=OracleController.connect("info","pro");
+        Connection cn=OracleController.connect("ebtest","ebpass");
 		
 		try{
 			
 			//select文
-            String sql="insert into EBBOOK(book_id,book_price,book_count,book_image,book_isbn) values("+id+","+price+","+count+","+image+","+isbn+")";
+            String sql="insert into EBCart values("+user+","+isbn+","+zaiko+")";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する
 			Statement st=cn.createStatement();

@@ -24,126 +24,107 @@
     </header>
     <div id="container">
         <div id="idx_top">
-
-        </div>
-        <div id="idx_board_wrap">
-            <div>
-                <div class="idx_borad">
-                    <div class="title">
-                        <a href="#" class="name">image1</a>
-                        <a href="#" class="more">456</a>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="#">本名</a>
-                                <span>価額</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="idx_borad">
-                    <div class="title">
-                        <a href="#" class="name">image2</a>
-                        <a href="#" class="more">456</a>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="#">本名</a>
-                                <span>価額</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="idx_borad">
-                    <div class="title">
-                        <a href="#" class="name">image3</a>
-                        <a href="#" class="more">456</a>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="#">本名</a>
-                                <span>価額</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="idx_borad">
-                    <div class="title">
-                        <a href="#" class="name">image4</a>
-                        <a href="#" class="more">456</a>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="#">本名</a>
-                                <span>価額</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="idx_borad">
-                    <div class="title">
-                        <a href="#" class="name">image5</a>
-                        <a href="#" class="more">456</a>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="#">本名</a>
-                                <span>価額</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="idx_borad">
-                    <div class="title">
-                        <a href="#" class="name">image6</a>
-                        <a href="#" class="more">456</a>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="#">本名</a>
-                                <span>価額</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>                
-            </div>
-        </div>
     </div>
-	<ul>
-        <li>コミック
-            <ul>
-                <li>少年</li>
-                <li>青年</li>
-                <li>少女</li>
-                <li>４コママンが</li>
-                <li>BL</li>
-                <li>アダルト</li>
-            </ul>
-        <li>ライトノベル
-    </ul>
-    <ul>
-        <li>コミックのおすすめ本
-            <ul>
-                <li>list1</li>
-                <li>list2</li>
-                <li>list3</li>
-                <li>list4</li>
-            </ul>
-        </li>
-        <li>ライトノベルのおすすめ本</li>
-        <ul>
-            <li>list1</li>
-            <li>list2</li>
-            <li>list3</li>
-            <li>list4</li>
+
+    <div class="memu_wrap">
+        <ul class="dep1">
+            <li>
+                <a href="#">コミック</a>
+                <ul class="dep2">
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">ライトノベル</a>
+            </li>
         </ul>
+    </div>
         
-    </ul>
+    <div class="list_wrap">
+        <ul>
+            <li class="item item1">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item2">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item3">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item4">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item5">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item6">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item7">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item8">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item9">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+
+            
+        </ul>
+    </div>
 </body>
 </html>

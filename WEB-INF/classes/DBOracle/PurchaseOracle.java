@@ -4,20 +4,29 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertOracle{
-    public static void insertBook(int id,int price,int count,String image,String isbn){
+public class PurchaseOracle{
+    public int checkstock(){
+        int stock=0;
+        return stock;
+    }
+
+    public static void purchasebook(){
         
-        Connection cn=OracleController.connect("info","pro");
+        Connection cn=OracleController.connect("ebtest","ebpass");
 		
 		try{
 			
 			//select文
-            String sql="insert into EBBOOK(book_id,book_price,book_count,book_image,book_isbn) values("+id+","+price+","+count+","+image+","+isbn+")";
+            String sql1="insert into ebsales values()";
+            String sql2="insert into ebsales_ref values()";
+            String sql3="update ebbook set  where";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する
 			Statement st=cn.createStatement();
 
-			st.executeQuery(sql);
+			st.executeQuery(sql1);
+			st.executeQuery(sql2);
+			st.executeQuery(sql3);
 			
 			//Oracleから切断する
 			cn.close();

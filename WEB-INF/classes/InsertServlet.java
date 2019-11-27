@@ -9,19 +9,19 @@ import javax.servlet.RequestDispatcher;
 import DBOracle.InsertOracle;
 import bean.SelectOracleBean;
 
-public class InsertServlet{
+public class InsertServlet extends HttpServlet{
     public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
 		
         req.setCharacterEncoding("Windows-31J");
 
-        int book_id=req.getParamer("book_id");//本ID
-        int book_price=req.getParamer("book_price");//本値段
-        int book_count=req.getParamer("book_count");//本在庫
-        String book_image=req.getParamer("book_image");//本画像
-        String book_isbn=req.getParamer("book_isbn");//ISBNコード     
+		int book_id=Integer.parseInt(req.getParameter("book_id"));//本ID
+        int book_price=Integer.parseInt(req.getParameter("book_price"));//本値段
+        int book_count=Integer.parseInt(req.getParameter("book_count"));//本在庫
+        String book_image=req.getParameter("book_image");//本画像
+        String book_isbn=req.getParameter("book_isbn");//ISBNコード     
         
-        InsertOracle.InsertBook(book_id, book_price, book_count, book_image, book_isbn);
+        InsertOracle.insertBook(book_id, book_price, book_count, book_image, book_isbn);
         
 
 		

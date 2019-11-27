@@ -1,0 +1,13 @@
+testusercreate
+createseq
+ebuser
+ebaddress
+ebcredit
+ebgenre
+ebbook
+ebcart
+ebfavorite
+ebreview
+ebsales
+ebsalesref
+ebarrival

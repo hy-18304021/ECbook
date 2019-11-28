@@ -62,7 +62,7 @@ function regist(){
 
 
 
-function findTrTagIndex(){ //by clicking button 削除
+function findTrTagIndex(){ //by clicking button 削除 or 修正
 	var tag = Array.prototype.slice.call(document.getElementsByTagName('tr'));
 
 	var thisTag = document.activeElement;
@@ -95,16 +95,21 @@ function deleteData(){
 }
 
 
-//make update form appear
+
 function appear(){
-	document.getElementById("update").style.display='block';
+	appearUpdateForm();
 	var index = findTrTagIndex();
 	isbn = document.getElementsByTagName('th')[index].innerText;
 	alert(isbn);
 	return isbn;
 }
 
-//make update form disappear
+//make updated form appear
+function appearUpdateForm(){
+	document.getElementById("update").style.display='block';
+}
+
+//make updated form disappear
 function disappear(){
 	document.getElementById("update").style.display='none';
 }
@@ -125,6 +130,26 @@ function updateBookData(){
 				+"&book_price="+book_price
 				+"&book_count="+book_count
 				+"&book_isbn="+isbn;
+	alert(params);
+	xmlHttpRequest.send(params);
+}
+
+function updateUserData(){
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","updateuser.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+	var name=document.getElementById("name").value;
+	var pass=document.getElementById("pass").value;
+	var mail=document.getElementById("mail").value;
+	var birth=document.getElementById("birth").value;
+	var sex=document.getElementById("sex").value
+	var params = "name="+name
+				+"&pass="+pass
+				+"&mail="+mail
+				+"&sex="+sex
+				+"&birth="+birth;
 	alert(params);
 	xmlHttpRequest.send(params);
 }

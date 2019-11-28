@@ -1,20 +1,18 @@
-DROP TABLE ebbook;
-CREATE TABLE ebbook(
-  book_id     NUMBER(7),
-  book_count  NUMBER(4)     DEFAULT 0,
-  book_image  VARCHAR2(40)  ,
-  book_isbn   VARCHAR2(13)  NOT NULL,
-  genre_id    NUMBER(4)     NOT NULL,
+DROP TABLE ebarrival;
+CREATE TABLE ebarrival(
+  arrival_id     NUMBER(10)    DEFAULT arrival_id_seq.nextval,
+  arrival_price  NUMBER(7)     NOT NULL,
+  book_isbn  VARCHAR2(13)      ,
+  arrival_amount   NUMBER(4)   NOT NULL,
 
-  CONSTRAINT  pk_ebbook       PRIMARY KEY(book_id),
-  CONSTRAINT  ck_ebbook_count CHECK(book_count>=0),
-  CONSTRAINT  fk_ebbook_isbn  FOREIGN KEY(book_isbn) REFERENCES ISBN_DATA(book_isbn),
-  CONSTRAINT  fk_ebbook_genre_id   FOREIGN KEY(genre_id) REFERENCES EBGENRE_S(small_genre_id),
+  CONSTRAINT  pk_ebarrival_arrival       PRIMARY KEY(arrival_id),
+  CONSTRAINT  fk_ebarrival_book_isbn        FOREIGN KEY(book_isbn) REFERENCES ebbook(book_isbn)
 );
 
-insert into ebbook (book_isbn,genre_id)values(
+/*insert into ebarrival (arrival_price,book_isbn,arrival_amount)values(
+500,
 '9784798125831',
-''
-);
+50
+);*/
 commit;
 exit

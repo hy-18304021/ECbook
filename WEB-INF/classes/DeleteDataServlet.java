@@ -14,12 +14,26 @@ import java.util.ArrayList;
 public class DeleteDataServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException,IOException{
+		String data = req.getParameter("data");
+
 		HttpSession session = req.getSession();
 		String tablename = (String)session.getAttribute("tablename");
-		// System.out.println("Servlet: tablename=" +tablename);
+		int i = 0;
+		if(session.getAttribute("mflag")!=null){
+			if(session.getAttribute("tablename")!=null){
+				i = OracleController.deleteData(tablename,data);
+			}
+		}
+		if(session.getAttribute("flag")!=null){
+			if(session.getAttribute("tablename")!=null){
+				String id = ((OracleProfile)session.getAttribute("user")).getId();
+				System.out.println("id:"+id);
+				i=OracleController.deleteData(tablename,data,id);
+			}
+		}
 
-		String name = req.getParameter("data");
-		int i = OracleController.deleteData(tablename,name);
+		System.out.println("Servlet: tablename=" +tablename);
+
 
 		String result = "";
 

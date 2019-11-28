@@ -37,7 +37,6 @@
         <td align="center"  width="100">ID</td> 
         <th align="center"  width="100">Name</th> 
         <td align="center"  width="100">Password</td>
-        <td align="center"  width="100">Tel</td> 
         <td align="center"  width="100">mail</td> 
         <td align="center"  width="100">sex</td>
         <td align="center"  width="100">birth</td>
@@ -48,7 +47,6 @@
         <th>${user.id}</th>
         <td>${user.name}</td>
         <td>${user.pass}</td>
-        <td>${user.tel}</td>
         <td>${user.mail}</td>
         <td>${user.sex}</td>
         <td>${user.birth}</td>

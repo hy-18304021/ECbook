@@ -11,7 +11,7 @@ public class LogoutServlet extends HttpServlet{
 	throws IOException,ServletException{
 
         HttpSession session=((HttpServletRequest) req).getSession();
-        session.removeAttribute("mToken");
+        session.removeAttribute("flag");
 
         //ÉzÅ[ÉÄÇ÷
 		RequestDispatcher dis=req.getRequestDispatcher("/index");

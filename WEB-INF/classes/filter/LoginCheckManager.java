@@ -45,7 +45,7 @@ public class LoginCheckManager implements Filter{
             if(id.equals(mid)&&pass.equals(mpss)){
                 //”FØ‚³‚ê‚½‚ç”FØƒg[ƒNƒ“‚ðƒZƒbƒg
                 HttpSession session=((HttpServletRequest)req).getSession();
-                session.setAttribute("flag","OK");
+                session.setAttribute("mflag","OK");
 
                 // ArrayList array = OracleController.getAllTableInfo("ebbook");
                 // ArrayList<EBBookBean> books =(ArrayList<EBBookBean>) array;

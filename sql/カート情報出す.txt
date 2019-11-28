@@ -1,0 +1,11 @@
+/*user_idが?の人のカートの中の本の名前を表示するSQL*/
+
+SELECT
+c.user_id,
+b.book_name,
+b.book_amount
+
+FROM EBCART c join EBBOOK b 
+ON c.book_isbn=b.book_isbn
+
+WHERE user_id="?";

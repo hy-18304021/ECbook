@@ -4,7 +4,7 @@ public class OracleProfile{
 	private String id;
 	private String name;
 	private String pass;
-	private String tel;
+	// private String tel;
 	private String mail;
 	private int sex;
 	private String birth;

@@ -1,4 +1,13 @@
 <web-app>
+
+    <servlet>
+		<servlet-name>index</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
 <!-- USER -->
     <!-- user login -->
 	<servlet>
@@ -167,7 +176,7 @@
 
 
     <!-- user login filter -->
-    <!-- <filter>
+    <filter>
         <filter-name>logincheckfilter</filter-name>
         <filter-class>filter.LoginCheckFilter</filter-class>
     </filter>
@@ -176,7 +185,16 @@
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
+<<<<<<< HEAD
     </filter-mapping> -->
+=======
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>logincheckfilter</filter-name>
+        <url-pattern>/loginresult</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+>>>>>>> d558352bc1d7dfc2b984fdd342cdb4c62e828aa0
 
     <!-- <filter>
         <filter-name>authenticatefilter</filter-name>
@@ -187,7 +205,7 @@
         <url-pattern>/loginresult</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
-    </filter-mapping> -->
+    </filter-mapping>
 
 
 
@@ -204,12 +222,16 @@
 	        <param-value>manager</param-value>
 	    </init-param>
     </filter>
+<<<<<<< HEAD
 
     <!-- <filter-mapping>
+=======
+    <filter-mapping>
+>>>>>>> d558352bc1d7dfc2b984fdd342cdb4c62e828aa0
         <filter-name>logincheckmanager</filter-name>
         <url-pattern>/mngrlogin</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-    </filter-mapping> -->
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>logincheckmanager</filter-name>

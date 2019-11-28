@@ -11,10 +11,10 @@ public class LogoutServlet extends HttpServlet{
 	throws IOException,ServletException{
 
         HttpSession session=((HttpServletRequest) req).getSession();
-        session.removeAttribute("flag");
+        session.removeAttribute("mToken");
 
         //ÉzÅ[ÉÄÇ÷
-		RequestDispatcher dis=req.getRequestDispatcher("/manager");
+		RequestDispatcher dis=req.getRequestDispatcher("/index");
 		dis.forward(req,res);
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res)

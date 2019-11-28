@@ -11,56 +11,27 @@ public class TableReferer{
 	ResultSet rs=null;
 	Statement st=null;
 	
-	public TableReferer(Connection cn){
-		this.cn=cn;
-		String sql ="SELECT id,pass FROM EBUSER";
-		
+	public TableReferer(){
+		cn=new OracleConnector("ebtest","ebpass").getCn();
+	}
+
+	public String getPass(String id){
+		String sql ="SELECT pass FROM EBUSER where id='"+id+"'";
+		String pass=null;
+		System.out.println(sql);
+
 		try{
 			st=cn.createStatement();
 			rs=st.executeQuery(sql);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-	}
-
-	public String getId(int i){
-		String id=null;
-		try{
-		id=rs.getString(i);
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return id;
-	}
-
-	public String getPass(int i){
-		String pass=null;
-		try{
-			pass=rs.getString(i);
-			}catch(SQLException e){
-				e.printStackTrace();
-			}
-			return pass;
-		}
-
-	public int getRecord(){
-		int record=0;
-		try{
-			rs.last();
-			record=rs.getRow();
-			rs.beforeFirst();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
-		return record;
-	}
-	public void Trclose(){
-		try{
-		st.close();
-		rs.close();
+			rs.next();
+				pass=rs.getString("pass");
+			
+			System.out.println(pass);
 		cn.close();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+		
+		return pass;
 	}
 }

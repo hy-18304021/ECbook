@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import bean.SelectOracleBean;
 public class SelectOracle{
-    public static List<SelectOracleBean> getResList(String dbid,String pass){
+    public static List<SelectOracleBean> getBookList(String dbid,String pass){
 		
         List<SelectOracleBean> resList = new ArrayList<>();
         
@@ -26,11 +26,11 @@ public class SelectOracle{
 			//ResultSetインターフェイスを実装したクラスの
 			//インスタンスが返る
 			ResultSet rs=st.executeQuery(sql);
-
+			
 			//カーソルを一行だけスクロールし、データをフェッチする
 			while(rs.next()){
-				SelectOracleBean res = new SelectOracleBean();
-                
+				
+                SelectOracleBean res = new SelectOracleBean();
                 //ここから取得
 				int id = rs.getInt(1);	
 				int price = rs.getInt(2);	

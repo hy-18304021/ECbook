@@ -130,6 +130,17 @@
         <url-pattern>/deletedata.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UpdateUser</servlet-name>
+        <servlet-class>UpdateUserServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUser</servlet-name>
+        <url-pattern>/updateuser.do</url-pattern>
+    </servlet-mapping>
+
+
     <!-- book list -->
     <servlet>
         <servlet-name>booklist</servlet-name>
@@ -165,9 +176,9 @@
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
+    </filter-mapping> -->
 
-    <filter>
+    <!-- <filter>
         <filter-name>authenticatefilter</filter-name>
         <filter-class>filter.AuthenticateFilter</filter-class>
     </filter>
@@ -193,7 +204,8 @@
 	        <param-value>manager</param-value>
 	    </init-param>
     </filter>
-<!--     <filter-mapping>
+
+    <!-- <filter-mapping>
         <filter-name>logincheckmanager</filter-name>
         <url-pattern>/mngrlogin</url-pattern>
         <dispatcher>REQUEST</dispatcher>

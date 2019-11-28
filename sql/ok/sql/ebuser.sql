@@ -1,4 +1,3 @@
-DROP TABLE ebuser;
 CREATE TABLE ebuser(
   id    VARCHAR2(100),
   name  VARCHAR2(100)     NOT NULL,

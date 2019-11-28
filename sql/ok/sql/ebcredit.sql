@@ -1,4 +1,3 @@
-DROP TABLE ebcredit;
 CREATE TABLE ebcredit(
   user_id     VARCHAR2(30) NOT NULL,
   card_name  VARCHAR2(30)     NOT NULL,

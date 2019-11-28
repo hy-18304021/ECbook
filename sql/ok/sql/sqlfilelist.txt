@@ -1,5 +1,5 @@
-testusercreate
 createseq
+droptable
 ebuser
 ebaddress
 ebcredit

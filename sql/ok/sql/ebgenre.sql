@@ -1,4 +1,3 @@
-DROP TABLE ebgenre;
 CREATE TABLE ebgenre(
   genre_id     NUMBER(3)) DEFAULT genre_id_seq.nextval,
   genre_name  VARCHAR2(36)     NOT NULL,

@@ -1,0 +1,20 @@
+CREATE TABLE EBADDRESS(
+  address_id     NUMBER(10) DEFAULT address_id_seq.nextval,
+  user_id  VARCHAR2(30)     NOT NULL,
+  receiver_name  VARCHAR2(100)  NOT NULL,
+  postal_code   NUMBER(7)  NOT NULL,
+  address    VARCHAR2(150)     NOT NULL,
+  tel      VARCHAR2(11) NOT NULL,
+  CONSTRAINT  pk_ebaddress_address_id   PRIMARY KEY(address_id),
+  CONSTRAINT  fk_ebaddress_user_id FOREIGN KEY(user_id) references EBUSER(id)
+);
+
+/*insert into ebaddress (user_id,receiver_name,postal_code,address,tel)values(
+'watashidesu',
+'taro',
+'1770051',
+'tokyo',
+'09001234567'
+);
+commit;*/
+exit

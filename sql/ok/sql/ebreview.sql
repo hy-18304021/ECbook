@@ -1,4 +1,3 @@
-DROP TABLE ebreview;
 CREATE TABLE ebreview(
   book_isbn     VARCHAR2(13)    ,
   user_id       VARCHAR2(30)    ,

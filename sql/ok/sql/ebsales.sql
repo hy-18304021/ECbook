@@ -1,4 +1,3 @@
-DROP TABLE ebsales;
 CREATE TABLE ebsales(
   sales_id      NUMBER(10)        DEFAULT arrival_id_seq.nextval,
   user_id       VARCHAR2(30)      NOT NULL,

@@ -1,4 +1,3 @@
-DROP TABLE ebsales_ref;
 CREATE TABLE ebsales_ref(
   sales_id      NUMBER(10)       NOT NULL,
   book_isbn     VARCHAR2(13)     NOT NULL,

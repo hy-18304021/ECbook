@@ -1,4 +1,3 @@
-DROP TABLE ebcart;
 CREATE TABLE ebcart(
   user_id     VARCHAR2(20) NOT NULL,
   book_isbn  VARCHAR2(13)     NOT NULL,

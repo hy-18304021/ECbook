@@ -140,8 +140,44 @@ public class OracleController{
 		return information;
 	}
 
-	public static void updateUserInfo(){
+	public static int updateUserInfo(String id,String name,String pass, String mail, int sex, String birth){
+		Connection admin = null;
+		int isUpdated=0;
+		String sql = "update ebuser set sex = "+sex;
+		if(name!=null){
+			sql =sql+",name='"+name+"'";
+		}
+		if(pass!=null){
+			sql = sql+",pass='"+pass+"'";
+		}
+		if(mail!=null){
+			sql = sql+",mail='"+mail+"'";
+		}
+		if(birth!=null){
+			sql = sql+",birth='"+birth+"'";
+		}
 
+		sql=sql+" where id='"+id+"'";
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Updated");
+				isUpdated=1;
+			}
+		}catch(SQLException e){
+			System.out.println("Updating was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isUpdated;
 	}
 
 	public static int registBook(int kind, String name,int price,int count,String id){

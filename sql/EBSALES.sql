@@ -1,20 +1,19 @@
-DROP TABLE ebbook;
-CREATE TABLE ebbook(
-  book_id     NUMBER(7),
-  book_count  NUMBER(4)     DEFAULT 0,
-  book_image  VARCHAR2(40)  ,
-  book_isbn   VARCHAR2(13)  NOT NULL,
-  genre_id    NUMBER(4)     NOT NULL,
+DROP TABLE ebsales;
+CREATE TABLE ebsales(
+  sales_id      NUMBER(10)        DEFAULT arrival_id_seq.nextval,
+  user_id       VARCHAR2(30)      NOT NULL,
+  sales_date    date              DEFAULT sysdate,
+  address_id    NUMBER(10)        NOT NULL,
+  pay_method    VARCHAR2(100)     DEFAULT 'ƒJ[ƒhŒˆÏ',
 
-  CONSTRAINT  pk_ebbook       PRIMARY KEY(book_id),
-  CONSTRAINT  ck_ebbook_count CHECK(book_count>=0),
-  CONSTRAINT  fk_ebbook_isbn  FOREIGN KEY(book_isbn) REFERENCES ISBN_DATA(book_isbn),
-  CONSTRAINT  fk_ebbook_genre_id   FOREIGN KEY(genre_id) REFERENCES EBGENRE_S(small_genre_id),
+  CONSTRAINT  pk_ebsales_sales       PRIMARY KEY(sales_id),
+  CONSTRAINT  fk_ebsales_user_id        FOREIGN KEY(book_isbn) REFERENCES ebuser(id),
+  CONSTRAINT  fk_ebsales_address_id     FOREIGN KEY(address_id) REFERENCES ebaddress(address_id)
 );
 
-insert into ebbook (book_isbn,genre_id)values(
+/*insert into ebsales (book_isbn,genre_id)values(
 '9784798125831',
 ''
-);
+);*/
 commit;
 exit

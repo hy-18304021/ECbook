@@ -1,20 +1,14 @@
-DROP TABLE ebbook;
-CREATE TABLE ebbook(
-  book_id     NUMBER(7),
-  book_count  NUMBER(4)     DEFAULT 0,
-  book_image  VARCHAR2(40)  ,
-  book_isbn   VARCHAR2(13)  NOT NULL,
-  genre_id    NUMBER(4)     NOT NULL,
+DROP TABLE ebreview;
+CREATE TABLE ebreview(
+  book_isbn     VARCHAR2(13)    ,
+  user_id       VARCHAR2(30)    ,
+  review_text   VARCHAR2(4000)  NOT NULL,
+  review_star   NUMBER(1)       NOT NULL,
+  review_date   date            defaurt sysdate,
 
-  CONSTRAINT  pk_ebbook       PRIMARY KEY(book_id),
-  CONSTRAINT  ck_ebbook_count CHECK(book_count>=0),
-  CONSTRAINT  fk_ebbook_isbn  FOREIGN KEY(book_isbn) REFERENCES ISBN_DATA(book_isbn),
-  CONSTRAINT  fk_ebbook_genre_id   FOREIGN KEY(genre_id) REFERENCES EBGENRE_S(small_genre_id),
-);
-
-insert into ebbook (book_isbn,genre_id)values(
-'9784798125831',
-''
+  CONSTRAINT  pk_ebreview_ebview            PRIMARY KEY(book_isbn,user_id),
+  CONSTRAINT  fk_ebreview_book_isbn         FOREIGN KEY(book_isbn) REFERENCES ebbook(book_isbn),
+  CONSTRAINT  fk_ebreview_user_id           FOREIGN KEY(user_id) REFERENCES ebuser(id)
 );
 commit;
 exit

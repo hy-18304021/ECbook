@@ -157,6 +157,7 @@
         <url-pattern>/deletedata.do</url-pattern>
     </servlet-mapping>
 
+    <!-- UpdateUserServlet -->
     <servlet>
         <servlet-name>UpdateUser</servlet-name>
         <servlet-class>UpdateUserServlet</servlet-class>
@@ -167,6 +168,16 @@
         <url-pattern>/updateuser.do</url-pattern>
     </servlet-mapping>
 
+    <!-- UpdateUserCartServlet -->
+    <servlet>
+        <servlet-name>UpdateUserCart</servlet-name>
+        <servlet-class>UpdateUserCartServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserCart</servlet-name>
+        <url-pattern>/updateusercart.do</url-pattern>
+    </servlet-mapping>
 
     <!-- book list -->
     <servlet>

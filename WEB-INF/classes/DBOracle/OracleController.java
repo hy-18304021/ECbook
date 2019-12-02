@@ -261,7 +261,7 @@ public class OracleController{
 		int isDeleted=0;
 		String sql = "";
 		if("ebcart".equals(tablename)){
-			sql = "delete from "+tablename+" where book_isbn='"+data+"' and user_id='"+id+"'";
+			sql = "delete from "+tablename+" where book_isbn=(select isbn from ebbook where name='"+data+"') and user_id='"+id+"'";
 		}
 		System.out.println(sql);
 		try{
@@ -402,6 +402,36 @@ public class OracleController{
 			disconnect(admin,st,rs);
 		}
 		return array;
+	}
+
+	public static int updateUserCart(String id, String bookname, int cart_amount){
+		Connection admin=null;
+		int isUpdated = 0;
+		String sql ="update ebcart set cart_amount ="+cart_amount+" where user_id='"+id+"' and book_isbn=(select isbn from ebbook where name='"+bookname+"')";
+		System.out.println(sql);
+		try{
+			admin=connectAsAdmin();
+			admin.setAutoCommit(false);
+			st=admin.createStatement();
+			int i = st.executeUpdate(sql);
+			if(i==1){
+				admin.commit();
+				System.out.println("Updated");
+				isUpdated=1;
+			}
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("Updating was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isUpdated;
 	}
 
 }

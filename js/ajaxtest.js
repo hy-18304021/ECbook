@@ -41,11 +41,6 @@ function getReadyStateHandler(xmlHttpRequest) {
 
 // book regist
 function regist(){
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","registbook.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
 	var book_kind=document.getElementById("book_kind").value;
 	var book_name=document.getElementById("book_name").value;
 	var book_price=document.getElementById("book_price").value;
@@ -57,6 +52,12 @@ function regist(){
 				+"&book_count="+book_count
 				+"&book_isbn="+book_isbn;
 	alert(params);
+
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","registbook.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
 	xmlHttpRequest.send(params);
 }
 
@@ -76,18 +77,16 @@ function findTrTagIndex(){ //by clicking button 削除 or 修正
 
 // delete book or user
 function deleteData(){
-
 	var index = findTrTagIndex();
 	var data = document.getElementsByTagName('th')[index].innerText;
+	param = 'data='+data;
+	alert(param);
 
 	var xmlHttpRequest = getXMLHttpRequest();
 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
 	xmlHttpRequest.open("POST","deletedata.do",true);
 	xmlHttpRequest.setRequestHeader("Content-Type",
 			"application/x-www-form-urlencoded");
-
-	param = 'data='+data;
-	alert(param);
 	xmlHttpRequest.send(param);
 
 	//remove 'tr' row from table
@@ -95,7 +94,7 @@ function deleteData(){
 }
 
 
-
+//find bookisbn
 function appear(){
 	appearUpdateForm();
 	var index = findTrTagIndex();
@@ -116,11 +115,6 @@ function disappear(){
 
 // update book
 function updateBookData(){
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","updatebook.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
 	var book_kind=document.getElementById("book_kind").value;
 	var book_name=document.getElementById("book_name").value;
 	var book_price=document.getElementById("book_price").value;
@@ -131,27 +125,53 @@ function updateBookData(){
 				+"&book_count="+book_count
 				+"&book_isbn="+isbn;
 	alert(params);
+
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","updatebook.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
 	xmlHttpRequest.send(params);
+	location = location;
 }
 
 function updateUserData(){
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","updateuser.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
 	var name=document.getElementById("name").value;
 	var pass=document.getElementById("pass").value;
 	var mail=document.getElementById("mail").value;
 	var birth=document.getElementById("birth").value;
-	var sex=document.getElementById("sex").value
+	var sex=document.getElementById("sex").value;
 	var params = "name="+name
 				+"&pass="+pass
 				+"&mail="+mail
 				+"&sex="+sex
 				+"&birth="+birth;
 	alert(params);
+
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","updateuser.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
 	xmlHttpRequest.send(params);
+	// location = location;
 }
 
+
+function updateUserCart(){
+	var index = findTrTagIndex();
+	var bookname = document.getElementsByTagName("th")[index].innerText;
+	var cart_amount = document.getElementsByName("cart_amount")[index].value;
+	var param = "bookname="+bookname
+				+"&cart_amount="+cart_amount;
+	alert(param);
+
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("POST","updateusercart.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+	xmlHttpRequest.send(param);
+}
+// remove book from cart
 

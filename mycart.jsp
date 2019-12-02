@@ -13,12 +13,12 @@
   <table border="1">
     <tr>
       <th>ブック名前</th>
-      <td>数</td>
+      <td name="cart_amount">数</td>
     </tr>
     <c:forEach var="cart" items="${sessionScope.mycart}">
       <tr>
         <th>${cart.book_name}</th>
-        <td>${cart.cart_amount}</td>
+        <td><input type="number" name="cart_amount" value="${cart.cart_amount}" min='1' ><button type="button" onclick="updateUserCart()" name="update">修正</button></td>
         <td><button type="button" onclick="deleteData()" name="delete">削除</button></td>
       </tr>
     </c:forEach>

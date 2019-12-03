@@ -7,8 +7,9 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.io.Serializable;
-
+import java.io.InputStream;
 import bean.*;
+import java.sql.Blob;
 
 public class OracleController{
 	private static Connection conn = null;
@@ -191,21 +192,24 @@ public class OracleController{
 		return isUpdated;
 	}
 
-	public static int registBook(int kind, String name,int price,int count,String id){
+	public static int registBook(int kind, String name,int price,int count,String isbn,String book_image){
 		Connection admin=null;
 		int isRegisted=0;
-		String sql = "insert into EBBook values("+kind+",'"+name+"',"+price+","+count+",'"+id+"')";
-		// System.out.println(sql);
+		String sql = "insert into EBBook(kind,name,price,count,isbn,book_image) values(?,?,?,?,?,?)";
+		System.out.println(sql);
 		try{
 			admin = connectAsAdmin();
 			admin.setAutoCommit(false);
-			st = admin.createStatement();
-			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
-			if(i==1){
-				admin.commit();
-				System.out.println("Registed!");
-				isRegisted=1;
-			}
+			pstmt = admin.prepareStatement(sql);
+			pstmt.setInt(1,kind);
+			pstmt.setString(2,name);
+			pstmt.setInt(3,price);
+			pstmt.setInt(4,count);
+			pstmt.setString(5,isbn);
+			pstmt.setString(6,book_image);
+
+			isRegisted=pstmt.executeUpdate();
+			admin.commit();
 		}catch(SQLException e){
 			try{
 				admin.rollback();
@@ -216,7 +220,7 @@ public class OracleController{
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			disconnect(admin,st,rs);
+			disconnect(admin,pstmt,rs);
 		}
 		return isRegisted;
 	}
@@ -290,7 +294,7 @@ public class OracleController{
 		return isDeleted;
 	}
 
-	public static int updateBook(int kind, String name,int price,int count,String isbn){
+	public static int updateBook(int kind, String name,int price,int count,String isbn,String book_image){
 		Connection admin = null;
 		int isUpdated=0;
 		String sql = "update ebbook set kind="+kind;
@@ -302,6 +306,9 @@ public class OracleController{
 		}
 		if(count!=-1){
 			sql = sql+",count="+count;
+		}
+		if(book_image!=""){
+			sql=sql+",book_image='"+book_image+"'";
 		}
 		sql=sql+" where isbn='"+isbn+"'";
 		System.out.println(sql);
@@ -349,6 +356,7 @@ public class OracleController{
 					book.setBook_price(rs.getInt("price"));
 					book.setBook_count(rs.getInt("count"));
 					book.setBook_isbn(rs.getString("isbn"));
+					book.setBook_image(rs.getString("book_image"));
 					// System.out.println(rs.getInt(1)+rs.getString(2)+rs.getInt(3)+rs.getInt(4)+rs.getString(5));
 					array.add(book);
 				}
@@ -432,6 +440,63 @@ public class OracleController{
 			disconnect(admin,st,rs);
 		}
 		return isUpdated;
+	}
+
+	public static int insertBookImage(InputStream content,String name){
+		Connection admin=null;
+		int isRegisted=0;
+		String sql = "insert into bookimage values(?,?)";
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+			admin.setAutoCommit(false);
+			pstmt = admin.prepareStatement(sql);
+			pstmt.setBlob(1,content);
+			pstmt.setString(2,name);
+
+			isRegisted=pstmt.executeUpdate();
+			admin.commit();
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("Fail....");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,pstmt,rs);
+		}
+		return isRegisted;
+	}
+
+	public static byte[] findBookImage(String name){
+		Connection admin = null;
+		String sql = "select content from bookimage where name = ?";
+		byte[] content= new byte[3000*4000];
+		try{
+			admin=connectAsAdmin();
+			pstmt=admin.prepareStatement(sql);
+			pstmt.setString(1,name);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				content = rs.getBytes("content");
+			}
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("SQLException.");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,pstmt,rs);
+		}
+		return content;
 	}
 
 }

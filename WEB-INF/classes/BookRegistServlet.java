@@ -7,6 +7,9 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import DBOracle.OracleController;
 import DBOracle.OracleProfile;
+import java.io.*;
+import java.nio.file.Paths;
+import javax.servlet.http.Part;
 
 import bean.EBBookBean;
 import java.util.ArrayList;
@@ -18,12 +21,19 @@ public class BookRegistServlet extends HttpServlet{
 		String name = req.getParameter("book_name");
 		int price = Integer.parseInt(req.getParameter("book_price"));
 		int count = Integer.parseInt(req.getParameter("book_count"));
-		// String image = req.getParameter("book_image");
-		String id = req.getParameter("book_isbn");
+		String book_image = req.getParameter("book_image").substring(12);
+		String isbn = req.getParameter("book_isbn");
+		System.out.println(book_image);
+
+		//Test
+		// Part filePart = req.getPart("book_image"); // Retrieves <input type="file" name="file">
+  //   	String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+  //   	InputStream fileContent = filePart.getInputStream();
+		// System.out.println("Test:fileName="+fileName+",filePart="+filePart);
 
 		String result = "";
-		HttpSession session = req.getSession();
-		int isRegisted = OracleController.registBook(kind,name,price,count,id);
+		// HttpSession session = req.getSession();
+		int isRegisted = OracleController.registBook(kind,name,price,count,isbn,book_image);
 		if(isRegisted==1){
 			result="Registed";
 		}else{

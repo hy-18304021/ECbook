@@ -135,7 +135,7 @@ function updateBookData(){
 	xmlHttpRequest.setRequestHeader("Content-Type",
 			"application/x-www-form-urlencoded");
 	xmlHttpRequest.send(params);
-	// location = location;
+	location = location;
 }
 
 function updateUserData(){

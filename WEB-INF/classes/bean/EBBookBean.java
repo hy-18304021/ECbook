@@ -65,7 +65,7 @@ public class EBBookBean{
     }
 
     public String getLage_genre_name(){
-        return book_image;
+        return lage_genre_name;
     }
 
     public void setBook_isbn(String isbn){

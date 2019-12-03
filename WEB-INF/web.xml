@@ -202,7 +202,15 @@
     </servlet-mapping>
 
 
-
+    <!-- BookImageServlet -->
+    <servlet>
+        <servlet-name>bookimage</servlet-name>
+        <servlet-class>BookImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookimage</servlet-name>
+        <url-pattern>/bookimage/*</url-pattern>
+    </servlet-mapping>
 
     <!-- user login filter -->
     <filter>

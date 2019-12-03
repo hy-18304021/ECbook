@@ -9,6 +9,10 @@
     <script src="js/ajaxtest.js"></script>
    </head>
    <body>
+      <ul>
+          <input type="submit" value="注文履歴">
+          <input type="submit" value="お届け住所変更">
+      </ul>
    	<h1>Login result: ${sessionScope.result}</h1>
 
    	

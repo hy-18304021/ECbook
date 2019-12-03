@@ -8,10 +8,10 @@
 	<title>Registation Result</title>
 </head>
 <body>
-	<!-- <ul>
+	<ul>
 		<input type="submit" type="注文履歴">
 		<input type="submit" type="お届け住所変更">
-	</ul> -->
+	</ul>
 	${result}
 	<br>登録した情報
 	<ul>

@@ -63,7 +63,7 @@
                 <td>${book.book_price}</td>
                 <td>${book.book_count}</td>
                 <td>
-                    <img src="${pageContext.request.contextPath}/img/book/${book.book_image}" alt="${book.book_image}">
+                    <img src="${pageContext.request.contextPath}/bookimage/${book.book_image}" alt="${book.book_image}">
                 </td>
                 <th>${book.book_isbn}</th>
                 <td><button type="button" onclick="appear()">修正</button></td>

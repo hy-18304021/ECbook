@@ -11,14 +11,17 @@ import DBOracle.OracleProfile;
 
 public class BookImageServlet extends HttpServlet {
 
-    // table bookimage: content=blob, name=varchar(255) UNIQUE.
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String imageName = request.getPathInfo().substring(1); // Returns "foo.png".
-        byte[] content = OracleController.findBookImage(imageName);
-        response.setContentType(getServletContext().getMimeType(imageName));
-        response.setContentLength(content.length);
-        response.getOutputStream().write(content);
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String imageName = req.getPathInfo(); // Returns "/foo.png".
+        // byte[] content = OracleController.findBookImage(imageName);
+        // response.setContentType(getServletContext().getMimeType(imageName));
+        // response.setContentLength(content.length);
+        // response.getOutputStream().write(content);
+        RequestDispatcher dis=req.getRequestDispatcher("/img/book"+imageName);
+        dis.forward(req,res);
+
+
     }
 
 }

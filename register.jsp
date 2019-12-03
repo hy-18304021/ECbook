@@ -5,14 +5,14 @@
 <head>
     <title>register</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="register.js"></script>
+    <script src="js/register.js"></script>
     <script type="text/javascript">
 
         function passwordCheckFunction(){
             var pass = $('#pass').val();
             var pass2 = $('#pass2').val();
             if(pass != pass2){
-                $('#passwordCheckMessage').html('パスワードがちがいます。');
+                $('#passwordCheckMessage').html('パスワードがちがいます�?');
             }else{
                 $('#passwordCheckMessage').html('');		
             }

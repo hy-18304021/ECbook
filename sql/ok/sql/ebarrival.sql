@@ -6,11 +6,3 @@ CREATE TABLE ebarrival(
   CONSTRAINT  pk_ebarrival_arrival       PRIMARY KEY(arrival_id),
   CONSTRAINT  fk_ebarrival_book_isbn        FOREIGN KEY(book_isbn) REFERENCES ebbook(book_isbn)
 );
-
-/*insert into ebarrival (arrival_price,book_isbn,arrival_amount)values(
-500,
-'9784798125831',
-50
-);*/
-commit;
-exit

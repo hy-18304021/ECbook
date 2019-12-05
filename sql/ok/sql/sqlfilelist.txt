@@ -11,3 +11,4 @@ ebreview
 ebsales
 ebsalesref
 ebarrival
+exit

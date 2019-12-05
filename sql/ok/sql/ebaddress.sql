@@ -8,13 +8,3 @@ CREATE TABLE EBADDRESS(
   CONSTRAINT  pk_ebaddress_address_id   PRIMARY KEY(address_id),
   CONSTRAINT  fk_ebaddress_user_id FOREIGN KEY(user_id) references EBUSER(id)
 );
-
-/*insert into ebaddress (user_id,receiver_name,postal_code,address,tel)values(
-'watashidesu',
-'taro',
-'1770051',
-'tokyo',
-'09001234567'
-);
-commit;*/
-exit

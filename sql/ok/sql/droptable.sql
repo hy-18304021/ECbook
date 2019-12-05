@@ -1,5 +1,5 @@
 DROP TABLE ebarrival;
-DROP TABLE ebsalesref;
+DROP TABLE ebsales_ref;
 DROP TABLE ebsales;
 DROP TABLE ebreview;
 DROP TABLE ebfavorite;
@@ -9,4 +9,3 @@ DROP TABLE ebgenre;
 DROP TABLE ebcredit;
 DROP TABLE ebaddress;
 DROP TABLE ebuser;
-exit

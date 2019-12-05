@@ -16,4 +16,3 @@ insert into ebuser values(
   '2000/11/20'
 );
 commit;
-exit

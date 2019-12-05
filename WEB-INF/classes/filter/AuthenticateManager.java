@@ -22,7 +22,7 @@ public class AuthenticateManager implements Filter{
         HttpSession session=((HttpServletRequest) req).getSession();
 
         //認証トークンを取得
-        String flag=(String)session.getAttribute("flag");
+        String flag=(String)session.getAttribute("mflag");
         System.out.println("soto");
         System.out.println(flag);
         //認証トークンがあるか判定

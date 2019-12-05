@@ -1,9 +1,15 @@
 import DBOracle.OracleController;
 import java.util.ArrayList;
-import bean.EBBookBean;
+import bean.*;
+import java.io.*;
 public class Test{
 	public static void main(String[] args){
-		int i = OracleController.deleteBook("hhhhh");
+		try{
+			InputStream x = new FileInputStream("C:\\Users\\SuSu\\Desktop\\ECBook\\img\\book\\test5.png");
+		int i= OracleController.insertBookImage(x,"test5.png");
 		System.out.println(i);
+	}catch(FileNotFoundException e){
+		e.printStackTrace();
+	}
 	}
 }

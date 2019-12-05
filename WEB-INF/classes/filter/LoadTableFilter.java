@@ -27,18 +27,18 @@ public class LoadTableFilter implements Filter{
 	public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
 	throws IOException,ServletException{
 		String servletPath =((HttpServletRequest)req).getServletPath();
-		String jspname = servletPath.substring(1,5);
+		String jspname = servletPath.substring(1);
 		// System.out.println("servletPath="+servletPath+"\tjspname="+jspname);
 		HttpSession session = ((HttpServletRequest)req).getSession();
 
-		if(session.getAttribute("flag")!=null){
-			if("book".equals(jspname)){
+		if(session.getAttribute("mflag")!=null){ //manager
+			if("booklist".equals(jspname)){
 				ArrayList array = OracleController.getAllTableInfo("ebbook");
             	ArrayList<EBBookBean> books =(ArrayList<EBBookBean>) array;
             	session.removeAttribute("books");
             	session.setAttribute("books",books);
             	session.setAttribute("tablename","ebbook");
-			}else if("user".equals(jspname)){
+			}else if("userlist".equals(jspname)){
 				ArrayList array = OracleController.getAllTableInfo("ebuser");
             	ArrayList<OracleProfile> users =(ArrayList<OracleProfile>) array;
             	session.removeAttribute("users");
@@ -46,6 +46,15 @@ public class LoadTableFilter implements Filter{
             	session.setAttribute("tablename","ebuser");
 			}else{
 				System.out.println("This table is not exist");
+			}
+		}
+		if(session.getAttribute("flag")!=null){ //normal user
+			if("mycart".equals(jspname)){
+				ArrayList array = OracleController.getUserCartInfo(((OracleProfile)session.getAttribute("user")).getId());
+				ArrayList<CartBean> mycart=(ArrayList<CartBean>)array;
+				session.removeAttribute("mycart");
+				session.setAttribute("mycart",mycart);
+				session.setAttribute("tablename","ebcart");
 			}
 		}
 

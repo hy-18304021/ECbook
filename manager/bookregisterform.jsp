@@ -3,11 +3,11 @@
 <html>
     <head>
         <title>bookregister</title>
-<<<<<<< HEAD
+
         <!-- <script src="../js/jquery-1.11.0.min.js"></script>
 	    <script src="bookregisterform.js"></script> -->
         <script type="text/javascript" language="javascript" src="js/ajaxtest.js"></script>
-=======
+
         <link rel="stylesheet" type="text/css" href="manager/style.css">
         <script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
         <script src="manager/bookregisterform.js"></script>
@@ -90,7 +90,7 @@
             <input id="book_count" name="book_count" type="text" 
              size="10" placeholder="在庫" maxlength="5">冊
          <li><label for="book_image">イメージ</label>
-            <input id="book_image" name="book_image" type="file">  
+            <input id="book_image" name="book_image" type="file" accept="image/*">
          <li><label for="book_isbn">ISBNコード</label>
             <input id="book_isbn" name="book_idbn" type="text" 
              size="50" placeholder="本名" maxlength="50">

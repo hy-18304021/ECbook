@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+    import="java.util.ArrayList, bean.EBBookBean"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html lang="jp">
@@ -11,7 +13,7 @@
 
     <script src="manager/page.js"></script>
     <script src="manager/booklist.js"></script>
-    <script src="js/ajaxtest.js"></script>
+    <script src="js/ajax.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href="css/booklist.css"> -->
 
     <style>
@@ -60,7 +62,9 @@
                 <td>${book.book_kind}</td>
                 <td>${book.book_price}</td>
                 <td>${book.book_count}</td>
-                <td></td>
+                <td>
+                    <img src="${pageContext.request.contextPath}/bookimage/${book.book_image}" alt="${book.book_image}">
+                </td>
                 <th>${book.book_isbn}</th>
                 <td><button type="button" onclick="appear()">修正</button></td>
                 <td><button type="button" onclick="deleteData()" name="delete">削除</button></td>
@@ -70,7 +74,6 @@
         </tbody>
 
    </table>
-    
 
     <div id="result"></div>
     <div id="update" style="display:none;">

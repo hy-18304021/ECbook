@@ -6,8 +6,10 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
-import bean.EBBookBean;
+import java.io.Serializable;
+import java.io.InputStream;
+import bean.*;
+import java.sql.Blob;
 
 public class OracleController{
 	private static Connection conn = null;
@@ -84,6 +86,11 @@ public class OracleController{
 				isRegisted=1;
 			}
 		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
 			System.out.println("This id has already exited!");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -144,16 +151,16 @@ public class OracleController{
 		Connection admin = null;
 		int isUpdated=0;
 		String sql = "update ebuser set sex = "+sex;
-		if(name!=null){
+		if(name!=""){
 			sql =sql+",name='"+name+"'";
 		}
-		if(pass!=null){
+		if(pass!=""){
 			sql = sql+",pass='"+pass+"'";
 		}
-		if(mail!=null){
+		if(mail!=""){
 			sql = sql+",mail='"+mail+"'";
 		}
-		if(birth!=null){
+		if(birth!=""){
 			sql = sql+",birth='"+birth+"'";
 		}
 
@@ -171,6 +178,11 @@ public class OracleController{
 				isUpdated=1;
 			}
 		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
 			System.out.println("Updating was fail...");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -180,27 +192,35 @@ public class OracleController{
 		return isUpdated;
 	}
 
-	public static int registBook(int kind, String name,int price,int count,String id){
+	public static int registBook(int kind, String name,int price,int count,String isbn,String book_image){
 		Connection admin=null;
 		int isRegisted=0;
-		String sql = "insert into EBBook values("+kind+",'"+name+"',"+price+","+count+",'"+id+"')";
-		// System.out.println(sql);
+		String sql = "insert into EBBook(kind,name,price,count,isbn,book_image) values(?,?,?,?,?,?)";
+		System.out.println(sql);
 		try{
 			admin = connectAsAdmin();
 			admin.setAutoCommit(false);
-			st = admin.createStatement();
-			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
-			if(i==1){
-				admin.commit();
-				System.out.println("Registed!");
-				isRegisted=1;
-			}
+			pstmt = admin.prepareStatement(sql);
+			pstmt.setInt(1,kind);
+			pstmt.setString(2,name);
+			pstmt.setInt(3,price);
+			pstmt.setInt(4,count);
+			pstmt.setString(5,isbn);
+			pstmt.setString(6,book_image);
+
+			isRegisted=pstmt.executeUpdate();
+			admin.commit();
 		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
 			System.out.println("This book has already exited!");
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			disconnect(admin,st,rs);
+			disconnect(admin,pstmt,rs);
 		}
 		return isRegisted;
 	}
@@ -227,6 +247,44 @@ public class OracleController{
 				isDeleted=1;
 			}
 		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("Deleting was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isDeleted;
+	}
+	public static int deleteData(String tablename, String data,String id){
+		Connection admin=null;
+		int isDeleted=0;
+		String sql = "";
+		if("ebcart".equals(tablename)){
+			sql = "delete from "+tablename+" where book_isbn=(select isbn from ebbook where name='"+data+"') and user_id='"+id+"'";
+		}
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+
+			admin.setAutoCommit(false);
+			st = admin.createStatement();
+			int i = st.executeUpdate(sql);  //executeQuery is used for outputting by ResultSet
+			if(i==1){
+				admin.commit();
+				System.out.println("Deleted");
+				isDeleted=1;
+			}
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
 			System.out.println("Deleting was fail...");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -236,11 +294,11 @@ public class OracleController{
 		return isDeleted;
 	}
 
-	public static int updateBook(int kind, String name,int price,int count,String isbn){
+	public static int updateBook(int kind, String name,int price,int count,String isbn,String book_image){
 		Connection admin = null;
 		int isUpdated=0;
 		String sql = "update ebbook set kind="+kind;
-		if(name!=null){
+		if(name!=""){
 			sql =sql+",name='"+name+"'";
 		}
 		if(price!=-1){
@@ -248,6 +306,9 @@ public class OracleController{
 		}
 		if(count!=-1){
 			sql = sql+",count="+count;
+		}
+		if(book_image!=""){
+			sql=sql+",book_image='"+book_image+"'";
 		}
 		sql=sql+" where isbn='"+isbn+"'";
 		System.out.println(sql);
@@ -263,6 +324,11 @@ public class OracleController{
 				isUpdated=1;
 			}
 		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
 			System.out.println("Updating was fail...");
 		}catch(Exception e){
 			e.printStackTrace();
@@ -285,24 +351,25 @@ public class OracleController{
 			if("ebbook".equals(tablename.toLowerCase())){
 				while(rs.next()){
 					EBBookBean book = new EBBookBean();
-					book.setBook_kind(rs.getInt(1));
-					book.setBook_name(rs.getString(2));
-					book.setBook_price(rs.getInt(3));
-					book.setBook_count(rs.getInt(4));
-					book.setBook_isbn(rs.getString(5));
-					System.out.println(rs.getInt(1)+rs.getString(2)+rs.getInt(3)+rs.getInt(4)+rs.getString(5));
+					book.setBook_kind(rs.getInt("kind"));
+					book.setBook_name(rs.getString("name"));
+					book.setBook_price(rs.getInt("price"));
+					book.setBook_count(rs.getInt("count"));
+					book.setBook_isbn(rs.getString("isbn"));
+					book.setBook_image(rs.getString("book_image"));
+					// System.out.println(rs.getInt(1)+rs.getString(2)+rs.getInt(3)+rs.getInt(4)+rs.getString(5));
 					array.add(book);
 				}
 			}else if("ebuser".equals(tablename.toLowerCase())){
 				while(rs.next()){
 					OracleProfile user = new OracleProfile();
-					user.setId(rs.getString(1));
-					user.setName(rs.getString(2));
-					user.setPass(rs.getString(3));
+					user.setId(rs.getString("id"));
+					user.setName(rs.getString("name"));
+					user.setPass(rs.getString("pass"));
 					// user.setTel(rs.getString(4));
-					user.setMail(rs.getString(4));
-					user.setSex(rs.getInt(5));
-					user.setBirth(rs.getString(6));
+					user.setMail(rs.getString("mail"));
+					user.setSex(rs.getInt("sex"));
+					user.setBirth(rs.getString("birth"));
 					array.add(user);
 				}
 			}else{
@@ -317,4 +384,119 @@ public class OracleController{
 		}
 		return array;
 	}
+
+	public static ArrayList getUserCartInfo(String userid){
+		Connection admin = null;
+		ArrayList array = new ArrayList();
+		String sql = "select c.user_id, b.name, c.cart_amount FROM ebcart c join ebbook b on c.book_isbn=b.isbn where user_id='"+userid+"'";
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+			st = admin.createStatement();
+			rs=st.executeQuery(sql);
+			while(rs.next()){
+				CartBean cart = new CartBean();
+				cart.setUser_id(rs.getString("user_id"));
+				cart.setBook_name(rs.getString("name"));
+				cart.setCart_amount(rs.getInt("cart_amount"));
+				System.out.println(rs.getString("user_id")+rs.getString("name")+rs.getInt("cart_amount"));
+				array.add(cart);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return array;
+	}
+
+	public static int updateUserCart(String id, String bookname, int cart_amount){
+		Connection admin=null;
+		int isUpdated = 0;
+		String sql ="update ebcart set cart_amount ="+cart_amount+" where user_id='"+id+"' and book_isbn=(select isbn from ebbook where name='"+bookname+"')";
+		System.out.println(sql);
+		try{
+			admin=connectAsAdmin();
+			admin.setAutoCommit(false);
+			st=admin.createStatement();
+			int i = st.executeUpdate(sql);
+			if(i==1){
+				admin.commit();
+				System.out.println("Updated");
+				isUpdated=1;
+			}
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("Updating was fail...");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,st,rs);
+		}
+		return isUpdated;
+	}
+
+	public static int insertBookImage(InputStream content,String name){
+		Connection admin=null;
+		int isRegisted=0;
+		String sql = "insert into bookimage values(?,?)";
+		System.out.println(sql);
+		try{
+			admin = connectAsAdmin();
+			admin.setAutoCommit(false);
+			pstmt = admin.prepareStatement(sql);
+			pstmt.setBlob(1,content);
+			pstmt.setString(2,name);
+
+			isRegisted=pstmt.executeUpdate();
+			admin.commit();
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("Fail....");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,pstmt,rs);
+		}
+		return isRegisted;
+	}
+
+	public static byte[] findBookImage(String name){
+		Connection admin = null;
+		String sql = "select content from bookimage where name = ?";
+		byte[] content= new byte[3000*4000];
+		try{
+			admin=connectAsAdmin();
+			pstmt=admin.prepareStatement(sql);
+			pstmt.setString(1,name);
+
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				content = rs.getBytes("content");
+			}
+		}catch(SQLException e){
+			try{
+				admin.rollback();
+			}catch(SQLException ex){
+				ex.printStackTrace();
+			}
+			System.out.println("SQLException.");
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			disconnect(admin,pstmt,rs);
+		}
+		return content;
+	}
+
 }

@@ -18,15 +18,15 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>loginresult</servlet-name>
-		<jsp-file>/loginresult.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>loginresult</servlet-name>
-		<url-pattern>/loginresult</url-pattern>
-	</servlet-mapping>
-	<servlet>
+    <servlet>
+        <servlet-name>login1</servlet-name>
+        <jsp-file>/login1.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login1</servlet-name>
+        <url-pattern>/login1</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>LoginServlet</servlet-class>
     </servlet>
@@ -44,7 +44,25 @@
         <url-pattern>/logoutservlet</url-pattern>
     </servlet-mapping>
 
+    <!-- My page -->
+    <servlet>
+        <servlet-name>mypage</servlet-name>
+        <jsp-file>/mypage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mypage</servlet-name>
+        <url-pattern>/mypage</url-pattern>
+    </servlet-mapping>
 
+    <!-- My Cart -->
+    <servlet>
+        <servlet-name>mycart</servlet-name>
+        <jsp-file>/mycart.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mycart</servlet-name>
+        <url-pattern>/mycart</url-pattern>
+    </servlet-mapping>
 
     <!-- user regist -->
     <servlet>
@@ -139,6 +157,7 @@
         <url-pattern>/deletedata.do</url-pattern>
     </servlet-mapping>
 
+    <!-- UpdateUserServlet -->
     <servlet>
         <servlet-name>UpdateUser</servlet-name>
         <servlet-class>UpdateUserServlet</servlet-class>
@@ -149,6 +168,16 @@
         <url-pattern>/updateuser.do</url-pattern>
     </servlet-mapping>
 
+    <!-- UpdateUserCartServlet -->
+    <servlet>
+        <servlet-name>UpdateUserCart</servlet-name>
+        <servlet-class>UpdateUserCartServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserCart</servlet-name>
+        <url-pattern>/updateusercart.do</url-pattern>
+    </servlet-mapping>
 
     <!-- book list -->
     <servlet>
@@ -173,7 +202,15 @@
     </servlet-mapping>
 
 
-
+    <!-- BookImageServlet -->
+    <servlet>
+        <servlet-name>bookimage</servlet-name>
+        <servlet-class>BookImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookimage</servlet-name>
+        <url-pattern>/bookimage/*</url-pattern>
+    </servlet-mapping>
 
     <!-- user login filter -->
     <filter>
@@ -181,28 +218,37 @@
         <filter-class>filter.LoginCheckFilter</filter-class>
     </filter>
 
-    <filter-mapping>
+<!--     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
         <url-pattern>/login</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-<<<<<<< HEAD
     </filter-mapping> -->
-=======
-    </filter-mapping>
+
     <filter-mapping>
         <filter-name>logincheckfilter</filter-name>
-        <url-pattern>/loginresult</url-pattern>
+        <url-pattern>/mypage</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
->>>>>>> d558352bc1d7dfc2b984fdd342cdb4c62e828aa0
 
-    <!-- <filter>
+    <filter-mapping>
+        <filter-name>logincheckfilter</filter-name>
+        <url-pattern>/mycart</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
         <filter-name>authenticatefilter</filter-name>
         <filter-class>filter.AuthenticateFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authenticatefilter</filter-name>
-        <url-pattern>/loginresult</url-pattern>
+        <url-pattern>/mypage</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authenticatefilter</filter-name>
+        <url-pattern>/mycart</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
@@ -222,16 +268,13 @@
 	        <param-value>manager</param-value>
 	    </init-param>
     </filter>
-<<<<<<< HEAD
 
-    <!-- <filter-mapping>
-=======
-    <filter-mapping>
->>>>>>> d558352bc1d7dfc2b984fdd342cdb4c62e828aa0
+
+   <!--  <filter-mapping>
         <filter-name>logincheckmanager</filter-name>
         <url-pattern>/mngrlogin</url-pattern>
         <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
+    </filter-mapping> -->
 
     <filter-mapping>
         <filter-name>logincheckmanager</filter-name>
@@ -314,6 +357,13 @@
     <filter-mapping>
         <filter-name>LoadTableFilter</filter-name>
         <url-pattern>/userlist</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>LoadTableFilter</filter-name>
+        <url-pattern>/mycart</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

@@ -16,6 +16,7 @@ public class UpdateBookServlet extends HttpServlet{
 	throws IOException,ServletException{
 		int kind = Integer.parseInt(req.getParameter("book_kind"));
 		String name = req.getParameter("book_name");
+		String book_image=req.getParameter("book_image").substring(12);
 		int price,count;
 
 
@@ -39,7 +40,7 @@ public class UpdateBookServlet extends HttpServlet{
 
 		String result = "kind="+kind+"<br>name="+name+"<br>price="+price+"<br>count="+count;
 		HttpSession session = req.getSession();
-		int isUpdated = OracleController.updateBook(kind,name,price,count,isbn);
+		int isUpdated = OracleController.updateBook(kind,name,price,count,isbn,book_image);
 		if(isUpdated==0){
 			result = result+"<br>Fail.";
 		}else{

@@ -8,6 +8,9 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import DBOracle.OracleController;
 import DBOracle.OracleProfile;
+import bean.*;
+
+import java.util.ArrayList;
 
 
 public class LoginServlet extends HttpServlet{
@@ -16,7 +19,7 @@ public class LoginServlet extends HttpServlet{
 		String id = req.getParameter("id");
 		String pass = req.getParameter("pass");
 		HttpSession ss = req.getSession();
-
+		System.out.println(id+"\t"+pass);
 		int i = OracleController.userCheck(id,pass);
 		String result = "";
 		if(i == 0 ){
@@ -28,11 +31,19 @@ public class LoginServlet extends HttpServlet{
 			OracleProfile user = new OracleProfile();  //xxxx
 			user.setAll(OracleController.getUserInfo(id));
 			ss.setAttribute("user",user);
+
+			
+			ArrayList array = OracleController.getUserCartInfo(id);
+			ArrayList<CartBean> mycart=(ArrayList<CartBean>)array;
+			ss.setAttribute("mycart",mycart);
+
+			ss.setAttribute("flag","OK");
+
 		}
-		ss.setAttribute("flag",i);			//cai bien
+
 		ss.setAttribute("result",result);
 
-		RequestDispatcher dis = req.getRequestDispatcher("/loginresult");
+		RequestDispatcher dis = req.getRequestDispatcher("/");
 		dis.forward(req,res);
 	}
 

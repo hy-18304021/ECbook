@@ -13,6 +13,6 @@
 </head>
 <body>
     <h1>注文が確定しました。</h1>
-    <button>トップへ</button>
+    <a href="index">トップへ</a>
 </body>
 </html>

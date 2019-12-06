@@ -15,7 +15,6 @@ public class RegistServlet extends HttpServlet{
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
 		String pass = req.getParameter("pass");
-		String tel = req.getParameter("tel");
 		String mail = req.getParameter("mail");
 		int sex = Integer.parseInt(req.getParameter("sex"));
 		String birth = req.getParameter("birth");

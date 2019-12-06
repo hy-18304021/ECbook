@@ -64,6 +64,16 @@
         <url-pattern>/mycart</url-pattern>
     </servlet-mapping>
 
+    <!-- buyresult -->
+    <servlet>
+        <servlet-name>buyresult</servlet-name>
+        <jsp-file>/buy/buyresult.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>buyresult</servlet-name>
+        <url-pattern>/buyresult</url-pattern>
+    </servlet-mapping>
+
     <!-- user regist -->
     <servlet>
         <servlet-name>regist</servlet-name>
@@ -123,6 +133,17 @@
         <servlet-name>bookregisterform</servlet-name>
         <url-pattern>/bookregisterform</url-pattern>
     </servlet-mapping>
+    
+    <!-- salesform -->
+    <servlet>
+        <servlet-name>salesform</servlet-name>
+        <jsp-file>/manager/salesform.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>salesform</servlet-name>
+        <url-pattern>/salesform</url-pattern>
+    </servlet-mapping>
+
 
     <!-- BookRegistServlet -->
     <servlet>

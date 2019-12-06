@@ -18,7 +18,7 @@
 		<li>${sessionScope.user.id}</li>
 		<li>${sessionScope.user.name}</li>
 		<li>${sessionScope.user.pass}</li>
-		<li>${sessionScope.user.tel}</li>
+		<li>${sessionScope.user.sex}</li>
 		<li>${sessionScope.user.mail}</li>
 		<li>${sessionScope.user.birth}</li>
 	</ul>

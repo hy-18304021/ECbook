@@ -15,14 +15,13 @@ public class RegistServlet extends HttpServlet{
 		String id = req.getParameter("id");
 		String name = req.getParameter("name");
 		String pass = req.getParameter("pass");
-		String tel = req.getParameter("tel");
 		String mail = req.getParameter("mail");
 		int sex = Integer.parseInt(req.getParameter("sex"));
 		String birth = req.getParameter("birth");
 
 
 		String result = "";
-		int isRegisted = OracleController.regist(id,name,pass,tel,mail,sex,birth);
+		int isRegisted = OracleController.regist(id,name,pass,mail,sex,birth);
 		if(isRegisted==1){
 			result="Registed";
 		}else{

@@ -7,24 +7,22 @@
 	<meta charset="UTF-8">
 	<title>Manager</title>
 	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="js/manager.js">
-	</script>
 </head>
 <body>
-	在庫管�?
+	在庫管理
 	<div id="mList">
 	<ul>
-			<li>�?品管�?
-			<li><button id="registProduct">�?品登録</button>
-			<li><button id="updateProduct">�?品修正/削除</button>
+			<li>商品管理
+			<li><a href="bookregisterform">商品登録</a>
+			<li><a href="booklist">商品修正/削除</a>
 		 </ul>
 	<ul>
-		<li>会員�?報</li>
-		<li><button id ="userProduct">会員�?報</button></li>
+		<li>会員情報</li>
+		<li><a href="userlist">会員情報</a></li>
 	</ul>
 		 <ul>
 			<li>購入した目録
-			<li><button id="orderedProduct">全体購入目録確�?</button>
+			<li><a href="salesform">全体購入目録確認</a>
 		 </ul>
 
 		

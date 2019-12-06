@@ -12,7 +12,7 @@
             var pass = $('#pass').val();
             var pass2 = $('#pass2').val();
             if(pass != pass2){
-                $('#passwordCheckMessage').html('パスワードがちがいます�?');
+                $('#passwordCheckMessage').html('パスワードがちがいます�?');
             }else{
                 $('#passwordCheckMessage').html('');		
             }
@@ -30,7 +30,6 @@
     <li>Password:<input type="password" id="pass" name="pass" onkeyup="passwordCheckFunction()">
     <li>PasswordCheck<input type="password" id="pass2" name="pass2" onkeyup="passwordCheckFunction()">
         <br><h5 style="color: red;"  id="passwordCheckMessage"></h5>
-    <li>Tel:<input type="text" name="tel">
     <li>Mail:<input type="text" name="mail">
     <li>
         Sex:

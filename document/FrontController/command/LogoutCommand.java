@@ -4,9 +4,9 @@ import func.*;
 
 public class LogoutCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		RequestContext req=getRequestContext();
+		RequestContext reqc=getRequestContext();
 
-        HttpSession session=((HttpServletRequest) req).getSession();
+        HttpSession session=(HttpSession)reqc.getSession();
         session.removeAttribute("flag");
 
         //ÉzÅ[ÉÄÇ÷

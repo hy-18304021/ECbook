@@ -22,7 +22,7 @@ public class RegistServlet extends HttpServlet{
 
 
 		String result = "";
-		int isRegisted = OracleController.regist(id,name,pass,tel,mail,sex,birth);
+		int isRegisted = OracleController.regist(id,name,pass,mail,sex,birth);
 		if(isRegisted==1){
 			result="Registed";
 		}else{

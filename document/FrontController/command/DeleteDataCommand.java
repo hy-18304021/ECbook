@@ -13,9 +13,10 @@ import java.util.ArrayList;
 
 public class DeleteDataCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		String data = req.getParameter("data");
+		RequestContext reqc=getRequestContext();
+		String data = reqc.getParameter("data");
 
-		HttpSession session = req.getSession();
+		HttpSession session = (HttpSession)reqc.getSession();
 		String tablename = (String)session.getAttribute("tablename");
 		int i = 0;
 		if(session.getAttribute("mflag")!=null){

@@ -6,17 +6,17 @@ import func.*;
 
 public class RegistCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		String id = req.getParameter("id");
-		String name = req.getParameter("name");
-		String pass = req.getParameter("pass");
-		String tel = req.getParameter("tel");
-		String mail = req.getParameter("mail");
-		int sex = Integer.parseInt(req.getParameter("sex"));
-		String birth = req.getParameter("birth");
+		RequestContext reqc=getRequestContext();
+		String id = reqc.getParameter("id");
+		String name = reqc.getParameter("name");
+		String pass = reqc.getParameter("pass");
+		String mail = reqc.getParameter("mail");
+		int sex = Integer.parseInt(reqc.getParameter("sex"));
+		String birth = reqc.getParameter("birth");
 
 
 		String result = "";
-		int isRegisted = OracleController.regist(id,name,pass,tel,mail,sex,birth);
+		int isRegisted = OracleController.regist(id,name,pass,mail,sex,birth);
 		if(isRegisted==1){
 			result="Registed";
 		}else{
@@ -30,7 +30,7 @@ public class RegistCommand extends AbstractCommand{
 		HttpSession ss = req.getSession();
 		ss.setAttribute("user",oc);
 
-		resc.setTarget("index");
+		resc.setTarget("");
         return resc;
 	}
 }

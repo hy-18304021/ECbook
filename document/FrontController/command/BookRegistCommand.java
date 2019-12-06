@@ -16,12 +16,13 @@ import java.util.ArrayList;
 
 public class BookRegistCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		int kind = Integer.parseInt(req.getParameter("book_kind"));
-		String name = req.getParameter("book_name");
-		int price = Integer.parseInt(req.getParameter("book_price"));
-		int count = Integer.parseInt(req.getParameter("book_count"));
-		String book_image = req.getParameter("book_image").substring(12);
-		String isbn = req.getParameter("book_isbn");
+		RequestContext reqc=getRequestContext();
+		int kind = Integer.parseInt(reqc.getParameter("book_kind"));
+		String name = reqc.getParameter("book_name");
+		int price = Integer.parseInt(reqc.getParameter("book_price"));
+		int count = Integer.parseInt(reqc.getParameter("book_count"));
+		String book_image = reqc.getParameter("book_image").substring(12);
+		String isbn = reqc.getParameter("book_isbn");
 		System.out.println(book_image);
 
 		//Test

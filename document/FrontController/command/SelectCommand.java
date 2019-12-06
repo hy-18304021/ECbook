@@ -12,16 +12,13 @@ import java.util.ArrayList;
 public class SelectCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		
-		req.setCharacterEncoding("Windows-31J");
-		
 		//データベースからリストをもらいたい
 		List<SelectOracleBean> plist=SelectOracle.getBookList("ebtest","ebpass");
-		
 		
 		//パラメータをJSPに転送したい↓
 		req.setAttribute("resindx",plist);
 		
-		resc.setTarget("index");
+		resc.setTarget("");
         return resc;
 		
 	}

@@ -9,10 +9,11 @@ import java.util.ArrayList;
 
 public class LoginCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		RequestContext req=getRequestContext();
-		String id = req.getParameter("id");
-		String pass = req.getParameter("pass");
-		HttpSession ss = req.getSession();
+		RequestContext reqc=getRequestContext();
+		
+		String id = reqc.getParameter("id");
+		String pass = reqc.getParameter("pass");
+		HttpSession ss = (HttpSession)reqc.getSession();
 		System.out.println(id+"\t"+pass);
 		int i = OracleController.userCheck(id,pass);
 		String result = "";

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 public class WebRequestContext implements RequestContext{
     private Map _parameters;
     private HttpServletRequest _req;
+
     public WebRequestContext(){}
 
     public String getCommandPath(){
@@ -20,13 +21,18 @@ public class WebRequestContext implements RequestContext{
         return (String[])_parameters.get(key);
     }
 
+    public Object getSession(){
+        return _req.getSession();
+    }
+
     public Object getRequest(){
         return _req;
     }
 
     public void setRequest(Object request){
         _req=(HttpServletRequest)request;
-
+    	
         _parameters=_req.getParameterMap();
+    	
     }
 }

@@ -1,6 +1,6 @@
 package bean;
 
-public class EBBookBean{
+public class EBBookBean implements Serializable{
     private int book_amount;
     private int book_price;
     private int genre_id;

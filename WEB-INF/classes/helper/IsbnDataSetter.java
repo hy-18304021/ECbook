@@ -13,19 +13,19 @@ public class IsbnDataGetter{
             eb.setBook_name(name);
             String publisher=node.get("onix").get("summary").get("publisher").asText();
             eb.setPublisher(publisher);
-            String series=;
+            String series=node.get("onix").get("summary").get("series").asText();
             eb.setSeries(series);
-            int volume;
+            int volume=node.get("onix").get("summary").get("volume");
             eb.setVolume(volume);
-            String author=;
+            String author=.get("Contributor").get("ContributorRole":["A01"],"PersonName").get("content").asText();
             eb.setAuthor(author);
-            int release_date;
+            int release_date=.get("onix").get("summary").get("pubdate");
             eb.setRelease_date(release_date);
-            String audience=;
+            String audience=.get("Audience");
             eb.setAudience(audience);
-            String label;
+            String label=.get("onix").get("DescriptiveDetail").get("Collection").get("TitleDetail").get("TitleElement").get("TitleText").get("content").asText();
             eb.setLabel(label);
-            String text_content;
+            String text_content=.get("CollateralDetail").get("TextContent").asText();
             eb.setText_content(text_content);
 
 

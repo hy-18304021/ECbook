@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class EbSalesBean{
+public class EbSalesBean implements Serializable{
 
     private String id;
     private String user_id;//ƒ†[ƒU[–¼ 

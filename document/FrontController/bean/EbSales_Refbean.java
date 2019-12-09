@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class EbSales_RefBean{
+public class EbSales_RefBean implements Serializable{
     private int sales_id;
     private int sales_amount;
     private String book_isbn;

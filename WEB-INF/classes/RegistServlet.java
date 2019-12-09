@@ -9,6 +9,7 @@ import javax.servlet.RequestDispatcher;
 import DBOracle.OracleController;
 import DBOracle.OracleProfile;
 
+//ÉÜÅ[ÉUÅ[ìoò^
 public class RegistServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws IOException,ServletException{

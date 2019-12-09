@@ -11,7 +11,7 @@ public class CartOutOracle{
 		
 		try{
 			
-			//select文
+			//delete文
             String sql="Delete from ebcart where user_id='"+user+"'";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する

@@ -11,6 +11,7 @@ import DBOracle.OracleProfile;
 import bean.EBBookBean;
 import java.util.ArrayList;
 
+//–{î•ñXV
 public class UpdateBookServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws IOException,ServletException{

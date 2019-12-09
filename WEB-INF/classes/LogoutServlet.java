@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 
+//ログアウト処理
 public class LogoutServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws IOException,ServletException{

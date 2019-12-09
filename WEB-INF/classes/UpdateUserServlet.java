@@ -9,6 +9,7 @@ import DBOracle.OracleController;
 import DBOracle.OracleProfile;
 import java.util.ArrayList;
 
+//ユーザー情報更新
 public class UpdateUserServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws IOException,ServletException{

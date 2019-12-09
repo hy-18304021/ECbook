@@ -14,6 +14,7 @@ import javax.servlet.http.Part;
 import bean.EBBookBean;
 import java.util.ArrayList;
 
+//–{î•ñ’Ç‰Á
 public class BookRegistServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws IOException,ServletException{

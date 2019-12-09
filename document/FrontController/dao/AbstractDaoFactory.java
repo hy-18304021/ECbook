@@ -7,14 +7,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 public abstract class AbstractDaoFactory{
-    public static AbstractDaoFactory getFactory(){
+    public static AbstractDaoFactory getFactory(String path){
         AbstractDaoFactory factory=null;
         Properties pro=new Properties();
 
         try{
-            pro.load(new FileInputStream("properties/dao.properties"));
+            //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
+            pro.load(new FileInputStream("c:/ebbook/web-inf/classes/properties/dao.properties"));
 
-            String name=pro.getProperty("dao");
+            String name=pro.getProperty(path);
 
             Class c=Class.forName(name);
 

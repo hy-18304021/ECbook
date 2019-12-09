@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CartBean{
 	private String user_id;
-	private String book_name;
+	private String book_isbn;
 	private int cart_amount;
 	public CartBean(){}
 
@@ -14,11 +14,11 @@ public class CartBean{
 	public String getUser_id(){
 		return user_id;
 	}
-	public void setBook_name(String book_name){
-		this.book_name=book_name;
+	public void setBook_isbn(String book_isbn){
+		this.book_isbn=book_isbn;
 	}
-	public String getBook_name(){
-		return book_name;
+	public String getBook_isbn(){
+		return book_isbn;
 	}
 	public void setCart_amount(int cart_amount){
 		this.cart_amount=cart_amount;

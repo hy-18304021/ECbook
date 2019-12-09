@@ -12,6 +12,7 @@ import bean.SelectOracleBean;
 import java.util.List;
 import java.util.ArrayList;
 
+//–{î•ñæ“¾
 public class SelectServlet extends HttpServlet{
     public void doGet(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{

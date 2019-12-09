@@ -11,7 +11,7 @@ public class InsertOracle{
 		
 		try{
 			
-			//select文
+			//insert文
             String sql="insert into EBBOOK(book_id,book_price,book_count,book_image,book_isbn) values("+id+","+price+","+count+","+image+","+isbn+")";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する

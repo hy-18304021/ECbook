@@ -11,6 +11,7 @@ import bean.EBBookBean;
 
 import java.util.ArrayList;
 
+//–{î•ñíœ
 public class DeleteDataServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException,IOException{

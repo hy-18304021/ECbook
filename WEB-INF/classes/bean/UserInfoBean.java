@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class UserInfoBean implements Serializable{
     String id;
+    String name;
     String pass;
     String mail;
     int sex;
@@ -16,6 +17,13 @@ public class UserInfoBean implements Serializable{
     }
     public String getId(){
         return id;
+    }
+
+    public void setName(String name){
+        this.name=name;
+    }
+    public String getName(){
+        return name;
     }
 
     public void setPass(String pass){

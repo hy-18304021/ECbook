@@ -10,6 +10,7 @@ import DBOracle.*;
 import bean.*;
 import java.util.ArrayList;
 
+//カート情報更新
 public class UpdateUserCartServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws ServletException,IOException{

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public abstract class AbstractDaoFactory{
-    public static AbstractDaoFactory getFactory(String path){
+    public static AbstractDaoFactory getFactory(){
         AbstractDaoFactory factory=null;
         Properties pro=new Properties();
 
@@ -15,7 +15,7 @@ public abstract class AbstractDaoFactory{
             //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
             pro.load(new FileInputStream("c:/ebbook/web-inf/classes/properties/dao.properties"));
 
-            String name=pro.getProperty(path);
+            String name=pro.getProperty("dao");
 
             Class c=Class.forName(name);
 
@@ -34,5 +34,7 @@ public abstract class AbstractDaoFactory{
 
         return factory;
     }
-    public abstract ProductDao getProductsDao();
+    public abstract UserDao getUserDao();
+    public abstract CartDao getCartDao();
+    public abstract BookDao getBookDao();
 }

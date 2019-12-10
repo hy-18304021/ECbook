@@ -31,7 +31,7 @@ public class OraUserDao implements UserDao{
             st.setString(2,eu.getName());
             st.setString(3,eu.getPass());
             st.setString(4,eu.getMail());
-            st.setInt(5,eueu.getSex());
+            st.setInt(5,eu.getSex());
             st.setInt(6,eu.getBirth());
 
 
@@ -142,21 +142,15 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQLï∂ê∂ê¨
-            String sql = "update ebuser set sex = '"+eu.getSex()+"'";
-		    if(name!=""){
-			    sql =sql+",name='"+eu.getName()+"'";
-		    }
-            if(pass!=""){
-                sql = sql+",pass='"+eu.getPass()+"'";
-            }
-            if(mail!=""){
-                sql = sql+",mail='"+eu.getMail()+"'";
-            }
-            if(birth!=""){
-                sql = sql+",birth='"+eu.getBirth()+"'";
-            }
+            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
 
-            sql=sql+" where id='"+eu.getId()+"'";
+            st.setString(1,eu.getId());
+            st.setString(2,eu.getName());
+            st.setString(3,eu.getPass());
+            st.setString(4,eu.getMail());
+            st.setInt(5,eu.getSex());
+            st.setInt(6,eu.getBirth());
+            st.setString(7,eu.getId());
 
             st.executeUpdate();
         }catch(SQLException e){

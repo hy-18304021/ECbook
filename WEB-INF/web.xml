@@ -44,6 +44,16 @@
         <url-pattern>/logoutservlet</url-pattern>
     </servlet-mapping>
 
+    <!-- product -->
+    <servlet>
+        <servlet-name>product</servlet-name>
+        <jsp-file>/product.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>product</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+
     <!-- My page -->
     <servlet>
         <servlet-name>mypage</servlet-name>
@@ -72,6 +82,16 @@
     <servlet-mapping>
         <servlet-name>buyresult</servlet-name>
         <url-pattern>/buyresult</url-pattern>
+    </servlet-mapping>
+
+    <!-- buyform -->
+    <servlet>
+        <servlet-name>buyform</servlet-name>
+        <jsp-file>/buy/buyform.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>buyform</servlet-name>
+        <url-pattern>/buyform</url-pattern>
     </servlet-mapping>
 
     <!-- user regist -->

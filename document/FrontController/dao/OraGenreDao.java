@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.EbUserBean;
+import bean.EbGenreBean;
 
-
-//ebuserに対するSQLのまとめ
-public class OraUserDao implements UserDao{
-    public void addUser(EbUserBean eu){
+//ebgenreに対するSQL
+public class OraGenreDao implements GenreDao{
+    public void addGenre(EbGenreBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -21,19 +20,14 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebgenre values(?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-
+            st.setInt(1,ec.getGenre_id());
+            st.setString(2,ec.getGenre_name());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -50,32 +44,27 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-
-    public EbUserBean getUser(String key){
+    public EbGenreBean getGenre(String key){
         PreparedStatement st=null;
         Connection cn=null;
         ResultSet rs=null;
-        EbUserBean eb=new EbUserBean();
+        EbGenreBean eb=new EbGenreBean();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebuser where id = ?";
+            String sql= "select * from ebgenre where genre_id = ?";
 
-            st.setString(1,key);
+            st.setint(1,key);
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             rs=st.executeQuery();
             while(rs.next()){
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setGenre_id(rs.getInt("genre_id"));
+                eb.setGenre_name(rs.getString("genre_name"));
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -92,32 +81,28 @@ public class OraUserDao implements UserDao{
         }
         return eb;
     }
-    public List getAllUser(){
+    public List getAllGenre(){
         Connection cn=null;
         PreparedStatement st=null;
         ResultSet rs=null;
-    
-        ArrayList<EbUserbean> userdates=new ArrayList<>();
-    
+
+        ArrayList<EbGenreBean> genredates=new ArrayList<>();
+
         try{
             cn=OracleConnect.getInstance().getConnection();
 
-            String sql="select * from ebuser";
+            String sql="select * from ebcresit";
             st=cn.prepareStatement(sql);
-    
+
             rs=st.executeQuery();
-    
+
             while(rs.next()){
-                EbUserBean eb=new EbUserBean();
-    
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
-    
-                userdates.add(eb);
+                EbGenreBean eb=new EbGenreBean();
+
+                eb.setGenre_id(rs.getInt("genre_id"));
+                eb.setGenre_name(rs.getString("genre_name"));
+
+                genredates.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -132,9 +117,9 @@ public class OraUserDao implements UserDao{
                 e.printStackTrace();
             }
         }
-        return userdates;
+        return genredates;
     }
-    public void upDateUser(EbUserBean eu){
+    public void upDateGenre(EbGenreBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -142,15 +127,11 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+            String sql="update ebgenre set genre_id=?,genre_name where genre_id=?";
 
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-            st.setString(7,eu.getId());
+            st.setInt(1,ec.getGenre_id());
+            st.setString(2,ec.getGenre_name());
+            st.setInt(3,ec.getGenre_id());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -167,34 +148,5 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-    public void deleteUser(EbUserBean eu){
-        PreparedStatement st=null;
-        Connection cn=null;
-
-        try{
-            cn=OracleConnect.getInstance().getConnection();
-
-            //SQL文生成
-            String sql= "delete from ebuser where id=?";
-
-            //stのインスタンス取得
-            st=cn.prepareStatement(sql);
-
-            st.setString(1,eu.getId());
-
-            st.executeUpdate();
-        }catch(SQLException e){
-            //ロールバック処理
-            OracleConnect.getInstance().rollback();
-        }finally{
-            //リソース解放
-            try{
-                if(st!=null){
-                    st.close();
-                }
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
-        }
-    }
+    public void deleteGenre(EbGenreBean ec){}
 }

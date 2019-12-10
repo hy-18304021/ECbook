@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.EbUserBean;
+import bean.EbCreditBean;
 
-
-//ebuserに対するSQLのまとめ
-public class OraUserDao implements UserDao{
-    public void addUser(EbUserBean eu){
+//ebcreditに対するSQL
+public class OraCreditDao implements CreditDao{
+    public void addCredit(EbCreditBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -21,18 +20,17 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebcredit values(?,?,?,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
+            st.setString(1,ec.getUser_id());
+            st.setString(2,ec.getCard_name());
+            st.setString(3,ec.getCard_number());
+            st.setString(4,ec.getSecurity_number());
+            st.setString(5,ec.getCard_expiration());
 
 
             st.executeUpdate();
@@ -50,18 +48,17 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-
-    public EbUserBean getUser(String key){
+    public EbCreditBean getCredit(String key){
         PreparedStatement st=null;
         Connection cn=null;
         ResultSet rs=null;
-        EbUserBean eb=new EbUserBean();
+        EbCreditBean eb=new EbCreditBean();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebuser where id = ?";
+            String sql= "select * from ebcerdit where address_id = ?";
 
             st.setString(1,key);
 
@@ -70,12 +67,11 @@ public class OraUserDao implements UserDao{
 
             rs=st.executeQuery();
             while(rs.next()){
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setUser_id(rs.getInt("user_id"));
+                eb.setCard_name(rs.getString("card_name"));
+                eb.setCard_number(rs.getString("card_number"));
+                eb.setSecurity_number(rs.getInt("security_number"));
+                eb.setCard_expiration(rs.getString("card_expiration"));
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -92,32 +88,31 @@ public class OraUserDao implements UserDao{
         }
         return eb;
     }
-    public List getAllUser(){
+    public List getAllCredit(){
         Connection cn=null;
         PreparedStatement st=null;
         ResultSet rs=null;
-    
-        ArrayList<EbUserbean> userdates=new ArrayList<>();
-    
+
+        ArrayList<EbCreditBean> creditdates=new ArrayList<>();
+
         try{
             cn=OracleConnect.getInstance().getConnection();
 
-            String sql="select * from ebuser";
+            String sql="select * from ebcresit";
             st=cn.prepareStatement(sql);
-    
+
             rs=st.executeQuery();
-    
+
             while(rs.next()){
-                EbUserBean eb=new EbUserBean();
-    
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
-    
-                userdates.add(eb);
+                EbCreditBean eb=new EbCreditBean();
+
+                eb.setUser_id(rs.getInt("user_id"));
+                eb.setCard_name(rs.getString("card_name"));
+                eb.setReceiver_name(rs.getString("card_number"));
+                eb.setCard_number(rs.getInt("security_number"));
+                eb.setSecurity_number(rs.getString("card_expiration"));
+
+                creditdates.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -132,9 +127,9 @@ public class OraUserDao implements UserDao{
                 e.printStackTrace();
             }
         }
-        return userdates;
+        return creditdates;
     }
-    public void upDateUser(EbUserBean eu){
+    public void upDateCredit(EbCreditBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -142,15 +137,14 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+            String sql="update ebcredit set user_id=?,card_name=?,card_number=?,security_number=?,card_expiration=? where card_number=?";
 
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-            st.setString(7,eu.getId());
+            st.setString(1,ec.getUser_id());
+            st.setString(2,ec.getCard_name());
+            st.setString(3,ec.getCard_number());
+            st.setString(4,ec.getSecurity_number());
+            st.setString(5,ec.getCard_expiration());
+            st.setString(6,ec.getCard_number());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -167,7 +161,7 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-    public void deleteUser(EbUserBean eu){
+    public void deleteCredit(EbCreditBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -175,18 +169,18 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "delete from ebuser where id=?";
+            String sql= "delete from ebcredit where card_number=? ";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
-            st.setString(1,eu.getId());
+            st.setString(1,ec.getCard_number());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
-            OracleConnect.getInstance().rollback();
-        }finally{
+            OracleConnect.getInstance().rollback();   
+                }finally{
             //リソース解放
             try{
                 if(st!=null){

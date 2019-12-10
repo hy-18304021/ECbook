@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.EbUserBean;
+import bean.EbSales_RefBean;
 
-
-//ebuserに対するSQLのまとめ
-public class OraUserDao implements UserDao{
-    public void addUser(EbUserBean eu){
+//ebsales_refに対するSQL
+public class OraSales_RefDao implements Sales_RefDao{
+    public void addSales_Ref(EbSales_RefBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -21,18 +20,15 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebsales_ref values(?,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
+            st.setInt(1,ec.getSales_id());
+            st.setInt(2,ec.getSales_amount());
+            st.setString(3,ec.getBook_isbn());
 
 
             st.executeUpdate();
@@ -50,18 +46,17 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-
-    public EbUserBean getUser(String key){
+    public EbSales_RefBean getSales_Ref(String key){
         PreparedStatement st=null;
         Connection cn=null;
         ResultSet rs=null;
-        EbUserBean eb=new EbUserBean();
+        EbSales_RefBean eb=new EbSales_RefBean();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebuser where id = ?";
+            String sql= "select * from ebsales_ref where sales_id = ?";
 
             st.setString(1,key);
 
@@ -70,12 +65,9 @@ public class OraUserDao implements UserDao{
 
             rs=st.executeQuery();
             while(rs.next()){
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setSales_id(rs.getInt("sales_id"));
+                eb.setSales_amount(rs.getString("sales_amount"));
+                eb.setBook_isbn(rs.getString("book_isbn"));
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -92,32 +84,29 @@ public class OraUserDao implements UserDao{
         }
         return eb;
     }
-    public List getAllUser(){
+    public List getAllSales_Ref(){
         Connection cn=null;
         PreparedStatement st=null;
         ResultSet rs=null;
-    
-        ArrayList<EbUserbean> userdates=new ArrayList<>();
-    
+
+        ArrayList<EbSales_RefBean> sales_refdates=new ArrayList<>();
+
         try{
             cn=OracleConnect.getInstance().getConnection();
 
-            String sql="select * from ebuser";
+            String sql="select * from ebsales_ref";
             st=cn.prepareStatement(sql);
-    
+
             rs=st.executeQuery();
-    
+
             while(rs.next()){
-                EbUserBean eb=new EbUserBean();
-    
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
-    
-                userdates.add(eb);
+                EbSales_RefBean eb=new EbSales_RefBean();
+
+                eb.setSales_id(rs.getInt("sales_id"));
+                eb.setSales_amount(rs.getString("sales_amount"));
+                eb.setBook_isbn(rs.getString("book_isbn"));
+
+                sales_refdates.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -132,9 +121,9 @@ public class OraUserDao implements UserDao{
                 e.printStackTrace();
             }
         }
-        return userdates;
+        return sales_refdates;
     }
-    public void upDateUser(EbUserBean eu){
+    public void upDateSales_Ref(EbSales_RefBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -142,15 +131,12 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+            String sql="update ebsales_ref set sales_id=?,sales_amount=?,book_isbn=? where sales_id=?";
 
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-            st.setString(7,eu.getId());
+            st.setInt(1,ec.getSales_id());
+            st.setInt(2,ec.getSales_amount());
+            st.setString(3,ec.getBook_isbn());
+            st.setInt(4,ec.getSales_id());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -167,7 +153,7 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-    public void deleteUser(EbUserBean eu){
+    public void deleteSales_Ref(EbSales_RefBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -175,18 +161,18 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "delete from ebuser where id=?";
+            String sql= "delete from ebsales_ref where sales_id=? ";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
-            st.setString(1,eu.getId());
+            st.setInt(1,ec.getSales_id());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
-            OracleConnect.getInstance().rollback();
-        }finally{
+            OracleConnect.getInstance().rollback();   
+                }finally{
             //リソース解放
             try{
                 if(st!=null){

@@ -25,5 +25,21 @@ public class EbArrivalBean implements Serializable{
     public void setArrival_amount(int amount){
         arrival_amount=amount;
     }
+
+    public int getArrival_id(){
+        return arrival_id;
+    }
+
+    public int getArrival_price(){
+        return arrival_price;
+    }
+
+    public String getBook_isbn(){
+        return book_isbn;
+    }
+
+    public int getArrival_amount(){
+        return arrival_amount;
+    }
    
 }

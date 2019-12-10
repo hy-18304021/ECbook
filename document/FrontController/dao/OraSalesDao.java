@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.EbUserBean;
+import bean.EbSalesBean;
 
-
-//ebuserに対するSQLのまとめ
-public class OraUserDao implements UserDao{
-    public void addUser(EbUserBean eu){
+//ebsalesに対するSQL
+public class OraSalesDao implements SalesDao{
+    public void addSales(EbSalesBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -21,19 +20,17 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebsales values(?,?,?,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-
+            st.setString(1,ec.getSales_id());
+            st.setString(2,ec.getUser_id());
+            st.setString(3,ec.getSales_date());
+            st.setInt(4,ec.getAddress_id());
+            st.setString(5,ec.getPay_method());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -50,18 +47,17 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-
-    public EbUserBean getUser(String key){
+    public EbSalesBean getSales(String key){
         PreparedStatement st=null;
         Connection cn=null;
         ResultSet rs=null;
-        EbUserBean eb=new EbUserBean();
+        EbSalesBean eb=new EbSalesBean();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebuser where id = ?";
+            String sql= "select * from ebsales where address_id = ?";
 
             st.setString(1,key);
 
@@ -70,12 +66,11 @@ public class OraUserDao implements UserDao{
 
             rs=st.executeQuery();
             while(rs.next()){
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setSales_id(rs.getInt("sales_id"));
+                eb.setUser_id(rs.getString("user_id"));
+                eb.setSales_date(rs.getString("sales_date"));
+                eb.setAddress_id(rs.getInt("address_id"));
+                eb.setPay_method(rs.getString("pay_method"));
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -92,32 +87,31 @@ public class OraUserDao implements UserDao{
         }
         return eb;
     }
-    public List getAllUser(){
+    public List getAllSales(){
         Connection cn=null;
         PreparedStatement st=null;
         ResultSet rs=null;
-    
-        ArrayList<EbUserbean> userdates=new ArrayList<>();
-    
+
+        ArrayList<EbSalesBean> salesdates=new ArrayList<>();
+
         try{
             cn=OracleConnect.getInstance().getConnection();
 
-            String sql="select * from ebuser";
+            String sql="select * from ebsales";
             st=cn.prepareStatement(sql);
-    
+
             rs=st.executeQuery();
-    
+
             while(rs.next()){
-                EbUserBean eb=new EbUserBean();
-    
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
-    
-                userdates.add(eb);
+                EbSalesBean eb=new EbSalesBean();
+
+                eb.setSales_id(rs.getInt("sales_id"));
+                eb.setUser_id(rs.getString("user_id"));
+                eb.setSales_date(rs.getString("sales_date"));
+                eb.setAddress_id(rs.getInt("address_id"));
+                eb.setPay_method(rs.getString("pay_method"));
+
+                salesdates.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -132,9 +126,9 @@ public class OraUserDao implements UserDao{
                 e.printStackTrace();
             }
         }
-        return userdates;
+        return salesdates;
     }
-    public void upDateUser(EbUserBean eu){
+    public void upDateSales(EbSalesBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -142,15 +136,14 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+            String sql="update ebsales set sales_id=?,user_id=?,sales_date=?,pay_methot=?,card_expiration=? where sales_id=?";
 
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-            st.setString(7,eu.getId());
+            st.setString(1,ec.getSales_id());
+            st.setString(2,ec.getUser_id());
+            st.setString(3,ec.getSales_date());
+            st.setInt(4,ec.getAddress_id());
+            st.setString(5,ec.getPay_method());
+            st.setString(6,ec.getSales_id());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -167,7 +160,7 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-    public void deleteUser(EbUserBean eu){
+    public void deleteSales(EbSalesBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -175,18 +168,18 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "delete from ebuser where id=?";
+            String sql= "delete from ebsales where sales_id=? ";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
-            st.setString(1,eu.getId());
+            st.setInt(1,ec.getSales_id());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
-            OracleConnect.getInstance().rollback();
-        }finally{
+            OracleConnect.getInstance().rollback();   
+                }finally{
             //リソース解放
             try{
                 if(st!=null){

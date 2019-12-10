@@ -4,54 +4,52 @@ import java.io.Serializable;
 
 public class EbSalesBean implements Serializable{
 
-    private String id;
-    private String user_id;//ユーザー名 
-    private String receiver_name;
-    private int postal_code;//送り先郵便番号
-    private String address;//送り先住所
-    private String tel;//送り先電話番号
+    private int sales_id;
+    private String user_id;
+    private int sales_date;
+    private int address_id;
+    private String pay_method;
+
 
     public EbSalesBean(){}
+
+    public void setSales_id(int id){
+        sales_id=id;
+    }
+    
+    public void setUser_id(String user){
+        user_id=user;
+    }
+
+    public void setSales_date(int date){
+        sales_date=date;
+    }
 
     public void setAddress_id(int id){
         address_id=id;
     }
-    public int getAddress_id(){
-        return address_id;
+
+    public void setPay_method(String method){
+        pay_method=method;
     }
 
-    public void setUser_id(String user){
-        user_id=user;
+    public int getSales_id(){
+        return sales_id;
     }
+
     public String getUser_id(){
         return user_id;
     }
 
-    public void setReceiver_name(String receiver){
-        receiver_name=receiver;
+    public String getSales_date(){
+        return sales_date;
     }
-    public String getReceiver_name(){
-        return receiver_name;
-    }
-
-    public void setPostal_code(int code){
-        postal_code=code;
-    }
-    public int getPostal_code(){
-        return postal_code;
+    
+    public int getAddress_id(){
+        return address_id;
     }
 
-    public void setAddress(String address){
-        this.address=address;
-    }
-    public String getAddress(){
-        return address;
-    }
-
-    public void setTel(String tel){
-        this.tel=tel;
-    }
-    public String getTel(){
-        return tel;
+    public String getPay_method(){
+        return pay_method;
     }
 }

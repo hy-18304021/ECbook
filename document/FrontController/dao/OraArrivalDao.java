@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.EbUserBean;
+import bean.EbAddressBean;
 
-
-//ebuserに対するSQLのまとめ
-public class OraUserDao implements UserDao{
-    public void addUser(EbUserBean eu){
+//ebarrivalに対するSQL
+public class OraArrivalDao implements ArrivalDao{
+    public void addArrival(EbArrivalBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -21,19 +20,16 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebarrival values(?,?,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-
+            st.setInt(1,ec.getArrival_id());
+            st.setString(2,ec.getArrival_price());
+            st.setInt(3,ec.getBook_isbn());
+            st.setInt(4,ec.getArrival_amount());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -50,18 +46,17 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-
-    public EbUserBean getUser(String key){
+    public EbArrivalBean getArrival(String key){
         PreparedStatement st=null;
         Connection cn=null;
         ResultSet rs=null;
-        EbUserBean eb=new EbUserBean();
+        EbArrivalBean eb=new EbArrivalBean();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebuser where id = ?";
+            String sql= "select * from ebarrival where arrival_id = ?";
 
             st.setString(1,key);
 
@@ -70,12 +65,10 @@ public class OraUserDao implements UserDao{
 
             rs=st.executeQuery();
             while(rs.next()){
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setArrival_id(rs.getInt("arrival_id"));
+                eb.setArrival_price(rs.getInt("arrival_price"));
+                eb.setBook_isbn(rs.getString("book_isbn"));
+                eb.setArrival_amount(rs.getInt("arrival_amount"));
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -92,32 +85,30 @@ public class OraUserDao implements UserDao{
         }
         return eb;
     }
-    public List getAllUser(){
+    public List getAllArrival(){
         Connection cn=null;
         PreparedStatement st=null;
         ResultSet rs=null;
-    
-        ArrayList<EbUserbean> userdates=new ArrayList<>();
-    
+
+        ArrayList<EbArrivalBean> arrivaldates=new ArrayList<>();
+
         try{
             cn=OracleConnect.getInstance().getConnection();
 
-            String sql="select * from ebuser";
+            String sql="select * from ebcresit";
             st=cn.prepareStatement(sql);
-    
+
             rs=st.executeQuery();
-    
+
             while(rs.next()){
-                EbUserBean eb=new EbUserBean();
-    
-                eb.setId(rs.getString("id"));
-                eb.setName(rs.getString("name"));
-                eb.setPass(rs.getString("pass"));
-                eb.setMail(rs.getString("mail"));
-                eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
-    
-                userdates.add(eb);
+                EbArrivalBean eb=new EbArrivalBean();
+
+                eb.setArrival_id(rs.getInt("arrival_id"));
+                eb.setArrival_price(rs.getInt("arrival_price"));
+                eb.setBook_isbn(rs.getString("book_isbn"));
+                eb.setArrival_amount(rs.getInt("arrival_amount"));
+
+                arrivaldates.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -132,9 +123,9 @@ public class OraUserDao implements UserDao{
                 e.printStackTrace();
             }
         }
-        return userdates;
+        return arrivaldates;
     }
-    public void upDateUser(EbUserBean eu){
+    public void upDateArrival(EbArrivalBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -142,15 +133,13 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+            String sql="update ebarrival set arrival_id=?,arrival_price=?,book_isbn=?,arrival_amount=? where arrival_id=?";
 
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
-            st.setString(7,eu.getId());
+            st.setInt(1,ec.getArrival_id());
+            st.setString(2,ec.getArrival_price());
+            st.setInt(3,ec.getBook_isbn());
+            st.setInt(4,ec.getArrival_amount());
+            st.setInt(5,ec.getArrival_id());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -167,7 +156,7 @@ public class OraUserDao implements UserDao{
             }
         }
     }
-    public void deleteUser(EbUserBean eu){
+    public void deleteArrival(EbArrivalBean ec){
         PreparedStatement st=null;
         Connection cn=null;
 
@@ -175,18 +164,18 @@ public class OraUserDao implements UserDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "delete from ebuser where id=?";
+            String sql= "delete from ebarrival where arrival_id=? ";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
-            st.setString(1,eu.getId());
+            st.setInt(1,ec.getArrival_id());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
-            OracleConnect.getInstance().rollback();
-        }finally{
+            OracleConnect.getInstance().rollback();   
+                }finally{
             //リソース解放
             try{
                 if(st!=null){

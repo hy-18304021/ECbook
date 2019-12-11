@@ -20,19 +20,19 @@ import java.util.ArrayList;
 public class LoginCheckManager implements Filter{
     private FilterConfig config;
     public void init(FilterConfig config)throws ServletException{
-        //‰Šú‰»‚·‚é‚½‚ß‚Ìinit“à‚ÅƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚Ö‚ÌŠi”[
+        //??????????????????init?g????C??g?X?^??g?X????h?????i?h[
         this.config=config;
     }
     public void destroy(){}
     public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
      throws IOException,ServletException{
 
-        //idŽæ“¾
+        //id???g?
         String id=req.getParameter("name");
-        //ƒpƒXƒ[ƒhŽæ“¾
+        //?p?X???[?h???g?
         String pass=req.getParameter("pass");
 
-        //‰Šú’lƒpƒ‰ƒ[ƒ^‚ðŽæ“¾‚·‚é
+        //??????fl?p??????[?^?????g?????
         String mid=config.getInitParameter("ManagerID");
         String mpss=config.getInitParameter("ManagerPass");
 
@@ -40,10 +40,10 @@ public class LoginCheckManager implements Filter{
         System.out.println(mpss);
 
         if(id!=null&&pass!=null){
-            //‰Šú’lƒpƒ‰ƒ[ƒ^‚©‚ç‚Æ‚Á‚Ä‚«‚½
-            //ƒ†[ƒU[–¼‚ÆƒpƒXƒ[ƒh‚Ìƒ`ƒFƒbƒN
+            //??????fl?p??????[?^??????????????
+            //????[?U?[?????p?X???[?h???`?F?b?N
             if(id.equals(mid)&&pass.equals(mpss)){
-                //”FØ‚³‚ê‚½‚ç”FØƒg[ƒNƒ“‚ðƒZƒbƒg
+                //?hF???????????hF???g?[?N??g???Z?b?g
                 HttpSession session=((HttpServletRequest)req).getSession();
                 session.setAttribute("mflag","OK");
 
@@ -57,7 +57,7 @@ public class LoginCheckManager implements Filter{
             }
         }
             
-        //–{—ˆ‚ÌURL‚Ö
+        //?{????URL??
         chain.doFilter(req,res);
         
     }

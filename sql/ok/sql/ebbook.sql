@@ -1,6 +1,6 @@
 CREATE TABLE ebbook(
   book_amount   NUMBER(4)     DEFAULT 0,
-  book_image    VARCHAR2(40)  UNIQUE,
+  book_price    NUMBER(6)     NOT NULL,
   genre_id      NUMBER(3)     NOT NULL,
   book_isbn     VARCHAR2(13)  NOT NULL,
   book_name     VARCHAR2(100) NOT NULL,

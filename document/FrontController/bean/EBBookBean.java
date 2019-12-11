@@ -10,7 +10,7 @@ public class EBBookBean{
     private String series;//シリーズ
     private int volume;//第何巻か
     private String author;//著者
-    private int release_date;//出版日
+    private String release_date;//出版日
     private String audience;//対象（成人向けとか）
     private String label;//レーベル
     private String text_content;//内容説明
@@ -54,7 +54,7 @@ public class EBBookBean{
         this.author=author;
     }
 
-    public void setRelease_date(int date){
+    public void setRelease_date(String date){
         release_date=date;
     }
 
@@ -106,7 +106,7 @@ public class EBBookBean{
         return author;
     }
 
-    public int getRelease_date(){
+    public String getRelease_date(){
         return release_date;
     }
 

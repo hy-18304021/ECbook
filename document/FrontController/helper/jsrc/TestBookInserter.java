@@ -18,7 +18,7 @@ public class TestBookInserter{
         //isbnをargsから受け取る
         String isbn=args[0];
         //isbn使ってデータbeanに突っ込む
-        EBBookBean bbb=new EBBookBean();
+        EbBookBean bbb=new EbBookBean();
         bbb.setBook_isbn(isbn);
         bbb.setBook_amount(1);
         bbb.setBook_price(100);
@@ -56,7 +56,7 @@ public class TestBookInserter{
 			}
 		}
     }
-    public static int registBook(EBBookBean bbb){
+    public static int registBook(EbBookBean bbb){
 
         Connection admin=null;
         PreparedStatement pstmt=null;

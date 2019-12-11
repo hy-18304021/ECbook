@@ -1,12 +1,12 @@
 
 package helper;
 import com.fasterxml.jackson.databind.JsonNode;
-import bean.EBBookBean;
+import bean.EbBookBean;
 import java.io.IOException;
 import java.util.Iterator;
 public class IsbnDataGetter{
     //jsonからデータ取り出してBeanにデータ入れる。
-    public static EBBookBean getIsbnData(EBBookBean eb){
+    public static EbBookBean getIsbnData(EbBookBean eb){
         // try {
             //Beanからisbn取り出し
             String isbn=eb.getBook_isbn();

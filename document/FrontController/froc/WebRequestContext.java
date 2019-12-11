@@ -2,10 +2,12 @@ package froc;
 
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class WebRequestContext implements RequestContext{
     private Map _parameters;
     private HttpServletRequest _req;
+    private HttpSession _session;
 
     public WebRequestContext(){}
 
@@ -21,18 +23,22 @@ public class WebRequestContext implements RequestContext{
         return (String[])_parameters.get(key);
     }
 
-    public Object getSession(){
-        return _req.getSession();
-    }
-
     public Object getRequest(){
         return _req;
     }
 
     public void setRequest(Object request){
         _req=(HttpServletRequest)request;
-    	
+    	_session=_req.getSession();
         _parameters=_req.getParameterMap();
     	
+    }
+
+    public void sessionAttribute(){
+        _session.setAttribute("flag","OK");
+    }
+
+    public void sessionRemove(){
+        _session.removeAttribute("flag");
     }
 }

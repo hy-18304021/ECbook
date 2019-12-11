@@ -2,9 +2,9 @@ import dao.OracleConnect;
 import dao.UserDao;
 import dao.AbstractDaoFactory;
 import bean.EbUserBean;
-import func.RequestContext;
-import func.ResponseContext;
-import func.AbstractCommand;
+import froc.RequestContext;
+import froc.ResponseContext;
+import froc.AbstractCommand;
 
 import java.util.ArrayList;
 
@@ -15,22 +15,30 @@ public class LoginCommand extends AbstractCommand{
 		//Mapから取り出す
 		String id = (String)reqc.getParameter("id")[0];
 		String pass = (String)reqc.getParameter("pass")[0];
-		//セッション取得
-		HttpSession ss = (HttpSession)reqc.getSession();
 		//確認
 		System.out.println(id+"\t"+pass);
-
+		//beanの生成
 		EbUserBean eb=new EbUserBean();
 
-		eb.setId(id);
-		eb.setPass(pass);
+		//オラクル始め
+		OracleConnect.getInstance().biginTransaction();
 
-		OracleConnect.getInsetance().beginTransaction();
+		//インテグレーションレイヤの処理呼び出し
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		UserDao dao=factory.getUserDao();
+		eb=dao.getUser(id);
 
-		ss.setAttribute("flag","OK");
+		//コミット	
+		OracleConnect.getInstance().commit();
 
+		//オラクル終わり
+		OracleConnect.getInstance().closeConnction();
 
-		ss.setAttribute("result",result);
+		if(id!=null&&pass!=null){
+			if(id.equals(eb.getId())&&pass.equals(eb.getPass())){
+				reqc.sessionAttribute();
+			}
+		}
 
 		resc.setTarget("index");
         return resc;

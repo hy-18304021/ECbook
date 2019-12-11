@@ -26,15 +26,6 @@ CREATE TABLE ebuser(
   birth DATE              NOT NULL,
   CONSTRAINT  pk_ebuser   PRIMARY KEY(id)
 );
-insert into ebuser values(
-  'watashidesu',
-  '私',
-  'mypass',
-  'mail@mail.com',
-  1,
-  '2000/11/20'
-);
-commit;
 CREATE TABLE EBADDRESS(
   address_id     NUMBER(10) DEFAULT address_id_seq.nextval,
   user_id  VARCHAR2(30)     NOT NULL,
@@ -61,7 +52,7 @@ CREATE TABLE ebgenre(
 );
 CREATE TABLE ebbook(
   book_amount   NUMBER(4)     DEFAULT 0,
-  book_image    VARCHAR2(40)  UNIQUE,
+  book_price    NUMBER(6)     NOT NULL,
   genre_id      NUMBER(3)     NOT NULL,
   book_isbn     VARCHAR2(13)  NOT NULL,
   book_name     VARCHAR2(100) NOT NULL,
@@ -129,5 +120,19 @@ CREATE TABLE ebarrival(
   CONSTRAINT  pk_ebarrival_arrival       PRIMARY KEY(arrival_id),
   CONSTRAINT  fk_ebarrival_book_isbn        FOREIGN KEY(book_isbn) REFERENCES ebbook(book_isbn)
 );
+insert into ebuser values(
+  'watashidesu',
+  '私',
+  'mypass',
+  'mail@mail.com',
+  1,
+  '2000/11/20'
+);
+commit;
+insert into ebgenre values(
+  default,
+  '少年コミック'
+);
+exit;
 exit
 

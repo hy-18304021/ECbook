@@ -7,12 +7,3 @@ CREATE TABLE ebuser(
   birth DATE              NOT NULL,
   CONSTRAINT  pk_ebuser   PRIMARY KEY(id)
 );
-insert into ebuser values(
-  'watashidesu',
-  'Ž„',
-  'mypass',
-  'mail@mail.com',
-  1,
-  '2000/11/20'
-);
-commit;

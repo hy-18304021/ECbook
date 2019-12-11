@@ -1,6 +1,6 @@
 package bean;
 
-public class EBBookBean{
+public class EbBookBean{
     private int book_amount;//İŒÉ
     private int book_price;//’P‰¿
     private int genre_id;//ƒWƒƒƒ“ƒ‹ID
@@ -16,7 +16,7 @@ public class EBBookBean{
     private String text_content;//“à—eà–¾
 
 
-    public EBBookBean(){}
+    public EbBookBean(){}
 
     public void setBook_amount(int amount){
         book_amount=amount;

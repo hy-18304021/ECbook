@@ -1,3 +1,5 @@
+package command;
+
 import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;

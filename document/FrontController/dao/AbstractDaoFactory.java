@@ -13,7 +13,7 @@ public abstract class AbstractDaoFactory{
 
         try{
             //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
-            pro.load(new FileInputStream("c:/ebbook/web-inf/classes/properties/dao.properties"));
+            pro.load(new FileInputStream("C:/Layers/WEB-INF/classes/property/dao.properties"));
 
             String name=pro.getProperty("dao");
 

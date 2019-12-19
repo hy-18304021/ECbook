@@ -57,11 +57,11 @@ public class OraArrivalDao implements ArrivalDao{
 
             //SQL文生成
             String sql= "select * from ebarrival where arrival_id = ?";
-
-            st.setString(1,key);
-
+            
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
+            
+            st.setString(1,key);
 
             rs=st.executeQuery();
             while(rs.next()){

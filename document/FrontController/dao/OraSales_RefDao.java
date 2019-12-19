@@ -57,11 +57,11 @@ public class OraSales_RefDao implements Sales_RefDao{
 
             //SQL文生成
             String sql= "select * from ebsales_ref where sales_id = ?";
-
-            st.setString(1,key);
-
+            
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
+            
+            st.setString(1,key);
 
             rs=st.executeQuery();
             while(rs.next()){

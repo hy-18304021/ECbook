@@ -56,10 +56,10 @@ public class OraGenreDao implements GenreDao{
             //SQL文生成
             String sql= "select * from ebgenre where genre_id = ?";
 
-            st.setInt(1,Integer.parseInt(key));
-
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
+            
+            st.setInt(1,Integer.parseInt(key));
 
             rs=st.executeQuery();
             while(rs.next()){

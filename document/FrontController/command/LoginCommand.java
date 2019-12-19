@@ -1,3 +1,5 @@
+package command;
+
 import dao.OracleConnect;
 import dao.UserDao;
 import dao.AbstractDaoFactory;
@@ -17,7 +19,7 @@ public class LoginCommand extends AbstractCommand{
 		String pass = (String)reqc.getParameter("pass")[0];
 		//確認
 		System.out.println(id+"\t"+pass);
-		//beanの生成
+		//bean
 		EbUserBean eb=new EbUserBean();
 
 		//オラクル始め

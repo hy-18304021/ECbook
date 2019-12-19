@@ -32,7 +32,7 @@ public class OraUserDao implements UserDao{
             st.setString(3,eu.getPass());
             st.setString(4,eu.getMail());
             st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
+            st.setString(6,eu.getBirth());
 
 
             st.executeUpdate();
@@ -63,10 +63,10 @@ public class OraUserDao implements UserDao{
             //SQL文生成
             String sql= "select * from ebuser where id = ?";
 
-            st.setString(1,key);
-
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
+            
+            st.setString(1,key);
 
             rs=st.executeQuery();
             while(rs.next()){
@@ -75,7 +75,7 @@ public class OraUserDao implements UserDao{
                 eb.setPass(rs.getString("pass"));
                 eb.setMail(rs.getString("mail"));
                 eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setBirth(rs.getString("birth"));
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -115,7 +115,7 @@ public class OraUserDao implements UserDao{
                 eb.setPass(rs.getString("pass"));
                 eb.setMail(rs.getString("mail"));
                 eb.setSex(rs.getInt("sex"));
-                eb.setBirth(rs.getInt("birth"));
+                eb.setBirth(rs.getString("birth"));
     
                 userdates.add(eb);
             }
@@ -149,7 +149,7 @@ public class OraUserDao implements UserDao{
             st.setString(3,eu.getPass());
             st.setString(4,eu.getMail());
             st.setInt(5,eu.getSex());
-            st.setInt(6,eu.getBirth());
+            st.setString(6,eu.getBirth());
             st.setString(7,eu.getId());
 
             st.executeUpdate();

@@ -1,36 +1,49 @@
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import DBOracle.OracleController;
-import DBOracle.OracleProfile;
-import func.*;
+package command;
+
+import dao.OracleConnect;
+import dao.UserDao;
+import dao.AbstractDaoFactory;
+import bean.EbUserBean;
+import froc.RequestContext;
+import froc.ResponseContext;
+import froc.AbstractCommand;
 
 public class RegistCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
-		String id = reqc.getParameter("id");
-		String name = reqc.getParameter("name");
-		String pass = reqc.getParameter("pass");
-		String mail = reqc.getParameter("mail");
-		int sex = Integer.parseInt(reqc.getParameter("sex"));
-		String birth = reqc.getParameter("birth");
+		//Mapから取り出す
+		String id = (String)reqc.getParameter("id")[0];
+		String name = (String)reqc.getParameter("name")[0];
+		String pass = (String)reqc.getParameter("pass")[0];
+		String mail = (String)reqc.getParameter("mail")[0];
+		int sex = Integer.parseInt((String)reqc.getParameter("sex")[0]);
+		String birth = (String)reqc.getParameter("birth")[0];
 
+		//bean
+		EbUserBean eb=new EbUserBean();
 
-		String result = "";
-		int isRegisted = OracleController.regist(id,name,pass,mail,sex,birth);
-		if(isRegisted==1){
-			result="Registed";
-		}else{
-			result="This id has already existed!";
-		}
-		req.setAttribute("result",result);
+		eb.setId(id);
+		eb.setName(name);
+		eb.setPass(pass);
+		eb.setMail(mail);
+		eb.setSex(sex);
+		eb.setBirth(birth);
 
-		OracleProfile oc = new OracleProfile();
-		oc.setAll(OracleController.getUserInfo(id));
+		//オラクル始め		二回目以降SQLRecoverableExceptionがでる
+		OracleConnect.getInstance().biginTransaction();
 
-		HttpSession ss = req.getSession();
-		ss.setAttribute("user",oc);
+		//インテグレーションレイヤの処理呼び出し
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		UserDao dao=factory.getUserDao();
+		dao.addUser(eb);
 
-		resc.setTarget("");
+		//コミット	
+		OracleConnect.getInstance().commit();
+
+		//オラクル終わり
+		OracleConnect.getInstance().closeConnction();
+
+		resc.setTarget("login");
         return resc;
 	}
 }

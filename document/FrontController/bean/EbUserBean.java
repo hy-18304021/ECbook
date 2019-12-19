@@ -8,7 +8,7 @@ public class EbUserBean implements Serializable{
     String pass;
     String mail;
     int sex;
-    int birth;
+    String birth;
 
     public EbUserBean(){}
 
@@ -47,10 +47,10 @@ public class EbUserBean implements Serializable{
         return sex;
     }
 
-    public void setBirth(int birth){
+    public void setBirth(String birth){
         this.birth=birth;
     }
-    public int getBirth(){
+    public String getBirth(){
         return birth;
     }
 }

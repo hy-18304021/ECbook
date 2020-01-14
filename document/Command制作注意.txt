@@ -1,0 +1,5 @@
+・jsp移動の時は〇〇CallCommand,loginならLoginCallCommandになる。
+・helperフォルダは、Commandでisbnコードを使う時などに使う。今後増える可能性あり。
+・Oracleを使うならdaoフォルダにあるOracleConnectを使う。
+・/WEB-INF/managerには管理者がつかうjspがある。
+・/WEB-INF/jspには普段使うjspがある。

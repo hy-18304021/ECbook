@@ -1,22 +1,22 @@
 package bean;
 
-public class EBBookBean{
-    private int book_amount;
-    private int book_price;
-    private int genre_id;
-    private String book_isbn;
-    private String book_name;
-    private String publisher;
-    private String series;
-    private int volume;
-    private String author;
-    private int release_date;
-    private String audience;
-    private String label;
-    private String text_content;
+public class EbBookBean{
+    private int book_amount;//在庫
+    private int book_price;//単価
+    private int genre_id;//ジャンルID
+    private String book_isbn;//isbnコード
+    private String book_name;//書名
+    private String publisher;//出版社
+    private String series;//シリーズ
+    private int volume;//第何巻か
+    private String author;//著者
+    private String release_date;//出版日
+    private String audience;//対象（成人向けとか）
+    private String label;//レーベル
+    private String text_content;//内容説明
 
 
-    public EBBookBean(){}
+    public EbBookBean(){}
 
     public void setBook_amount(int amount){
         book_amount=amount;
@@ -54,7 +54,7 @@ public class EBBookBean{
         this.author=author;
     }
 
-    public void setRelease_date(int date){
+    public void setRelease_date(String date){
         release_date=date;
     }
 
@@ -106,7 +106,7 @@ public class EBBookBean{
         return author;
     }
 
-    public int getRelease_date(){
+    public String getRelease_date(){
         return release_date;
     }
 

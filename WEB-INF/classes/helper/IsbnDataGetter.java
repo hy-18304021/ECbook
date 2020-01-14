@@ -1,11 +1,12 @@
 
 package helper;
 import com.fasterxml.jackson.databind.JsonNode;
-import bean.EBBookBean;
+import bean.EbBookBean;
 import java.io.IOException;
+import java.util.Iterator;
 public class IsbnDataGetter{
     //jsonからデータ取り出してBeanにデータ入れる。
-    public static EBBookBean getIsbnData(EBBookBean eb){
+    public static EbBookBean getIsbnData(EbBookBean eb){
         // try {
             //Beanからisbn取り出し
             String isbn=eb.getBook_isbn();
@@ -23,38 +24,76 @@ public class IsbnDataGetter{
             eb.setVolume(volume);
 
             //著者。ContributorRoleが[A01]のものを選んで取得。他の選べばイラストレーターとか訳者とかとれる。
-            JsonNode contributors=node.get("onix").get("DescriptiveDetail").get("Contributor");
+            Iterator<JsonNode> contributors=node.get("onix").get("DescriptiveDetail").get("Contributor").iterator();
             String author=null;
-            if(contributors.get("ContributorRole").get(0).asText().equals("A01")){
-                author=contributors.get("PersonName").get("content").asText();
+            while(contributors.hasNext()){
+                JsonNode contributor=contributors.next();
+                if(contributor.get("ContributorRole").get(0).asText().equals("A01")){
+                    author=contributor.get("PersonName").get("content").asText();
+                }
             }
+            
             eb.setAuthor(author);
 
 
-            int release_date=node.get("summary").get("pubdate").asInt();
+            String release_date=node.get("summary").get("pubdate").asText();
             eb.setRelease_date(release_date);
 
-            //対象。今回は成人指定か否かを取得。"AudienceCodeType":"22"あったら成人指定。細かい理由欲しければ"AudienceCodeValue"も見る
-            JsonNode audienceNode=node.get("onix").get("DescriptiveDetail").get("Audience");
-            String audience=null;
-            if(audienceNode.get("AudienceCodeType").asText().equals("22")){
-                audience="成人向け";
-            }
-            eb.setAudience(audience);
 
-            String label=node.get("onix").get("DescriptiveDetail").get("Collection").get("TitleDetail").get("TitleElement").get("TitleText").get("content").asText();
-            eb.setLabel(label);
+            //対象。今回は成人指定か否かを取得。"AudienceCodeType":"22"あったら成人指定。細かい理由欲しければ"AudienceCodeValue"も見る
+            String audience=null;
+            try{
+                Iterator<JsonNode> audiences=node.get("onix").get("DescriptiveDetail").get("Audience").iterator();
+            
+                while(audiences.hasNext()){
+                    JsonNode audienceNode=audiences.next();
+
+                    if(audienceNode.get("AudienceCodeType").asText().equals("22")){
+                        if(audienceNode.get("AudienceCodeValue").asText().equals("00")){
+
+                        }else{
+                            audience="成人向け";
+                        }
+                        
+                    }
+                }
+            }catch(NullPointerException e){
+
+            }finally{
+                eb.setAudience(audience);
+            }
+            
+            
+
+
+            //レーベル
+            String label=null;
+            try{
+                label=node.get("onix").get("DescriptiveDetail").get("Collection").get("TitleDetail").get("TitleElement").get("TitleText").get("content").asText();
+            }catch(NullPointerException e){
+
+            }finally{
+                eb.setLabel(label);
+            }
+            
+            
 
             //TextType:02なら略説。TextType:03なら詳説。詳説を選択したが、サイズでかすぎたら考える。
-            JsonNode textNode=node.get("onix").get("CollateralDetail").get("TextContent");
             String text_content=null;
-            if(textNode.get("TextType").asText().equals("03")){
-                text_content=textNode.get("Text").asText();
+            try{
+
+            }catch(NullPointerException e){
+                Iterator<JsonNode> texts=node.get("onix").get("CollateralDetail").get("TextContent").iterator();
+            
+                while(texts.hasNext()){
+                    JsonNode textNode=texts.next();
+                    if(textNode.get("TextType").asText().equals("03")){
+                        text_content=textNode.get("Text").asText();
+                    }
+                }
+            }finally{
+                eb.setText_content(text_content);
             }
-            eb.setText_content(text_content);
-
-
-
         // } catch (Exception e) {
         //     e.printStackTrace();
         // }

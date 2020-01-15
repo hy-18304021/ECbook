@@ -17,7 +17,7 @@
     <!-- product -->
     <ul>
         商品
-        <li>イメージ</li>
+        <li><img src="${result}"></li>
         <li>タイトル</li>
         <li>著者</li>
         <li>ISBNコード</li>

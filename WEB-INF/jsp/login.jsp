@@ -5,10 +5,11 @@
 <head>
 	<title>Login</title>
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="login.css">
 
 </head>
 <body>
-	<form method='Post' action='/Layers/logincomm'>
+	<form class="box" method='Post' action='/Layers/logincomm'>
 		ID:<input type="text" name="id" required>
 		Password:<input type="text" name="pass" required>
 		<input type="submit" value="Send....">

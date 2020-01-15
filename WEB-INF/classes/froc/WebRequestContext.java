@@ -3,6 +3,7 @@ package froc;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
 
 public class WebRequestContext implements RequestContext{
     private Map _parameters;
@@ -41,5 +42,8 @@ public class WebRequestContext implements RequestContext{
 
     public void sessionRemove(){
         _session.removeAttribute("flag");
+    }
+    public String getRealPath(String relPath){
+        return _req.getServletContext().getRealPath(relPath);
     }
 }

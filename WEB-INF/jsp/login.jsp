@@ -4,19 +4,16 @@
 <html>
 <head>
 	<title>Login</title>
-	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 	<link rel="stylesheet" type="text/css" href="login.css">
-
+	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 </head>
 <body>
 	<form class="box" method='Post' action='/Layers/logincomm'>
-		ID:<input type="text" name="id" required>
-		Password:<input type="text" name="pass" required>
+		<h1>Login</h1>
+		<input type="text" name="id" required>
+		<input type="password" name="pass" required>
 		<input type="submit" value="Send....">
+		<a id="regist" href="registcall">ユーザー登録</a>
 	</form>
-	<a id="regist" href="registcall">ユーザー登録</a>
 </body>
 </html> 
-
-
-

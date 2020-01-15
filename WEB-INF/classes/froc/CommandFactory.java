@@ -11,6 +11,8 @@ public abstract class CommandFactory{
         Properties pro=new Properties();
 
         try{
+            //Kim C:/ECbook/WEB-INF/classes/property/command.properties
+            //Hasegawa C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/command.properties
             pro.load(new FileInputStream("C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/command.properties"));
 
             String name=pro.getProperty(path.getCommandPath());

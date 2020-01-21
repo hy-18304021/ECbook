@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    import="java.util.ArrayList, bean.EBBookBean"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -17,7 +14,8 @@
     <!-- product -->
     <ul>
         商品
-        <li><img src="${result}"></li>
+        <li><img src="${result}" width="300px" height="283px" crossorigin="anonymous"></li>
+        <li><img src="${pageContext.request.contextPath}/img/book/9784088820743.jpg" width="300px" height="283px"></li>
         <li>タイトル</li>
         <li>著者</li>
         <li>ISBNコード</li>

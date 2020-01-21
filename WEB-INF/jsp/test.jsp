@@ -3,17 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Product</title>
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 
 </head>
 <body>
-	<form method='Post' action='logincomm'>
-		ID:<input type="text" name="id" required>
-		Password:<input type="text" name="pass" required>
+	<form method='Post' action='imageshow'>
+		isbn:<input type="text" name="isbn" required>
 		<input type="submit" value="Send....">
 	</form>
-	<a id="regist" href="registcall">ユーザー登録</a>
 </body>
 </html> 
 

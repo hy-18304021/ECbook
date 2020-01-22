@@ -37,7 +37,7 @@ public class AuthenticateManager implements Filter{
             hreq.setAttribute("target",servletPath);
 
             //‚È‚¢‚È‚çƒƒOƒCƒ“‚Ö
-            RequestDispatcher dip=req.getRequestDispatcher("/mngrlogin");
+            RequestDispatcher dip=req.getRequestDispatcher("/WEB-INF/jsp/administrator/mngrlogin.jsp");
             dip.forward(req,res);
         }else{
             //–{—ˆ‚ÌURL‚Ö

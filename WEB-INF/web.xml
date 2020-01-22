@@ -48,42 +48,12 @@
 	    </init-param>
     </filter>
 
-
-     <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/mngrlogin</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping> 
-
     <filter-mapping>
         <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/manager</url-pattern>
+        <url-pattern>/managercall</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/bookregisterform</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/booklist</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>logincheckmanager</filter-name>
-        <url-pattern>/userlist</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-
-
 
      <!--(manager login) authenticate filter--> 
      <filter>
@@ -93,29 +63,11 @@
 
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
-        <url-pattern>/manager</url-pattern>
+        <url-pattern>/managercall</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-    <filter-mapping>
-        <filter-name>authenticatemanager</filter-name>
-        <url-pattern>/bookregisterform</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
+    
 
-    <filter-mapping>
-        <filter-name>authenticatemanager</filter-name>
-        <url-pattern>/booklist</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>authenticatemanager</filter-name>
-        <url-pattern>/userlist</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
 </web-app>

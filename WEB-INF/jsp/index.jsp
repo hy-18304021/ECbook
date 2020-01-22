@@ -4,7 +4,9 @@
 <html>
 <head>
     <title>main</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        <%@include file="style.css" %>
+    </style>
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script>

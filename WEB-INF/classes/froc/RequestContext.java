@@ -7,4 +7,5 @@ public interface RequestContext{
     public void setRequest(Object request);
     public void sessionAttribute();
     public void sessionRemove();
+    public String getRealPath(String relPath);
 }

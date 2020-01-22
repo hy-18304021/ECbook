@@ -81,12 +81,13 @@
             <li>
                 <label for="book_kind">大ジャンル選択</label>
                     <select id="book_kind" name="book_kind">
-                      <option value="100">雑誌</option>
-                      <option value="200">専門書</option>
-                      <option value="300">小説</option>
-                      <option value="300">児童向け</option>
-                      <option value="300">外国書</option>
-                      <option value="300">成人向け</option>
+                        <option value="100">少年</option>
+                        <option value="200">青年</option>
+                        <option value="300">少女</option>
+                        <option value="400">4コママンガ</option>
+                        <option value="500">BL</option>
+                        <option value="600">アダルト</option>
+                        <option value="700">ライトノベル</option>
                     </select>
             </li>
             <li>

@@ -8,7 +8,7 @@
 
 </head>
 <body>
-	<form method='Post' action='/Layers/logincomm'>
+	<form method='Post' action='/ecbook/logincomm'>
 		ID:<input type="text" name="id" required>
 		Password:<input type="text" name="pass" required>
 		<input type="submit" value="Send....">

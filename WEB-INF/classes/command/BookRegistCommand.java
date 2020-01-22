@@ -44,7 +44,7 @@ public class BookRegistCommand extends AbstractCommand{
 		OracleConnect.getInstance().beginTransaction();
 
 		//インテグレーションレイヤの処理呼び出し
-		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		BookDao dao=factory.getBookDao();
 		dao.addBook(eb);
 		

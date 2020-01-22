@@ -21,7 +21,7 @@ public class GetBookDataCommand extends AbstractCommand{
 		OracleConnect.getInstance().beginTransaction();
 
 		//インテグレーションレイヤの処理呼び出し
-		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		BookDao dao=factory.getBookDao();
 		eb=dao.getBook(isbn);
 

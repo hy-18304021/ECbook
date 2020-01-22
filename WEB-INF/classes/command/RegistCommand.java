@@ -33,7 +33,7 @@ public class RegistCommand extends AbstractCommand{
 		OracleConnect.getInstance().beginTransaction();
 
 		//インテグレーションレイヤの処理呼び出し
-		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		UserDao dao=factory.getUserDao();
 		dao.addUser(eb);
 

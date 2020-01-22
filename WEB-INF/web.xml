@@ -12,6 +12,15 @@
 		<servlet-name>FrontController</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+    <servlet>
+		<servlet-name>ImgOutPutServlet</servlet-name>
+		<servlet-class>ImgOutPutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImgOutPutServlet</servlet-name>
+		<url-pattern>/img</url-pattern>
+	</servlet-mapping>
  
     <!-- user login filter -->
 

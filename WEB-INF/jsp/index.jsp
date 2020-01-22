@@ -30,7 +30,7 @@
             <ul class="gnd">
                 <li><a href="mypage">マイページ</a></li>
                 <li id="loginli"><a href="logincall">ログイン</a></li>
-                <li id="logoutli"><a href="logout">ログアウト</a></li>
+                <li id="logoutli"><a href="logoutcomm">ログアウト</a></li>
                 <li><a href="mycart">カート</a></li>
             </ul>
         </div>

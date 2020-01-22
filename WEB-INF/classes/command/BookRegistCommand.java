@@ -1,49 +1,60 @@
 package command;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import DBOracle.OracleController;
-import DBOracle.OracleProfile;
-import java.io.*;
-import java.nio.file.Paths;
-import javax.servlet.http.Part;
+import dao.OracleConnect;
+import dao.BookDao;
+import dao.AbstractDaoFactory;
+import bean.EbBookBean;
+import helper.IsbnDataGetter;
+import froc.RequestContext;
+import froc.ResponseContext;
+import froc.AbstractCommand;
 
-import bean.EBBookBean;
-import java.util.ArrayList;
-
-//isbnとpriceとcountだけ取得してそれをdbに入れる
 public class BookRegistCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
-		int kind = Integer.parseInt(reqc.getParameter("book_kind"));
-		String name = reqc.getParameter("book_name");
-		int price = Integer.parseInt(reqc.getParameter("book_price"));
-		int count = Integer.parseInt(reqc.getParameter("book_count"));
-		String book_image = reqc.getParameter("book_image").substring(12);
-		String isbn = reqc.getParameter("book_isbn");
-		System.out.println(book_image);
+		//1/16・変数isbnでNullPointerExceptionがでる 治った
+		String isbn=(String)reqc.getParameter("book_isbn")[0];
+		int id=Integer.parseInt((String)reqc.getParameter("genre_id")[0]);
+		int price=Integer.parseInt((String)reqc.getParameter("book_price")[0]);
+		int amount=Integer.parseInt((String)reqc.getParameter("book_amount")[0]);
+		
+		EbBookBean eb=new EbBookBean();
 
-		//Test
-		// Part filePart = req.getPart("book_image"); // Retrieves <input type="file" name="file">
-  //   	String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-  //   	InputStream fileContent = filePart.getInputStream();
-		// System.out.println("Test:fileName="+fileName+",filePart="+filePart);
+		eb.setBook_isbn(isbn);
+		IsbnDataGetter.getIsbnData(eb);
+		eb.setBook_amount(amount);
+		eb.setBook_price(price);
+		eb.setGenre_id(id);
 
-		String result = "";
-		// HttpSession session = req.getSession();
-		int isRegisted = OracleController.registBook(kind,name,price,count,isbn,book_image);
-		if(isRegisted==1){
-			result="Registed";
-		}else{
-			result="This books has already existed!";
-		}
+		System.out.println(eb.getBook_amount());
+        System.out.println(eb.getBook_price());
+        System.out.println(eb.getGenre_id());
+        System.out.println(eb.getBook_isbn());
+        System.out.println(eb.getBook_name());
+        System.out.println(eb.getPublisher());
+        System.out.println(eb.getSeries());
+        System.out.println(eb.getVolume());
+        System.out.println(eb.getAuthor());
+    	System.out.println(eb.getRelease_date());
+        System.out.println(eb.getAudience());
+        System.out.println(eb.getLabel());
+        System.out.println(eb.getText_content());
 
-		res.setContentType("text/html");
-		res.getWriter().write(result);
+		//オラクル始め
+		OracleConnect.getInstance().beginTransaction();
+
+		//インテグレーションレイヤの処理呼び出し
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		BookDao dao=factory.getBookDao();
+		dao.addBook(eb);
+		
+		//コミット	
+		OracleConnect.getInstance().commit();
+		
+		//オラクル終わり
+		OracleConnect.getInstance().closeConnction();
+
+        resc.setTarget("administrator/manager");
+        return resc;
 	}
 }

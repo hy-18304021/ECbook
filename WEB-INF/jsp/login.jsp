@@ -3,12 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="login.css">
+	<title>Login</title>	
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+	<style>
+		<%@ include file = "login.css" %>
+	</style>
 </head>
 <body>
-	<form method='Post' action='logincomm'>
+	<header>
+        <div>
+            <h1 class="logo"><a href="#">ECBook</a></h1>
+        </div>
+    </header>
+	<form class="box" method='Post' action='/ecbook/logincomm'>
 		<h1>Login</h1>
 		<input type="text" name="id" required>
 		<input type="password" name="pass" required>

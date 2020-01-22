@@ -15,7 +15,7 @@
             <h1 class="logo"><a href="#">ECBook</a></h1>
         </div>
     </header>
-	<form class="box" method='Post' action='/Layers/logincomm'>
+	<form class="box" method='Post' action='/ecbook/logincomm'>
 		<h1>Login</h1>
 		<input type="text" name="id" required>
 		<input type="password" name="pass" required>

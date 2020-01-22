@@ -8,10 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.namespace.QName;
-
-import java.text.SimpleDateFormat;
-
 import bean.EbBookBean;
 
 //ebbookに対するSQL
@@ -24,8 +20,8 @@ public class OraBookDao implements BookDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql = "insert into EBBOOK(book_amount,book_price,genre_id,book_isbn,book_name,publisher,series,volume,author,release_date,audience,label,text_content) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            
+            String sql= "insert into ebbook values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
@@ -39,24 +35,16 @@ public class OraBookDao implements BookDao{
             st.setString(7,eb.getSeries());
             st.setInt(8,eb.getVolume());
             st.setString(9,eb.getAuthor());
-
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-            java.util.Date date=sdf.parse(eb.getRelease_date());
-            java.sql.Date sqldate = new java.sql.Date(date.getTime());
-            st.setDate(10,sqldate);
-            
+            st.setString(10,eb.getRelease_date());
             st.setString(11,eb.getAudience());
             st.setString(12,eb.getLabel());
             st.setString(13,eb.getText_content());
 
             st.executeUpdate();
         }catch(SQLException e){
-            e.printStackTrace();
             //ロールバック処理
             OracleConnect.getInstance().rollback();
-        }catch(Exception e){
-			e.printStackTrace();
-		}finally{
+        }finally{
             //リソース解放
             try{
                 if(st!=null){
@@ -173,8 +161,6 @@ public class OraBookDao implements BookDao{
 
             //SQL文生成
             String sql="update ebbook set book_amount=?,book_amount=?,genre_id=?,book_isbn=?,book_name=?,publisher=?,series=?,volume=?,author=?,release_date=?,audience=?,label=?,text_content=? where book_isbn=?";
-
-            st=cn.prepareStatement(sql);
 
             st.setInt(1,eb.getBook_amount());
             st.setInt(2,eb.getBook_price());

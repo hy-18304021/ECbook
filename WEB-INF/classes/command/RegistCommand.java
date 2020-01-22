@@ -29,7 +29,7 @@ public class RegistCommand extends AbstractCommand{
 		eb.setSex(sex);
 		eb.setBirth(birth);
 
-		//オラクル始め
+		//オラクル始め		二回目以降SQLRecoverableExceptionがでる
 		OracleConnect.getInstance().beginTransaction();
 
 		//インテグレーションレイヤの処理呼び出し

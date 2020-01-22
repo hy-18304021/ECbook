@@ -12,6 +12,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import DBOracle.*;
+
+import bean.*;
+import java.util.ArrayList;
+
 public class LoginCheckManager implements Filter{
     private FilterConfig config;
     public void init(FilterConfig config)throws ServletException{

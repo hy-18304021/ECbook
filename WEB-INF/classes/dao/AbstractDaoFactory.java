@@ -12,12 +12,13 @@ public abstract class AbstractDaoFactory{
         Properties pro=new Properties();
 
         try{
-            //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
-            pro.load(new FileInputStream("C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/dao.properties"));
+            // Mai   C:/Users/SuSu/Desktop/ECBook/WEB-INF/classes/property/dao.properties
+            // C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/dao.properties
+            pro.load(new FileInputStream("C:/Users/SuSu/Desktop/ECBook/WEB-INF/classes/property/dao.properties"));
 
-            String name=pro.getProperty("dao");
+            String className=pro.getProperty("dao");
 
-            Class c=Class.forName(name);
+            Class c=Class.forName(className);
 
             factory=(AbstractDaoFactory)c.newInstance();
         }catch(FileNotFoundException e){

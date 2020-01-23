@@ -6,14 +6,16 @@ import java.io.IOException;
 import java.util.Properties;
 
 public abstract class CommandFactory{
-    public static AbstractCommand getCommand(RequestContext path){
+    public static AbstractCommand getCommand(RequestContext reqc){
         AbstractCommand command=null;
         Properties pro=new Properties();
 
         try{
-            pro.load(new FileInputStream("C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/command.properties"));
+            //Mai  C:/Users/SuSu/Desktop/ECBook/WEB-INF/classes/property
+            //C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/command.properties
+            pro.load(new FileInputStream("C:/Users/SuSu/Desktop/ECBook/WEB-INF/classes/property/command.properties"));
 
-            String name=pro.getProperty(path.getCommandPath());
+            String name=pro.getProperty(reqc.getCommandPath());
 
             Class c=Class.forName(name);
 

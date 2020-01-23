@@ -10,9 +10,20 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FrontController</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
- 
+
+
+    <!-- Book Image Servlet -->
+    <servlet>
+        <servlet-name>BookImage</servlet-name>
+        <servlet-class>BookImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookImage</servlet-name>
+        <url-pattern>/bookimage/*</url-pattern>
+    </servlet-mapping>
+
     <!-- user login filter -->
 
     <filter>
@@ -118,4 +129,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
+    
+
 </web-app>

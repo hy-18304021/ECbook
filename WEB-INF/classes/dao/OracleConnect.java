@@ -45,11 +45,11 @@ public class OracleConnect{
     }
 
     //Connection‚ð•Â‚¶‚é
-    public void closeConnction(){
+    public void closeConnection(){
         try{
             if(cn!=null){  
                 cn.close();
-                cn=null;
+                // cn=null;
             }
         }catch(SQLException e){
             e.printStackTrace();

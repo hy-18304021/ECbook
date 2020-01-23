@@ -1,6 +1,7 @@
 package bean;
+import java.io.Serializable;
 
-public class EbBookBean{
+public class EbBookBean implements Serializable{
     private int book_amount;//İŒÉ
     private int book_price;//’P‰¿
     private int genre_id;//ƒWƒƒƒ“ƒ‹ID

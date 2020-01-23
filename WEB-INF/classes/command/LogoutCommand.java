@@ -8,7 +8,7 @@ public class LogoutCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
 
-        reqc.sessionRemove();
+        reqc.sessionRemove("flag");
 
         //ÉzÅ[ÉÄÇ÷
 		resc.setTarget("index");

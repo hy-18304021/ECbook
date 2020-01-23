@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -143,6 +142,8 @@ public class OraUserDao implements UserDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setString(1,eu.getId());
             st.setString(2,eu.getName());

@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -138,6 +137,8 @@ public class OraCreditDao implements CreditDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebcredit set user_id=?,card_name=?,card_number=?,security_number=?,card_expiration=? where card_number=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setString(1,ec.getUser_id());
             st.setString(2,ec.getCard_name());

@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -134,6 +133,8 @@ public class OraArrivalDao implements ArrivalDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebarrival set arrival_id=?,arrival_price=?,book_isbn=?,arrival_amount=? where arrival_id=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setInt(1,ec.getArrival_id());
             st.setInt(2,ec.getArrival_price());

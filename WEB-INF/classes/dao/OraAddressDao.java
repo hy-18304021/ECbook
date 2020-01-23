@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -141,6 +140,8 @@ public class OraAddressDao implements AddressDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebaddress set Address_id=?,User_id=?,Receiver_name=?,Postal_code=?,Address=?,Tel=? where Address_id=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setInt(1,ea.getAddress_id());
             st.setString(2,ea.getUser_id());

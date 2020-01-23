@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    import="java.util.ArrayList, bean.EBBookBean"
+    import="java.util.ArrayList, bean.EbBookBean"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -11,9 +11,8 @@
     <title>Manager</title>
     <script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
 
-    <script src="manager/page.js"></script>
-    <script src="manager/booklist.js"></script>
-    <script src="js/ajax.js"></script>
+    <script><%@include file="page.js" %></script>
+    <script><%@include file="../../../js/ajax.js" %></script>
     <!-- <link rel="stylesheet" type="text/css" href="css/booklist.css"> -->
 
     <style>
@@ -41,14 +40,15 @@
 <body>
 
 <div id="listHeader">
-    <button id="bookMain">管理者メイン</button>
+    <a href="managercall"><button id="bookMain">管理者メイン</button></a>
+    <a href="bookregistcall"><button id="bookregist">登録</button></a>
 </div>
     <table border="1">
         <tbody>
             <tr>
-                <th align="center"  width="100">本名</td> 
+                <th align="center"  width="100">書籍名</td> 
                 <td align="center"  width="100">ジャンル</td> 
-                <td align="center"  width="100">価額</td>
+                <td align="center"  width="100">価格</td>
                 <td align="center"  width="100">在庫</td> 
                 <td align="center"  width="100">イメージ</td> 
                 <td align="center"  width="100">ISBNコード</td>
@@ -56,14 +56,14 @@
                 <td align="center"  width="100">削除</td>
             </tr>
 
-            <c:forEach var="book" items="${sessionScope.books}">
+            <c:forEach var="book" items="${result}">
             <tr>
                 <td>${book.book_name}</td>
-                <td>${book.book_kind}</td>
+                <td>${book.genre_id}</td>
                 <td>${book.book_price}</td>
-                <td>${book.book_count}</td>
+                <td>${book.book_amount}</td>
                 <td>
-                    <img src="${pageContext.request.contextPath}/bookimage/${book.book_image}" alt="${book.book_image}">
+                   
                 </td>
                 <th>${book.book_isbn}</th>
                 <td><button type="button" onclick="appear()">修正</button></td>
@@ -79,26 +79,26 @@
     <div id="update" style="display:none;">
         <ul>
             <li>
-                <label for="book_kind">大ジャンル選択</label>
-                    <select id="book_kind" name="book_kind">
-                        <option value="100">少年</option>
-                        <option value="200">青年</option>
-                        <option value="300">少女</option>
-                        <option value="400">4コママンガ</option>
-                        <option value="500">BL</option>
-                        <option value="600">アダルト</option>
-                        <option value="700">ライトノベル</option>
-                    </select>
+                <label for="book_kind">ジャンル</label>
+                <select id="book_kind" name="book_kind">
+                    <option value="21">少年</option>
+                    <option value="22">青年</option>
+                    <option value="23">少女</option>
+                    <option value="24">4コママンガ</option>
+                    <option value="25">BL</option>
+                    <option value="26">アダルト</option>
+                    <option value="27">ライトノベル</option>
+            </select>
             </li>
             <li>
-                <label for="book_name">本名</label>
+                <label for="book_name">書籍名</label>
                 <input id="book_name" name="book_name" type="text"
-                    size="50" placeholder="本名" maxlength="25">
+                    size="50" placeholder="書籍名" maxlength="25">
             </li>
             <li>
-                <label for="book_price">価額</label>
+                <label for="book_price">価格</label>
                 <input id="book_price" name="book_price" type="text"
-                    size="10" placeholder="価額"  maxlength="9">円
+                    size="10" placeholder="価格"  maxlength="9">円
             </li>
             <li>
                 <label for="book_count">在庫</label>
@@ -116,11 +116,8 @@
         </ul>
         
     </div>
-<br><a href="manager"><<<<</a>
-            
 
-    <ul id="paging">
-        </ul>
+    <ul id="paging"></ul>
         
         <script>
             

@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -132,6 +131,8 @@ public class OraSales_RefDao implements Sales_RefDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebsales_ref set sales_id=?,sales_amount=?,book_isbn=? where sales_id=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setInt(1,ec.getSales_id());
             st.setInt(2,ec.getSales_amount());

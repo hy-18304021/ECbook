@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -129,6 +128,8 @@ public class OraFavotiteDao implements FavotiteDao{
 
         //SQLï∂ê∂ê¨
         String sql="update ebfavotite set user_id=?,book_isbn=? where user_id=?";
+
+        st=cn.prepareStatement(sql);
 
         st.setString(1,ec.getUser_id());
         st.setString(2,ec.getGenre_name());

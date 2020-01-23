@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -101,6 +100,8 @@ public class OraReviewDao implements ReviewDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebreview set book_isbn=?,book_isbn=?,review_text=?,review_star=?,review_date=? where book_isbn=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setString(1,ec.getBook_isbn());
             st.setString(2,ec.getUser_id());

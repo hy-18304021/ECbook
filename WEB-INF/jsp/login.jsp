@@ -10,6 +10,11 @@
 	</style>
 </head>
 <body>
+<<<<<<< HEAD
+	<form method='Post' action='logincomm.do'>
+		ID:<input type="text" name="id" required>
+		Password:<input type="text" name="pass" required>
+=======
 	<header>
         <div>
             <h1 class="logo"><a href="#">ECBook</a></h1>
@@ -19,6 +24,7 @@
 		<h1>Login</h1>
 		<input type="text" name="id" required>
 		<input type="password" name="pass" required>
+>>>>>>> 2888e4abe9250cace41963a23b8f7e12c1b066e3
 		<input type="submit" value="Send....">
 		<a id="regist" href="registcall">ユーザー登録</a>
 	</form>

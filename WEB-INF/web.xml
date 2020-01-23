@@ -10,18 +10,20 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FrontController</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
+
+    <!-- Book Image Servlet -->
     <servlet>
-		<servlet-name>ImgOutPutServlet</servlet-name>
-		<servlet-class>ImgOutPutServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ImgOutPutServlet</servlet-name>
-		<url-pattern>/img</url-pattern>
-	</servlet-mapping>
- 
+        <servlet-name>BookImage</servlet-name>
+        <servlet-class>BookImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookImage</servlet-name>
+        <url-pattern>/bookimage/*</url-pattern>
+    </servlet-mapping>
+
     <!-- user login filter -->
 
     <filter>
@@ -73,6 +75,16 @@
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/managercall</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+
+
+    <!-- こいつ必要なのかわからん。消せそうなら消して     -->
+    <filter-mapping>
+        <filter-name>authenticatemanager</filter-name>
+        <url-pattern>/userlist</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

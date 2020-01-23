@@ -14,9 +14,8 @@
     <!-- product -->
     <ul>
         商品
+        <%-- 式言語ちゃんと書く --%>
         <li><img src="${result}" width="300px" height="283px" crossorigin="anonymous"></li>
-        <li><img src="img?jpg=9784088820743" width="300px" height="283px"></li>
-        <li><img src="https:\/\/cover.openbd.jp\/9784088820743.jpg" width="300px" height="283px"></li>
         <li><img src="img/book/9784088820743.jpg" width="300px" height="283px"></li>
         <li>タイトル</li>
         <li>著者</li>

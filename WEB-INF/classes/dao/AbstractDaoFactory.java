@@ -17,9 +17,9 @@ public abstract class AbstractDaoFactory{
             //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
             pro.load(new FileInputStream(daolPath));
 
-            String name=pro.getProperty("dao");
+            String className=pro.getProperty("dao");
 
-            Class c=Class.forName(name);
+            Class c=Class.forName(className);
 
             factory=(AbstractDaoFactory)c.newInstance();
         }catch(FileNotFoundException e){

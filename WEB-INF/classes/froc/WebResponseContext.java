@@ -13,6 +13,10 @@ public class WebResponseContext implements ResponseContext{
     public void setTarget(String transferInfo){
         target="/WEB-INF/jsp/"+transferInfo+".jsp";
     }
+    // public void setTarget(String transferInfo, int i){  // image Target
+    //     target="/WEB-INF/image/book/"+transferInfo;
+    //     System.out.println(target);
+    // }
     public String getTarget(){
         return target;
     }

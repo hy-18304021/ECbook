@@ -1,29 +1,30 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.text.SimpleDateFormat;
+
 import bean.EbBookBean;
 
 //ebbookに対するSQL
 public class OraBookDao implements BookDao{
-    public void addBook(EbBookBean eb){
-        PreparedStatement st=null;
         Connection cn=null;
+        PreparedStatement st=null;
+        ResultSet rs = null;
+    public void addBook(EbBookBean eb){
+        // Connection cn=null;
 
         try{
-            cn=OracleConnect.getInstance().getConnection();
-
             //SQL文生成
-            String sql= "insert into ebbook values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
+            String sql = "insert into EBBOOK(book_amount,book_price,genre_id,book_isbn,book_name,publisher,series,volume,author,release_date,audience,label,text_content) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            
             //stのインスタンス取得
-            st=cn.prepareStatement(sql);
+            st=OracleConnect.getInstance().getConnection().prepareStatement(sql);
 
             //バインド変数の設定
             st.setInt(1,eb.getBook_amount());
@@ -35,16 +36,24 @@ public class OraBookDao implements BookDao{
             st.setString(7,eb.getSeries());
             st.setInt(8,eb.getVolume());
             st.setString(9,eb.getAuthor());
-            st.setString(10,eb.getRelease_date());
+
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+            java.util.Date date=sdf.parse(eb.getRelease_date());
+            java.sql.Date sqldate = new java.sql.Date(date.getTime());
+            st.setDate(10,sqldate);
+            
             st.setString(11,eb.getAudience());
             st.setString(12,eb.getLabel());
             st.setString(13,eb.getText_content());
 
             st.executeUpdate();
         }catch(SQLException e){
+            e.printStackTrace();
             //ロールバック処理
             OracleConnect.getInstance().rollback();
-        }finally{
+        }catch(Exception e){
+			e.printStackTrace();
+		}finally{
             //リソース解放
             try{
                 if(st!=null){
@@ -55,22 +64,22 @@ public class OraBookDao implements BookDao{
             }
         }
     }
-    public EbBookBean getBook(String key){
-        PreparedStatement st=null;
-        Connection cn=null;
-        ResultSet rs=null;
+    public EbBookBean getBook(String isbn){
+        // PreparedStatement st=null;
+        // ResultSet rs=null;
         EbBookBean eb=new EbBookBean();
 
         try{
-            cn=OracleConnect.getInstance().getConnection();
-
             //SQL文生成
+            if(cn==null){
+                cn = OracleConnect.getInstance().getConnection();
+            }
             String sql= "select * from ebbook where book_isbn = ?";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
-            
-            st.setString(1,key);
+
+            st.setString(1,isbn);
 
             rs=st.executeQuery();
             while(rs.next()){
@@ -94,6 +103,9 @@ public class OraBookDao implements BookDao{
         }finally{
             //リソース解放
             try{
+                if(rs!=null){
+                    rs.close();
+                }
                 if(st!=null){
                     st.close();
                 }
@@ -104,23 +116,19 @@ public class OraBookDao implements BookDao{
         return eb;
     }
     public List getAllBook(){
-        Connection cn=null;
-        PreparedStatement st=null;
-        ResultSet rs=null;
-    
-        ArrayList<EbBookBean> bookdates=new ArrayList<>();
-    
+        ArrayList booklist=new ArrayList();
         try{
-            cn=OracleConnect.getInstance().getConnection();
-
+            if(cn==null){
+                cn = OracleConnect.getInstance().getConnection();
+            }
             String sql="select * from ebbook";
             st=cn.prepareStatement(sql);
-    
+
             rs=st.executeQuery();
-    
+
             while(rs.next()){
                 EbBookBean eb=new EbBookBean();
-    
+
                 eb.setBook_amount(rs.getInt("book_amount"));
                 eb.setBook_price(rs.getInt("book_price"));
                 eb.setGenre_id(rs.getInt("genre_id"));
@@ -134,8 +142,8 @@ public class OraBookDao implements BookDao{
                 eb.setAudience(rs.getString("audience"));
                 eb.setLabel(rs.getString("label"));
                 eb.setText_content(rs.getString("text_content"));
-    
-                bookdates.add(eb);
+
+                booklist.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -143,6 +151,9 @@ public class OraBookDao implements BookDao{
         }finally{
             //リソース解放
             try{
+                if(rs!=null){
+                    rs.close();
+                }
                 if(st!=null){
                     st.close();
                 }
@@ -150,17 +161,16 @@ public class OraBookDao implements BookDao{
                 e.printStackTrace();
             }
         }
-        return bookdates;
+        return booklist;
     }
     public void upDateBook(EbBookBean eb){
-        PreparedStatement st=null;
-        Connection cn=null;
 
         try{
-            cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
             String sql="update ebbook set book_amount=?,book_amount=?,genre_id=?,book_isbn=?,book_name=?,publisher=?,series=?,volume=?,author=?,release_date=?,audience=?,label=?,text_content=? where book_isbn=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setInt(1,eb.getBook_amount());
             st.setInt(2,eb.getBook_price());
@@ -193,8 +203,6 @@ public class OraBookDao implements BookDao{
         }
     }
     public void deleteBook(EbBookBean eb){
-        PreparedStatement st=null;
-        Connection cn=null;
 
         try{
             cn=OracleConnect.getInstance().getConnection();

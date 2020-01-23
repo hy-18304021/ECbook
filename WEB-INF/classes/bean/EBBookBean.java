@@ -1,6 +1,7 @@
 package bean;
+import java.io.Serializable;
 
-public class EbBookBean{
+public class EbBookBean implements Serializable{
     private int book_amount;//在庫
     private int book_price;//単価
     private int genre_id;//ジャンルID
@@ -14,7 +15,6 @@ public class EbBookBean{
     private String audience;//対象（成人向けとか）
     private String label;//レーベル
     private String text_content;//内容説明
-
 
     public EbBookBean(){}
 

@@ -1,23 +1,24 @@
 package dao;
-
+import bean.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import froc.RequestContext;
 
 public abstract class AbstractDaoFactory{
-    public static AbstractDaoFactory getFactory(){
+    public static AbstractDaoFactory getFactory(RequestContext path){
         AbstractDaoFactory factory=null;
         Properties pro=new Properties();
+        String daolPath=path.getRealPath("/WEB-INF/classes/property/dao.properties");
 
         try{
-            //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
-            pro.load(new FileInputStream("C:/Users/koyama/Documents/GitHub/ECbook/WEB-INF/classes/property/dao.properties"));
+            pro.load(new FileInputStream(daolPath));
 
-            String name=pro.getProperty("dao");
+            String className=pro.getProperty("dao");
 
-            Class c=Class.forName(name);
+            Class c=Class.forName(className);
 
             factory=(AbstractDaoFactory)c.newInstance();
         }catch(FileNotFoundException e){

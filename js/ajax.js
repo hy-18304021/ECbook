@@ -30,7 +30,7 @@ function getReadyStateHandler(xmlHttpRequest) {
 	return function() {
 		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200) {
-				document.getElementById("result").innerHTML = xmlHttpRequest.responseText;
+				// document.getElementById("result").innerHTML = this.responseText;
 			} else {
 				alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 			}
@@ -71,7 +71,7 @@ function findTrTagIndex(){ //by clicking button 削除 or 修正
 	var trTagParent = thisTag.parentNode.parentNode;
 
 	var index = tag.indexOf(trTagParent);
-	alert(index);
+
 	return index;
 }
 
@@ -100,7 +100,6 @@ function appear(){
 	appearUpdateForm();
 	var index = findTrTagIndex();
 	isbn = document.getElementsByTagName('th')[index].innerText;
-	alert(isbn);
 	return isbn;
 }
 
@@ -161,11 +160,12 @@ function updateUserData(){
 }
 
 
-function updateUserCart(){
+function updateUserCart(user_id){
 	var index = findTrTagIndex();
-	var bookname = document.getElementsByTagName("th")[index].innerText;
+	var book_isbn = document.getElementsByTagName("th")[index].innerText;
 	var cart_amount = document.getElementsByName("cart_amount")[index].value;
-	var param = "bookname="+bookname
+	var param = "user_id="+user_id
+				+"&book_isbn="+book_isbn
 				+"&cart_amount="+cart_amount;
 	alert(param);
 
@@ -177,4 +177,15 @@ function updateUserCart(){
 	xmlHttpRequest.send(param);
 }
 // remove book from cart
+
+// function takeBookTable(){
+// 	alert("TakeBookTable");
+// 	var xmlHttpRequest = getXMLHttpRequest();
+// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+// 	xmlHttpRequest.open("GET","takebooktable.do",true);
+// 	// xmlHttpRequest.setRequestHeader("Content-Type",
+// 	// 		"application/x-www-form-urlencoded");
+// 	xmlHttpRequest.send();
+// }
+
 

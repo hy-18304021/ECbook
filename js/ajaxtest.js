@@ -177,4 +177,9 @@ function updateUserCart(){
 	xmlHttpRequest.send(param);
 }
 // remove book from cart
+function toInfoPage(String isbn){ //by clicking button 削除 or 修正
+	// var tag = Array.prototype.slice.call(document.getElementsByTagName('tr'));
+	// var name= thisLi.alt;
+	alert(isbn);
+}
 

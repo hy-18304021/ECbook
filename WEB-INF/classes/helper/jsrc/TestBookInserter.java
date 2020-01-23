@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.io.InputStream;
-import bean.*;
+import bean.EbBookBean;
 import helper.IsbnDataGetter;
 import java.text.SimpleDateFormat;
 public class TestBookInserter{

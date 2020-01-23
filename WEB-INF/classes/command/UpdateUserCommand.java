@@ -1,39 +1,65 @@
 package command;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import DBOracle.OracleController;
-import DBOracle.OracleProfile;
-import java.util.ArrayList;
+import froc.*;
+import dao.*;
+import bean.*;
 
 public class UpdateUserCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		String name = req.getParameter("name");
-		String pass = req.getParameter("pass");
-		String mail = req.getParameter("mail");
-		String birth = req.getParameter("birth");
-		int sex = Integer.parseInt(req.getParameter("sex"));
+		RequestContext reqc = getRequestContext();
 
-		String result = "name="+name+"<br>pass="+pass+"<br>mail="+mail+"<br>birth="+birth;
-		HttpSession session = req.getSession();
-		OracleProfile user=(OracleProfile)session.getAttribute("user");
-		String id = user.getId();
+		String id = (String)reqc.getParameter("id")[0];
+		String name = (String)reqc.getParameter("name")[0];
+		String pass = (String)reqc.getParameter("pass")[0];
+		String mail = (String)reqc.getParameter("mail")[0];
+		String birth = (String)reqc.getParameter("birth")[0];
+		int sex = Integer.parseInt(reqc.getParameter("sex")[0]);
+		System.out.println(birth);
 
-		int isUpdated = OracleController.updateUserInfo(id,name,pass,mail,sex,birth);
-		if(isUpdated==0){
-			result = result+"<br>Fail.";
+		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory(reqc);
+		UserDao userdao=daofac.getUserDao();
+
+		OracleConnect.getInstance().beginTransaction();
+		EbUserBean oldinfo = userdao.getUser(id);
+
+		EbUserBean newebuser=new EbUserBean();
+		newebuser.setId(id);
+
+		if(name==""){
+			newebuser.setName(oldinfo.getName());
 		}else{
-			result = result+"<br>Updated!";
-			user.setAll(OracleController.getUserInfo(id));
-			session.setAttribute("user",user);
+			newebuser.setName(name);
 		}
 
-		res.setContentType("text/html");
-		res.getWriter().write(result);
+		if(pass==""){
+			newebuser.setPass(oldinfo.getPass());
+		}else{
+			newebuser.setPass(pass);
+		}
+
+		if(mail==""){
+			newebuser.setMail(oldinfo.getMail());
+		}else{
+			newebuser.setMail(mail);
+		}
+
+		if(birth==""){
+			newebuser.setBirth(oldinfo.getBirth());
+		}else{
+			newebuser.setBirth(birth);
+		}
+
+		newebuser.setSex(sex);
+
+		userdao.updateUser(newebuser);
+
+		OracleConnect.getInstance().commit();
+
+		OracleConnect.getInstance().closeConnection();
+
+		reqc.sessionAttribute("user",newebuser);
+		resc.setTarget("mypage");
+
+		return resc;
 	}
 }

@@ -1,33 +1,39 @@
 package command;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-
-import DBOracle.*;
+import froc.*;
+import dao.*;
 import bean.*;
 import java.util.ArrayList;
 
 public class UpdateUserCartCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
-		HttpSession session=req.getSession();
-		int cart_amount=Integer.parseInt(req.getParameter("cart_amount"));
-		String bookname=req.getParameter("bookname");
-		String id = ((OracleProfile)session.getAttribute("user")).getId();
+		RequestContext reqc = getRequestContext();
 
-		int isUpdated = OracleController.updateUserCart(id,bookname,cart_amount);
-		String result="";
-		if(isUpdated==0){
-			result = result+"<br>Fail.";
-		}else{
-			result = result+"<br>Updated!";
-		}
+		String user_id=(String)reqc.getParameter("user_id")[0];
+		String book_isbn=(String)reqc.getParameter("book_isbn")[0];
+		int cart_amount= Integer.parseInt(reqc.getParameter("cart_amount")[0]);
+		// System.out.println("user_id="+user_id+"\tbook_isbn="+book_isbn+"\tcart_amount="+cart_amount);
 
-		res.setContentType("text/html");
-		res.getWriter().write(result);
+		EbCartBean ec=new EbCartBean();
+
+		ec.setUser_id(user_id);
+		ec.setBook_isbn(book_isbn);
+		ec.setCart_amount(cart_amount);
+
+		AbstractDaoFactory daofac=AbstractDaoFactory.getFactory(reqc);
+		CartDao cartdao=daofac.getCartDao();
+
+		OracleConnect.getInstance().beginTransaction();
+
+		cartdao.updateCart(ec);
+		OracleConnect.getInstance().commit();
+
+		ArrayList mycart = cartdao.getUserCartInfo(user_id);
+		reqc.sessionAttribute("mycart",mycart);
+
+		OracleConnect.getInstance().closeConnection();
+
+		resc.setTarget("mycart");
+		return resc;
 	}
 }

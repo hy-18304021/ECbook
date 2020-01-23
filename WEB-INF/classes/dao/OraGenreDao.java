@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -128,6 +127,8 @@ public class OraGenreDao implements GenreDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebgenre set genre_id=?,genre_name where genre_id=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setInt(1,ec.getGenre_id());
             st.setString(2,ec.getGenre_name());

@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.util.Iterator;
 public class IsbnDataGetter{
     //jsonからデータ取り出してBeanにデータ入れる。
+    
     public static EbBookBean getIsbnData(EbBookBean eb){
         // try {
             //Beanからisbn取り出し
-            String isbn=eb.getBook_isbn();
             //isbn使ってjson取得。openBDのAPI使ってるクラスのメソッド。
-            JsonNode node = IsbnConverter.IsbnConvert(isbn);
+            JsonNode node = getIsbnJson(eb);
 
 
             String name = node.get("onix").get("DescriptiveDetail").get("TitleDetail").get("TitleElement").get("TitleText").get("content").asText();
@@ -98,5 +98,12 @@ public class IsbnDataGetter{
         //     e.printStackTrace();
         // }
         return eb;
+    }
+
+    public static JsonNode getIsbnJson(EbBookBean eb){
+        String isbn=eb.getBook_isbn();
+        //isbn使ってjson取得。openBDのAPI使ってるクラスのメソッド。
+        JsonNode node = IsbnConverter.IsbnConvert(isbn);
+        return node;
     }
 }

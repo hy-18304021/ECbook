@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,17 +12,16 @@ import bean.EbUserBean;
 
 //ebuserに対するSQLのまとめ
 public class OraUserDao implements UserDao{
+    Connection cn=null;
+    PreparedStatement st=null;
+    ResultSet rs = null;
     public void addUser(EbUserBean eu){
-        PreparedStatement st=null;
-        Connection cn=null;
-
+        String sql= "insert into ebuser values(?,?,?,?,?,?)";
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
-
-            //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
@@ -33,7 +31,6 @@ public class OraUserDao implements UserDao{
             st.setString(4,eu.getMail());
             st.setInt(5,eu.getSex());
             st.setString(6,eu.getBirth());
-
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -52,17 +49,12 @@ public class OraUserDao implements UserDao{
     }
 
     public EbUserBean getUser(String key){
-        PreparedStatement st=null;
-        Connection cn=null;
-        ResultSet rs=null;
         EbUserBean eb=new EbUserBean();
-
+        String sql= "select * from ebuser where id = ?";
         try{
-            cn=OracleConnect.getInstance().getConnection();
-
-            //SQL文生成
-            String sql= "select * from ebuser where id = ?";
-
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
             
@@ -86,6 +78,9 @@ public class OraUserDao implements UserDao{
                 if(st!=null){
                     st.close();
                 }
+                if(rs!=null){
+                    rs.close();
+                }
             }catch(SQLException e){
                 e.printStackTrace();
             }
@@ -93,16 +88,13 @@ public class OraUserDao implements UserDao{
         return eb;
     }
     public List getAllUser(){
-        Connection cn=null;
-        PreparedStatement st=null;
-        ResultSet rs=null;
-    
-        ArrayList<EbUserBean> userdates=new ArrayList<>();
-    
+        ArrayList<EbUserBean> userdata=new ArrayList<>();
+        String sql="select * from ebuser";
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            String sql="select * from ebuser";
             st=cn.prepareStatement(sql);
     
             rs=st.executeQuery();
@@ -117,7 +109,7 @@ public class OraUserDao implements UserDao{
                 eb.setSex(rs.getInt("sex"));
                 eb.setBirth(rs.getString("birth"));
     
-                userdates.add(eb);
+                userdata.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -128,33 +120,36 @@ public class OraUserDao implements UserDao{
                 if(st!=null){
                     st.close();
                 }
+                if(rs!=null){
+                    rs.close();
+                }
             }catch(SQLException e){
                 e.printStackTrace();
             }
         }
-        return userdates;
+        return userdata;
     }
-    public void upDateUser(EbUserBean eu){
-        PreparedStatement st=null;
-        Connection cn=null;
-
+    public void updateUser(EbUserBean eu){
+        String sql="update ebuser set name=?,pass=?,mail=?,sex=?,birth=? where id=?";
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            //SQL文生成
-            String sql="update ebuser set id=?,name=?,pass=?,mail=?,sex=?,birth=? where id=?";
+            st=cn.prepareStatement(sql);
 
-            st.setString(1,eu.getId());
-            st.setString(2,eu.getName());
-            st.setString(3,eu.getPass());
-            st.setString(4,eu.getMail());
-            st.setInt(5,eu.getSex());
-            st.setString(6,eu.getBirth());
-            st.setString(7,eu.getId());
+            st.setString(1,eu.getName());
+            st.setString(2,eu.getPass());
+            st.setString(3,eu.getMail());
+            st.setInt(4,eu.getSex());
+            st.setString(5,eu.getBirth());
+            st.setString(6,eu.getId());
+            // System.out.println("name="+eu.getName()+"\tpass="+eu.getPass()+"\t"+eu.getMail()+"\t"+eu.getId());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
+            System.out.println("SQLException1");
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放
@@ -168,16 +163,12 @@ public class OraUserDao implements UserDao{
         }
     }
     public void deleteUser(EbUserBean eu){
-        PreparedStatement st=null;
-        Connection cn=null;
-
+        String sql= "delete from ebuser where id=?";
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            //SQL文生成
-            String sql= "delete from ebuser where id=?";
-
-            //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             st.setString(1,eu.getId());

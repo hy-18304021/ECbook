@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import froc.ApplecationController;
-import froc.WebApplecationController;
+import froc.ApplicationController;
+import froc.WebApplicationController;
 import froc.RequestContext;
 import froc.ResponseContext;
 
@@ -19,7 +19,7 @@ public class FrontController extends HttpServlet{
 	throws IOException,ServletException{
         req.setCharacterEncoding("Windows-31j");
 
-        ApplecationController ap=new WebApplecationController();
+        ApplicationController ap=new WebApplicationController();
 
         //RequestContext rc=new WebRequestContext();
         //rc.setRequest(req);

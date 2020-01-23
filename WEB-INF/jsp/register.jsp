@@ -4,8 +4,10 @@
 <html>
 <head>
     <title>register</title>
+    <style>
+		<%@ include file = "regist.css" %>
+	</style>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="../../js/register.js"></script>
     <script type="text/javascript">
 
         function passwordCheckFunction(){
@@ -22,25 +24,41 @@
     </script>            
 </head>
 <body>
-    <h1>会員登録</h1>
-    <ul>
-	<form name="register" action='/Layers/registcomm' method="Post">
-    <li>ID:<input type="text" name="id">
-    <li>Name:<input type="text" name="name">
-    <li>Password:<input type="password" id="pass" name="pass" onkeyup="passwordCheckFunction()">
-    <li>PasswordCheck<input type="password" id="pass2" name="pass2" onkeyup="passwordCheckFunction()">
-        <br><h5 style="color: red;"  id="passwordCheckMessage"></h5>
-    <li>Mail:<input type="text" name="mail">
-    <li>
-        Sex:
-        男<input type="radio" value="1"name="sex">
-        女<input type="radio" value="2" name="sex">
-    
-    <li>birth:<input type="date" name="birth">
-        
-        <input type="submit" value="Send....">
-        
-    </form>	
-</ul>
+    <header>
+        <div>
+            <h1 class="logo"><a href="#">ECBook</a></h1>
+        </div>
+    </header>
+    <div class="registbox">
+        <h1>Sign up</h1>
+            <form name="register" action='/ecbook/registcomm' method="Post">
+                <p>UserID</p>
+                <input type="text" name="id">
+                <p>Username</p>
+                <input type="text" name="name">
+                <p>Userpass</p>
+                <input type="password" id="pass" name="pass" onkeyup="passwordCheckFunction()">
+                <input type="password" id="pass2" name="pass2" onkeyup="passwordCheckFunction()">
+                    <h5 style="color: red;"  id="passwordCheckMessage"></h5>
+                <p>Usermail</p>
+                <input type="text" name="mail">
+                <p>gender</p>
+                <div class="radio-group">
+                    <label class="radio">
+                        <input type="radio" value="1"name="sex">male
+                        <span></span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="2" name="sex">female
+                        <span></span>
+                    </label>
+                </div>
+                <p style="margin-top: 30px;">Userbirth</p>
+                <input type="date" name="birth">
+            
+                <input type="submit" value="Sign up">
+            
+            </form>	
+    </div>
 </body>
 </html>

@@ -29,11 +29,11 @@ public class RegistCommand extends AbstractCommand{
 		eb.setSex(sex);
 		eb.setBirth(birth);
 
-		//オラクル始め		二回目以降SQLRecoverableExceptionがでる
+		//オラクル始め
 		OracleConnect.getInstance().beginTransaction();
 
 		//インテグレーションレイヤの処理呼び出し
-		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		UserDao dao=factory.getUserDao();
 		dao.addUser(eb);
 
@@ -41,7 +41,7 @@ public class RegistCommand extends AbstractCommand{
 		OracleConnect.getInstance().commit();
 
 		//オラクル終わり
-		OracleConnect.getInstance().closeConnction();
+		OracleConnect.getInstance().closeConnection();
 
 		resc.setTarget("login");
         return resc;

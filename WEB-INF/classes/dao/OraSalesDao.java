@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -137,6 +136,8 @@ public class OraSalesDao implements SalesDao{
 
             //SQLï∂ê∂ê¨
             String sql="update ebsales set sales_id=?,user_id=?,sales_date=?,pay_methot=?,card_expiration=? where sales_id=?";
+
+            st=cn.prepareStatement(sql);
 
             st.setInt(1,ec.getSales_id());
             st.setString(2,ec.getUser_id());

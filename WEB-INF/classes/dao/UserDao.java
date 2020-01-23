@@ -8,6 +8,6 @@ public interface UserDao{
    public void addUser(EbUserBean eu);
    public EbUserBean getUser(String key);
    public List getAllUser();
-   public void upDateUser(EbUserBean eu);
+   public void updateUser(EbUserBean eu);
    public void deleteUser(EbUserBean eu);
 }

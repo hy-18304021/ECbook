@@ -1,0 +1,150 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+/* header */
+header{
+    border-bottom: 1px solid;
+}
+
+header > div {
+    width:90%;
+    min-width:1000px;
+    /* max-width:1200px; */
+    height:80px;
+    margin: 0 auto;
+}
+
+header .logo{
+    float: center;
+    margin-top:15px;
+}
+
+/* reigst */
+.registbox{
+    position: relative;
+    width: 480px;
+    height: 800px;
+    background-color: #000;
+    color: #fff;
+    top: 450px;
+    left:50%;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.registbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.registbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.registbox input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.registbox input[type="submit"]{
+    border: none;
+    outline: none;
+    height:40px;
+    background-color: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.registbox input[type="submit"]:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.registbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgray;
+}
+
+.registbox a:hover{
+    color: #ffc107;
+}
+
+/* radio button */
+
+.radio{
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    position: relative;
+    padding-left: 50px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.radio + .radio{
+    margin-left: 20px;
+}
+
+.radio input[type="radio"]{
+    display: none;
+}
+
+.radio span{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 3px solid #00aeef;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
+.radio span::after{
+    content: '';
+    height: 8px;
+    width: 8px;
+    background: #00aeef;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    border-radius: 50%;
+    transition: 300ms ease-in-out 0s;
+}
+
+.radio input[type="radio"]:checked ~ span:after{
+    transform: translate(-50%,-50%) scale(1);
+}

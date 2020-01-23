@@ -9,6 +9,7 @@ import froc.ResponseContext;
 import froc.AbstractCommand;
 
 import java.util.ArrayList;
+import dao.*;
 
 public class LoginCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
@@ -26,23 +27,29 @@ public class LoginCommand extends AbstractCommand{
 		OracleConnect.getInstance().beginTransaction();
 
 		//インテグレーションレイヤの処理呼び出し
-		AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		UserDao dao=factory.getUserDao();
 		eb=dao.getUser(id);
-
-		//コミット	
-		OracleConnect.getInstance().commit();
-
-		//オラクル終わり
-		OracleConnect.getInstance().closeConnction();
+		
 
 		if(id!=null&&pass!=null){
 			if(id.equals(eb.getId())&&pass.equals(eb.getPass())){
-				reqc.sessionAttribute();
+				reqc.sessionAttribute("flag","OK");
+
+				//User's information
+				reqc.sessionAttribute("user",eb);
+
+				//User Cart's information
+				CartDao cartdao = factory.getCartDao();
+				ArrayList mycart = cartdao.getUserCartInfo(id);
+				reqc.sessionAttribute("mycart",mycart);
 			}
 		}
+		OracleConnect.getInstance().commit();
 
-		resc.setTarget("index");
+		//オラクル終わり
+		OracleConnect.getInstance().closeConnection();
+		resc.setTarget("mypage");
         return resc;
 	}
 }

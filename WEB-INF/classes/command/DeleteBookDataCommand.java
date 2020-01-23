@@ -13,7 +13,8 @@ import bean.EBBookBean;
 
 import java.util.ArrayList;
 
-public class DeleteDataCommand extends AbstractCommand{
+//–{‚Ìî•ñÁ‹
+public class DeleteBookDataCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
 		String data = reqc.getParameter("data");

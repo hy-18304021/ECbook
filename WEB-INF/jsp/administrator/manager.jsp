@@ -13,8 +13,8 @@
 	<div id="mList">
 		<ul>
 			<li>商品管理
-			<li><a href="bookregistcall"><button type="button">商品情報登録</button></a>
-			<li><a href="booklistcall"><button type="button">商品情報修正/削除</button></a>
+			<li><a href="bookregistcall.do"><button type="button">商品情報登録</button></a>
+			<li><a href="booklistcall.do"><button type="button">商品情報修正/削除</button></a>
 		</ul>
 		<ul>
 			<li>会員情報</li>

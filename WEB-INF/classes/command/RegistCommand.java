@@ -41,7 +41,7 @@ public class RegistCommand extends AbstractCommand{
 		OracleConnect.getInstance().commit();
 
 		//ƒIƒ‰ƒNƒ‹I‚í‚è
-		OracleConnect.getInstance().closeConnction();
+		OracleConnect.getInstance().closeConnection();
 
 		resc.setTarget("login");
         return resc;

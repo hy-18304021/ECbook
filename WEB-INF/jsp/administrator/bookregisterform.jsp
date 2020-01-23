@@ -16,11 +16,11 @@
     </head>
 <body>
     <div id="listHeader">
-        <a href="managercall"><button id="bookMain">管理者メイン</button></a>
-        <a href="booklistcall"><button id="bookList">目録</button></a>
+        <a href="managercall.do"><button id="bookMain">管理者メイン</button></a>
+        <a href="booklistcall.do"><button id="bookList">目録</button></a>
     </div>
     <ul>
-    <form name="register" action='/ecbook/bookregistcomm' method="Post">
+    <form name="register" action='/ecbook/bookregistcomm.do' method="Post">
         <li>ISBNコード:
         <input id="book_isbn" name="book_isbn" type="text" size="50" placeholder="ISBNコード" maxlength="50">
         </li>

@@ -52,7 +52,7 @@ public class BookRegistCommand extends AbstractCommand{
 		OracleConnect.getInstance().commit();
 		
 		//ƒIƒ‰ƒNƒ‹I‚í‚è
-		OracleConnect.getInstance().closeConnction();
+		OracleConnect.getInstance().closeConnection();
 
         resc.setTarget("administrator/manager");
         return resc;

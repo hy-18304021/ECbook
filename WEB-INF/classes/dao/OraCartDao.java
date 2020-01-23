@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.EbCartBean;
-import bean.EbUserBean;
 
 //ebcartに対するSQL
 public class OraCartDao implements CartDao{
@@ -50,46 +49,46 @@ public class OraCartDao implements CartDao{
    public EbCartBean getCart(String key){
       return null;
    }
-   // public List getAllCart(){
-   //    Connection cn=null;
-   //    PreparedStatement st=null;
-   //    ResultSet rs=null;
+   public List getAllCart(){
+      Connection cn=null;
+      PreparedStatement st=null;
+      ResultSet rs=null;
     
-   //    ArrayList<EbCartBean> cartdates=new ArrayList<>();
+      ArrayList<EbCartBean> cartdates=new ArrayList<>();
     
-   //    try{
-   //       cn=OracleConnect.getInstance().getConnection();
+      try{
+         cn=OracleConnect.getInstance().getConnection();
 
-   //       String sql="select * from ebcart";
-   //       st=cn.prepareStatement(sql);
+         String sql="select * from ebcart";
+         st=cn.prepareStatement(sql);
     
-   //       rs=st.executeQuery();
+         rs=st.executeQuery();
     
-   //       while(rs.next()){
-   //          EbCartBean eb=new EbCartBean();
+         while(rs.next()){
+            EbCartBean eb=new EbCartBean();
     
-   //          eb.setUser_id(rs.getString("user_id"));
-   //          eb.setBook_isbn(rs.getString("book_isbn"));
-   //          eb.setCart_amount(rs.getInt("cart_amount"));
+            eb.setUser_id(rs.getString("user_id"));
+            eb.setBook_isbn(rs.getString("book_isbn"));
+            eb.setCart_amount(rs.getInt("cart_amount"));
     
-   //          cartdates.add(eb);
-   //       }
-   //    }catch(SQLException e){
-   //       //ロールバック処理
-   //       OracleConnect.getInstance().rollback();
-   //    }finally{
-   //       //リソース解放
-   //       try{
-   //          if(st!=null){
-   //             st.close();
-   //          }
-   //       }catch(SQLException e){
-   //          e.printStackTrace();
-   //       }
-   //    }
-   //    return cartdates;
-   // }
-   public void updateCart(String user_id,String book_isbn,int cart_amount){
+            cartdates.add(eb);
+         }
+      }catch(SQLException e){
+         //ロールバック処理
+         OracleConnect.getInstance().rollback();
+      }finally{
+         //リソース解放
+         try{
+            if(st!=null){
+               st.close();
+            }
+         }catch(SQLException e){
+            e.printStackTrace();
+         }
+      }
+      return cartdates;
+   }
+   public void updateCart(EbCartBean ec){
       // PreparedStatement st=null;
       // Connection cn=null;
       String sql="update ebcart set cart_amount = ? where user_id=? and book_isbn=?";
@@ -99,9 +98,9 @@ public class OraCartDao implements CartDao{
             cn=OracleConnect.getInstance().getConnection();
          }
          st=cn.prepareStatement(sql);
-         st.setString(2,user_id);
-         st.setString(3,book_isbn);
-         st.setInt(1,cart_amount);
+         st.setString(2,ec.getUser_id());
+         st.setString(3,ec.getBook_isbn());
+         st.setInt(1,ec.getCart_amount());
          // System.out.println(sql);
          st.executeUpdate();
 
@@ -120,7 +119,7 @@ public class OraCartDao implements CartDao{
          }
       }
    }
-   public void deleteBook(String user_id,String book_isbn){
+   public void deleteBook(EbCartBean ec){
       // PreparedStatement st=null;
       // Connection cn=null;
       String sql= "delete from ebcart where user_id=? AND book_isbn=?";
@@ -131,17 +130,8 @@ public class OraCartDao implements CartDao{
          //stのインスタンス取得
          st=cn.prepareStatement(sql);
 
-<<<<<<< HEAD
-         st=cn.prepareStatement(sql);
-
          st.setString(1,ec.getUser_id());
          st.setString(2,ec.getBook_isbn());
-         st.setInt(3,ec.getCart_amount());
-         st.setString(4,ec.getUser_id());
-=======
-         st.setString(1,user_id);
-         st.setString(2,book_isbn);
->>>>>>> 84a03e9a33ac5119363c176392166af087d850bf
 
          st.executeUpdate();
       }catch(SQLException e){

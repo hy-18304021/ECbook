@@ -1,9 +1,13 @@
 
 package command;
 import java.util.List;
-import dao.*;
-import froc.*;
-import bean.*;
+import dao.OracleConnect;
+import dao.BookDao;
+import dao.AbstractDaoFactory;
+import froc.RequestContext;
+import froc.ResponseContext;
+import froc.AbstractCommand;
+import bean.EbBookBean;;
 public class BookInfoCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
@@ -11,13 +15,14 @@ public class BookInfoCommand extends AbstractCommand{
 		// System.out.println("book_isbn="+book_isbn);
 
 		OracleConnect.getInstance().beginTransaction();
-		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory();
+		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory(reqc);
 		BookDao bookdao = daofac.getBookDao();
 		EbBookBean book = bookdao.getBook(book_isbn);
 
 		// System.out.println(book);
-		// OracleConnect.getInstance().commit();
-		// OracleConnect.getInstance().closeConnection();
+		OracleConnect.getInstance().commit();
+		OracleConnect.getInstance().closeConnection();
+
 		resc.setResult(book);
 		resc.setTarget("bookpage");
 		return resc;

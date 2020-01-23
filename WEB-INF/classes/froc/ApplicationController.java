@@ -1,6 +1,6 @@
 package froc;
 
-public interface ApplecationController{
+public interface ApplicationController{
     //’†‚É
     //RequestContext rc=new WebRequestContext();
     //rc.setRequest(req);

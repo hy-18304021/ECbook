@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 
-public class WebApplicationController implements ApplecationController{
+public class WebApplicationController implements ApplicationController{
     //’†‚É
     //RequestContext rc=new WebRequestContext();
     //rc.setRequest(req);

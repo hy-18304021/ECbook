@@ -45,10 +45,10 @@ public class LoginCommand extends AbstractCommand{
 				reqc.sessionAttribute("mycart",mycart);
 			}
 		}
-		// OracleConnect.getInstance().commit();
+		OracleConnect.getInstance().commit();
 
 		//ƒIƒ‰ƒNƒ‹I‚í‚è
-		// OracleConnect.getInstance().closeConnection();
+		OracleConnect.getInstance().closeConnection();
 		resc.setTarget("mypage");
         return resc;
 	}

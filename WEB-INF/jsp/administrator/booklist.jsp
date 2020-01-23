@@ -40,8 +40,8 @@
 <body>
 
 <div id="listHeader">
-    <a href="managercall"><button id="bookMain">管理者メイン</button></a>
-    <a href="bookregistcall"><button id="bookregist">登録</button></a>
+    <a href="managercall.do"><button id="bookMain">管理者メイン</button></a>
+    <a href="bookregistcall.do"><button id="bookregist">登録</button></a>
 </div>
     <table border="1">
         <tbody>

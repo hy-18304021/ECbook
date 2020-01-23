@@ -49,7 +49,7 @@ public class OracleConnect{
         try{
             if(cn!=null){  
                 cn.close();
-                // cn=null;
+                cn=null;
             }
         }catch(SQLException e){
             e.printStackTrace();

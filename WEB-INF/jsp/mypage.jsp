@@ -100,7 +100,7 @@
          
        </div>
        <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
-       <h1><a href="/ecbook/logoutservlet">ログアウト</a></h1>
+       <h1><a href="logout.do">ログアウト</a></h1>
        
    </body>
    </html>

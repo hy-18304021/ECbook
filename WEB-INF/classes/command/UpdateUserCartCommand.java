@@ -14,13 +14,18 @@ public class UpdateUserCartCommand extends AbstractCommand{
 		int cart_amount= Integer.parseInt(reqc.getParameter("cart_amount")[0]);
 		// System.out.println("user_id="+user_id+"\tbook_isbn="+book_isbn+"\tcart_amount="+cart_amount);
 
+		EbCartBean ec=new EbCartBean();
 
-		AbstractDaoFactory daofac=AbstractDaoFactory.getFactory();
+		ec.setUser_id(user_id);
+		ec.setBook_isbn(book_isbn);
+		ec.setCart_amount(cart_amount);
+
+		AbstractDaoFactory daofac=AbstractDaoFactory.getFactory(reqc);
 		CartDao cartdao=daofac.getCartDao();
 
 		OracleConnect.getInstance().beginTransaction();
 
-		cartdao.updateCart(user_id,book_isbn,cart_amount);
+		cartdao.updateCart(ec);
 		OracleConnect.getInstance().commit();
 
 		ArrayList mycart = cartdao.getUserCartInfo(user_id);

@@ -16,7 +16,7 @@ public class UpdateUserCommand extends AbstractCommand{
 		int sex = Integer.parseInt(reqc.getParameter("sex")[0]);
 		System.out.println(birth);
 
-		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory("dao");
+		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory(reqc);
 		UserDao userdao=daofac.getUserDao();
 
 		OracleConnect.getInstance().beginTransaction();

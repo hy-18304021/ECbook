@@ -2,19 +2,19 @@ package bean;
 import java.io.Serializable;
 
 public class EbBookBean implements Serializable{
-    private int book_amount;//İŒÉ
-    private int book_price;//’P‰¿
-    private int genre_id;//ƒWƒƒƒ“ƒ‹ID
-    private String book_isbn;//isbnƒR[ƒh
-    private String book_name;//‘–¼
-    private String publisher;//o”ÅĞ
-    private String series;//ƒVƒŠ[ƒY
-    private int volume;//‘æ‰½Šª‚©
-    private String author;//’˜Ò
-    private String release_date;//o”Å“ú
-    private String audience;//‘ÎÛi¬lŒü‚¯‚Æ‚©j
-    private String label;//ƒŒ[ƒxƒ‹
-    private String text_content;//“à—eà–¾
+    private int book_amount;//ï¿½İŒï¿½
+    private int book_price;//ï¿½Pï¿½ï¿½
+    private int genre_id;//ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
+    private String book_isbn;//isbnï¿½Rï¿½[ï¿½h
+    private String book_name;//ï¿½ï¿½ï¿½ï¿½
+    private String publisher;//ï¿½oï¿½Åï¿½
+    private String series;//ï¿½Vï¿½ï¿½ï¿½[ï¿½Y
+    private int volume;//ï¿½æ‰½ï¿½ï¿½ï¿½ï¿½
+    private String author;//ï¿½ï¿½ï¿½ï¿½
+    private String release_date;//ï¿½oï¿½Å“ï¿½
+    private String audience;//ï¿½ÎÛiï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½j
+    private String label;//ï¿½ï¿½ï¿½[ï¿½xï¿½ï¿½
+    private String text_content;//ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
 
 
     public EbBookBean(){}

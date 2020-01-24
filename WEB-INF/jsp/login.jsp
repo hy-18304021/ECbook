@@ -15,12 +15,16 @@
             <h1 class="logo"><a href="#">ECBook</a></h1>
         </div>
     </header>
-	<form class="box" method='Post' action='/ecbook/logincomm.do'>
+	<div class="loginbox">
 		<h1>Login</h1>
-		<input type="text" name="id" required>
-		<input type="password" name="pass" required>
-		<input type="submit" value="Send....">
-		<a id="regist" href="registcall.do"><button>ユーザー登録</button></a>
-	</form>
+		<form class="box" method='Post' action='/ecbook/logincomm.do'>
+		<p>Username</p>
+		<input type="text" name="id" placeholder="Username" required>
+		<p>Password</p>
+		<input type="password" name="pass" placeholder="Password" required>
+		<input type="submit" value="Login">
+		<a id="regist" href="registcall.do">Don't have an account?</a>
+	</form> 	
+	</div>
 </body>
 </html> 

@@ -1,5 +1,5 @@
 package dao;
-
+import bean.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,7 +14,6 @@ public abstract class AbstractDaoFactory{
         String daolPath=path.getRealPath("/WEB-INF/classes/property/dao.properties");
 
         try{
-            //FileinputStream‚ÌŒã‚Å•Ï‚¦‚é
             pro.load(new FileInputStream(daolPath));
 
             String className=pro.getProperty("dao");

@@ -97,6 +97,8 @@ header .logo{
     color: #ffc107;
 }
 
+/* radio button */
+
 .radio{
     font-size: 12px;
     font-weight: 500;
@@ -106,6 +108,7 @@ header .logo{
     color: #fff;
     position: relative;
     padding-left: 50px;
+    padding-top: 10px;
     cursor: pointer;
 }
 

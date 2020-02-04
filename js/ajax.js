@@ -71,7 +71,7 @@ function findTrTagIndex(){ //by clicking button 削除 or 修正
 	var trTagParent = thisTag.parentNode.parentNode;
 
 	var index = tag.indexOf(trTagParent);
-	alert(index);
+
 	return index;
 }
 
@@ -100,7 +100,6 @@ function appear(){
 	appearUpdateForm();
 	var index = findTrTagIndex();
 	isbn = document.getElementsByTagName('th')[index].innerText;
-	alert(isbn);
 	return isbn;
 }
 

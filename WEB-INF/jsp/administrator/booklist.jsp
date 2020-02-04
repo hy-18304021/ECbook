@@ -67,7 +67,13 @@
                 </td>
                 <th>${book.book_isbn}</th>
                 <td><button type="button" onclick="appear()">修正</button></td>
-                <td><button type="button" onclick="deleteData()" name="delete">削除</button></td>
+                <!--消去をcommandでするようにする-->
+                <td>
+                    <form name="register" action='/ecbook/deletebook.do' method="Post">
+                        <input type="hidden" name="book_isbn" value="${book.book_isbn}">
+                        <input type="submit" value="消去">
+                    </form>
+                </td>
             </tr>
             </c:forEach>
 
@@ -78,40 +84,32 @@
     <div id="result"></div>
     <div id="update" style="display:none;">
         <ul>
-            <li>
-                <label for="book_kind">ジャンル</label>
-                <select id="book_kind" name="book_kind">
-                    <option value="21">少年</option>
-                    <option value="22">青年</option>
-                    <option value="23">少女</option>
-                    <option value="24">4コママンガ</option>
-                    <option value="25">BL</option>
-                    <option value="26">アダルト</option>
-                    <option value="27">ライトノベル</option>
-            </select>
-            </li>
-            <li>
-                <label for="book_name">書籍名</label>
-                <input id="book_name" name="book_name" type="text"
-                    size="50" placeholder="書籍名" maxlength="25">
-            </li>
-            <li>
-                <label for="book_price">価格</label>
-                <input id="book_price" name="book_price" type="text"
-                    size="10" placeholder="価格"  maxlength="9">円
-            </li>
-            <li>
-                <label for="book_count">在庫</label>
-                <input id="book_count" name="book_count" type="text"
-                    size="10" placeholder="在庫" maxlength="5">冊
-            </li>
-            <li>
-                <label for="book_image">イメージ</label>
-                <input id="book_image" name="book_image" type="file">
-            </li>
+            <form name="register" action='/ecbook/updatebook.do' method="Post">
+                <li>
+                    <label for="book_kind">ジャンル</label>
+                    <select id="book_kind" name="book_kind">
+                        <option value="21">少年</option>
+                        <option value="22">青年</option>
+                        <option value="23">少女</option>
+                        <option value="24">4コママンガ</option>
+                        <option value="25">BL</option>
+                        <option value="26">アダルト</option>
+                        <option value="27">ライトノベル</option>
+                </select>
+                </li>
+                <li>
+                    <label for="book_price">価格</label>
+                    <input id="book_price" name="book_price" type="text"
+                        size="10" placeholder="価格"  maxlength="9">円
+                </li>
+                <li>
+                    <label for="book_count">在庫</label>
+                    <input id="book_count" name="book_count" type="text"
+                        size="10" placeholder="在庫" maxlength="5">冊
+                </li>
 
-            <li><button type="button" onclick="updateBookData()">修正</button></li>
-            <br>
+                <input type="submit" value="修正">
+            </form>
             <button type="button" onclick="disappear()">閉じる</button>
         </ul>
         

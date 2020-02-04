@@ -31,6 +31,8 @@ public class UpdateUserCartCommand extends AbstractCommand{
 		ArrayList mycart = cartdao.getUserCartInfo(user_id);
 		reqc.sessionAttribute("mycart",mycart);
 
+		OracleConnect.getInstance().closeConnection();
+
 		resc.setTarget("mycart");
 		return resc;
 	}

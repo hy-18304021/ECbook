@@ -2,19 +2,19 @@ package bean;
 import java.io.Serializable;
 
 public class EbBookBean implements Serializable{
-    private int book_amount;//�݌�
-    private int book_price;//�P��
-    private int genre_id;//�W������ID
-    private String book_isbn;//isbn�R�[�h
-    private String book_name;//����
-    private String publisher;//�o�Ŏ�
-    private String series;//�V���[�Y
-    private int volume;//�扽����
-    private String author;//����
-    private String release_date;//�o�œ�
-    private String audience;//�Ώہi���l�����Ƃ��j
-    private String label;//���[�x��
-    private String text_content;//���e����
+    private int book_amount;//
+    private int book_price;//
+    private int genre_id;//
+    private String book_isbn;//
+    private String book_name;//
+    private String publisher;//
+    private String series;//
+    private int volume;//
+    private String author;//
+    private String release_date;//
+    private String audience;//
+    private String label;//
+    private String text_content;//
 
 
     public EbBookBean(){}

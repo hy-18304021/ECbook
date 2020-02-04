@@ -28,10 +28,10 @@ public class DeleteBookFromUserCartCommand extends AbstractCommand{
 		cartdao.deleteBook(ec);
 		OracleConnect.getInstance().commit();
 
-		OracleConnect.getInstance().closeConnection();
-
 		ArrayList mycart = cartdao.getUserCartInfo(user_id);
 		reqc.sessionAttribute("mycart",mycart);
+
+		OracleConnect.getInstance().closeConnection();
 
 		resc.setTarget("mycart");
 		return resc;

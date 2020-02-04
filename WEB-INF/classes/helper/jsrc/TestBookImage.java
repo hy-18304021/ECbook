@@ -26,7 +26,7 @@ public class TestBookImage{
         bbb.setBook_amount(1);
         bbb.setBook_price(100);
         bbb.setGenre_id(1);
-        IsbnDataGetter.getIsbnData(bbb);
+        // IsbnDataGetter.getIsbnData(bbb);
         JsonNode node=IsbnDataGetter.getIsbnJson(bbb);
         ImgSaver.imgSave(node,isbn);
     }

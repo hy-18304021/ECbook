@@ -36,10 +36,10 @@ public class AddToCartCommand extends AbstractCommand{
 		}
 		OracleConnect.getInstance().commit();
 
-		OracleConnect.getInstance().closeConnection();
-
 		ArrayList mycart = cartdao.getUserCartInfo(user_id);
-		// OracleConnect.getInstance().closeConnection();
+
+		OracleConnect.getInstance().closeConnection();
+		
 		reqc.sessionAttribute("mycart",mycart);
 
 		resc.setTarget("mycart");

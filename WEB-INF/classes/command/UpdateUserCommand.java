@@ -55,8 +55,11 @@ public class UpdateUserCommand extends AbstractCommand{
 
 		OracleConnect.getInstance().commit();
 
+		OracleConnect.getInstance().closeConnection();
+
 		reqc.sessionAttribute("user",newebuser);
 		resc.setTarget("mypage");
+
 		return resc;
 	}
 }

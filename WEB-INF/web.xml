@@ -11,19 +11,18 @@
 	<servlet-mapping>
 		<servlet-name>FrontController</servlet-name>
 		<url-pattern>*.do</url-pattern>
-<<<<<<< HEAD
 	</servlet-mapping>
+
     <servlet>
 		<servlet-name>ImageServlet</servlet-name>
 		<servlet-class>ImageServlet</servlet-class>
+    </servlet>
 	<servlet-mapping>
 		<servlet-name>ImageServlet</servlet-name>
 		<url-pattern>img/*</url-pattern>
 	</servlet-mapping>
 
-=======
-	</servlet-mapping>
->>>>>>> 616eeb423a772742c6f978c2353ad7f6286a1535
+
 
     <!-- Book Image Servlet -->
     <servlet>
@@ -65,7 +64,7 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-     <!--(manager login) authenticate filter--> 
+     <!--(manager login) authenticate filter-->
      <filter>
         <filter-name>authenticatemanager</filter-name>
         <filter-class>filter.AuthenticateManager</filter-class>
@@ -77,7 +76,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-    
+
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/userlist</url-pattern>
@@ -85,8 +84,7 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-    
-<<<<<<< HEAD
+
     <!-- Review Book Filter -->
     <filter>
         <filter-name>bookreviewfilter</filter-name>
@@ -100,7 +98,4 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-=======
-
->>>>>>> 616eeb423a772742c6f978c2353ad7f6286a1535
 </web-app>

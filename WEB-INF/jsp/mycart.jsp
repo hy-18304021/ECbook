@@ -52,10 +52,12 @@
             </th>
             <td>
                 <!-- book_name -->
+                ${cart.book_name}
                 
             </td>
             <td>
                 <!-- price -->
+                ${cart.book_price}
             </td>
 
             <th width="250px">

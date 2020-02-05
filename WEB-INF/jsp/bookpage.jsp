@@ -75,7 +75,11 @@
 
             <input type="submit" value="カートに入れ">
 		</form>
-	</div>
+    </div>
+    
+    <div>
+        <li><a href="call.do"><button type="button">レビューページへ</button></a>
+    </div>
 	
 </body>
 </html>

@@ -9,7 +9,6 @@
 	<title>Manager</title>
 	<script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
 	<script src="manager/page.js"></script>
-    <script src="js/ajax.js"></script>
     <style>
             #paging {
                 list-style-type:none;
@@ -32,7 +31,10 @@
     </style> 
 </head>
 <body>
-<table border="1">
+    <div id="listHeader">
+        <a href="managercall.do"><button id="bookMain">管理者メイン</button></a>
+    </div>
+    <table border="1">
     <tr>
         <td align="center"  width="100">ID</td> 
         <th align="center"  width="100">Name</th> 
@@ -42,7 +44,7 @@
         <td align="center"  width="100">birth</td>
         <td align="center"  width="100">削除</td>          
       </tr>
-    <c:forEach var="user" items="${sessionScope.users}">
+    <c:forEach var="user" items="${result}">
     <tr>
         <th>${user.id}</th>
         <td>${user.name}</td>
@@ -57,7 +59,7 @@
 
     <div id="result"></div>
 
-    <br><a href="manager"><<<<</a>
+    <br>
 
     <ul id="paging">
         </ul>

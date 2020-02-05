@@ -1,14 +1,14 @@
-package command;
+package command.call;
 
 import dao.OracleConnect;
-import dao.BookDao;
+import dao.UserDao;
 import dao.AbstractDaoFactory;
 import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
 import java.util.List;
 
-public class BookListCallCommand extends AbstractCommand{
+public class UserListCallCommand extends AbstractCommand{
     public ResponseContext execute(ResponseContext resc){
         RequestContext reqc=getRequestContext();
 
@@ -17,10 +17,10 @@ public class BookListCallCommand extends AbstractCommand{
 
 		//インテグレーションレイヤの処理呼び出し
 		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
-		BookDao dao=factory.getBookDao();
-        List books=dao.getAllBook();
+		UserDao dao=factory.getUserDao();
+        List users=dao.getAllUser();
         
-        resc.setResult(books);
+        resc.setResult(users);
 
 		//コミット	
 		OracleConnect.getInstance().commit();
@@ -28,7 +28,7 @@ public class BookListCallCommand extends AbstractCommand{
 		//オラクル終わり
 		OracleConnect.getInstance().closeConnection();
 
-        resc.setTarget("administrator/booklist");        
+        resc.setTarget("administrator/userlist");        
         return resc;
     }
 }

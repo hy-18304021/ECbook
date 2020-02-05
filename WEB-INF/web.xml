@@ -13,14 +13,17 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
-    <!-- <servlet>
+<!--     <servlet>
 		<servlet-name>ImageServlet</servlet-name>
 		<servlet-class>ImageServlet</servlet-class>
     </servlet>
 	<servlet-mapping>
 		<servlet-name>ImageServlet</servlet-name>
 		<url-pattern>img/*</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
+ -->
+
+
     <!-- Book Image Servlet -->
     <servlet>
         <servlet-name>BookImage</servlet-name>

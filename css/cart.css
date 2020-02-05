@@ -1,0 +1,95 @@
+*{
+    margin:0;   
+    padding:0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, li{
+    list-style: none;
+}
+
+
+header{
+    border-bottom: 1px solid;
+}
+
+header > div {
+    width:90%;
+    min-width:1000px;
+    /* max-width:1200px; */
+    height:80px;
+    margin: 0 auto;
+}
+
+header .logo{
+    float: left;
+    margin-top:15px;
+}
+
+header .gnd{
+    float: right;    
+}
+
+header .gnd li{
+    display: inline-block;
+    margin-top:28px;
+    margin-left: 30px;   
+}
+
+header .gnd li:first-child{
+    margin-left: 0px;
+}
+
+.ex{
+    padding:  0px 30px 30px 20px;
+}
+
+/* Apply dollar signs */
+.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+  content: '円';
+}
+/* table */
+
+/* Totals section */
+.totals .totals-item {
+      float: right;
+      clear: both;
+      width: 100%;
+      margin-top: 0;
+}
+      label {
+        float: left;
+        clear: both;
+        width: 79%;
+        text-align: right;
+      }
+      
+      .totals-value {
+        float: right;
+        width: 21%;
+        text-align: right;
+      }
+    
+    .totals-item-total {
+      font-family: font-bold;
+    }
+  
+  .checkout {
+    float: right;
+    border: 0;
+    margin-top: 20px;
+    padding: 6px 25px;
+    background-color: #6b6;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 3px;
+  }
+  
+  .checkout:hover {
+    background-color: #494;
+  }
+  
+

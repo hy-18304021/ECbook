@@ -13,8 +13,8 @@ public class BookImageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String imageName = req.getPathInfo();
         // System.out.println("/WEB-INF/img/book"+imageName);
-        RequestDispatcher dis=req.getRequestDispatcher("/WEB-INF/img/book"+imageName+".png");
-        // RequestDispatcher dis=req.getRequestDispatcher("/WEB-INF/img/book/"+imageName+".jpg");
+        // RequestDispatcher dis=req.getRequestDispatcher("/WEB-INF/img/book"+imageName+".png");
+        RequestDispatcher dis=req.getRequestDispatcher("/WEB-INF/img/book/"+imageName+".jpg");
         dis.forward(req,res);
 
 

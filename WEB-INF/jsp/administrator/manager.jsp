@@ -18,12 +18,12 @@
 		</ul>
 		<ul>
 			<li>会員情報</li>
-			<li><a href="userlist"><button type="button">会員情報一覧</button></a></li>
+			<li><a href="userlistcall.do"><button type="button">会員情報一覧</button></a></li>
 		</ul>
-		 <ul>
+		<ul>
 			<li>購入した目録
 			<li><a href="salesform"><button type="button">全体購入目録確認</button></a>
-		 </ul>
+		</ul>
 
 		
 	</div>

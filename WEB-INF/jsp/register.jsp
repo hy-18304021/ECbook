@@ -31,7 +31,7 @@
     </header>
     <div class="registbox">
         <h1>Sign up</h1>
-            <form name="register" action='/ecbook/registcomm' method="Post">
+            <form name="register" action='/ecbook/registcomm.do' method="Post">
                 <p>UserID</p>
                 <input type="text" name="id">
                 <p>Username</p>

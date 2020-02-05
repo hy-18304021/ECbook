@@ -39,7 +39,7 @@ public class WebApplicationController implements ApplicationController{
         HttpServletResponse res=(HttpServletResponse)resc.getResponse();
 
         req.setAttribute("result",resc.getResult());
-        System.out.println("WebApplicationController: handleResponse");
+        // System.out.println("WebApplicationController: handleResponse");
 
         RequestDispatcher reqd=req.getRequestDispatcher(resc.getTarget());
         try{

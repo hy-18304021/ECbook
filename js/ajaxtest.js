@@ -30,7 +30,7 @@ function getReadyStateHandler(xmlHttpRequest) {
 	return function() {
 		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200) {
-				document.getElementById("result").innerHTML = xmlHttpRequest.responseText;
+				document.getElementById("review").innerHTML = xmlHttpRequest.responseText;
 			} else {
 				alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 			}
@@ -38,148 +38,177 @@ function getReadyStateHandler(xmlHttpRequest) {
 	};
 }
 
-// book regist
-function regist(){
-	var book_kind=document.getElementById("book_kind").value;
-	var book_name=document.getElementById("book_name").value;
-	var book_price=document.getElementById("book_price").value;
-	var book_count=document.getElementById("book_count").value;
-	var book_isbn=document.getElementById("book_isbn").value;
-	var book_image=document.getElementById("book_image").value;
-	var params = "book_kind="+book_kind
-				+"&book_name="+book_name
-				+"&book_price="+book_price
-				+"&book_count="+book_count
+//Book Page Ajax
+function bookreviewchange(method,book_isbn,user_id,review_text,review_star,review_date){
+	var params = "";
+	if(method=="addreview"){
+		alert("add");
+		var text = document.getElementById("review_text").value;
+		var star = document.getElementById("review_star").value;
+		params ="method="+method
 				+"&book_isbn="+book_isbn
-				+"&book_image="+book_image;
+				+"&user_id="+user_id
+				+"&review_text="+text
+				+"&review_star="+star
+				+"&review_date="+review_date;
+	}
+	if(method=="deletereview"){
+		alert("deletereview");
+		params ="method="+method
+				+"&book_isbn="+book_isbn
+				+"&user_id="+user_id
+				+"&review_text="+review_text
+				+"&review_star="+review_star
+				+"&review_date="+review_date;
+	}
 	alert(params);
-
 	var xmlHttpRequest = getXMLHttpRequest();
 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","registbook.do",true);
+	xmlHttpRequest.open("POST","bookreviewchange",true);
 	xmlHttpRequest.setRequestHeader("Content-Type",
 			"application/x-www-form-urlencoded");
 	xmlHttpRequest.send(params);
 }
 
 
+// book regist
+// function regist(){
+// 	var book_kind=document.getElementById("book_kind").value;
+// 	var book_name=document.getElementById("book_name").value;
+// 	var book_price=document.getElementById("book_price").value;
+// 	var book_count=document.getElementById("book_count").value;
+// 	var book_isbn=document.getElementById("book_isbn").value;
+// 	var book_image=document.getElementById("book_image").value;
+// 	var params = "book_kind="+book_kind
+// 				+"&book_name="+book_name
+// 				+"&book_price="+book_price
+// 				+"&book_count="+book_count
+// 				+"&book_isbn="+book_isbn
+// 				+"&book_image="+book_image;
+// 	alert(params);
 
-function findTrTagIndex(){ //by clicking button 削除 or 修正
-	var tag = Array.prototype.slice.call(document.getElementsByTagName('tr'));
-
-	var thisTag = document.activeElement;
-	var trTagParent = thisTag.parentNode.parentNode;
-
-	var index = tag.indexOf(trTagParent);
-	alert(index);
-	return index;
-}
-
-
-// delete book or user
-function deleteData(){
-	var index = findTrTagIndex();
-	var data = document.getElementsByTagName('th')[index].innerText;
-	param = 'data='+data;
-	alert(param);
-
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","deletedata.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
-	xmlHttpRequest.send(param);
-
-	//remove 'tr' row from table
-	document.getElementsByTagName('tr')[index].remove();
-}
+// 	var xmlHttpRequest = getXMLHttpRequest();
+// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+// 	xmlHttpRequest.open("POST","registbook.do",true);
+// 	xmlHttpRequest.setRequestHeader("Content-Type",
+// 			"application/x-www-form-urlencoded");
+// 	xmlHttpRequest.send(params);
+// }
 
 
-//find bookisbn
-function appear(){
-	appearUpdateForm();
-	var index = findTrTagIndex();
-	isbn = document.getElementsByTagName('th')[index].innerText;
-	alert(isbn);
-	return isbn;
-}
 
-//make updated form appear
-function appearUpdateForm(){
-	document.getElementById("update").style.display='block';
-}
+// function findTrTagIndex(){ //by clicking button 削除 or 修正
+// 	var tag = Array.prototype.slice.call(document.getElementsByTagName('tr'));
 
-//make updated form disappear
-function disappear(){
-	document.getElementById("update").style.display='none';
-}
+// 	var thisTag = document.activeElement;
+// 	var trTagParent = thisTag.parentNode.parentNode;
 
-// update book
-function updateBookData(){
-	var book_kind=document.getElementById("book_kind").value;
-	var book_name=document.getElementById("book_name").value;
-	var book_price=document.getElementById("book_price").value;
-	var book_count=document.getElementById("book_count").value;
-	var book_image=document.getElementById("book_image").value;
-	var params = "book_kind="+book_kind
-				+"&book_name="+book_name
-				+"&book_price="+book_price
-				+"&book_count="+book_count
-				+"&book_isbn="+isbn
-				+"&book_image="+book_image;
-	alert(params);
-
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","updatebook.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
-	xmlHttpRequest.send(params);
-	// location = location;
-}
-
-function updateUserData(){
-	var name=document.getElementById("name").value;
-	var pass=document.getElementById("pass").value;
-	var mail=document.getElementById("mail").value;
-	var birth=document.getElementById("birth").value;
-	var sex=document.getElementById("sex").value;
-	var params = "name="+name
-				+"&pass="+pass
-				+"&mail="+mail
-				+"&sex="+sex
-				+"&birth="+birth;
-	alert(params);
-
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","updateuser.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
-	xmlHttpRequest.send(params);
-	// location = location;
-}
+// 	var index = tag.indexOf(trTagParent);
+// 	alert(index);
+// 	return index;
+// }
 
 
-function updateUserCart(){
-	var index = findTrTagIndex();
-	var bookname = document.getElementsByTagName("th")[index].innerText;
-	var cart_amount = document.getElementsByName("cart_amount")[index].value;
-	var param = "bookname="+bookname
-				+"&cart_amount="+cart_amount;
-	alert(param);
+// // delete book or user
+// function deleteData(){
+// 	var index = findTrTagIndex();
+// 	var data = document.getElementsByTagName('th')[index].innerText;
+// 	param = 'data='+data;
+// 	alert(param);
 
-	var xmlHttpRequest = getXMLHttpRequest();
-	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","updateusercart.do",true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
-	xmlHttpRequest.send(param);
-}
-// remove book from cart
-function toInfoPage(String isbn){ //by clicking button 削除 or 修正
-	// var tag = Array.prototype.slice.call(document.getElementsByTagName('tr'));
-	// var name= thisLi.alt;
-	alert(isbn);
-}
+// 	var xmlHttpRequest = getXMLHttpRequest();
+// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+// 	xmlHttpRequest.open("POST","deletedata.do",true);
+// 	xmlHttpRequest.setRequestHeader("Content-Type",
+// 			"application/x-www-form-urlencoded");
+// 	xmlHttpRequest.send(param);
+
+// 	//remove 'tr' row from table
+// 	document.getElementsByTagName('tr')[index].remove();
+// }
+
+
+// //find bookisbn
+// function appear(){
+// 	appearUpdateForm();
+// 	var index = findTrTagIndex();
+// 	isbn = document.getElementsByTagName('th')[index].innerText;
+// 	alert(isbn);
+// 	return isbn;
+// }
+
+// //make updated form appear
+// function appearUpdateForm(){
+// 	document.getElementById("update").style.display='block';
+// }
+
+// //make updated form disappear
+// function disappear(){
+// 	document.getElementById("update").style.display='none';
+// }
+
+// // update book
+// function updateBookData(){
+// 	var book_kind=document.getElementById("book_kind").value;
+// 	var book_name=document.getElementById("book_name").value;
+// 	var book_price=document.getElementById("book_price").value;
+// 	var book_count=document.getElementById("book_count").value;
+// 	var book_image=document.getElementById("book_image").value;
+// 	var params = "book_kind="+book_kind
+// 				+"&book_name="+book_name
+// 				+"&book_price="+book_price
+// 				+"&book_count="+book_count
+// 				+"&book_isbn="+isbn
+// 				+"&book_image="+book_image;
+// 	alert(params);
+
+// 	var xmlHttpRequest = getXMLHttpRequest();
+// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+// 	xmlHttpRequest.open("POST","updatebook.do",true);
+// 	xmlHttpRequest.setRequestHeader("Content-Type",
+// 			"application/x-www-form-urlencoded");
+// 	xmlHttpRequest.send(params);
+// 	// location = location;
+// }
+
+// function updateUserData(){
+// 	var name=document.getElementById("name").value;
+// 	var pass=document.getElementById("pass").value;
+// 	var mail=document.getElementById("mail").value;
+// 	var birth=document.getElementById("birth").value;
+// 	var sex=document.getElementById("sex").value;
+// 	var params = "name="+name
+// 				+"&pass="+pass
+// 				+"&mail="+mail
+// 				+"&sex="+sex
+// 				+"&birth="+birth;
+// 	alert(params);
+
+// 	var xmlHttpRequest = getXMLHttpRequest();
+// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+// 	xmlHttpRequest.open("POST","updateuser.do",true);
+// 	xmlHttpRequest.setRequestHeader("Content-Type",
+// 			"application/x-www-form-urlencoded");
+// 	xmlHttpRequest.send(params);
+// 	// location = location;
+// }
+
+
+// function updateUserCart(){
+// 	var index = findTrTagIndex();
+// 	var bookname = document.getElementsByTagName("th")[index].innerText;
+// 	var cart_amount = document.getElementsByName("cart_amount")[index].value;
+// 	var param = "bookname="+bookname
+// 				+"&cart_amount="+cart_amount;
+// 	alert(param);
+
+// 	var xmlHttpRequest = getXMLHttpRequest();
+// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+// 	xmlHttpRequest.open("POST","updateusercart.do",true);
+// 	xmlHttpRequest.setRequestHeader("Content-Type",
+// 			"application/x-www-form-urlencoded");
+// 	xmlHttpRequest.send(param);
+// }
+// // remove book from cart
+
 

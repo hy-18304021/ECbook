@@ -13,7 +13,7 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
-    <servlet>
+<!--     <servlet>
 		<servlet-name>ImageServlet</servlet-name>
 		<servlet-class>ImageServlet</servlet-class>
     </servlet>
@@ -21,7 +21,7 @@
 		<servlet-name>ImageServlet</servlet-name>
 		<url-pattern>img/*</url-pattern>
 	</servlet-mapping>
-
+ -->
 
 
     <!-- Book Image Servlet -->

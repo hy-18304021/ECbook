@@ -7,7 +7,7 @@ public class EbReviewBean implements Serializable{
     private String user_id;
     private String review_text;
     private int review_star;
-    private int review_date;
+    private String review_date;
 
     public EbReviewBean(){}
 
@@ -27,7 +27,7 @@ public class EbReviewBean implements Serializable{
         review_star=star;
     }
 
-    public void setReview_date(int date){
+    public void setReview_date(String date){
         review_date=date;
     }
 
@@ -47,7 +47,7 @@ public class EbReviewBean implements Serializable{
         return review_star;
     }
 
-    public int getReview_date(){
+    public String getReview_date(){
         return review_date;
     }
    

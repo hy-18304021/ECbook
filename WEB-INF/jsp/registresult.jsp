@@ -11,6 +11,6 @@
 	<!--1/14・今後変更する-->
 	<h1>アカウント登録完了</h1>
 	
-	<li id="loginli"><a href="logincall">ログイン</a></li>
+	<a href="logincall.do"><button id="bookMain">ログインページへ</button></a>
 </body>
 </html>

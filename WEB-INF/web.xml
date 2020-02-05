@@ -13,6 +13,36 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
+<!--     <servlet>
+		<servlet-name>ImageServlet</servlet-name>
+		<servlet-class>ImageServlet</servlet-class>
+    </servlet>
+	<servlet-mapping>
+		<servlet-name>ImageServlet</servlet-name>
+		<url-pattern>img/*</url-pattern>
+	</servlet-mapping>
+ -->
+
+
+    <!-- Book Image Servlet -->
+    <servlet>
+        <servlet-name>BookImage</servlet-name>
+        <servlet-class>BookImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookImage</servlet-name>
+        <url-pattern>/bookimage/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Book Review Change -->
+    <servlet>
+        <servlet-name>bookreviewchange</servlet-name>
+        <servlet-class>BookReviewChangeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookreviewchange</servlet-name>
+        <url-pattern>/bookreviewchange</url-pattern>
+    </servlet-mapping>
      <!--(manager login) checkfilter -->
     <filter>
         <filter-name>logincheckmanager</filter-name>
@@ -34,7 +64,7 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-     <!--(manager login) authenticate filter--> 
+     <!--(manager login) authenticate filter-->
      <filter>
         <filter-name>authenticatemanager</filter-name>
         <filter-class>filter.AuthenticateManager</filter-class>
@@ -46,7 +76,7 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-    
+
     <filter-mapping>
         <filter-name>authenticatemanager</filter-name>
         <url-pattern>/userlist</url-pattern>
@@ -54,6 +84,18 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-    
+
+    <!-- Review Book Filter -->
+    <filter>
+        <filter-name>bookreviewfilter</filter-name>
+        <filter-class>filter.BookReviewFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>bookreviewfilter</filter-name>
+        <url-pattern>/bookinfo.do</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
 
 </web-app>

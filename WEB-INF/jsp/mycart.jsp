@@ -48,14 +48,15 @@
         <c:forEach var="cart" items="${sessionScope.mycart}">
           <tr>
             <th>${cart.book_isbn}
-                <br><img src="bookimage/${cart.book_isbn}" alt="">
+                <br><img src="bookimage/${cart.book_isbn}" alt="" width="150px" height="180px">
             </th>
             <td>
                 <!-- book_name -->
-                
+                ${result.book_name}
             </td>
             <td>
                 <!-- price -->
+                ${result.book_price}
             </td>
 
             <th width="250px">

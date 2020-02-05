@@ -1,13 +1,13 @@
-package command;
+package command.call;
 
 import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
 
-public class LoginCallCommand extends AbstractCommand{
+public class MyPageCommand extends AbstractCommand{
     public ResponseContext execute(ResponseContext resc){
 
-        resc.setTarget("login");
+        resc.setTarget("mypage");
         
         return resc;
     }

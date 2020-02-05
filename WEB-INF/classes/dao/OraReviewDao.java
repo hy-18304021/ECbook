@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,17 +12,16 @@ import bean.EbReviewBean;
 
 //ebreviewに対するSQL
 public class OraReviewDao implements ReviewDao{
+    Connection cn=null;
+    PreparedStatement st=null;
+    ResultSet rs = null;
     public void addReview(EbReviewBean ec){
-        PreparedStatement st=null;
-        Connection cn=null;
-
+        String sql= "insert into ebreview values(?,?,?,?,sysdate)";
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            //SQL文生成
-            String sql= "insert into ebreview values(?,?,?,?,?)";
-
-            //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
@@ -29,8 +29,6 @@ public class OraReviewDao implements ReviewDao{
             st.setString(2,ec.getUser_id());
             st.setString(3,ec.getReview_text());
             st.setInt(4,ec.getReview_star());
-            st.setInt(5,ec.getReview_date());
-
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -47,24 +45,23 @@ public class OraReviewDao implements ReviewDao{
             }
         }
     }
-    public EbReviewBean getReview(String key){
-        return null;
-    }
-    public List getAllReview(){
-        Connection cn=null;
-        PreparedStatement st=null;
-        ResultSet rs=null;
+    // public EbReviewBean getReview(String key){
+    //     return null;
+    // }
+    public List getBookReview(String book_isbn){
+        String sql="select * from ebreview where book_isbn = ? order by review_date";
 
-        ArrayList<EbReviewBean> reviewdates=new ArrayList<>();
+        ArrayList bookreviewdata=new ArrayList();
 
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            String sql="select * from ebcresit";
             st=cn.prepareStatement(sql);
+            st.setString(1,book_isbn);
 
             rs=st.executeQuery();
-
             while(rs.next()){
                 EbReviewBean eb=new EbReviewBean();
 
@@ -72,9 +69,9 @@ public class OraReviewDao implements ReviewDao{
                 eb.setUser_id(rs.getString("user_id"));
                 eb.setReview_text(rs.getString("review_text"));
                 eb.setReview_star(rs.getInt("review_star"));
-                eb.setReview_date(rs.getInt("review_date"));
+                eb.setReview_date(rs.getString("review_date"));
 
-                reviewdates.add(eb);
+                bookreviewdata.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -85,30 +82,27 @@ public class OraReviewDao implements ReviewDao{
                 if(st!=null){
                     st.close();
                 }
+                if(rs!=null){
+                    rs.close();
+                }
             }catch(SQLException e){
                 e.printStackTrace();
             }
         }
-        return reviewdates;
+        return bookreviewdata;
     }
-    public void upDateReview(EbReviewBean ec){
-        PreparedStatement st=null;
-        Connection cn=null;
-
+    public void updateReview(EbReviewBean ec){
+        String sql="update ebreview set book_isbn=?,review_text=?,review_star=? where user_id=? AND review_date=?";
         try{
-            cn=OracleConnect.getInstance().getConnection();
-
-            //SQL文生成
-            String sql="update ebreview set book_isbn=?,book_isbn=?,review_text=?,review_star=?,review_date=? where book_isbn=?";
-
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
             st=cn.prepareStatement(sql);
-
             st.setString(1,ec.getBook_isbn());
-            st.setString(2,ec.getUser_id());
-            st.setString(3,ec.getReview_text());
-            st.setInt(4,ec.getReview_star());
-            st.setInt(5,ec.getReview_date());
-            st.setString(6,ec.getBook_isbn());
+            st.setString(2,ec.getReview_text());
+            st.setInt(3,ec.getReview_star());
+            st.setString(4,ec.getUser_id());
+            st.setString(5,ec.getReview_date());
 
             st.executeUpdate();
         }catch(SQLException e){
@@ -126,20 +120,19 @@ public class OraReviewDao implements ReviewDao{
         }
     }
     public void deleteReview(EbReviewBean ec){
-        PreparedStatement st=null;
-        Connection cn=null;
-
+         String sql= "delete from ebreview where user_id=? AND book_isbn=? AND review_text=? AND review_star=?";
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn=OracleConnect.getInstance().getConnection();
+            }
 
-            //SQL文生成
-            String sql= "delete from ebreview where book_isbn=? AND  user_id=?";
-
-            //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
-            st.setString(1,ec.getBook_isbn());
             st.setString(1,ec.getUser_id());
+            st.setString(2,ec.getBook_isbn());
+            st.setString(3,ec.getReview_text());
+            st.setInt(4,ec.getReview_star());
+
 
             st.executeUpdate();
         }catch(SQLException e){

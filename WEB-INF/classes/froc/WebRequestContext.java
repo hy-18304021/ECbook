@@ -15,10 +15,10 @@ public class WebRequestContext implements RequestContext{
 
     public String getCommandPath(){
         String servletpath=_req.getServletPath();
-        System.out.println(servletpath);
+        // System.out.println(servletpath);
 
         String commandpath=servletpath.substring(1);
-        System.out.println("Commandpath:"+commandpath);
+        // System.out.println("Commandpath:"+commandpath);
 
 
         return commandpath;

@@ -70,8 +70,8 @@ pageEncoding="UTF-8"%>
         ${cart.book_name}
       </div>
 
-      <footer class="content">
-        <form action="updateusercart.do" method="post" accept-charset="utf-8">
+      <form action="updateusercart.do" method="post" accept-charset="utf-8">
+        <footer class="content">
           <span class="qt-minus">-</span>
           <span class="qt">${cart.cart_amount}</span>
           <span class="qt-plus">+</span>
@@ -79,17 +79,18 @@ pageEncoding="UTF-8"%>
           <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
           <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}" min='1'>
           <input type="submit" value="修正" style="position: absolute; margin-top: 15px; background-color: #c66; color:#fff; font-size: 12px; border:none; border-radius: 3px;">
-        </form>
+        
 
-        <h2 class="full-price">
-          <!-- 合計金額 -->
-          ${cart.book_price}
-        </h2>
-        <h2 class="price">
-          <!-- 1個の金額 -->
-          ${cart.book_price}
-        </h2>
-      </footer>
+          <h2 class="full-price">
+            <!-- 合計金額 -->
+            ${cart.book_price}
+          </h2>
+          <h2 class="price">
+            <!-- 1個の金額 -->
+            ${cart.book_price}
+          </h2>
+        </footer>
+      </form>
     </article>
 
    

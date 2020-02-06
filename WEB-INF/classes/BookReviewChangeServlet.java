@@ -20,8 +20,10 @@ public class BookReviewChangeServlet extends HttpServlet{
 		String book_isbn=req.getParameter("book_isbn");
 		String user_id=(String)req.getParameter("user_id");
 		String review_text=(String)req.getParameter("review_text");
+		System.out.println(req.getParameter("review_star"));
 		int review_star= Integer.parseInt(req.getParameter("review_star"));
 		String review_date = req.getParameter("review_date");
+
 
 		System.out.println(method);
 		review_text = review_text.replace("&", "&amp;");
@@ -61,6 +63,7 @@ public class BookReviewChangeServlet extends HttpServlet{
 		}
 
 		OracleConnect.getInstance().commit();
+		// OracleConnect.getInstance().closeConnection();
 
 		ArrayList bookreviewlist = (ArrayList)reviewdao.getBookReview(book_isbn);
 

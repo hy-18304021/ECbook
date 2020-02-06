@@ -126,19 +126,16 @@ function bookreviewchange(method,book_isbn,user_id,review_text,review_star,revie
 // }
 
 
-// //find bookisbn
-// function appear(){
-// 	appearUpdateForm();
-// 	var index = findTrTagIndex();
-// 	isbn = document.getElementsByTagName('th')[index].innerText;
-// 	alert(isbn);
-// 	return isbn;
-// }
+//find bookisbn
+function appear(isbn){
+	appearUpdateForm();
+	document.getElementById("book_isbn").value=isbn;
+}
 
-// //make updated form appear
-// function appearUpdateForm(){
-// 	document.getElementById("update").style.display='block';
-// }
+//make updated form appear
+function appearUpdateForm(){
+	document.getElementById("update").style.display='block';
+}
 
 // //make updated form disappear
 // function disappear(){

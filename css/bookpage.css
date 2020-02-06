@@ -105,7 +105,7 @@ p.product-body {
 }
 .main-product-container .product-col-container {
   background:#fafafa;  
-  min-height: 860px;
+  min-height: auto;
   border-bottom: 1px solid #ddd;
   border-left:1px solid #ddd;
   width: 359px;

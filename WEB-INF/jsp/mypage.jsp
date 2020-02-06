@@ -36,9 +36,6 @@
             </ul>
         </div>
     </header>
-    <div id="container">
-        <div id="idx_top"></div>
-    </div>
     <div class="memu_wrap">
         <ul class="dep1">
             <li>

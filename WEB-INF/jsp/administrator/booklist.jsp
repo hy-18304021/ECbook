@@ -53,7 +53,6 @@
                 <td align="center"  width="100">イメージ</td> 
                 <td align="center"  width="100">ISBNコード</td>
                 <td align="center"  width="100">修正</td>
-                <td align="center"  width="100">削除</td>
             </tr>
 
             <c:forEach var="book" items="${result}">
@@ -67,13 +66,6 @@
                 </td>
                 <th>${book.book_isbn}</th>
                 <td><button type="button" onclick="appear()">修正</button></td>
-                <!--消去をcommandでするようにする-->
-                <td>
-                    <form name="register" action='/ecbook/deletebook.do' method="Post">
-                        <input type="hidden" name="book_isbn" value="${book.book_isbn}">
-                        <input type="submit" value="消去">
-                    </form>
-                </td>
             </tr>
             </c:forEach>
 

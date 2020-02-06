@@ -45,9 +45,10 @@ pageEncoding="UTF-8"%>
 </header1>
 
 <div class="container">
-
+  <c:set var="totalPrice" value="${0}" />
   <c:forEach var="cart" items="${sessionScope.mycart}">
-  <section id="cart"> 
+  <c:set var="totalPrice" value="${totalPrice + cart.book_price*cart.cart_amount}" />
+  <section id="cart">
     <article class="product">
       <header>
         <a class="remove">
@@ -100,7 +101,7 @@ pageEncoding="UTF-8"%>
 <footer id="site-footer">
   <div class="container clearfix">
     <div class="right">
-      <h1 class="total">Total: <span></span>円</h1>
+      <h1 class="total">Total: <span>${totalPrice}</span>円</h1>
       <a class="btn">Checkout</a>
     </div>
 

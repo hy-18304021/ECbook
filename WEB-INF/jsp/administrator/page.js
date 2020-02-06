@@ -105,25 +105,25 @@ pager.prototype = {
         case "first":
             destPage = 1;
             $Button.addClass('active');
-            $Button.html('最初');
+            $Button.html('<<<<');
             break;
 
         case "prev":
             destPage = currentPage - 1;
             $Button.addClass('active');
-            $Button.html('以前');
+            $Button.html('<<');
             break;
 
         case "next":
             destPage = currentPage + 1;
             $Button.addClass('active');
-            $Button.html('次');
+            $Button.html('>>');
             break;
 
         case "last":
             destPage = totalPageCnt;
             $Button.addClass('active');
-            $Button.html('最後');
+            $Button.html('>>>>');
             break;
         }
 

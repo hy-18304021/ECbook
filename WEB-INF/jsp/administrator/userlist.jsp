@@ -7,8 +7,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Manager</title>
-	<script src="http://code.jquery.com/jquery-1.11.0.js"> </script>
-	<script src="manager/page.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+	<script><%@include file="page.js" %></script>
     <style>
             #paging {
                 list-style-type:none;
@@ -41,8 +41,7 @@
         <td align="center"  width="100">Password</td>
         <td align="center"  width="100">mail</td> 
         <td align="center"  width="100">sex</td>
-        <td align="center"  width="100">birth</td>
-        <td align="center"  width="100">削除</td>          
+        <td align="center"  width="100">birth</td>       
       </tr>
     <c:forEach var="user" items="${result}">
     <tr>
@@ -52,7 +51,6 @@
         <td>${user.mail}</td>
         <td>${user.sex}</td>
         <td>${user.birth}</td>
-        <td><button type="button" onclick="deleteData()">削除</button></td>
     </tr>
     </c:forEach>
     </table>

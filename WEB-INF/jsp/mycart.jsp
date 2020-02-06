@@ -80,9 +80,9 @@ pageEncoding="UTF-8"%>
           <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
           <input type="submit" value="修正" style="position: absolute; margin-top: 15px; background-color: #c66; color:#fff; font-size: 12px; border:none; border-radius: 3px;">
         
-
+          <!-- 合計金額 -->
           <h2 class="full-price">
-            <!-- 合計金額 -->
+            
             ${cart.book_price*cart.cart_amount}円
           </h2>
           <!-- 1個の金額 -->
@@ -102,7 +102,15 @@ pageEncoding="UTF-8"%>
   <div class="container clearfix">
     <div class="right">
       <h1 class="total">Total: <span>${totalPrice}</span>円</h1>
-      <a class="btn">Checkout</a>
+      <form action="updateusercart.do" method="post" accept-charset="utf-8">
+        <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+        <c:forEach var="cart" items="${sessionScope.mycart}">
+          <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+          <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
+        </c:forEach>
+        <input type="hidden" name="totalprice" value="${totalPrice}">
+        <a class="btn">Checkout</a>
+      </form>
     </div>
 
   </div>

@@ -1,6 +1,6 @@
 OPTIONS (ERRORS=50)
 LOAD DATA 
-INFILE 'C:\ECbook\sql\ok\loader\ldr\EBCART_DATA_TABLE.ldr' "str '\r\n'"
+INFILE 'EBCART_DATA_TABLE.ldr' "str '\r\n'"
 APPEND
 CONTINUEIF NEXT(1:1) = '#'
 INTO TABLE "EBTEST"."EBCART"

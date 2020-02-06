@@ -77,16 +77,17 @@ pageEncoding="UTF-8"%>
           <span class="qt-plus">+</span>
           <input type="hidden" name="user_id" value="${sessionScope.user.id}">
           <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
-          <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}" min='1'>
+          <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
           <input type="submit" value="修正" style="position: absolute; margin-top: 15px; background-color: #c66; color:#fff; font-size: 12px; border:none; border-radius: 3px;">
         
 
           <h2 class="full-price">
             <!-- 合計金額 -->
-            ${cart.book_price}
+            ${cart.book_price*cart.cart_amount}
           </h2>
+          <!-- 1個の金額 -->
           <h2 class="price">
-            <!-- 1個の金額 -->
+            
             ${cart.book_price}
           </h2>
         </footer>

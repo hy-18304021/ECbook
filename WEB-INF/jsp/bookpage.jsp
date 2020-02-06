@@ -74,10 +74,11 @@
         <form action="addtocart.do" method="post" accept-charset="utf-8">
             <input type="hidden" name="user_id" value="${sessionScope.user.id}">
             <input type="hidden" name="book_isbn" value="${result.book_isbn}">
+            <%-- <input type="hidden" name="book_name" value="${result.book_name}">
+            <input type="hidden" name="book_price" value="${result.book_price}"> --%>
             <input type="hidden" name="cart_amount" value="1">
 
             <input type="submit" value="カートに入れ">
-<<<<<<< HEAD
         </form>
     </div>
     <br><br>
@@ -129,14 +130,5 @@
         <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
     </div>
 
-=======
-		</form>
-    </div>
-    
-    <div>
-        <li><a href="call.do"><button type="button">レビューページへ</button></a>
-    </div>
-	
->>>>>>> 83a727ad211c3b20f304a8439c9e54d12b5ba550
 </body>
 </html>

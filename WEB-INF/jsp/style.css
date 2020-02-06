@@ -1,226 +1,75 @@
-*{
-    margin:0;   
-    padding:0;
-}
-a{
-    text-decoration: none;
-    color: inherit;
-}
+<h1>Shopping Cart</h1>
 
-ul, li{
-    list-style: none;
-}
+<div class="shopping-cart">
 
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
 
-header{
-    border-bottom: 1px solid;
-}
+  <div class="product">
+    <div class="product-image">
+      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Dingo Dog Bones</div>
+      <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+    </div>
+    <div class="product-price">12.99</div>
+    <div class="product-quantity">
+      <input type="number" value="2" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">25.98</div>
+  </div>
 
-header > div {
-    width:90%;
-    min-width:1000px;
-    /* max-width:1200px; */
-    height:80px;
-    margin: 0 auto;
-}
+  <div class="product">
+    <div class="product-image">
+      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
+      <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
+    </div>
+    <div class="product-price">45.99</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">45.99</div>
+  </div>
 
-header .logo{
-    float: left;
-    margin-top:15px;
-}
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">71.97</div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (5%)</label>
+      <div class="totals-value" id="cart-tax">3.60</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">15.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">90.57</div>
+    </div>
+  </div>
+      
+      <button class="checkout">Checkout</button>
 
-header .gnd{
-    float: right;    
-}
-
-header .gnd li{
-    display: inline-block;
-    margin-top:28px;
-    margin-left: 30px;   
-}
-
-header .gnd li:first-child{
-    margin-left: 0px;
-}
-
-/* container */
-#idx_top{
-    width:100%;
-    height:500px;
-    background:#ddd;
-    /* no-repeat:50% 50% /cover */
-}
-
-/* memu */
-.memu_wrap{
-    width:100%;
-    min-width:1000px;
-    /* max-width:1200px; */
-    height:68px;
-    margin: 0 auto;
-    text-align: center;
-    z-index: 1000;
-}
-
-.memu_wrap .dep1{
-    font-size: 0;
-   
-}
-
-.memu_wrap .dep1 > li{
-    display: inline-block;
-    width: 500px;
-    height: 68px;
-    background: #ddd;
-    vertical-align: top;
-    text-align: center;
-    font-size: 25px;
-    /* z-index: 50; */
-}
-
-.memu_wrap .dep1 > li:hover > .dep2{
-    display:block;
-}
-
-.memu_wrap .dep1 > li:hover > a{
-    background: purple;
-    color: #fff;
-}
-
-.memu_wrap .dep1 > li > a{
-    display: block;
-    padding: 10px 0;
-    width: 500px;
-    height: 48px;
-    z-index: 2;
-}
-
-.memu_wrap .dep2{
-    display: none;
-    background: pink;
-    z-index: 3;
-}
-/* ul.dep2 li a{
-    z-index: 5;
-} */
-
-.memu_wrap .dep2 a{
-    display: block;
-    padding: 10px 0;
-}
-
-.memu_wrap .dep2 a:hover{
-    text-decoration: underline;
-}
-
-/* item */
-
-.list_wrap{
-    position: relative;
-    width:90%;;
-    min-width: 1000px;
-    margin: 0 auto;
-    padding:100px;
-    z-index: -4;
-}
-.list_wrap ul{
-    font-size:0;
-}
-
-.list_wrap .item{
-    display:inline-block;
-    width: 30%;
-    margin-top: 40px;
-    margin-left:5%;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
-    z-index:-3;
-}
-
-.list_wrap .item:nth-child(-n+3){
-    margin-top: 0;
-}
-
-.list_wrap .item:nth-child(3n-2){
-    margin-left: 0;
-}
-
-.list_wrap .item .image {
-    width: 100%;
-    height: 300px;
-    background: url(img/noimage.jpg);
-    background-repeat: no-repeat;
-    z-index: 1;
-}
-
-.list_wrap .item .cont{
-    padding: 20px;
-}
-
-.list_wrap .item strong{
-    display: block;
-    margin: 0 0 10px 0;
-    font-size: 16px;
-    letter-spacing: -1px;
-}
-
-.list_wrap .item p{
-    font-size: 13px;
-    letter-spacing: -1px;
-}
-
-.list_wrap .item a{
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background: #eee;
-    font-size: 13px;
-    letter-spacing: -1px;
-}
-
-.list_wrap .item a:hover{
-    background: #345cb2;
-    color: #ddd;
-}
-
-
-.box{
-    width: 300px;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%, -50%);
-    background: #191919;
-    text-align: center;
-}
-
-.box h1{
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.box input[type = "text"], .box input[type = "password"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px, auto;
-    text-align: center;
-    border: 2px solid #3498bd;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-}
-
-.box input[type = "text"]:focus, .box input[type = "password"]:focus{
-    width: 280px;
-    border-color: #2ecc71;
-}
-
-/* .box input[type = "submit"]{
-
-} */
-
+</div>

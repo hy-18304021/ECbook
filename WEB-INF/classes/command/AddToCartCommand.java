@@ -11,6 +11,8 @@ public class AddToCartCommand extends AbstractCommand{
 		String user_id = (String)reqc.getParameter("user_id")[0];
 		String book_isbn = (String)reqc.getParameter("book_isbn")[0];
 		int cart_amount = Integer.parseInt(reqc.getParameter("cart_amount")[0]);
+		// String book_name = (String)reqc.getParameter("book_name")[0];
+		// String book_price = (String)reqc.getParameter("book_price")[0];
 		// System.out.println("user_id:"+user_id+"\tbook_isbn:"+book_isbn+"\tcart_amount:"+cart_amount);
 		
 		EbCartBean cart = new EbCartBean();
@@ -37,6 +39,7 @@ public class AddToCartCommand extends AbstractCommand{
 		OracleConnect.getInstance().commit();
 
 		ArrayList mycart = cartdao.getUserCartInfo(user_id);
+
 
 		OracleConnect.getInstance().closeConnection();
 		

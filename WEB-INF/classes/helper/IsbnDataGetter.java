@@ -81,16 +81,17 @@ public class IsbnDataGetter{
             //TextType:02なら略説。TextType:03なら詳説。詳説を選択したが、サイズでかすぎたら考える。
             String text_content=null;
             try{
-
-            }catch(NullPointerException e){
                 Iterator<JsonNode> texts=node.get("onix").get("CollateralDetail").get("TextContent").iterator();
             
                 while(texts.hasNext()){
                     JsonNode textNode=texts.next();
                     if(textNode.get("TextType").asText().equals("03")){
                         text_content=textNode.get("Text").asText();
+                        System.out.println(text_content);
                     }
                 }
+            }catch(NullPointerException e){
+                
             }finally{
                 eb.setText_content(text_content);
             }

@@ -154,7 +154,7 @@ public class OraCartDao implements CartDao{
       // PreparedStatement st= null;
       // ResultSet rs=null;
       ArrayList array = new ArrayList();
-      String sql = "select c.user_id, b.book_isbn, c.cart_amount FROM ebcart c join ebbook b on c.book_isbn=b.book_isbn where user_id=?";
+      String sql = "select c.user_id, b.book_isbn,b.book_name,b.book_price,c.cart_amount FROM ebcart c join ebbook b on c.book_isbn=b.book_isbn where user_id=?";
       // System.out.println(sql);
 
       try{
@@ -170,6 +170,8 @@ public class OraCartDao implements CartDao{
             cart.setUser_id(rs.getString("user_id"));
             cart.setBook_isbn(rs.getString("book_isbn"));
             cart.setCart_amount(rs.getInt("cart_amount"));
+            cart.setBook_name(rs.getString("book_name"));
+            cart.setBook_price(rs.getString("book_price"));
             // System.out.println("Cart:"+rs.getString("user_id")+rs.getString("book_isbn")+rs.getInt("cart_amount"));
             array.add(cart);
          }

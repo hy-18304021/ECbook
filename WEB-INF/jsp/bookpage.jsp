@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" type="text/css" href="css/style.css">
+     <link rel="stylesheet" type="text/css" href="css/bookpage.css">
      <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -38,77 +38,84 @@
             </ul>
         </div>
     </header>
-    <div id="container">
-        <div id="idx_top"></div>
-    </div>
-    <div class="memu_wrap">
-        <ul class="dep1">
-            <li>
-                <a href="#">コミック</a>
-                <ul class="dep2">
-                    <li>
-                        <a href="getbooktable.do">Book List</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">ライトノベル</a>
-            </li>
-        </ul>
-    </div>
-    <br><img src="bookimage/${result.book_isbn}" height="230" width="270" alt="${result.book_name}">
-    <br>${result.book_name}
-    <br>${result.book_price}
-    <br>${result.text_content}
+    <div class="container">
+  
+        <div class="product-container main-product-container">
+          
+          <div class="product-left-container">
+            <img src="bookimage/${result.book_isbn}" alt="" width="540"/>
+          </div>
+          
+          <div class="product-col-container">
+            <h1 class="product-page">${result.book_name}</h1>
+            <p>
+              <b>${result.text_content}</b><br/>
+            </p>
+            <p class="product-body">
+                内容
+            </p>
+            
+            <p class="product-price">
+              <b>Price:</b> 
+              <span class="price">${result.book_price}</span>
+            </p>
+            
+            <div>
+                <form action="addtocart.do" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+                    <input type="hidden" name="book_isbn" value="${result.book_isbn}">
+                    <input type="hidden" name="cart_amount" value="1">
+              <button>Add to cart</button>
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        <br clear="all"/>
+        <div class="product-container">
+          
+          <div class="product-left-container">
+            <h2 class="product-page">Review</h2>
+            <p class="product-body">
+                <div id ="writereviewwithajax">
+                    内容:<input type="text" id="review_text" required>
+                    評価:<input type="number" id="review_star" required>
+                    <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
+                    <div id="review">
+                        <h1>REVIEW</h1>
+                            <table border='1'>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Text</th>
+                                        <th>Star</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="review" items="${bookreviewlist}">
+                                    <tr>
+                                        <td>${review.user_id}</td>
+                                        <td>${review.review_text}</td>
+                                        <td>${review.review_star}</td>
+                                        <td>${review.review_date}</td>
+                                        <td><button id="review-delete-button" type="button" onclick="bookreviewchange('deletereview','${result.book_isbn}','${sessionScope.user.id}','${review.review_text}','${review.review_star}','${review.review_date}')">delete</button></td>
+                                    </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+              </p>
+          </div>
 
-    <br>
-
-    <!-- Add to Cart -->
-    <div>
-        <form action="addtocart.do" method="post" accept-charset="utf-8">
-            <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-            <input type="hidden" name="book_isbn" value="${result.book_isbn}">
-            <%-- <input type="hidden" name="book_name" value="${result.book_name}">
-            <input type="hidden" name="book_price" value="${result.book_price}"> --%>
-            <input type="hidden" name="cart_amount" value="1">
-
-            <input type="submit" value="カートに入れ">
-        </form>
-    </div>
-    <br><br>
-
-    <div id="review">
-        <h1>REVIEW</h1>
-            <table border='1'>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Text</th>
-                        <th>Star</th>
-                        <th>Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="review" items="${bookreviewlist}">
-                    <tr>
-                        <td>${review.user_id}</td>
-                        <td>${review.review_text}</td>
-                        <td>${review.review_star}</td>
-                        <td>${review.review_date}</td>
-                        <td><button id="review-delete-button" type="button" onclick="bookreviewchange('deletereview','${result.book_isbn}','${sessionScope.user.id}','${review.review_text}','${review.review_star}','${review.review_date}')">delete</button></td>
-                    </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-    </div>
+          
+        </div>
     
+        <br clear="all"/>
+      </div>
+      
     <br>
     <br>
     <br>
@@ -123,12 +130,12 @@
         </form>
     </div> -->
 
-    <br>
+    <!-- <br>
     <div id ="writereviewwithajax">
         内容:<input type="text" id="review_text" required>
         評価:<input type="number" id="review_star" required>
         <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
-    </div>
+    </div> -->
 
 </body>
 </html>

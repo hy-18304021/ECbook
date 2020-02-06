@@ -56,6 +56,10 @@ $(document).ready(function(){
   $(".qt-plus").click(function(){
     $(this).parent().children(".qt").html(parseInt($(this).parent().children(".qt").html()) + 1);
     
+    // $(this).parent().children(".cart_amount").val()=$(this).parent().children(".qt").html().toString();
+    var cart_amount = parseInt($(this).parent().children(".cart_amount").val())+1;
+    $(this).parent().children(".cart_amount").val(cart_amount);
+    // alert($(this).parent().children(".cart_amount").val());
     $(this).parent().children(".full-price").addClass("added");
     
     var el = $(this);
@@ -68,6 +72,8 @@ $(document).ready(function(){
     
     if(parseInt(child.html()) > 1) {
       child.html(parseInt(child.html()) - 1);
+      var cart_amount = parseInt($(this).parent().children(".cart_amount").val())-1;
+      $(this).parent().children(".cart_amount").val(cart_amount);
     }
     
     $(this).parent().children(".full-price").addClass("minused");

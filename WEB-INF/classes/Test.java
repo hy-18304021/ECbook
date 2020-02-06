@@ -3,26 +3,22 @@ import dao.*;
 import froc.*;
 import bean.*;
 import java.util.List;
-import com.google.gson.Gson;
+import com.google.gson.*;
 public class Test {
 	public static void main(String[] args){
 	
-		EbUserBean ebuser=new EbUserBean();
-		ebuser.setId("mai");
-		ebuser.setName("MaiMai");
-		ebuser.setPass("maimai");
-		ebuser.setMail("mai@gmail.com");
-		ebuser.setBirth("19960705");
-		ebuser.setSex(1);
+		OraBookDao bookdao = new OraBookDao();
+		List booklist = bookdao.getAllBook();
+		Gson gson = new Gson();
+		JsonArray jarray = gson.toJsonTree(booklist).getAsJsonArray();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("booklist", jarray);
 
-		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory("dao");
-		UserDao userdao=daofac.getUserDao();
+       	String json =jsonObject.toString();
 
-		OracleConnect.getInstance().beginTransaction();
-		userdao.updateUser(ebuser);
+		// Gson gson = new Gson();
+		// String jsonuser = gson.toJson(booklist);
+		System.out.println(json);
 
-		OracleConnect.getInstance().commit();
-		OracleConnect.getInstance().closeConnection();
-		System.out.println("close");
 	}
 }

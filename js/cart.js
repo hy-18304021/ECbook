@@ -20,8 +20,8 @@ function changeTotal() {
   
   price = Math.round(price * 100) / 100;
   var tax = Math.round(price * 0.05 * 100) / 100
-  var shipping = parseFloat($(".shipping span").html());
-  var fullPrice = Math.round((price + tax + shipping) *100) / 100;
+  //var shipping = parseFloat($(".shipping span").html());
+  var fullPrice = Math.round((price + tax) *100) / 100;
   
   if(price == 0) {
     fullPrice = 0;

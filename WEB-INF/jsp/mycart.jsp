@@ -22,7 +22,6 @@ pageEncoding="UTF-8"%>
             document.getElementById("mycart").style.display='none';
         }
     })
-
     
 </script>
 </head>
@@ -83,10 +82,9 @@ pageEncoding="UTF-8"%>
 
           <h2 class="full-price">
             <!-- 合計金額 -->
-            ${cart.book_price}
+            ${cart.book_price*cart.cart_amount}円
           </h2>
           <h2 class="price">
-            <!-- 1個の金額 -->
             ${cart.book_price}
           </h2>
         </footer>
@@ -100,7 +98,6 @@ pageEncoding="UTF-8"%>
 
 <footer id="site-footer">
   <div class="container clearfix">
-
     <div class="right">
       <h1 class="total">Total: <span></span>円</h1>
       <a class="btn">Checkout</a>

@@ -12,6 +12,7 @@ import java.util.*;
 import dao.*;
 import froc.*;
 import bean.*;
+import com.google.gson.*;
 public class BookReviewChangeServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
@@ -62,7 +63,7 @@ public class BookReviewChangeServlet extends HttpServlet{
 		OracleConnect.getInstance().commit();
 
 		ArrayList bookreviewlist = (ArrayList)reviewdao.getBookReview(book_isbn);
-		// req.setAttribute("bookreviewlist",bookreviewlist);
+
 		String result = "<h1>REVIEW</h1><table border='1'><thead><tr><th>Name</th><th>Text</th><th>Star</th><th>Date</th><th></th></tr></thead><tbody>";
 		for(int i = 0; i<bookreviewlist.size();i++){
 			EbReviewBean rb = (EbReviewBean)bookreviewlist.get(i);
@@ -72,8 +73,10 @@ public class BookReviewChangeServlet extends HttpServlet{
 			String date = rb.getReview_date();
 			result += "<tr><td>"+id+"</td><td>"+text+"<br></td><td>"+star+"</td><td>"+date+"</td><td</td></tr>";
 		}
-		// result += "<c:forEach var='review' items='${bookreviewlist}'><tr><td>${review.user_id}</td><td>${review.review_text}</td><td>${review.review_star}</td><td>${review.review_date}</td><td><button id='review-delete-button' type='button' onclick=&quot;bookreviewchange('deletereview','${result.book_isbn}','${sessionScope.user.id}','${review.review_text}','${review.review_star}','${review.review_date}')&quot;>delete</button></td></tr></c:forEach>";
 		result += "</tbody></table>";
+		// Gson gson = new Gson();
+		// String result = gson.toJson(bookreviewlist);
+		// System.out.println(result);
 
 		res.setContentType("text/html; charset=UTF-8");
 		res.getWriter().write(result);

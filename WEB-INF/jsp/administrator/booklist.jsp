@@ -65,7 +65,7 @@
                    
                 </td>
                 <th>${book.book_isbn}</th>
-                <td><button type="button" onclick="appear()">修正</button></td>
+                <td><button type="button" onclick="appear(${book.book_isbn})">修正</button></td>
             </tr>
             </c:forEach>
 
@@ -74,6 +74,30 @@
    </table>
 
     <div id="result"></div>
+
+
+    <ul id="paging"></ul>
+        
+    <div>
+        <script>
+            
+            var page = new pager();
+        
+            page.buttonClickCallback = listContent;
+            
+            function listContent () {
+                page.renderpager(1001); 
+                
+              
+            }
+        
+            listContent();
+        
+        </script>
+    </div>
+
+    <br><br><br>
+
     <div id="update" style="display:none;">
         <ul>
             <form name="register" action='/ecbook/updatebook.do' method="Post">
@@ -95,36 +119,17 @@
                         size="10" placeholder="価格"  maxlength="9">円
                 </li>
                 <li>
-                    <label for="book_count">在庫</label>
-                    <input id="book_count" name="book_count" type="text"
+                    <label for="book_amount">在庫</label>
+                    <input id="book_amount" name="book_amount" type="text"
                         size="10" placeholder="在庫" maxlength="5">冊
                 </li>
-
+                <input type="hidden" id="book_isbn" name="book_isbn">
                 <input type="submit" value="修正">
             </form>
             <button type="button" onclick="disappear()">閉じる</button>
         </ul>
         
     </div>
-
-    <ul id="paging"></ul>
-        
-        <script>
-            
-            var page = new pager();
-        
-            page.buttonClickCallback = listContent;
-            
-            function listContent () {
-                page.renderpager(1001); 
-                
-              
-            }
-        
-            listContent();
-        
-        </script>
-        
         
 </body>
 </html>

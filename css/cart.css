@@ -1,8 +1,20 @@
+*{
+  margin:0;   
+  padding:0;
+}
+
 body {
 	background: #eee;
-	margin: 0;
-	padding: 0;
 	overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, li{
+  list-style: none;
 }
 
 header{
@@ -27,6 +39,7 @@ header .gnd{
 }
 
 header .gnd li{
+  position: relative;
   display: inline-block;
   margin-top:28px;
   margin-left: 30px;   
@@ -35,6 +48,7 @@ header .gnd li{
 header .gnd li:first-child{
   margin-left: 0px;
 }
+
 
 
 .clearfix {

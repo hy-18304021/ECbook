@@ -9,7 +9,7 @@
      <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/java" src="js/bookreview.js"></script>
+    <script type="text/javascript" src="js/bookreview.js"></script>
     <script>
         $(document).ready(function(){
             var flag=document.getElementById("flag").innerText;
@@ -27,6 +27,7 @@
 </head>
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+    <h1 style="display:none;" class="sessionId">${sessionScope.user.id}</h1>
     <header>
         <div>
             <h1 class="logo"><a href="#">ECBook</a></h1>
@@ -48,6 +49,7 @@
           
           <div class="product-col-container">
             <h1 class="product-page">${result.book_name}</h1>
+            <h1 style="display:none;"  class="book_isbn">${result.book_isbn}</h1>
             <p>
               <b>${result.text_content}</b><br/>
             </p>
@@ -96,11 +98,14 @@
                                 <tbody>
                                     <c:forEach var="review" items="${bookreviewlist}">
                                     <tr>
-                                        <td>${review.user_id}</td>
-                                        <td>${review.review_text}</td>
-                                        <td>${review.review_star}</td>
-                                        <td>${review.review_date}</td>
-                                        <td><button id="review-delete-button" type="button" onclick="bookreviewchange('deletereview','${result.book_isbn}','${sessionScope.user.id}','${review.review_text}','${review.review_star}','${review.review_date}')">delete</button></td>
+                                        <td class='review-user-id'>${review.user_id}</td>
+                                        <td class='review-text'>${review.review_text}</td>
+                                        <td class='review-star'>${review.review_star}</td>
+                                        <td class='review-date'>${review.review_date}</td>
+                                        <!-- <td >
+                                            <button type="button" class='changebutton'></button>
+                                        </td> -->
+                                        <td class='changebutton'><button id="review-delete-button" type="button" onclick="bookreviewchange('deletereview','${result.book_isbn}','${sessionScope.user.id}','${review.review_text}','${review.review_star}','${review.review_date}')">delete</button></td>
                                     </tr>
                                     </c:forEach>
                                 </tbody>

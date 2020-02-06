@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import bean.EbBookBean;
@@ -51,8 +52,9 @@ public class OraBookDao implements BookDao{
             e.printStackTrace();
             //ロールバック処理
             OracleConnect.getInstance().rollback();
-        }catch(Exception e){
-			e.printStackTrace();
+        }catch(ParseException e){
+            e.printStackTrace();
+            OracleConnect.getInstance().rollback();
 		}finally{
             //リソース解放
             try{
@@ -168,7 +170,7 @@ public class OraBookDao implements BookDao{
         try{
 
             //SQL文生成
-            String sql="update ebbook set book_amount=?,book_amount=?,genre_id=?,book_isbn=?,book_name=?,publisher=?,series=?,volume=?,author=?,release_date=?,audience=?,label=?,text_content=? where book_isbn=?";
+            String sql="update ebbook set book_amount=?,book_price=?,genre_id=?,book_isbn=?,book_name=?,publisher=?,series=?,volume=?,author=?,release_date=?,audience=?,label=?,text_content=? where book_isbn=?";
 
             st=cn.prepareStatement(sql);
 
@@ -181,7 +183,12 @@ public class OraBookDao implements BookDao{
             st.setString(7,eb.getSeries());
             st.setInt(8,eb.getVolume());
             st.setString(9,eb.getAuthor());
-            st.setString(10,eb.getRelease_date());
+
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+            java.util.Date date=sdf.parse(eb.getRelease_date());
+            java.sql.Date sqldate = new java.sql.Date(date.getTime());
+            st.setDate(10,sqldate);
+
             st.setString(11,eb.getAudience());
             st.setString(12,eb.getLabel());
             st.setString(13,eb.getText_content());
@@ -189,7 +196,11 @@ public class OraBookDao implements BookDao{
 
             st.executeUpdate();
         }catch(SQLException e){
+            e.printStackTrace();
             //ロールバック処理
+            OracleConnect.getInstance().rollback();
+        }catch(ParseException e){
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放

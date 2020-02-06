@@ -73,6 +73,9 @@
           </div>
           
         </div>
+        
+
+
         <br clear="all"/>
         <div class="product-container">
           
@@ -81,8 +84,9 @@
             <p class="product-body">
                 <div id ="writereviewwithajax">
                     内容:<input type="text" id="review_text" required>
-                    評価:<input type="number" id="review_star" required>
+                    評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
+                </div>
                     <div id="review">
                         <h1>REVIEW</h1>
                             <table border='1'>
@@ -120,27 +124,6 @@
     
         <br clear="all"/>
       </div>
-      
-    <br>
-    <br>
-    <br>
-<!--     <div id="writereview">
-        <h3>REVIEW 書きましょう</h3>
-        <form action="addbookreview.do" method="post" accept-charset="utf-8">
-            <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-            <input type="hidden" name="book_isbn" value="${result.book_isbn}">
-            <input type="text" name="review_text" required>
-            <input type="number" name="review_star" min="1" max="5" required>
-            <input type="submit" value="Review">
-        </form>
-    </div> -->
-
-    <!-- <br>
-    <div id ="writereviewwithajax">
-        内容:<input type="text" id="review_text" required>
-        評価:<input type="number" id="review_star" required>
-        <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
-    </div> -->
 
 </body>
 </html>

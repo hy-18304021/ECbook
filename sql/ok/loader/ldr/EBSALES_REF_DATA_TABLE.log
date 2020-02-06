@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 12.2.0.1.0 - Production on 木 2月 6 11:44:09 2020
+SQL*Loader: Release 12.2.0.1.0 - Production on 木 2月 6 15:03:40 2020
 
 Copyright (c) 1982, 2017, Oracle and/or its affiliates.  All rights reserved.
 
@@ -35,7 +35,7 @@ TRAILING NULLCOLSオプションは有効です。
     終了記号文字列: ',|'
 
 レコード1: 拒否されました。- 表"EBTEST"."EBSALES_REF"でエラーが発生しました。
-ORA-00001: 一意制約(EBTEST.UQ_EBSALES_REF_SALES)に反しています
+ORA-02291: 整合性制約(EBTEST.FK_EBSALES_REF_SALES_ID)に違反しました - 親キーがありません
 
 
 表"EBTEST"."EBSALES_REF":
@@ -53,8 +53,8 @@ ORA-00001: 一意制約(EBTEST.UQ_EBSALES_REF_SALES)に反しています
 拒否された論理レコードの合計:               1
 廃棄された論理レコードの合計:        0
 
-実行開始木 2月  06 11:44:09 2020
-実行終了木 2月  06 11:44:09 2020
+実行開始木 2月  06 15:03:40 2020
+実行終了木 2月  06 15:03:40 2020
 
-実行時間:        00: 00: 00.66
-CPU時間 :        00: 00: 00.30
+実行時間:        00: 00: 00.33
+CPU時間 :        00: 00: 00.14

@@ -16,6 +16,9 @@ public class EbBookBean implements Serializable{
     private String label;//ÉåÅ[ÉxÉã
     private String text_content;//ì‡óeê‡ñæ
 
+    //for recommended book
+    private int book_star;
+
     public EbBookBean(){}
 
     public void setBook_amount(int amount){
@@ -70,6 +73,10 @@ public class EbBookBean implements Serializable{
         this.text_content=content;
     }
 
+    public void setBook_star(int book_star){
+        this.book_star = book_star;
+    }
+
     public int getBook_amount(){
         return book_amount;
     }
@@ -122,4 +129,7 @@ public class EbBookBean implements Serializable{
         return text_content;
     }
 
+    public int getBook_star(){
+        return book_star;
+    }
 }

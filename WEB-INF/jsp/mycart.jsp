@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
 <header>
   <div>
-      <h1 class="logo"><a href="#">ECBook</a></h1>
+      <h1 class="logo"><a href="./">ECBook</a></h1>
       <ul class="gnd">
           <li id="mypage"><a href="mypage.do">マイページ</a></li>
           <li id="loginli"><a href="logincall.do">ログイン</a></li>

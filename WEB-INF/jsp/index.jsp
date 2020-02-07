@@ -82,7 +82,7 @@
 
 
         <ul>
-
+    
 
 
             
@@ -154,5 +154,12 @@
             
         <!-- </ul> -->
     </div>
+    <h1>
+        RecommendedBook
+        <c:forEach var="recommendedbook" items="${recommendedBooks}">
+        ${recommendedbook.book_name}
+        </c:forEach>
+
+    </h1>
 </body>
 </html>

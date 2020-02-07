@@ -26,7 +26,7 @@
 <body>
     <header>
         <div>
-            <h1 class="logo"><a href="#">ECBook</a></h1>
+            <h1 class="logo"><a href="./">ECBook</a></h1>
         </div>
     </header>
     <div class="registbox">

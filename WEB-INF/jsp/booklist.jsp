@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>main</title>
-    <link rel="stylesheet" type="text/css" href="css/styletest.css">
+    <link rel="stylesheet" type="text/css" href="css/booklist.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -36,120 +36,20 @@
             </ul>
         </div>
     </header>
-    <div class="memu_wrap">
-        <ul class="dep1">
-            <li>
-                <a href="#">コミック</a>
-                <ul class="dep2">
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">ライトノベル</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="list_wrap">
-        <ul>
-            <c:forEach var="book" items="${result}">
-                <li class="item item">
-                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">
-                        <div class="image">本
-                            <img src="bookimage/${book.book_isbn}" height="230" width="270" alt="${book.book_name}">
-                        </div>
-                    </a>
-                    <div class="cont">
-                        <strong>本名:${book.book_name}</strong>
-                        <p>価額:${book.book_price}</p>
-                        
-                    </div>
-                </li>
-            </c:forEach>
-        </ul>
-        
 
 
-        <ul>
-
-
-
-            
-            <!-- <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li> -->
-
-            
-        <!-- </ul> -->
+    <div class="container">
+        <c:forEach var="book" items="${result}">
+            <div class="bookContainer" id="book02">
+                <a href="bookinfo.do?book_isbn=${book.book_isbn}">
+                    <div class="bookImage" id="img02"><img src="bookimage/${book.book_isbn}" height="240px" width="150px" alt="${book.book_name}">&nbsp;</div>
+                 </a>
+                 <a href="#">${book.book_price}￥</a>
+                 <br>
+                ${book.book_name}
+                
+              </div>
+    </c:forEach>
     </div>
 </body>
 </html>

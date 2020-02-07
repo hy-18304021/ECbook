@@ -1,0 +1,98 @@
+*{
+    margin:0;   
+    padding:0;
+}
+
+html{
+    margin:auto;
+    font-family: Segoe UI;
+    background-color: #eee;
+    color: #333333;
+    -webkit-font-smothing: antialiased;
+    text-align: justify;
+
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, li{
+    list-style: none;
+}
+
+header{
+    border-bottom: 1px solid;
+  }
+  
+  header > div {
+    width:90%;
+    min-width:1000px;
+    /* max-width:1200px; */
+    height:80px;
+    margin: 0 auto;
+  }
+  
+  header .logo{
+    float: left;
+    margin-top:15px;
+  }
+  
+  header .gnd{
+    float: right;    
+  }
+  
+  header .gnd li{
+    display: inline-block;
+    margin-top:28px;
+    margin-left: 30px;   
+  }
+  
+  header .gnd li:first-child{
+    margin-left: 0px;
+  }
+  .container {
+    position: relative;
+    width: 1200px;
+    margin: 40px auto;
+    /* background: #ffffff; */
+  }
+  
+  .bookContainer {
+    vertical-align: top;
+    display: inline-block;
+    background: #ffffff;
+    width: 220px;
+    height: 380px;
+    border-radius: 10px;
+    /* border: 1px solid #333333; */
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .bookContainer:hover {
+    background: #ffc907;
+    color: #515151;
+  }
+  
+  .bookContainer a {
+    /* position: absolute; */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 60px;
+    height: 30px;
+    color: #2980b9;
+  }
+  
+  .bookImage {
+    width: 150px;
+    height: 240px;
+    /* background: #1a444b; */
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: 20px auto 15px;
+  }
+  
+  

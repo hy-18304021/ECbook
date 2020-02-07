@@ -27,13 +27,13 @@ public class UpdateBookCommand extends AbstractCommand{
 		EbBookBean eb=dao.getBook(isbn);
 
 		//price‚Æamount‚Ì’l‚ª‚È‚©‚Á‚½‚çsql‚©‚ç’l‚ð‘ã“ü
-		if(reqc.getParameter("book_price")[0]==null){
+		if(reqc.getParameter("book_price")[0]==""){
 			price = eb.getBook_price();
 		}else{
 			price = Integer.parseInt((String)reqc.getParameter("book_price")[0]);
 		}
 
-		if(reqc.getParameter("book_amount")[0]==null){
+		if(reqc.getParameter("book_amount")[0]==""){
 			amount = eb.getBook_amount();
 		}else{
 			amount = Integer.parseInt((String)reqc.getParameter("book_amount")[0]);

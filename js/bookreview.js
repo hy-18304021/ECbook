@@ -13,6 +13,7 @@ function bookreviewchange(method,book_isbn,user_id,review_text,review_star,revie
 		alert("add");
 		var text = document.getElementById("review_text").value;
 		var star = document.getElementById("review_star").value;
+
 		params ="method="+method
 				+"&book_isbn="+book_isbn
 				+"&user_id="+user_id

@@ -16,6 +16,7 @@ import com.google.gson.*;
 public class BookReviewChangeServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
+		req.setCharacterEncoding("UTF-8");
 		String method = req.getParameter("method");
 		String book_isbn=req.getParameter("book_isbn");
 		String user_id=(String)req.getParameter("user_id");

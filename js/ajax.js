@@ -109,24 +109,24 @@ function getReadyStateHandler(xmlHttpRequest) {
 // }
 
 
-// //find bookisbn
-// function appear(){
-// 	appearUpdateForm();
-// 	var index = findTrTagIndex();
-// 	isbn = document.getElementsByTagName('th')[index].innerText;
-// 	alert(isbn);
-// 	return isbn;
-// }
+//find bookisbn
+function appear(){
+	appearUpdateForm();
+	var index = findTrTagIndex();
+	isbn = document.getElementsByTagName('th')[index].innerText;
+	document.getElementById("book_isbn").value;
+	return isbn;
+}
 
-// //make updated form appear
-// function appearUpdateForm(){
-// 	document.getElementById("update").style.display='block';
-// }
+//make updated form appear
+function appearUpdateForm(){
+	document.getElementById("update").style.display='block';
+}
 
-// //make updated form disappear
-// function disappear(){
-// 	document.getElementById("update").style.display='none';
-// }
+//make updated form disappear
+function disappear(){
+	document.getElementById("update").style.display='none';
+}
 
 // // update book
 // function updateBookData(){

@@ -188,10 +188,11 @@ public class OraBookDao implements BookDao{
             java.util.Date date=sdf.parse(eb.getRelease_date());
             java.sql.Date sqldate = new java.sql.Date(date.getTime());
             st.setDate(10,sqldate);
-
+            
             st.setString(11,eb.getAudience());
             st.setString(12,eb.getLabel());
             st.setString(13,eb.getText_content());
+
             st.setString(14,eb.getBook_isbn());
 
             st.executeUpdate();

@@ -9,6 +9,8 @@ public class LogoutCommand extends AbstractCommand{
 		RequestContext reqc=getRequestContext();
 
         reqc.sessionRemove("flag");
+        reqc.sessionRemove("user");
+        reqc.sessionRemove("mycart");
 
         //ÉzÅ[ÉÄÇ÷
 		resc.setTarget("index");

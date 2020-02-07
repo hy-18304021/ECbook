@@ -57,7 +57,7 @@
               <div id="popular-books">
                  <h3>Popular Books</h3>
                  <div class="container">
-                    <c:forEach var="book" items="${result}">
+                    <c:forEach var="book" items="${recommendedBooks}">
                         <div class="bookContainer" id="book02">
                             <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                             <div class="bookImage" id="img02"><img src="bookimage/${book.book_isbn}" height="240px" width="150px" alt="${book.book_name}">&nbsp;</div>
@@ -65,12 +65,89 @@
                         ${book.book_name}<br>
                         <a href="#">
                         ${book.book_price}</a>
+                        ${book.book_star}
                       </div>
            </div>
             </c:forEach>
         </div>
          
         </main>
+        </ul>
+        
+
+
+        <ul>
+    
+
+
             
+            <!-- <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li>
+            <li class="item item">
+                <div class="image">本</div>
+                <div class="cont">
+                    <strong>本名</strong>
+                    <p>価額</p>
+                    <a href="#">購入</a>
+                </div>
+            </li> -->
+
+            
+        <!-- </ul> -->
+    </div>
 </body>
 </html>

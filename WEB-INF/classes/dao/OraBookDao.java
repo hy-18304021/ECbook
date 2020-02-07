@@ -217,7 +217,9 @@ public class OraBookDao implements BookDao{
     public void deleteBook(EbBookBean eb){
 
         try{
-            cn=OracleConnect.getInstance().getConnection();
+            if(cn==null){
+                cn = OracleConnect.getInstance().getConnection();
+            }
 
             //SQL文生成
             String sql= "delete from ebubook where book_isbn=?";
@@ -241,5 +243,41 @@ public class OraBookDao implements BookDao{
                 e.printStackTrace();
             }
         }
+    }
+
+    public List getRecommendedBooks(){
+        ArrayList recommendedBooks =new ArrayList();
+        try{
+            if(cn==null){
+                cn = OracleConnect.getInstance().getConnection();
+            }
+
+            String sql= "SELECT b.book_isbn, b.book_name, b.book_price, sum(r.review_star)/count(0) star FROM ebbook b INNER JOIN ebreview r ON b.book_isbn = r.book_isbn GROUP BY b.book_isbn, b.book_name, b.book_price ORDER BY star DESC FETCH FIRST 5 ROWS ONLY";
+
+            st=cn.prepareStatement(sql);
+            rs=st.executeQuery();
+            while(rs.next()){
+                EbBookBean bookbean = new EbBookBean();
+                bookbean.setBook_isbn(rs.getString("book_isbn"));
+                bookbean.setBook_name(rs.getString("book_name"));
+                bookbean.setBook_price(rs.getInt("book_price"));
+                bookbean.setBook_star(rs.getInt("star"));
+
+                recommendedBooks.add(bookbean);
+            }
+        }catch(SQLException e){
+            //ロールバック処理
+            OracleConnect.getInstance().rollback();
+        }finally{
+            //リソース解放
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return recommendedBooks;
     }
 }

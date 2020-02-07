@@ -69,7 +69,15 @@ public class IsbnDataGetter{
             //ÉåÅ[ÉxÉã
             String label=null;
             try{
-                label=node.get("onix").get("DescriptiveDetail").get("Collection").get("TitleDetail").get("TitleElement").get("TitleText").get("content").asText();
+                
+                Iterator<JsonNode> titles=node.get("onix").get("DescriptiveDetail").get("Collection").get("TitleDetail").get("TitleElement").iterator();
+                while(titles.hasNext()){
+                    JsonNode titleNode=titles.next();
+                    if(titleNode.get("TitleElementLevel").asText().equals("02")){
+                        label=titleNode.get("TitleText").get("content").asText();
+                        System.out.println(label);
+                    }
+                }
             }catch(NullPointerException e){
 
             }finally{

@@ -15,21 +15,21 @@ function changeTotal() {
   var price = 0;
   
   $(".full-price").each(function(index){
+    // alert($(".full-price").eq(index).html());
     price += parseFloat($(".full-price").eq(index).html());
   });
   
   price = Math.round(price * 100) / 100;
-  var tax = Math.round(price * 0.05 * 100) / 100
+  //var tax = Math.round(price * 0.05 * 100) / 100
   // var shipping = parseFloat($(".shipping span").html());
-  var fullPrice = Math.round((price + tax ) *100) / 100;
-  // alert("price="+price+"tax="+tax+"fullPrice="+fullPrice);
+  //var fullPrice = Math.round((price + tax ) *100) / 100;
+  // alert("price="+price);
   if(price == 0) {
     fullPrice = 0;
   }
-  
   $(".subtotal span").html(price);
-  $(".tax span").html(tax);
-  $(".total span").html(fullPrice);
+  //$(".tax span").html(tax);
+  $(".total span").html(price); 
 }
 
 $(document).ready(function(){

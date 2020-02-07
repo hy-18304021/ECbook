@@ -24,7 +24,7 @@
 
     <header>
         <div>
-            <h1 class="logo"><a href="#">ECBook</a></h1>
+            <h1 class="logo"><a href="./">ECBook</a></h1>
             <ul class="gnd">
                 <li><a href="mypage">マイページ</a></li>
                 <li id="loginli"><a href="logincall">ログイン</a></li>

@@ -110,11 +110,9 @@ function getReadyStateHandler(xmlHttpRequest) {
 
 
 //find bookisbn
-function appear(){
+function appear(isbn){
 	appearUpdateForm();
-	var index = findTrTagIndex();
-	isbn = document.getElementsByTagName('th')[index].innerText;
-	document.getElementById("book_isbn").value;
+	document.getElementById("book_isbn").value=isbn;
 	return isbn;
 }
 

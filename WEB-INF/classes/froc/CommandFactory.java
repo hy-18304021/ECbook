@@ -9,7 +9,7 @@ public abstract class CommandFactory{
     public static AbstractCommand getCommand(RequestContext reqc){
         AbstractCommand command=null;
         Properties pro=new Properties();
-        // System.out.println(reqc.getCommandPath());
+        System.out.println("Command:"+reqc.getCommandPath());
         String realPath=reqc.getRealPath("/WEB-INF/classes/property/command.properties");
         try{
             pro.load(new FileInputStream(realPath));

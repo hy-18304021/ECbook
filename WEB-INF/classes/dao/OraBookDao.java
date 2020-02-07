@@ -274,10 +274,67 @@ public class OraBookDao implements BookDao{
                 if(st!=null){
                     st.close();
                 }
+                if(rs!=null){
+                    rs.close();
+                }
             }catch(SQLException e){
                 e.printStackTrace();
             }
         }
         return recommendedBooks;
+    }
+
+    public List searchBook(EbBookBean eb){
+        ArrayList searchedBooks =new ArrayList();
+
+        try{
+            if(cn==null){
+                cn = OracleConnect.getInstance().getConnection();
+            }
+
+            String sql= "SELECT * FROM ebbook where UPPER(book_name) like ?";
+            // System.out.println(sql);
+            st=cn.prepareStatement(sql);
+            st.setString(1,"%"+eb.getBook_name().toUpperCase()+"%");
+
+            rs=st.executeQuery();
+            while(rs.next()){
+                EbBookBean bookbean = new EbBookBean();
+
+                bookbean.setBook_amount(rs.getInt("book_amount"));
+                bookbean.setBook_price(rs.getInt("book_price"));
+                bookbean.setGenre_id(rs.getInt("genre_id"));
+                bookbean.setBook_isbn(rs.getString("book_isbn"));
+                bookbean.setBook_name(rs.getString("book_name"));
+                bookbean.setPublisher(rs.getString("publisher"));
+                bookbean.setSeries(rs.getString("series"));
+                bookbean.setVolume(rs.getInt("volume"));
+                bookbean.setAuthor(rs.getString("author"));
+                bookbean.setRelease_date(rs.getString("release_date"));
+                bookbean.setAudience(rs.getString("audience"));
+                bookbean.setLabel(rs.getString("label"));
+                bookbean.setText_content(rs.getString("text_content"));
+
+
+                searchedBooks.add(bookbean);
+            }
+        }catch(SQLException e){
+            //ロールバック処理
+            OracleConnect.getInstance().rollback();
+        }finally{
+            //リソース解放
+            try{
+                if(st!=null){
+                    st.close();
+                }
+                if(rs!=null){
+                    rs.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return searchedBooks;
+
     }
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>main</title>
+    <title>BookList</title>
     <link rel="stylesheet" type="text/css" href="css/booklist.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -37,7 +37,12 @@
         </div>
     </header>
 
-
+    <div class="searchbook">
+        <form action="searchbook.do" method="post" accept-charset="utf-8">
+            Search:<input type="text" name="book_name">
+            <input type="submit" name="">
+        </form>
+    </div>
     <div class="container">
         <c:forEach var="book" items="${result}">
             <div class="bookContainer" id="book02">
@@ -49,7 +54,7 @@
                 ${book.book_name}
                 
               </div>
-    </c:forEach>
+        </c:forEach>
     </div>
 </body>
 </html>

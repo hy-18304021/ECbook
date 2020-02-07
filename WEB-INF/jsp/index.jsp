@@ -25,134 +25,52 @@
 </head>
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <header>
-        <div>
-            <h1 class="logo"><a href="#">ECBook</a></h1>
-            <ul class="gnd">
-                <li id="mypage"><a href="mypage.do">マイページ</a></li>
-                <li id="loginli"><a href="logincall.do">ログイン</a></li>
-                <li id="logoutli"><a href="logout.do">ログアウト</a></li>
-                <li id="mycart"><a href="mycart.do">カート</a></li>
-            </ul>
+    <div id="app">
+        <header class="page-element"><div>
+           <h1>
+              <img class="big-logo" src="http://ws2019.taipaweb.com/css-final-project/logo.png" alt="Logo">
+              <span class="big-logo-text">EbBook</span>
+           </h1>
+           <div class="book-finder">
+              <ul class="book-type-list">
+                <li id="mypage"><a href="mypage.do">MyPage</a></li>
+                <li id="loginli"><a href="logincall.do">Login</a></li>
+                <li id="logoutli"><a href="logout.do">Logout</a></li>
+                <li id="mycart"><a href="mycart.do">Cart</a></li>
+              </ul>
+              <form class="book-search" action="" method="">
+                 <input type="text" name="search-query">
+                 <input type="submit" value="Search">
+              </form>
+           </div>
+          
         </div>
     </header>
-    <div id="container">
-        <div id="idx_top"></div>
-    </div>
-    <div class="memu_wrap">
-        <ul class="dep1">
-            <li>
-                <a href="#">コミック</a>
-                <ul class="dep2">
-                    <li>
-                        <a href="getbooktable.do">Book List</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">ライトノベル</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="list_wrap">
-        <ul>
-            <c:forEach var="book" items="${result}">
-                <li class="item item">
-                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">
-                        <div class="image">本
-                            <img src="bookimage/${book.book_isbn}" height="230" width="270" alt="${book.book_name}">
-                        </div>
-                    </a>
-                    <div class="cont">
-                        <strong>本名:${book.book_name}</strong>
-                        <p>価額:${book.book_price}</p>
-                        
-                    </div>
-                </li>
+        <main>
+            <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+           <div id="slider" class="page-element">
+            <div>
+              <h2>Welcome to EbBook</h2>
+           </div>
+        </div>
+           <div id="content" class="page-element"><div>
+              <div id="popular-books">
+                 <h3>Popular Books</h3>
+                 <div class="container">
+                    <c:forEach var="book" items="${result}">
+                        <div class="bookContainer" id="book02">
+                            <a href="bookinfo.do?book_isbn=${book.book_isbn}">
+                            <div class="bookImage" id="img02"><img src="bookimage/${book.book_isbn}" height="240px" width="150px" alt="${book.book_name}">&nbsp;</div>
+                         </a>
+                        ${book.book_name}<br>
+                        <a href="#">
+                        ${book.book_price}</a>
+                      </div>
+           </div>
             </c:forEach>
-        </ul>
-        
-
-
-        <ul>
-
-
-
+        </div>
+         
+        </main>
             
-            <!-- <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li>
-            <li class="item item">
-                <div class="image">本</div>
-                <div class="cont">
-                    <strong>本名</strong>
-                    <p>価額</p>
-                    <a href="#">購入</a>
-                </div>
-            </li> -->
-
-            
-        <!-- </ul> -->
-    </div>
 </body>
 </html>

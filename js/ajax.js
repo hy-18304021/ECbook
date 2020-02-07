@@ -37,6 +37,15 @@ function getReadyStateHandler(xmlHttpRequest) {
 		}
 	};
 }
+
+function test(){
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("GET","test.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+	xmlHttpRequest.send();
+}
 // $(document).ready(function(){
 // 	$(".changebutton").click(function(){
 // 	 	var book_isbn = $(".book_isbn").html();

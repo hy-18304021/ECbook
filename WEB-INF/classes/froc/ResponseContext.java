@@ -8,4 +8,5 @@ public interface ResponseContext{
     // public void setTarget(String transferInfo, int i); //image
     public void setResponse(Object obj);
     public Object getResponse();
+    public void write();
 }

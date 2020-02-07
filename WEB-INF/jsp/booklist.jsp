@@ -56,5 +56,11 @@
               </div>
         </c:forEach>
     </div>
+
+
+    <div id='review'>
+        
+    </div>
+    <button type="button" onclick="test()">Test</button>
 </body>
 </html>

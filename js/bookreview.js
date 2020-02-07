@@ -33,7 +33,7 @@ function bookreviewchange(method,book_isbn,user_id,review_text,review_star,revie
 	alert(params);
 	var xmlHttpRequest = getXMLHttpRequest();
 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-	xmlHttpRequest.open("POST","bookreviewchange",true);
+	xmlHttpRequest.open("POST","bookreviewchange.do",true);
 	xmlHttpRequest.setRequestHeader("Content-Type",
 			"application/x-www-form-urlencoded");
 	xmlHttpRequest.send(params);

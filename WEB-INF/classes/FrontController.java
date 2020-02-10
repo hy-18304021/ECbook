@@ -17,7 +17,7 @@ public class FrontController extends HttpServlet{
     }
     public void doPost(HttpServletRequest req,HttpServletResponse res)
 	throws IOException,ServletException{
-        req.setCharacterEncoding("Windows-31j");
+        req.setCharacterEncoding("UTF-8");
 
         ApplicationController ap=new WebApplicationController();
 

@@ -84,7 +84,7 @@
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
-                    内容:<input type="text" id="review_text" required>
+                    内容:<textarea type="text" id="review_text" row='2' col='3' required></textarea>
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
                 </div>

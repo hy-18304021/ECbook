@@ -1,32 +1,24 @@
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+package command;
 
-import javax.servlet.ServletException;
-import javax.servlet.RequestDispatcher;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
-// import java.util.List;
 import dao.*;
 import froc.*;
 import bean.*;
 import com.google.gson.*;
-public class BookReviewChangeServlet extends HttpServlet{
-	public void doPost(HttpServletRequest req,HttpServletResponse res)
-	throws IOException,ServletException{
-		req.setCharacterEncoding("UTF-8");
-		String method = req.getParameter("method");
-		String book_isbn=req.getParameter("book_isbn");
-		String user_id=(String)req.getParameter("user_id");
-		String review_text=(String)req.getParameter("review_text");
-		System.out.println(req.getParameter("review_star"));
-		int review_star= Integer.parseInt(req.getParameter("review_star"));
-		String review_date = req.getParameter("review_date");
+import java.util.ArrayList;
 
+public class BookReviewChangeCommand extends AbstractCommand{
+	public ResponseContext execute(ResponseContext resc){
+		RequestContext reqc = getRequestContext();
 
-		System.out.println(method);
+		// System.out.println("BookReviewChangeCommand");
+
+		String method = reqc.getParameter("method")[0];
+		String book_isbn = reqc.getParameter("book_isbn")[0];
+		String user_id = reqc.getParameter("user_id")[0];
+		String review_text = reqc.getParameter("review_text")[0];
+		int review_star = Integer.parseInt(reqc.getParameter("review_star")[0]);
+		String review_date = reqc.getParameter("review_date")[0];
+
 		review_text = review_text.replace("&", "&amp;");
         review_text = review_text.replace("\"", "&quot;");
         review_text = review_text.replace("<", "&lt;");
@@ -43,8 +35,6 @@ public class BookReviewChangeServlet extends HttpServlet{
 		review.setReview_star(review_star);
 		review.setReview_date(review_date);
 
-		RequestContext reqc = new WebRequestContext();
-		reqc.setRequest(req);
 		AbstractDaoFactory daofac =AbstractDaoFactory.getFactory(reqc);
 		ReviewDao reviewdao = daofac.getReviewDao();
 
@@ -64,7 +54,6 @@ public class BookReviewChangeServlet extends HttpServlet{
 		}
 
 		OracleConnect.getInstance().commit();
-		// OracleConnect.getInstance().closeConnection();
 
 		ArrayList bookreviewlist = (ArrayList)reviewdao.getBookReview(book_isbn);
 
@@ -78,15 +67,9 @@ public class BookReviewChangeServlet extends HttpServlet{
 			result += "<tr><td>"+id+"</td><td>"+text+"<br></td><td>"+star+"</td><td>"+date+"</td><td</td></tr>";
 		}
 		result += "</tbody></table>";
-		// Gson gson = new Gson();
-		// String result = gson.toJson(bookreviewlist);
-		// System.out.println(result);
 
-		res.setContentType("text/html; charset=UTF-8");
-		res.getWriter().write(result);
-	}
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws java.io.IOException,ServletException {
-		doPost(req, res);
+		resc.setResult(result);
+
+		return resc;
 	}
 }

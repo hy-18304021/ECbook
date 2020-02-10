@@ -8,21 +8,31 @@ import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
 import java.util.List;
+import bean.*;
 
-public class GetBookTableCommand extends AbstractCommand{
+public class SearchBookCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
-		// System.out.println("TakeBookTableCommand");
+		// reqc.setCharacterEncoding("UTF-8");
+		String book_name = reqc.getParameter("book_name")[0];
+		// System.out.println(book_name);
+
+		// System.out.println("SearchBookCommand");
+
+		EbBookBean bookbean = new EbBookBean();
+		bookbean.setBook_name(book_name);
+
 		OracleConnect.getInstance().beginTransaction();
-		// AbstractDaoFactory dao = (OraBookDao)AbstractDaoFactory.getFactory("bookdao");
 		AbstractDaoFactory daofac = AbstractDaoFactory.getFactory(reqc);
 		BookDao bookdao = daofac.getBookDao();
-		List booklist = bookdao.getAllBook();
+		List searchedBooks = bookdao.searchBook(bookbean);
+
 
 		OracleConnect.getInstance().commit();
 		OracleConnect.getInstance().closeConnection();
-		
-		resc.setResult(booklist);
+
+
+		resc.setResult(searchedBooks);
 		resc.setTarget("booklist");
 
 		return resc;

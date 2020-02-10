@@ -50,6 +50,7 @@
         .product-grid .product-image{
             overflow: hidden;
             position: relative;
+            height: 300px;
         }
 
         .product-grid .product-image a{
@@ -198,7 +199,7 @@
                                                 <a href="">
                                                     <img src="bookimage/${book.book_isbn}" width="142" height="203" class="pic-1" alt="${book.book_name}">
                                                 </a>
-                                                <span class="product-discount-label"> ジャンル</span>
+                                                <span class="product-discount-label"> ${book.genre_id}</span>
                                             </div>
                                             <div class="product-content">
                                                 <h3 class="title">

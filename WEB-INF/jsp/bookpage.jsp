@@ -54,9 +54,6 @@
             <p>
               <b>${result.text_content}</b><br/>
             </p>
-            <p class="product-body">
-                内容
-            </p>
             
             <p class="product-price">
               <b>Price:</b> 

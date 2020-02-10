@@ -20,14 +20,16 @@ public class BookReviewChangeCommand extends AbstractCommand{
 		String review_date = reqc.getParameter("review_date")[0];
 
 		review_text = review_text.replace("&", "&amp;");
-        review_text = review_text.replace("\"", "&quot;");
+	    review_text = review_text.replace("\"", "&quot;");
         review_text = review_text.replace("<", "&lt;");
-        review_text = review_text.replace(">", "&gt;");
-        review_text = review_text.replace("'", "&#39;");
+	    review_text = review_text.replace(">", "&gt;");
+	    review_text = review_text.replace("'", "&#39;");
+	    if (review_text != null) {
+	            review_text = review_text.replaceAll("\r\n", "<br>");
+	        }
 
-        if (review_text != null) {
-            review_text = review_text.replaceAll("\r\n", "<br>");
-        }
+		System.out.println("method:"+method+"\nbook_isbn"+book_isbn+"\nuser_id"+user_id+"\nreview_text:"+review_text);
+
         EbReviewBean review = new EbReviewBean();
 		review.setBook_isbn(book_isbn);
 		review.setUser_id(user_id);

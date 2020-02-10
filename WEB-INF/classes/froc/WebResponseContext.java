@@ -37,7 +37,7 @@ public class WebResponseContext implements ResponseContext{
     } 
     public void write(){
         try{
-            _response.setContentType("text/html");
+            _response.setContentType("text/html; charset=UTF-8");
             _response.getWriter().write(result.toString());
             // System.out.println("WebResponseContext: written");
         }catch(IOException e){

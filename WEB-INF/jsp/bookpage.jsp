@@ -94,7 +94,7 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Text</th>
+                                        <th width="3000">Text</th>
                                         <th>Star</th>
                                         <th>Date</th>
                                         <th></th>

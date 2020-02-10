@@ -198,7 +198,7 @@
                                                 <a href="">
                                                     <img src="bookimage/${book.book_isbn}" width="142" height="203" class="pic-1" alt="${book.book_name}">
                                                 </a>
-                                                <span class="product-discount-label"> ジャンル</span>
+                                                <span class="product-discount-label">${book.genre_name}</span>
                                             </div>
                                             <div class="product-content">
                                                 <h3 class="title">
@@ -208,7 +208,7 @@
                                             </div>
                                             <ul class="social">
                                                 <li>
-                                                    <a href="" data-trip="quick view">
+                                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}" data-trip="quick view">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 </li>

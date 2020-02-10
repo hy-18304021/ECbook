@@ -57,7 +57,6 @@
             <p class="product-body">
                 内容
             </p>
-            
             <p class="product-price">
               <b>Price:</b> 
               <span class="price">${result.book_price}</span>
@@ -101,7 +100,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:set var="star" value="${0}" />
+                                    <c:set var="reviewcount" value="${0}" />
                                     <c:forEach var="review" items="${bookreviewlist}">
+                                    <c:set var="star" value="${star+review.review_star}" />
+                                    <c:set var="reviewcount" value="${reviewcount+1}" />
                                     <tr>
                                         <td class='review-user-id'>${review.user_id}</td>
                                         <td class='review-text'>${review.review_text}</td>

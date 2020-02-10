@@ -252,7 +252,7 @@ public class OraBookDao implements BookDao{
                 cn = OracleConnect.getInstance().getConnection();
             }
 
-            String sql= "SELECT b.book_isbn, b.book_name, b.book_price, sum(r.review_star)/count(0) star FROM ebbook b INNER JOIN ebreview r ON b.book_isbn = r.book_isbn GROUP BY b.book_isbn, b.book_name, b.book_price ORDER BY star DESC FETCH FIRST 5 ROWS ONLY";
+            String sql= "SELECT b.book_isbn, b.book_name, b.book_price,(SELECT sum(r.review_star)/count(0)FROM ebreview r WHERE r.book_isbn=b.book_isbn GROUP BY b.book_isbn) star,(SELECT g.genre_name FROM ebgenre g WHERE g.genre_id=b.genre_id ) genre_name FROM ebbook b ORDER BY star DESC NULLS LAST FETCH FIRST 5 ROWS ONLY";
 
             st=cn.prepareStatement(sql);
             rs=st.executeQuery();
@@ -262,7 +262,7 @@ public class OraBookDao implements BookDao{
                 bookbean.setBook_name(rs.getString("book_name"));
                 bookbean.setBook_price(rs.getInt("book_price"));
                 bookbean.setBook_star(rs.getInt("star"));
-
+                bookbean.setGenre_name(rs.getString("genre_name"));
                 recommendedBooks.add(bookbean);
             }
         }catch(SQLException e){

@@ -68,8 +68,8 @@
                     <input type="hidden" name="user_id" value="${sessionScope.user.id}">
                     <input type="hidden" name="book_isbn" value="${result.book_isbn}">
                     <input type="hidden" name="cart_amount" value="1">
-              <button>Add to cart</button>
-            </form>
+                    <button>Add to cart</button>
+                </form>
             </div>
           </div>
           

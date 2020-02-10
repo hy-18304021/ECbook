@@ -155,7 +155,8 @@
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <div id="app">
-        <header class="page-element"><div>
+        <header class="page-element">
+            <div>
            <h1>
               <img class="big-logo" src="http://ws2019.taipaweb.com/css-final-project/logo.png" alt="Logo">
               <span class="big-logo-text">EbBook</span>
@@ -177,68 +178,68 @@
     </header>
         <main>
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-           <div id="slider" class="page-element">
-            <div>
-              <h2>Welcome to EbBook</h2>
-           </div>
-        </div>
-           <div id="content" class="page-element"><div>
-              <div id="popular-books">
-                 <h3>Popular Books</h3>
+            <div id="slider" class="page-element">
+                <div>
+                  <h2>Welcome to EbBook</h2>
+               </div>
+            </div>
+            <div id="content" class="page-element">
+                <div>
+                    <div id="popular-books">
+                        <h3>Popular Books</h3>
 
-                 <div class="container">
-                     <div class="row">
-                         <div class="col-md-3">
-                            <c:forEach var="book" items="${recommendedBooks}">
-                             <div class="product-grid">
-                                 <div class="product-image">
-                                     <a href="">
-                                         <img src="bookimage/${book.book_isbn}" class="pic-1" alt="${book.book_name}">
-                                     </a>
-                                     <span class="product-discount-label">
-                                         ジャンル
-                                     </span>
-                                 </div>
-                                 <div class="product-content">
-                                     <h3 class="title">
-                                         <a href="">${book.book_name}</a>
-                                     </h3>
-                                     <div class="price">${book.book_price}￥</div>
-                                     
-                                 </div>
-                                 <ul class="social">
-                                    <li>
-                                        <a href="" data-trip="quick view">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       <a href="" data-trip="wishlist">
-                                           <i class="fa fa-heart"></i>
-                                       </a>
-                                   </li>
-                                    <li>
-                                    <form action="addtocart.do" method="post" accept-charset="utf-8">
-                                       <a href="mycart.do" data-trip="add to cart">
-                                           <i class="fa fa-shopping-cart">
-                                                <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-                                                <input type="hidden" name="book_isbn" value="${result.book_isbn}">
-                                                <input type="hidden" name="cart_amount" value="1">
-                                           </i>
-                                       </a>
-                                    </form>
-                                   </li>
-                                   
-                                </ul>
-                             </div>
+                        <div class="container">
+                            <div class="row">
+                                <c:forEach var="book" items="${recommendedBooks}">
+                                    <div class="col-md-3">
+                                    
+                                        <div class="product-grid">
+                                            <div class="product-image">
+                                                <a href="">
+                                                    <img src="bookimage/${book.book_isbn}" width="142" height="203" class="pic-1" alt="${book.book_name}">
+                                                </a>
+                                                <span class="product-discount-label"> ジャンル</span>
+                                            </div>
+                                            <div class="product-content">
+                                                <h3 class="title">
+                                                    <a href="">${book.book_name}</a>
+                                                </h3>
+                                                <div class="price">${book.book_price}￥</div>
+                                            </div>
+                                            <ul class="social">
+                                                <li>
+                                                    <a href="" data-trip="quick view">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                   <a href="" data-trip="wishlist">
+                                                       <i class="fa fa-heart"></i>
+                                                   </a>
+                                               </li>
+                                                <li>
+                                                <form action="addtocart.do" method="post" accept-charset="utf-8">
+                                                   <a href="mycart.do" data-trip="add to cart">
+                                                       <i class="fa fa-shopping-cart">
+                                                            <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+                                                            <input type="hidden" name="book_isbn" value="${result.book_isbn}">
+                                                            <input type="hidden" name="cart_amount" value="1">
+                                                       </i>
+                                                   </a>
+                                                </form>
+                                               </li>
+                                       
+                                            </ul>
+                                        </div>
+                                    
+                                </div>
                             </c:forEach>
-                         </div>
-                         
+                            </div>
+                        </div>
                      </div>
                  </div>
+             </div>
         </main>
-        </ul>
-        
     </div>
 </body>
 </html>

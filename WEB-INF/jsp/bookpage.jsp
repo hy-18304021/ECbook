@@ -72,9 +72,6 @@
           </div>
           
         </div>
-        
-
-
         <br clear="all"/>
         <div class="product-container">
           
@@ -86,6 +83,7 @@
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
                 </div>
+<<<<<<< HEAD
                     <!-- <div id="review">
                         <h1>REVIEW</h1>
                             <table border='1'>
@@ -157,6 +155,40 @@
       </div>
       
       </div>
+=======
+                <div class="a-section" style="width:940px;">
+                  <h2 class="a-spacing-small customer-reviews-header">
+                      ${result.book_name}
+                    </h2>
+                  <c:forEach var="review" items="${bookreviewlist}">
+                    
+                      <hr>
+                    <h4>
+                        ${review.user_id}
+                    </h4>
+                      <hr>
+                    <div class="a-section">
+                      <div class="a-row a-spacing-micro">
+                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base" href=""><i class="a-icon a-icon-star a-star-${review.review_star}"></i></i></a>
+                          <span class="a-letter-space"></span>
+                          <a class="a-link-normal a-text-normal a-color-base" href="">
+                          </a>
+                        </div>
+                        <span class="a-color-secondary">
+                          ${review.review_date}
+                        </span>
+                      </div>
+                      <div class="a-row a-spacing-small">
+                        <span class="a-size-mini a-color-state a-text-bold">
+                          Title
+                        </span>
+                        <div class="a-section">
+                          ${review.review_text}
+                        </div>
+                      </div>
+                    </div>
+                    </c:forEach>
+>>>>>>> e24b753f1106018da6f505eabb3e72bd03253966
                 </div>
               </p>
           </div>

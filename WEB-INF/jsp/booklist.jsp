@@ -39,7 +39,7 @@
 
     <div class="searchbook">
         
-        <form action="searchbook.do" method="post" accept-charset="utf-8">
+        <form action="searchbook.do" method="post" accept-charset="utf-8" id="search-book-form">
             <h6>Search</h6>
             ジャンル:<select id="magazine_area" class="active" name="genre_id" onchange="">
                     <option value="0"></option>

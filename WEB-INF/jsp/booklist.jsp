@@ -193,10 +193,11 @@
                                     <span class="product-discount-label">${book.genre_name}</span>
                                 </div>
                                 <div class="product-content">
+                                    <div class="price">${book.book_price}￥</div>
                                     <h3 class="title">
                                         <a href="">${book.book_name}</a>
                                     </h3>
-                                    <div class="price">${book.book_price}￥</div>
+                                    
                                 </div>
                                 <ul class="social">
                                     <li>
@@ -229,6 +230,8 @@
             </div>
         </main>
     </div>
+<<<<<<< HEAD
+=======
 <!--     <div class="searchbook">
         
         <form action="searchbook.do" method="post" accept-charset="utf-8" id="search-book-form">
@@ -261,5 +264,6 @@
         </c:forEach>
     </div> -->
 
+>>>>>>> e24b753f1106018da6f505eabb3e72bd03253966
 </body>
 </html>

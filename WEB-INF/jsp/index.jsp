@@ -199,11 +199,8 @@
                                                 <a href="">
                                                     <img src="bookimage/${book.book_isbn}" width="142" height="203" class="pic-1" alt="${book.book_name}">
                                                 </a>
-<<<<<<< HEAD
                                                 <span class="product-discount-label"> ${book.genre_id}</span>
-=======
                                                 <span class="product-discount-label">${book.genre_name}</span>
->>>>>>> 11e85b7c2ad4fc9093d0bf3be5e3a1a68323e7ac
                                             </div>
                                             <div class="product-content">
                                                 <h3 class="title">

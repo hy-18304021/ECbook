@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/booklist.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/booklist.js"></script>
 	<script>
         $(document).ready(function(){
             var flag=document.getElementById("flag").innerText;
@@ -38,12 +38,24 @@
     </header>
 
     <div class="searchbook">
+        
         <form action="searchbook.do" method="post" accept-charset="utf-8">
-            Search:<input type="text" name="book_name">
+            <h6>Search</h6>
+            ジャンル:<select id="magazine_area" class="active" name="genre_id" onchange="">
+                    <option value="0"></option>
+                    <option value="1">少年</option>
+                    <option value="2">青年</option>
+                    <option value="3">少女</option>
+                    <option value="4">4コママンガ</option>
+                    <option value="5">BL</option>
+                    <option value="6">アダルト</option>
+                    <option value="7">ライトノベル</option>
+                </select>
+            Name:<input type="text" name="book_name">
             <input type="submit" name="">
         </form>
     </div>
-    <div class="container">
+    <div class="container" id='result'>
         <c:forEach var="book" items="${result}">
             <div class="bookContainer" id="book02">
                 <a href="bookinfo.do?book_isbn=${book.book_isbn}">
@@ -58,9 +70,6 @@
     </div>
 
 
-    <div id='review'>
-        
-    </div>
-    <button type="button" onclick="test()">Test</button>
+    
 </body>
 </html>

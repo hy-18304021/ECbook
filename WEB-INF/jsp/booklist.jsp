@@ -174,18 +174,17 @@
                  <input type="submit" value="Search">
               </form>
            </div>
-          
+
         </div>
     </header>
-<<<<<<< HEAD
         <main>
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-            
+
             <div class="container">
                 <div class="row">
                     <c:forEach var="book" items="${result}">
                         <div class="col-md-3">
-                        
+
                             <div class="product-grid">
                                 <div class="product-image">
                                     <a href="">
@@ -221,18 +220,16 @@
                                        </a>
                                     </form>
                                    </li>
-                           
+
                                 </ul>
-                            </div>                             
+                            </div>
                     </div>
                 </c:forEach>
                 </div>
             </div>
         </main>
     </div>
-=======
-
-    <div class="searchbook">
+<!--     <div class="searchbook">
         
         <form action="searchbook.do" method="post" accept-charset="utf-8" id="search-book-form">
             <h6>Search</h6>
@@ -249,8 +246,8 @@
             Name:<input type="text" name="book_name">
             <input type="submit" name="">
         </form>
-    </div>
-    <div class="container" id='result'>
+    </div> -->
+<!--     <div class="container" id='result'>
         <c:forEach var="book" items="${result}">
             <div class="bookContainer" id="book02">
                 <a href="bookinfo.do?book_isbn=${book.book_isbn}">
@@ -259,13 +256,10 @@
                  <a href="#">${book.book_price}￥</a>
                  <br>
                 ${book.book_name}
-                
+
               </div>
         </c:forEach>
-    </div>
+    </div> -->
 
-
-    
->>>>>>> 880c058e70e9b3c67e108b4cec903864cc1f90c6
 </body>
 </html>

@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
      <link rel="stylesheet" type="text/css" href="css/bookpage.css">
+     <link rel="stylesheet" type="text/css" href="css/text.css">
      <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -54,13 +55,7 @@
             <p>
               <b>${result.text_content}</b><br/>
             </p>
-<<<<<<< HEAD
             
-=======
-            <p class="product-body">
-                内容
-            </p>
->>>>>>> 11e85b7c2ad4fc9093d0bf3be5e3a1a68323e7ac
             <p class="product-price">
               <b>Price:</b> 
               <span class="price">${result.book_price}</span>
@@ -91,7 +86,11 @@
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
                 </div>
+<<<<<<< HEAD
+                    <!-- <div id="review">
+=======
                     <div id="result">
+>>>>>>> 880c058e70e9b3c67e108b4cec903864cc1f90c6
                         <h1>REVIEW</h1>
                             <table border='1'>
                                 <thead>
@@ -114,15 +113,54 @@
                                         <td class='review-text'>${review.review_text}</td>
                                         <td class='review-star'>${review.review_star}</td>
                                         <td class='review-date'>${review.review_date}</td>
-                                        <!-- <td >
-                                            <button type="button" class='changebutton'></button>
-                                        </td> -->
                                         <td class='changebutton'><button id="review-delete-button" type="button" onclick="bookreviewchange('deletereview','${result.book_isbn}','${sessionScope.user.id}','${review.review_text}','${review.review_star}','${review.review_date}')">delete</button></td>
                                     </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
-                    </div>
+                    </div> -->
+                    <div class="a-section" style="width:940px;">
+      <br>
+                        <c:forEach var="review" items="${bookreviewlist}">
+      <h2 class="a-spacing-small customer-reviews-header">
+      <!-- bookname -->
+      </h2>
+      
+      
+      
+      
+      
+      <hr>
+      <h4> 
+        <!--username  -->
+    </h4>
+      <hr>
+      
+      <div class="a-section">
+      <div class="a-row a-spacing-micro">
+      <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base" href=""><i class="a-icon a-icon-star a-star-5"></i></a>
+      <span class="a-letter-space"></span>
+      <a class="a-link-normal a-text-normal a-color-base" href="">
+      </a>
+      </div>
+      <span class="a-color-secondary">
+          <!-- date -->
+      </span>
+      
+      </div>
+      
+      <div class="a-row a-spacing-small">
+      <span class="a-size-mini a-color-state a-text-bold">
+          <!-- title -->
+      </span>
+      
+          <div class="a-section">
+      
+         <!--content  -->
+          </div>
+      </div>
+      
+      </div>
                 </div>
               </p>
           </div>

@@ -43,7 +43,7 @@ public class BookReviewChangeCommand extends AbstractCommand{
 		OracleConnect.getInstance().beginTransaction();
 
 		if(method.contains("add")){
-			System.out.println("add");
+			// System.out.println("add");
 			reviewdao.addReview(review);
 		}
 		if(method.contains("update")){

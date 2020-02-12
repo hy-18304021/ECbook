@@ -197,7 +197,6 @@
                                     <h3 class="title">
                                         <a href="">${book.book_name}</a>
                                     </h3>
-                                    
                                 </div>
                                 <ul class="social">
                                     <li>
@@ -230,40 +229,5 @@
             </div>
         </main>
     </div>
-<<<<<<< HEAD
-=======
-<!--     <div class="searchbook">
-        
-        <form action="searchbook.do" method="post" accept-charset="utf-8" id="search-book-form">
-            <h6>Search</h6>
-            ジャンル:<select id="magazine_area" class="active" name="genre_id" onchange="">
-                    <option value="0"></option>
-                    <option value="1">少年</option>
-                    <option value="2">青年</option>
-                    <option value="3">少女</option>
-                    <option value="4">4コママンガ</option>
-                    <option value="5">BL</option>
-                    <option value="6">アダルト</option>
-                    <option value="7">ライトノベル</option>
-                </select>
-            Name:<input type="text" name="book_name">
-            <input type="submit" name="">
-        </form>
-    </div> -->
-<!--     <div class="container" id='result'>
-        <c:forEach var="book" items="${result}">
-            <div class="bookContainer" id="book02">
-                <a href="bookinfo.do?book_isbn=${book.book_isbn}">
-                    <div class="bookImage" id="img02"><img src="bookimage/${book.book_isbn}" height="240px" width="150px" alt="${book.book_name}">&nbsp;</div>
-                 </a>
-                 <a href="#">${book.book_price}￥</a>
-                 <br>
-                ${book.book_name}
-
-              </div>
-        </c:forEach>
-    </div> -->
-
->>>>>>> e24b753f1106018da6f505eabb3e72bd03253966
 </body>
 </html>

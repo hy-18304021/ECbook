@@ -177,7 +177,6 @@
           
         </div>
     </header>
-<<<<<<< HEAD
         <main>
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             
@@ -194,10 +193,11 @@
                                     <span class="product-discount-label">${book.genre_name}</span>
                                 </div>
                                 <div class="product-content">
+                                    <div class="price">${book.book_price}￥</div>
                                     <h3 class="title">
                                         <a href="">${book.book_name}</a>
                                     </h3>
-                                    <div class="price">${book.book_price}￥</div>
+                                    
                                 </div>
                                 <ul class="social">
                                     <li>
@@ -230,42 +230,5 @@
             </div>
         </main>
     </div>
-=======
-
-    <div class="searchbook">
-        
-        <form action="searchbook.do" method="post" accept-charset="utf-8">
-            <h6>Search</h6>
-            ジャンル:<select id="magazine_area" class="active" name="genre_id" onchange="">
-                    <option value="0"></option>
-                    <option value="1">少年</option>
-                    <option value="2">青年</option>
-                    <option value="3">少女</option>
-                    <option value="4">4コママンガ</option>
-                    <option value="5">BL</option>
-                    <option value="6">アダルト</option>
-                    <option value="7">ライトノベル</option>
-                </select>
-            Name:<input type="text" name="book_name">
-            <input type="submit" name="">
-        </form>
-    </div>
-    <div class="container" id='result'>
-        <c:forEach var="book" items="${result}">
-            <div class="bookContainer" id="book02">
-                <a href="bookinfo.do?book_isbn=${book.book_isbn}">
-                    <div class="bookImage" id="img02"><img src="bookimage/${book.book_isbn}" height="240px" width="150px" alt="${book.book_name}">&nbsp;</div>
-                 </a>
-                 <a href="#">${book.book_price}￥</a>
-                 <br>
-                ${book.book_name}
-                
-              </div>
-        </c:forEach>
-    </div>
-
-
-    
->>>>>>> 880c058e70e9b3c67e108b4cec903864cc1f90c6
 </body>
 </html>

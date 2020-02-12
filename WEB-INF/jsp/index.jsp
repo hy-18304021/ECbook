@@ -15,6 +15,7 @@
         $(document).ready(function(){
             var flag=document.getElementById("flag").innerText;
             if(flag=="OK"){
+                document.getElementById("booklistli").style.display='none';
                 document.getElementById("loginli").style.display='none';
             }else{
                 document.getElementById("logoutli").style.display='none';
@@ -164,6 +165,7 @@
            </h1>
            <div class="book-finder">
               <ul class="book-type-list">
+                <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>

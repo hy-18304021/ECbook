@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
 <header>
   <div>
-      <h1 class="logo"><a href="#">ECBook</a></h1>
+      <h1 class="logo"><a href="./">ECBook</a></h1>
       <ul class="gnd">
           <li id="mypage"><a href="mypage.do">マイページ</a></li>
           <li id="loginli"><a href="logincall.do">ログイン</a></li>
@@ -102,14 +102,14 @@ pageEncoding="UTF-8"%>
   <div class="container clearfix">
     <div class="right">
       <h1 class="total">Total: <span>${totalPrice}</span>円</h1>
-      <form action="updateusercart.do" method="post" accept-charset="utf-8">
+      <form action="mycart.do" method="post" accept-charset="utf-8">
         <input type="hidden" name="user_id" value="${sessionScope.user.id}">
         <c:forEach var="cart" items="${sessionScope.mycart}">
           <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
-          <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
+          <input type="hidden" id="totalamount" name="cart_amount" value="${cart.cart_amount}">
         </c:forEach>
-        <input type="hidden" name="totalprice" value="${totalPrice}">
-        <a class="btn">Checkout</a>
+        <input type="hidden" id="totalprice" name="totalprice" value="${totalPrice}">
+        <input type="submit" value="Checkout" class="btn"></input>
       </form>
     </div>
 

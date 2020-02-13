@@ -10,4 +10,6 @@ public interface BookDao{
     public List getAllBook();
     public void upDateBook(EbBookBean eb);
     public void deleteBook(EbBookBean eb);
+    public List getRecommendedBooks();
+    public List searchBook(EbBookBean eb);
 }

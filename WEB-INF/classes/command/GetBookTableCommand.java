@@ -1,4 +1,3 @@
-//Index.jsp page command.
 
 package command;
 

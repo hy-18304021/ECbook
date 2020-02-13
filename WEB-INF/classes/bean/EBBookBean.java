@@ -16,6 +16,10 @@ public class EbBookBean implements Serializable{
     private String label;//ÉåÅ[ÉxÉã
     private String text_content;//ì‡óeê‡ñæ
 
+    //for recommended book
+    private int book_star;
+    private String genre_name;
+
     public EbBookBean(){}
 
     public void setBook_amount(int amount){
@@ -70,6 +74,13 @@ public class EbBookBean implements Serializable{
         this.text_content=content;
     }
 
+    public void setBook_star(int book_star){
+        this.book_star = book_star;
+    }
+    public void setGenre_name(String genre_name){
+        this.genre_name=genre_name;
+    }
+
     public int getBook_amount(){
         return book_amount;
     }
@@ -122,4 +133,10 @@ public class EbBookBean implements Serializable{
         return text_content;
     }
 
+    public int getBook_star(){
+        return book_star;
+    }
+    public String getGenre_name(){
+        return genre_name;
+    }
 }

@@ -1,7 +1,7 @@
 <web-app>
 
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
+		<welcome-file>indexcall.do</welcome-file>
 	</welcome-file-list>
 
     <servlet>
@@ -23,15 +23,7 @@
         <url-pattern>/bookimage/*</url-pattern>
     </servlet-mapping>
 
-    <!-- Book Review Change -->
-    <servlet>
-        <servlet-name>bookreviewchange</servlet-name>
-        <servlet-class>BookReviewChangeServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>bookreviewchange</servlet-name>
-        <url-pattern>/bookreviewchange</url-pattern>
-    </servlet-mapping>
+
      <!--(manager login) checkfilter -->
     <filter>
         <filter-name>logincheckmanager</filter-name>
@@ -83,6 +75,19 @@
     <filter-mapping>
         <filter-name>bookreviewfilter</filter-name>
         <url-pattern>/bookinfo.do</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <!-- Main Page Filter -->
+    <filter>
+        <filter-name>mainpagefilter</filter-name>
+        <filter-class>filter.MainPageFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>mainpagefilter</filter-name>
+        <url-pattern>/indexcall.do</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

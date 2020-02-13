@@ -6,7 +6,7 @@ function changeVal(el) {
   var eq = Math.round(price * qt * 100) / 100;
   // alert(el.parent().children(".price").html());
   el.parent().children(".full-price").html( eq + "円" );
-  
+  $("#totalamount").val(qt);
   changeTotal();
 }
 
@@ -29,7 +29,8 @@ function changeTotal() {
   }
   $(".subtotal span").html(price);
   //$(".tax span").html(tax);
-  $(".total span").html(price); 
+  $(".total span").html(price);
+  $("#totalprice").val(price);
 }
 
 $(document).ready(function(){

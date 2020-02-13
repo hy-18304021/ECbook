@@ -1,3 +1,4 @@
+
 function getXMLHttpRequest() {
 	var xmlHttpReq = false;
 	// to create XMLHttpRequest object in non-Microsoft browsers
@@ -30,12 +31,21 @@ function getReadyStateHandler(xmlHttpRequest) {
 	return function() {
 		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200) {
-				document.getElementById("review").innerHTML = this.responseText;
+				result = this.responseText;
 			} else {
 				alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 			}
 		}
 	};
+}
+
+function test(){
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("GET","test.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+	xmlHttpRequest.send();
 }
 // $(document).ready(function(){
 // 	$(".changebutton").click(function(){
@@ -109,24 +119,22 @@ function getReadyStateHandler(xmlHttpRequest) {
 // }
 
 
-// //find bookisbn
-// function appear(){
-// 	appearUpdateForm();
-// 	var index = findTrTagIndex();
-// 	isbn = document.getElementsByTagName('th')[index].innerText;
-// 	alert(isbn);
-// 	return isbn;
-// }
+//find bookisbn
+function appear(isbn){
+	appearUpdateForm();
+	document.getElementById("book_isbn").value=isbn;
+	return isbn;
+}
 
-// //make updated form appear
-// function appearUpdateForm(){
-// 	document.getElementById("update").style.display='block';
-// }
+//make updated form appear
+function appearUpdateForm(){
+	document.getElementById("update").style.display='block';
+}
 
-// //make updated form disappear
-// function disappear(){
-// 	document.getElementById("update").style.display='none';
-// }
+//make updated form disappear
+function disappear(){
+	document.getElementById("update").style.display='none';
+}
 
 // // update book
 // function updateBookData(){

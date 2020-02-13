@@ -15,7 +15,7 @@
         $(document).ready(function(){
             var flag=document.getElementById("flag").innerText;
             if(flag=="OK"){
-                document.getElementById("booklistli").style.display='none';
+                
                 document.getElementById("loginli").style.display='none';
             }else{
                 document.getElementById("logoutli").style.display='none';
@@ -171,10 +171,10 @@
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
                 <li id="mycart"><a href="mycart.do">Cart</a></li>
               </ul>
-              <form class="book-search" action="" method="">
-                 <input type="text" name="search-query">
-                 <input type="submit" value="Search">
-              </form>
+              <form class="book-search" action="searchbook.do" method="post">
+                <input type="text" name="book_name">
+                <input type="submit" value="Search">
+             </form>
            </div>
           
         </div>
@@ -201,10 +201,6 @@
                                                 <a href="">
                                                     <img src="bookimage/${book.book_isbn}" width="142" height="203" class="pic-1" alt="${book.book_name}">
                                                 </a>
-<<<<<<< HEAD
-=======
-                                                <span class="product-discount-label"> ${book.genre_id}</span>
->>>>>>> 880c058e70e9b3c67e108b4cec903864cc1f90c6
                                                 <span class="product-discount-label">${book.genre_name}</span>
                                             </div>
                                             <div class="product-content">

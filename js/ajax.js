@@ -1,3 +1,4 @@
+
 function getXMLHttpRequest() {
 	var xmlHttpReq = false;
 	// to create XMLHttpRequest object in non-Microsoft browsers
@@ -30,12 +31,21 @@ function getReadyStateHandler(xmlHttpRequest) {
 	return function() {
 		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200) {
-				document.getElementById("review").innerHTML = this.responseText;
+				result = this.responseText;
 			} else {
 				alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 			}
 		}
 	};
+}
+
+function test(){
+	var xmlHttpRequest = getXMLHttpRequest();
+	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
+	xmlHttpRequest.open("GET","test.do",true);
+	xmlHttpRequest.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+	xmlHttpRequest.send();
 }
 // $(document).ready(function(){
 // 	$(".changebutton").click(function(){

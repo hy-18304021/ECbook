@@ -18,6 +18,7 @@ public class EbBookBean implements Serializable{
 
     //for recommended book
     private int book_star;
+    private String genre_name;
 
     public EbBookBean(){}
 
@@ -76,6 +77,9 @@ public class EbBookBean implements Serializable{
     public void setBook_star(int book_star){
         this.book_star = book_star;
     }
+    public void setGenre_name(String genre_name){
+        this.genre_name=genre_name;
+    }
 
     public int getBook_amount(){
         return book_amount;
@@ -131,5 +135,8 @@ public class EbBookBean implements Serializable{
 
     public int getBook_star(){
         return book_star;
+    }
+    public String getGenre_name(){
+        return genre_name;
     }
 }

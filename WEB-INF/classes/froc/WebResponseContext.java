@@ -1,6 +1,7 @@
 package froc;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class WebResponseContext implements ResponseContext{
     private Object result;
@@ -34,4 +35,14 @@ public class WebResponseContext implements ResponseContext{
     public Object getResponse(){
         return _response;
     } 
+    public void write(){
+        try{
+            _response.setContentType("application/json");
+            _response.setCharacterEncoding("UTF-8");
+            _response.getWriter().write(result.toString());
+            // System.out.println("WebResponseContext: written");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }

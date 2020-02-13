@@ -6,7 +6,7 @@
    <head>
    	<meta charset="UTF-8">
    	<title>My page</title>
-    <link rel="stylesheet" type="text/css" href="css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -36,6 +36,7 @@
             </ul>
         </div>
     </header>
+
     <div class="memu_wrap">
         <ul class="dep1">
             <li>

@@ -40,14 +40,20 @@ public class WebApplicationController implements ApplicationController{
 
         req.setAttribute("result",resc.getResult());
         // System.out.println("WebApplicationController: handleResponse");
+        // System.out.println("Target"+resc.getTarget()+"\tResult"+resc.getResult());
 
-        RequestDispatcher reqd=req.getRequestDispatcher(resc.getTarget());
-        try{
-            reqd.forward(req,res);
-        }catch(ServletException e){
-            e.printStackTrace();
-        }catch(IOException  e){
-            e.printStackTrace();
+        if(resc.getTarget()!=null){
+            RequestDispatcher reqd=req.getRequestDispatcher(resc.getTarget());
+            try{
+                reqd.forward(req,res);
+            }catch(ServletException e){
+                e.printStackTrace();
+            }catch(IOException  e){
+                e.printStackTrace();
+            }
+        }else{
+            resc.write();
         }
+        
     }
 }

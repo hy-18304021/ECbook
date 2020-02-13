@@ -23,15 +23,7 @@
         <url-pattern>/bookimage/*</url-pattern>
     </servlet-mapping>
 
-    <!-- Book Review Change -->
-    <servlet>
-        <servlet-name>bookreviewchange</servlet-name>
-        <servlet-class>BookReviewChangeServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>bookreviewchange</servlet-name>
-        <url-pattern>/bookreviewchange</url-pattern>
-    </servlet-mapping>
+
      <!--(manager login) checkfilter -->
     <filter>
         <filter-name>logincheckmanager</filter-name>

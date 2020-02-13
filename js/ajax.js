@@ -1,3 +1,4 @@
+
 function getXMLHttpRequest() {
 	var xmlHttpReq = false;
 	// to create XMLHttpRequest object in non-Microsoft browsers
@@ -30,7 +31,7 @@ function getReadyStateHandler(xmlHttpRequest) {
 	return function() {
 		if (xmlHttpRequest.readyState == 4) {
 			if (xmlHttpRequest.status == 200) {
-				document.getElementById("result").innerHTML = this.responseText;
+				result = this.responseText;
 			} else {
 				alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 			}

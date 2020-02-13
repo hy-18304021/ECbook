@@ -19,16 +19,16 @@ public class BookReviewChangeCommand extends AbstractCommand{
 		int review_star = Integer.parseInt(reqc.getParameter("review_star")[0]);
 		String review_date = reqc.getParameter("review_date")[0];
 
-		review_text = review_text.replace("&", "&amp;");
-	    review_text = review_text.replace("\"", "&quot;");
-        review_text = review_text.replace("<", "&lt;");
-	    review_text = review_text.replace(">", "&gt;");
-	    review_text = review_text.replace("'", "&#39;");
-	    if (review_text != null) {
-	            review_text = review_text.replaceAll("\r\n", "<br>");
-	        }
+		// review_text = review_text.replace("&", "&amp;");
+	 //    review_text = review_text.replace("\"", "&quot;");
+  //       review_text = review_text.replace("<", "&lt;");
+	 //    review_text = review_text.replace(">", "&gt;");
+	 //    review_text = review_text.replace("'", "&#39;");
+	 //    if (review_text != null) {
+	 //            review_text = review_text.replaceAll("\r\n", "<br>");
+	 //        }
 
-		System.out.println("method:"+method+"\nbook_isbn"+book_isbn+"\nuser_id"+user_id+"\nreview_text:"+review_text);
+		// System.out.println("method:"+method+"\nbook_isbn"+book_isbn+"\nuser_id"+user_id+"\nreview_text:"+review_text);
 
         EbReviewBean review = new EbReviewBean();
 		review.setBook_isbn(book_isbn);
@@ -43,7 +43,7 @@ public class BookReviewChangeCommand extends AbstractCommand{
 		OracleConnect.getInstance().beginTransaction();
 
 		if(method.contains("add")){
-			System.out.println("add");
+			// System.out.println("add");
 			reviewdao.addReview(review);
 		}
 		if(method.contains("update")){
@@ -59,16 +59,19 @@ public class BookReviewChangeCommand extends AbstractCommand{
 
 		ArrayList bookreviewlist = (ArrayList)reviewdao.getBookReview(book_isbn);
 
-		String result = "<h1>REVIEW</h1><table border='1'><thead><tr><th>Name</th><th>Text</th><th>Star</th><th>Date</th><th></th></tr></thead><tbody>";
-		for(int i = 0; i<bookreviewlist.size();i++){
-			EbReviewBean rb = (EbReviewBean)bookreviewlist.get(i);
-			String id = rb.getUser_id();
-			String text = rb.getReview_text();
-			int star = rb.getReview_star();
-			String date = rb.getReview_date();
-			result += "<tr><td>"+id+"</td><td>"+text+"<br></td><td>"+star+"</td><td>"+date+"</td><td</td></tr>";
-		}
-		result += "</tbody></table>";
+		// String result = "<h1>REVIEW</h1><table border='1'><thead><tr><th>Name</th><th>Text</th><th>Star</th><th>Date</th><th></th></tr></thead><tbody>";
+		// for(int i = 0; i<bookreviewlist.size();i++){
+		// 	EbReviewBean rb = (EbReviewBean)bookreviewlist.get(i);
+		// 	String id = rb.getUser_id();
+		// 	String text = rb.getReview_text();
+		// 	int star = rb.getReview_star();
+		// 	String date = rb.getReview_date();
+		// 	result += "<tr><td>"+id+"</td><td>"+text+"<br></td><td>"+star+"</td><td>"+date+"</td><td</td></tr>";
+		// }
+		// result += "</tbody></table>";
+		String result = new Gson().toJson(bookreviewlist);
+		// System.out.println(result);
+
 
 		resc.setResult(result);
 

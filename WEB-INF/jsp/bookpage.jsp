@@ -9,7 +9,7 @@
      <link rel="stylesheet" type="text/css" href="css/text.css">
      <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
+    <!-- <script type="text/javascript" src="js/ajax.js"></script> -->
     <script type="text/javascript" src="js/bookreview.js"></script>
     <script>
         $(document).ready(function(){
@@ -42,25 +42,20 @@
         </div>
     </header>
     <div class="container">
-  
         <div class="product-container main-product-container">
-          
           <div class="product-left-container">
             <img src="bookimage/${result.book_isbn}" alt="" width="540"/>
           </div>
-          
           <div class="product-col-container">
             <h1 class="product-page">${result.book_name}</h1>
-            <h1 style="display:none;"  class="book_isbn">${result.book_isbn}</h1>
+            <h1 style="display:none;"  class="book-isbn">${result.book_isbn}</h1>
             <p>
               <b>${result.text_content}</b><br/>
             </p>
-            
             <p class="product-price">
-              <b>Price:</b> 
+              <b>Price:</b>
               <span class="price">${result.book_price}</span>
             </p>
-            
             <div>
                 <form action="addtocart.do" method="post" accept-charset="utf-8">
                     <input type="hidden" name="user_id" value="${sessionScope.user.id}">
@@ -70,33 +65,35 @@
                 </form>
             </div>
           </div>
-          
         </div>
         <br clear="all"/>
         <div class="product-container">
-          
           <div class="product-left-container">
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
                     内容:<textarea type="text" id="review_text" row='2' col='3' required></textarea>
                     評価:<input type="number" id="review_star" min="1" max="5" required>
-                    <button type="button" onclick="bookreviewchange('addreview','${result.book_isbn}','${sessionScope.user.id}',null,null,null)">Ajax Review</button>
+                    <button type="button" class="write-review-button">Ajax Review</button>
                 </div>
+<<<<<<< HEAD
                 <div class="a-section" style="width:940px;">
+=======
+
+>>>>>>> 59a55a9b38f73dd246365a993997eb98fdbdfb94
                   <h2 class="a-spacing-small customer-reviews-header">
                       ${result.book_name}
-                    </h2>
+                </h2>
+                <div class="a-section" style="width:940px;" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
-                    
                       <hr>
-                    <h4>
+                        <h4>
                         ${review.user_id}
-                    </h4>
+                        </h4>
                       <hr>
                     <div class="a-section">
                       <div class="a-row a-spacing-micro">
-                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base" href=""><i class="a-icon a-icon-star a-star-${review.review_star}"></i></i></a>
+                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base" href=""><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
                           <span class="a-letter-space"></span>
                           <a class="a-link-normal a-text-normal a-color-base" href="">
                           </a>
@@ -121,10 +118,7 @@
                 </div>
               </p>
           </div>
-
-          
         </div>
-    
         <br clear="all"/>
       </div>
 

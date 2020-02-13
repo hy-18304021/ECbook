@@ -197,7 +197,6 @@
                                     <h3 class="title">
                                         <a href="">${book.book_name}</a>
                                     </h3>
-                                    
                                 </div>
                                 <ul class="social">
                                     <li>

@@ -43,7 +43,7 @@ public class PurchaseConfirmationCommand extends AbstractCommand{
 
         OracleConnect.getInstance().closeConnection();
         
-        resc.setTarget("mycart");
+        resc.setTarget("checkout");
         return resc;
 	}
 }

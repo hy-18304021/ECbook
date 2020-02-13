@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
   <c:set var="totalPrice" value="${0}" />
   <c:forEach var="cart" items="${sessionScope.mycart}">
   <c:set var="totalPrice" value="${totalPrice + cart.book_price*cart.cart_amount}" />
-  <section id="cart">
+  <section class="cart">
     <article class="product">
       <header>
         <a class="remove">
@@ -92,8 +92,6 @@ pageEncoding="UTF-8"%>
         </footer>
       </form>
     </article>
-
-   
   </section>
 </c:forEach>
 </div>
@@ -102,17 +100,16 @@ pageEncoding="UTF-8"%>
   <div class="container clearfix">
     <div class="right">
       <h1 class="total">Total: <span>${totalPrice}</span>円</h1>
-      <form action="mycart.do" method="post" accept-charset="utf-8">
+      <form class="totalform" action="purchaseconfirmation.do" method="post" accept-charset="utf-8">
         <input type="hidden" name="user_id" value="${sessionScope.user.id}">
         <c:forEach var="cart" items="${sessionScope.mycart}">
-          <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
-          <input type="hidden" id="totalamount" name="cart_amount" value="${cart.cart_amount}">
+            <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+            <input type="hidden" class="totalamount" name="cart_amount" value="${cart.cart_amount}">
         </c:forEach>
-        <input type="hidden" id="totalprice" name="totalprice" value="${totalPrice}">
+        <input type="hidden" class="totalprice" name="fullprice" value="${totalPrice}">
         <input type="submit" value="Checkout" class="btn"></input>
       </form>
     </div>
-
   </div>
 </footer>
 </body>

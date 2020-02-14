@@ -76,11 +76,6 @@
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" class="write-review-button">Ajax Review</button>
                 </div>
-<<<<<<< HEAD
-                <div class="a-section" style="width:940px;">
-=======
-
->>>>>>> 59a55a9b38f73dd246365a993997eb98fdbdfb94
                   <h2 class="a-spacing-small customer-reviews-header">
                       ${result.book_name}
                 </h2>

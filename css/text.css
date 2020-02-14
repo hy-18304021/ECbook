@@ -128,7 +128,9 @@ background-position: -205px -396px;
     .a-spacing-small, .a-ws .a-ws-spacing-small {
         margin-bottom: 10px !important;
     }
-
+.a-section hr{
+    width: 400px;
+}
 .a-star-5 {background-position: -5px -368px;}
 .a-star-4 {background-position: -19px -368px;}
 .a-star-3 {background-position: -36px -368px;}

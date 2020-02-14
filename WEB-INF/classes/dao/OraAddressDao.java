@@ -58,7 +58,7 @@ public class OraAddressDao implements AddressDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebaddress where address_id = ?";
+            String sql= "select * from ebaddress where user_id = ?";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
@@ -131,6 +131,54 @@ public class OraAddressDao implements AddressDao{
         }
         return addressdates;
     }
+
+    public List getUserAddress(String user){
+        Connection cn=null;
+        PreparedStatement st=null;
+        ResultSet rs=null;
+
+        ArrayList<EbAddressBean> addressdates=new ArrayList<>();
+
+        try{
+            cn=OracleConnect.getInstance().getConnection();
+            //SQL文生成
+            String sql= "select * from ebaddress where user_id = ?";
+
+            //stのインスタンス取得
+            st=cn.prepareStatement(sql);
+            
+            st.setString(1,user);
+
+            rs=st.executeQuery();
+
+            while(rs.next()){
+                EbAddressBean eb=new EbAddressBean();
+
+                eb.setAddress_id(rs.getInt("address_id"));
+                eb.setUser_id(rs.getString("user_id"));
+                eb.setReceiver_name(rs.getString("receiver_name"));
+                eb.setPostal_code(rs.getInt("postal_code"));
+                eb.setAddress(rs.getString("address"));
+                eb.setTel(rs.getString("tel"));
+
+                addressdates.add(eb);
+            }
+        }catch(SQLException e){
+            //ロールバック処理
+            OracleConnect.getInstance().rollback();
+        }finally{
+            //リソース解放
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return addressdates;
+    }
+
     public void upDateAddress(EbAddressBean ea){
         PreparedStatement st=null;
         Connection cn=null;

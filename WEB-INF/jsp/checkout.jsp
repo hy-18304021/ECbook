@@ -10,46 +10,39 @@
      <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
      <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
      <script type="text/javascript" src="js/ajax.js"></script>
+     <script type="text/javascript" src="js/checkout.js"></script>
      <script>
         $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                document.getElementById("loginli").style.display='none';
+            //var flag=document.getElementById("flag").innerText;
+            //if(flag=="OK"){
+                //document.getElementById("loginli").style.display='none';
+            //}else{
+            //     document.getElementById("logoutli").style.display='none';
+            //     document.getElementById("mypage").style.display='none';
+            //     document.getElementById("mycart").style.display='none';
+            //     document.getElementById("writereviewwithajax").style.display='none';
+            // }
+
+            var address=document.getElementById("selectaddress").innerText;
+            console.log(address);
+            if(address=="adr"){
+              document.getElementById("city").style.display='none';
+              document.getElementById("adr").style.display='none';
+              document.getElementById("cityla").style.display='none';
+              document.getElementById("adrla").style.display='none';
+              document.getElementById("select").style.display='none';
             }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-                document.getElementById("writereviewwithajax").style.display='none';
+              document.getElementById("address").style.display='none';
+              document.getElementById("reselect").style.display='none';
             }
-        })
+        });
     </script>
     <title>checkout</title>
 </head>
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+    <h1 style="display:none;" id="selectaddress">${sessionScope.address}</h1>
     <div id="app">
-        <header class="page-element">
-            <div>
-           <h1>
-              <img class="big-logo" src="http://ws2019.taipaweb.com/css-final-project/logo.png" alt="Logo">
-              <span class="big-logo-text">EbBook</span>
-           </h1>
-           <div class="book-finder">
-              <ul class="book-type-list">
-                <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
-                <li id="mypage"><a href="mypage.do">MyPage</a></li>
-                <li id="loginli"><a href="logincall.do">Login</a></li>
-                <li id="logoutli"><a href="logout.do">Logout</a></li>
-                <li id="mycart"><a href="mycart.do">Cart</a></li>
-              </ul>
-              <form class="book-search" action="searchbook.do" method="post">
-                <input type="text" name="book_name">
-                <input type="submit" value="Search">
-             </form>
-           </div>
-          
-        </div>
-    </header>
     
    
 <h2>Responsive Checkout Form</h2>
@@ -60,9 +53,6 @@
 
     <div class="container">
 
-      <form action="/action_page.php">
-
-      
 
         <div class="row">
 
@@ -74,15 +64,25 @@
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
             <input type="text" id="email" name="email" placeholder="
 ​                   ​​email">
-             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <!--<input type="text" id="adr" name="address" placeholder="
+             <label for="adr" id="adrla"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="
                    address">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="city"> -->
-            <!-- checkbox Address -->
-            <input type="submit" value="address" class="">
+            <label for="city" id="cityla"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="city">
+            <a id="address">aaa</a><br>
+            <c:forEach var="aaddress" items="${sessionScope.myaddress}">
+              <input type="radio" id="address" name="address" value="${address.postal_code+address.address+address.tel}">
+            </c:forEach>
+            checkbox Address
+              <form action="selectaddress.do" method="post" accept-charset="utf-8">
+                <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+                <input type="submit" id="select" value="address" class="selectaddress">
+              </from>
 
-           
+              <form action="removeselectaddress.do" method="post" accept-charset="utf-8">
+                <input type="submit" id="reselect" value="readdress" class="selectaddress">
+              </from>
+
           </div>
 
           <div class="col-50">
@@ -108,23 +108,22 @@
               </div>
             </div>
           </div>
-          
         </div>
 
         <input type="submit" value="Continue to checkout" class="btn">
-      </form>
+
     </div>
   </div>
   <div class="col-25">
     <div class="container">
       <h4>Cart <span class="price" style="color:black">
-      <i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">1</a> <span class="price">1500</span></p>
-      <p><a href="#">2</a> <span class="price">500</span></p>
-      <p><a href="#">3</a> <span class="price">400</span></p>
-      <p><a href="#">4</a> <span class="price">200</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>2600</b></span></p>
+        <i class="fa fa-shopping-cart"></i></span></h4>
+        <c:forEach var="cart" items="${sessionScope.mycart}">
+          <c:set var="totalPrice" value="${totalPrice + cart.book_price*cart.cart_amount}" />
+          <p>${cart.book_name} <br><span class="price">${cart.book_price*cart.cart_amount}円</span></p>
+          <hr>
+          </c:forEach>
+          <p>Total <span class="price" style="color:black"><b>${totalPrice}円</b></span></p>
     </div>
   </div>
 </div>

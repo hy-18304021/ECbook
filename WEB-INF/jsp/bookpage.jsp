@@ -76,22 +76,25 @@
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" class="write-review-button">Ajax Review</button>
                 </div>
+<<<<<<< HEAD
                 <div class="a-section" style="width:940px;">
+=======
+>>>>>>> f60bbe05599111a2f899ff62afabd15f1bade692
                   <h2 class="a-spacing-small customer-reviews-header">
                       ${result.book_name}
                 </h2>
+
                 <div class="a-section" style="width:940px;" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
                       <hr>
-                        <h4>
-                        ${review.user_id}
-                        </h4>
+                      <h4>${review.user_id}</h4>
                       <hr>
                     <div class="a-section">
                       <div class="a-row a-spacing-micro">
-                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base" href=""><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
+                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base"><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
+                          
                           <span class="a-letter-space"></span>
-                          <a class="a-link-normal a-text-normal a-color-base" href="">
+                          <a class="a-link-normal a-text-normal a-color-base">
                           </a>
                         </div>
                         <span class="a-color-secondary">
@@ -105,11 +108,13 @@
                         <div class="a-section">
                           ${review.review_text}
                         </div>
-                        <div class="remove">
-                        <input type="submit" value="削除">
-                        </div>
                       </div>
+                      <h4 class='review-text'>${review.review_text}</h4>
+                      <h4 class='review-star'>${review.review_star}</h4>
+                      <h4 class='user-id'>${review.user_id}</h4>
+                      <input type="button" class="delete-review-button" value="削除">
                     </div>
+                      
                     </c:forEach>
                 </div>
               </p>

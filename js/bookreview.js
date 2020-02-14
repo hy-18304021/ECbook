@@ -1,20 +1,67 @@
 $(document).ready(function(){
 	$(".write-review-button").click(function(){
-		var params = {
-			method: "addreview",
-			book_isbn:$(".book-isbn").html(),
-			user_id:$(".sessionId").html(),
-			review_text:$("#review_text").val()
-					.replace(/&/g,"&amp;")
-					.replace(/</g,"&lt;")
-					.replace(/>/g,"&gt;")
-					.replace(/\r?\n/g,"<br/>"),
-			review_star: $("#review_star").val(),
-			review_date:null
-		};
+		addReview();
+	});
+
+	$(".delete-review-button").click(function(){
+		deleteReview($(this));
+		// window.location=location;
+	});
+
+	$("#review").on('DOMNodeInserted', "input", function() {
+    	$(".delete-review-button").click(function(){
+			deleteReview($(this));
+		});
+		$(".delete-review-button").each(function(){
+			if($(this).parent().children(".user-id").html()!=$(".sessionId").html()){
+				$(this).css("display","none");
+			}
+		});
+
+	});
+
+	$(".delete-review-button").each(function(){
+		if($(this).parent().children(".user-id").html()!=$(".sessionId").html()){
+			$(this).css("display","none");
+		}
+	});
+});
+
+function addReview(){
+	var params = {
+		method: "addreview",
+		book_isbn:$(".book-isbn").html(),
+		user_id:$(".sessionId").html(),
+		review_text:$("#review_text").val()
+				.replace(/&/g,"&amp;")
+				.replace(/</g,"&lt;")
+				.replace(/>/g,"&gt;")
+				.replace(/\r?\n/g,"<br>"),
+		review_star: $("#review_star").val(),
+		review_date:null
+	};
 		// alert(params.review_text);
-		$.post("bookreviewchange.do",$.param(params),function(responseJson){
-			var $review =$("#review");
+	$.post("bookreviewchange.do",$.param(params),function(responseJson){
+		changeResponse(responseJson);
+	});
+}
+
+function deleteReview(clickedButton){
+	var params={
+		method:"deletereview",
+		book_isbn:$(".book-isbn").html(),
+		user_id:$(".sessionId").html(),
+		review_text:clickedButton.parent().children(".review-text").html(),
+		review_star:clickedButton.parent().children(".review-star").html(),
+		review_date:clickedButton.parent().children(".a-color-secondary").text()
+	};
+		// alert(params.review_text);
+	$.post("bookreviewchange.do",$.param(params),function(responseJson){
+		changeResponse(responseJson);
+	});
+}
+function changeResponse(responseJson){
+	var $review =$("#review");
 			$review.html("");
 			$.each(responseJson,function(index,review){
 				$("<hr>").appendTo($review);
@@ -32,62 +79,10 @@ $(document).ready(function(){
 											.append($("<span>").addClass("a-color-secondary").text(review.review_date)))
 							.append($("<div>").addClass("a-row a-spacing-small")
 								.append($("<span>").addClass("a-size-mini a-color-state a-text-bold").text("Title"))
-								.append($("<div>").addClass("a-section").html(review.review_text)));
+								.append($("<div>").addClass("a-section").html(review.review_text)))
+							.append($("<h4>").addClass("review-text").html(review.review_text))
+							.append($("<h4>").addClass("review-star").text(review.review_star))
+							.append($("<h4>").addClass("user-id").text(review.user_id))
+							.append($("<input>").addClass("delete-review-button").attr({type:"button",value:"削除"}));
 			});
-		});
-	});
-
-	$(".delete-review-button").click(function(){
-
-	});
-});
-
-
-
-
-// function bookreviewchange(method,book_isbn,user_id,review_text,review_star,review_date){
-// 	var params = "method="+method
-// 				+"&book_isbn="+book_isbn
-// 				+"&user_id="+user_id
-// 				+"&review_text="+review_text
-// 				+"&review_star="+review_star
-// 				+"&review_date="+review_date;
-// 	alert(params);
-// 	var xmlHttpRequest = getXMLHttpRequest();
-// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-// 	xmlHttpRequest.open("POST","bookreviewchange.do",true);
-// 	xmlHttpRequest.setRequestHeader("Content-Type",
-// 			"application/x-www-form-urlencoded");
-// 	xmlHttpRequest.send(params);
-// }
-
-// function bookreviewchange(method,book_isbn,user_id,review_text,review_star,review_date){
-// 	var params = "";
-// 	if(method=="addreview"){
-// 		alert("add");
-// 		review_text = document.getElementById("review_text").value;
-// 		review_star = document.getElementById("review_star").value;
-// 		params ="method="+method
-// 				+"&book_isbn="+book_isbn
-// 				+"&user_id="+user_id
-// 				+"&review_text="+review_text
-// 				+"&review_star="+review_star
-// 				+"&review_date="+review_date;
-// 	}
-// 	if(method=="deletereview"){
-// 		alert("deletereview");
-// 		params ="method="+method
-// 				+"&book_isbn="+book_isbn
-// 				+"&user_id="+user_id
-// 				+"&review_text="+review_text
-// 				+"&review_star="+review_star
-// 				+"&review_date="+review_date;
-// 	}
-// 	alert(params);
-// 	var xmlHttpRequest = getXMLHttpRequest();
-// 	xmlHttpRequest.onreadystatechange=getReadyStateHandler(xmlHttpRequest);
-// 	xmlHttpRequest.open("POST","bookreviewchange.do",true);
-// 	xmlHttpRequest.setRequestHeader("Content-Type",
-// 			"application/x-www-form-urlencoded");
-// 	xmlHttpRequest.send(params);
-// }
+}

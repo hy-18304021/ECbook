@@ -2,12 +2,14 @@ package command;
 
 import dao.OracleConnect;
 import dao.CartDao;
+import dao.AddressDao;
 import dao.AbstractDaoFactory;
 import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
 import bean.EbCartBean;
 import java.util.ArrayList;
+import java.util.List;
 
 //購入確認するコマンド
 public class PurchaseConfirmationCommand extends AbstractCommand{
@@ -16,6 +18,7 @@ public class PurchaseConfirmationCommand extends AbstractCommand{
         
 		AbstractDaoFactory daofac=AbstractDaoFactory.getFactory(reqc);
 		CartDao cartdao=daofac.getCartDao();
+		AddressDao addressdao=daofac.getAddressDao();
         String user_id=(String)reqc.getParameter("user_id")[0];
         
         OracleConnect.getInstance().beginTransaction();
@@ -39,9 +42,15 @@ public class PurchaseConfirmationCommand extends AbstractCommand{
         }
 
 		ArrayList mycart = cartdao.getUserCartInfo(user_id);
-		reqc.sessionAttribute("mycart",mycart);
+        reqc.sessionAttribute("mycart",mycart);
+        
+        //送り先の情報を取得
+        List myaddress=addressdao.getAllAddress();
+        reqc.sessionAttribute("myaddress",myaddress);
 
         OracleConnect.getInstance().closeConnection();
+
+        reqc.sessionRemove("address");
         
         resc.setTarget("checkout");
         return resc;

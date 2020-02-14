@@ -76,15 +76,11 @@
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <button type="button" class="write-review-button">Ajax Review</button>
                 </div>
-<<<<<<< HEAD
-                <div class="a-section" style="width:940px;">
-=======
->>>>>>> f60bbe05599111a2f899ff62afabd15f1bade692
                   <h2 class="a-spacing-small customer-reviews-header">
                       ${result.book_name}
                 </h2>
 
-                <div class="a-section" style="width:940px;" id='review'>
+                <div class="a-section" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
                       <hr>
                       <h4>${review.user_id}</h4>
@@ -106,7 +102,9 @@
                           Title
                         </span>
                         <div class="a-section">
+                        <p>
                           ${review.review_text}
+                        </p>
                         </div>
                       </div>
                       <h4 class='review-text'>${review.review_text}</h4>

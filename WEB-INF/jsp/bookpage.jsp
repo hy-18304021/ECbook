@@ -80,7 +80,7 @@
                       ${result.book_name}
                 </h2>
 
-                <div class="a-section" style="width:940px;" id='review'>
+                <div class="a-section" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
                       <hr>
                       <h4>${review.user_id}</h4>
@@ -102,7 +102,9 @@
                           Title
                         </span>
                         <div class="a-section">
+                        <p>
                           ${review.review_text}
+                        </p>
                         </div>
                       </div>
                       <h4 class='review-text'>${review.review_text}</h4>

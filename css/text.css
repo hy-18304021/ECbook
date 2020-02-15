@@ -128,6 +128,14 @@ background-position: -205px -396px;
     .a-spacing-small, .a-ws .a-ws-spacing-small {
         margin-bottom: 10px !important;
     }
+.a-section{
+    width: 400px;
+    word-wrap: break-word;
+}
+
+.a-section hr{
+    width: 400px;
+}
 
 .a-star-5 {background-position: -5px -368px;}
 .a-star-4 {background-position: -19px -368px;}

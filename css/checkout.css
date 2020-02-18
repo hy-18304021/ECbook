@@ -136,3 +136,6 @@ body {
       margin-bottom: 20px;
     }
   }
+  .addresslist{
+    display: inline-block;
+  }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class EbAddressBean implements Serializable{
     private int address_id;//送り先ID
     private String user_id;//ユーザー名 
-    private String receiver_name;
+    private String receiver_name;//受取人
     private int postal_code;//送り先郵便番号
     private String address;//送り先住所
     private String tel;//送り先電話番号

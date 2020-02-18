@@ -159,7 +159,7 @@
         <header class="page-element">
             <div>
            <h1>
-              <img class="big-logo" src="http://ws2019.taipaweb.com/css-final-project/logo.png" alt="Logo">
+              <a href="./"><img class="big-logo" src="http://ws2019.taipaweb.com/css-final-project/logo.png" alt="Logo"></a>
               <span class="big-logo-text">EbBook</span>
            </h1>
            <div class="book-finder">

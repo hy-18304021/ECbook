@@ -205,7 +205,7 @@
                                             </div>
                                             <div class="product-content">
                                                 <h3 class="title">
-                                                    <a href="">${book.book_name}</a>
+                                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                                 </h3>
                                                 <div class="price">${book.book_price}￥</div>
                                             </div>
@@ -215,11 +215,6 @@
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                   <a href="" data-trip="wishlist">
-                                                       <i class="fa fa-heart"></i>
-                                                   </a>
-                                               </li>
                                                 <li>
                                                 <form action="addtocart.do" method="post" accept-charset="utf-8">
                                                    <a href="mycart.do" data-trip="add to cart">

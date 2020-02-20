@@ -103,6 +103,11 @@
                 </c:forEach>
                 </div>
             </div>
+            <footer>
+                <div class="footer">
+                    <p>東京テクニカルカレッジ情報処理科２年</p>
+                </div>
+            </footer>
         </main>
     </div>
 </body>

@@ -94,19 +94,14 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                <form action="addtocart.do" method="post" accept-charset="utf-8">
-                                                   <a href="mycart.do" data-trip="add to cart">
+                                                   <a href="addtocart.do?user_id=${sessionScope.user.id}&book_isbn=${book.book_isbn}&cart_amount=1" data-trip="add to cart">
                                                        <i class="fa fa-shopping-cart">
-                                                            <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-                                                            <input type="hidden" name="book_isbn" value="${result.book_isbn}">
-                                                            <input type="hidden" name="cart_amount" value="1">
                                                        </i>
                                                    </a>
-                                                </form>
                                                </li>
-                                       
+
                                             </ul>
-                                        </div>                             
+                                        </div>
                                 </div>
                             </c:forEach>
                             </div>

@@ -172,6 +172,7 @@
                 <li id="mycart"><a href="mycart.do">Cart</a></li>
               </ul>
               <form class="book-search" action="searchbook.do" method="post">
+                <input type="hidden" name="genre_id" value="0">
                 <input type="text" name="book_name">
                 <input type="submit" value="Search">
              </form>

@@ -44,5 +44,7 @@
 		<a id="regist" href="registcall.do">Don't have an account?</a>
 	</form> 	
 	</div>
+  <br>${result}
+  <!-- <br>Target from filter: ${target} -->
 </body>
 </html> 

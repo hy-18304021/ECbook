@@ -14,10 +14,9 @@ public class WebResponseContext implements ResponseContext{
     public void setTarget(String transferInfo){
         target="/WEB-INF/jsp/"+transferInfo+".jsp";
     }
-    // public void setTarget(String transferInfo, int i){  // image Target
-    //     target="/WEB-INF/image/book/"+transferInfo;
-    //     System.out.println(target);
-    // }
+    public void setTarget(String transferInfo, int i){
+        target=transferInfo;
+    }
     public String getTarget(){
         return target;
     }
@@ -34,7 +33,7 @@ public class WebResponseContext implements ResponseContext{
     }
     public Object getResponse(){
         return _response;
-    } 
+    }
     public void write(){
         try{
             _response.setContentType("application/json");

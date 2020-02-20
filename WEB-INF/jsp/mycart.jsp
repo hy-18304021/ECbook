@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="css/cart.css">
 <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
+<!-- <script type="text/javascript" src="js/ajax.js"></script> -->
 <script type="text/javascript" src="js/cart.js"></script>
 <script>
     $(document).ready(function(){
@@ -95,11 +95,9 @@ pageEncoding="UTF-8"%>
           <img src="bookimage/${cart.book_isbn}" alt="">
 
           <h3>
-            <form action="deletebookfromusercart.do" method="post" accept-charset="utf-8">
-              <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-              <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+              <input type="hidden" class="user-id" value="${sessionScope.user.id}">
+              <input type="hidden" class="book-isbn" value="${cart.book_isbn}">
               <input type="submit" value="Remove">
-          </form>
           </h3>
         </a>
       </header>

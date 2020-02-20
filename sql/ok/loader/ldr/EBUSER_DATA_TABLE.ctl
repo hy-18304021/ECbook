@@ -1,6 +1,6 @@
 OPTIONS (ERRORS=50)
 LOAD DATA 
-INFILE 'C:\Users\koyama\Documents\ECBook\sql\ok\loader\ldr\EBUSER_DATA_TABLE.ldr' "str '\r\n'"
+INFILE 'EBUSER_DATA_TABLE.ldr' "str '\r\n'"
 APPEND
 CONTINUEIF NEXT(1:1) = '#'
 INTO TABLE "EBTEST"."EBUSER"

@@ -43,13 +43,27 @@ public class LoginCommand extends AbstractCommand{
 				CartDao cartdao = factory.getCartDao();
 				ArrayList mycart = cartdao.getUserCartInfo(id);
 				reqc.sessionAttribute("mycart",mycart);
+
+				String target = (String)reqc.getSessionAttribute("target");
+				if(target==null){
+					resc.setTarget("mypage");
+				}else{
+					int firstequal = target.indexOf("=");
+					target = target.substring(0,firstequal+1)+eb.getId()+target.substring(firstequal+1);
+					resc.setTarget(target,1);
+					reqc.sessionRemove("target");
+				}
+			}else{
+				resc.setTarget("login");
+				resc.setResult("Wrong Id or Wrong Pass");
 			}
 		}
+
 		OracleConnect.getInstance().commit();
 
 		//ÉIÉâÉNÉãèIÇÌÇË
 		OracleConnect.getInstance().closeConnection();
-		resc.setTarget("mypage");
+		
         return resc;
 	}
 }

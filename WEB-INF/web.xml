@@ -98,4 +98,19 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
+
+    <!-- Session Check Filter -->
+    <filter>
+        <filter-name>sessioncheckfilter</filter-name>
+        <filter-class>filter.SessionCheckFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>sessioncheckfilter</filter-name>
+        <url-pattern>/addtocart.do</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+
 </web-app>

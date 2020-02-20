@@ -74,10 +74,10 @@
                                 <c:forEach var="book" items="${recommendedBooks}">
                                     <div class="col-md-3">
                                     
-                                        <div class="product-grid">
+                                        <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
                                                 <a href="">
-                                                    <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" width="142" height="203" class="pic-1" alt="${book.book_name}">
+                                                    <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}">
                                                 </a>
                                                 <span class="product-discount-label">${book.genre_name}</span>
                                             </div>

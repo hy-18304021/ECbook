@@ -135,6 +135,12 @@
         </div>
         <br clear="all"/>
       </div>
+      <!-- footer -->
+      <footer>
+        <div class="footer">
+            <p>東京テクニカルカレッジ情報処理科２年</p>
+        </div>
+    </footer>
 
 </body>
 </html>

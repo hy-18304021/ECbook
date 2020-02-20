@@ -34,7 +34,7 @@
         <header class="page-element">
             <div>
                 <h1>
-                    Logo
+                    <a href="indexcall.do">Logo</a>
                  </h1>
               
            <div class="book-finder">
@@ -57,9 +57,9 @@
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             <div class="leftcolumn">
                 <p style="font-weight: bold;">ジャンル</p>
-                <p>ライトノベル</p>
-                <p>少年コミック</p>
-                <p>少女コミック</p>
+                <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
+                <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
+                <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
             </div>
             <div class="container">
                 <div class="row">

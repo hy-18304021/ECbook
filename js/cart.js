@@ -94,6 +94,7 @@ $(document).ready(function(){
   
   $(".btn").click(function(){
     check = true;
+    // $(".remove").click();
   });
   // changeTotal();
 });
@@ -104,7 +105,6 @@ function deleteBookFromUserCart(el){
     user_id:el.children("h3").children(".user-id").val(),
     book_isbn:el.children("h3").children(".book-isbn").val()
   };
-  // alert(params.user_id +"  "+params.book_isbn);
   $.post("deletebookfromusercart.do",$.param(params),function(responseJson){
     // alert(responseJson);
   });

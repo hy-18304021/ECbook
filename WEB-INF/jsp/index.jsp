@@ -52,6 +52,7 @@
     <div id="navigation">
         <form class="book-search" action="searchbook.do" method="post">
             <input type="text" name="book_name">
+            <input type="hidden" name="genre_id" value="0">
             <input type="submit" value="Search">
          </form>    
         
@@ -60,9 +61,10 @@
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             <div class="leftcolumn">
                 <p style="font-weight: bold;">ジャンル</p>
-                <p>ライトノベル</p>
-                <p>少年コミック</p>
-                <p>少女コミック</p>
+                <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
+                <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
+                <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
+            
             </div>
             <div id="content" class="page-element">
                 <div>
@@ -245,7 +247,7 @@
                      </div>
                  </div>
              </div>
-              <!-- footer -->
+            <!-- footer -->
             <footer>
                 <div class="footer">
                     <p>東京テクニカルカレッジ情報処理科２年</p>

@@ -94,7 +94,7 @@ $(document).ready(function(){
   
   $(".btn").click(function(){
     check = true;
-    $(".remove").click();
+    // $(".remove").click();
   });
   // changeTotal();
 });

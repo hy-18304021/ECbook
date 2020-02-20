@@ -191,4 +191,46 @@ public class OraSalesDao implements SalesDao{
             }
         }
     }
+    public List getUserSales(String userid){
+        Connection cn=null;
+        PreparedStatement st=null;
+        ResultSet rs=null;
+
+        ArrayList<EbSalesBean> salesdates=new ArrayList<>();
+
+        try{
+            cn=OracleConnect.getInstance().getConnection();
+
+            String sql="select * from ebsales where user_id=? ";
+            st=cn.prepareStatement(sql);
+            st.setString(1, userid);
+
+            rs=st.executeQuery();
+
+            while(rs.next()){
+                EbSalesBean eb=new EbSalesBean();
+
+                eb.setSales_id(rs.getInt("sales_id"));
+                eb.setUser_id(rs.getString("user_id"));
+                eb.setSales_date(rs.getInt("sales_date"));
+                eb.setAddress_id(rs.getInt("address_id"));
+                eb.setPay_method(rs.getString("pay_method"));
+
+                salesdates.add(eb);
+            }
+        }catch(SQLException e){
+            //ロールバック処理
+            OracleConnect.getInstance().rollback();
+        }finally{
+            //リソース解放
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return salesdates;
+    }
 }

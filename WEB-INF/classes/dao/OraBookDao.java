@@ -253,17 +253,30 @@ public class OraBookDao implements BookDao{
                 cn = OracleConnect.getInstance().getConnection();
             }
 
-            String sql= "SELECT b.book_isbn, b.book_name, b.book_price,(SELECT sum(r.review_star)/count(0)FROM ebreview r WHERE r.book_isbn=b.book_isbn GROUP BY b.book_isbn) star,(SELECT g.genre_name FROM ebgenre g WHERE g.genre_id=b.genre_id ) genre_name FROM ebbook b ORDER BY star DESC NULLS LAST FETCH FIRST 4 ROWS ONLY";
+            String sql= "SELECT b.*,(SELECT sum(r.review_star)/count(0)FROM ebreview r WHERE r.book_isbn=b.book_isbn GROUP BY b.book_isbn) star,(SELECT g.genre_name FROM ebgenre g WHERE g.genre_id=b.genre_id ) genre_name FROM ebbook b ORDER BY star DESC NULLS LAST FETCH FIRST 4 ROWS ONLY";
 
             st=cn.prepareStatement(sql);
             rs=st.executeQuery();
             while(rs.next()){
                 EbBookBean bookbean = new EbBookBean();
+
+                bookbean.setBook_amount(rs.getInt("book_amount"));
+                bookbean.setBook_price(rs.getInt("book_price"));
+                bookbean.setGenre_id(rs.getInt("genre_id"));
                 bookbean.setBook_isbn(rs.getString("book_isbn"));
                 bookbean.setBook_name(rs.getString("book_name"));
-                bookbean.setBook_price(rs.getInt("book_price"));
-                bookbean.setBook_star(rs.getInt("star"));
+                bookbean.setPublisher(rs.getString("publisher"));
+                bookbean.setSeries(rs.getString("series"));
+                bookbean.setVolume(rs.getInt("volume"));
+                bookbean.setAuthor(rs.getString("author"));
+                bookbean.setRelease_date(rs.getString("release_date"));
+                bookbean.setAudience(rs.getString("audience"));
+                bookbean.setLabel(rs.getString("label"));
+                bookbean.setText_content(rs.getString("text_content"));
                 bookbean.setGenre_name(rs.getString("genre_name"));
+
+                bookbean.setBook_star(rs.getInt("star"));
+
                 recommendedBooks.add(bookbean);
             }
         }catch(SQLException e){
@@ -292,18 +305,31 @@ public class OraBookDao implements BookDao{
                 cn = OracleConnect.getInstance().getConnection();
             }
 
-            String sql= "SELECT b.book_isbn, b.book_name, b.book_price,(SELECT sum(r.review_star)/count(0)FROM ebreview r WHERE r.book_isbn=b.book_isbn GROUP BY b.book_isbn) star,(SELECT g.genre_name FROM ebgenre g WHERE g.genre_id=b.genre_id ) genre_name FROM ebbook b WHERE b.genre_id = ? ORDER BY star DESC NULLS LAST FETCH FIRST 4 ROWS ONLY";
+            String sql= "SELECT b.*,(SELECT sum(r.review_star)/count(0)FROM ebreview r WHERE r.book_isbn=b.book_isbn GROUP BY b.book_isbn) star,(SELECT g.genre_name FROM ebgenre g WHERE g.genre_id=b.genre_id ) genre_name FROM ebbook b WHERE b.genre_id = ? ORDER BY star DESC NULLS LAST FETCH FIRST 4 ROWS ONLY";
 
             st=cn.prepareStatement(sql);
             st.setInt(1,genre_id);
             rs=st.executeQuery();
             while(rs.next()){
                 EbBookBean bookbean = new EbBookBean();
+
+                bookbean.setBook_amount(rs.getInt("book_amount"));
+                bookbean.setBook_price(rs.getInt("book_price"));
+                bookbean.setGenre_id(rs.getInt("genre_id"));
                 bookbean.setBook_isbn(rs.getString("book_isbn"));
                 bookbean.setBook_name(rs.getString("book_name"));
-                bookbean.setBook_price(rs.getInt("book_price"));
-                bookbean.setBook_star(rs.getInt("star"));
+                bookbean.setPublisher(rs.getString("publisher"));
+                bookbean.setSeries(rs.getString("series"));
+                bookbean.setVolume(rs.getInt("volume"));
+                bookbean.setAuthor(rs.getString("author"));
+                bookbean.setRelease_date(rs.getString("release_date"));
+                bookbean.setAudience(rs.getString("audience"));
+                bookbean.setLabel(rs.getString("label"));
+                bookbean.setText_content(rs.getString("text_content"));
                 bookbean.setGenre_name(rs.getString("genre_name"));
+
+                bookbean.setBook_star(rs.getInt("star"));
+
                 recommendedBooks.add(bookbean);
             }
         }catch(SQLException e){

@@ -31,7 +31,7 @@
         <header class="page-element">
             <div>
                 <h1>
-                    <a href="indexcall.do">Logo</a>
+                    Logo
                  </h1>
               
            <div class="book-finder">
@@ -49,59 +49,56 @@
 
         </div>
     </header>
-        <main>
-            <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-            <div class="leftcolumn">
-                <p style="font-weight: bold;">ジャンル</p>
-                <p>ライトノベル</p>
-                <p>少年コミック</p>
-                <p>少女コミック</p>
-            </div>
-    
+    <main>
+        <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+        <div class="leftcolumn">
+            <p style="font-weight: bold;">ジャンル</p>
+            <p>ライトノベル</p>
+            <p>少年コミック</p>
+            <p>少女コミック</p>
+        </div>
 
-    <div class="mypage">
-      <ul>
-          <li><a href="orderhistorycall.do">注文履歴</a></li>
-          <li><a href="addresseditcall.do">お届け住所変更</a></li>
-      </ul>
+        <ul>
+            <li><a href="mypage.do">戻る</a></li>
+        </ul>
 
-   	
-   	
-       <h1>Login as: ${sessionScope.user.id}</h1>
-       ${sessionScope.user.pass}
-       <br>${sessionScope.user.name}
-       <br>${sessionScope.user.mail}
-       <br>${sessionScope.user.sex}
-       <br>${sessionScope.user.birth}
-      <button onclick="appearUpdateForm()">修正</button>
+   	    <h1>${sessionScope.user.name}さまの購入履歴</h1>
 
-
-       <div id="update" style="display:none;">
-        <form action="updateuser.do" method="post" accept-charset="utf-8">
-            <input type="hidden" name="id" value="${sessionScope.user.id}">
-            Name:<input type="text" name="name" id="name">
-            <br>
-            Pass:<input type="text" name="pass" id="pass">
-            <br>
-            Mail:<input type="text" name="mail" id="mail">
-            <br>
-            Sex:
-            <input type="radio" name="sex" value="1" id="sex"checked>Male
-            <input type="radio" name="sex" value="2" id="sex">Female
-            <br>
-            Birth:<input type="date" name="birth" id="birth" value="2018-01-01">
-            <br>
-            <input type="submit" value="情報修正">
-         <button type="button" onclick="disappear()">閉じる</button>
-        </form>
+        <div class="container">
+            <%-- <c:forEach var="sales" items="${result}"> --%>
+                <%--1 rowに1 EBSalesの情報を入れる --%>
+                <div class="row">
+                    <%-- <c:forEach var="book" items="${sales}"> --%>
+                        <div class="col-md-8">
+                            <div class="product-image">
+                                <a href="bookinfo.do?book_isbn=${book.book_isbn}">
+                                    <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" width="142" height="203" class="pic-1" alt="${book.book_name}">
+                                </a>
+                                <span class="product-discount-label">${book.genre_name}</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
+                                </h3>
+                                <div class="price">${book.book_price}￥</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="col-md-4">
+                                <button>商品レビューを書く</button>
+                                <button>再度購入</button>
+                            </div>
+                        </div>
+                    <%-- </forEach> --%>
+                </div>
+            <%-- </forEach> --%>
+        <div class="container">
         
-       </div>
        <div id="result">
          
        </div>
        <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
        <h1><a href="logout.do">ログアウト</a></h1>
        
-    </div>
    </body>
    </html>

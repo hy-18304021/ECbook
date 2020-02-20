@@ -19,7 +19,7 @@ public class OraAddressDao implements AddressDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebaddress values(?,?,?,?,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
@@ -37,6 +37,7 @@ public class OraAddressDao implements AddressDao{
         }catch(SQLException e){
             //ロールバック処理
             OracleConnect.getInstance().rollback();
+            e.printStackTrace();
         }finally{
             //リソース解放
             try{

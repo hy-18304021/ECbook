@@ -103,6 +103,7 @@ public class OraBookDao implements BookDao{
         }catch(SQLException e){
             //ロールバック処理
             OracleConnect.getInstance().rollback();
+            e.printStackTrace();
         }finally{
             //リソース解放
             try{

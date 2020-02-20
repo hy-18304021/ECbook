@@ -19,7 +19,7 @@ public class PurchaseConfirmationCommand extends AbstractCommand{
 		AbstractDaoFactory daofac=AbstractDaoFactory.getFactory(reqc);
 		CartDao cartdao=daofac.getCartDao();
 		AddressDao addressdao=daofac.getAddressDao();
-        String user_id=(String)reqc.getParameter("user_id")[0];
+        String user_id=reqc.getParameter("user_id")[0];
         
         OracleConnect.getInstance().beginTransaction();
 
@@ -36,7 +36,7 @@ public class PurchaseConfirmationCommand extends AbstractCommand{
             ec.setBook_isbn(reqc.getParameter("book_isbn")[i]);
             ec.setCart_amount(Integer.parseInt((String)reqc.getParameter("cart_amount")[i]));
 
-            cartdao.updateCart(ec);
+            cartdao.updateCart(ec); 
             OracleConnect.getInstance().commit();
 
         }

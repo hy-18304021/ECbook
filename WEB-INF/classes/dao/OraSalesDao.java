@@ -56,7 +56,7 @@ public class OraSalesDao implements SalesDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebsales where address_id = ?";
+            String sql= "select * from ebsales where sales_id = ?";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);

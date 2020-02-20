@@ -147,8 +147,8 @@ pageEncoding="UTF-8"%>
         <input type="hidden" class="totalprice" name="fullprice" value="${totalPrice}">
         <input type="submit" value="Checkout" class="btn"></input>
         <br>
-        <button class="btn" onclick="location.href='booklistcall.do'">123</button>
       </form>
+      <button class="btn" onclick="location.href='getbooktable.do'">買物を続く</button>
     </div>
   </div>
 </footer>

@@ -31,7 +31,7 @@
         <header class="page-element">
             <div>
                 <h1>
-                    Logo
+                    <a href="indexcall.do">Logo</a>
                  </h1>
               
            <div class="book-finder">
@@ -58,6 +58,8 @@
                 <p>少女コミック</p>
             </div>
     
+
+    <div class="mypage">
       <ul>
           <input type="submit" value="注文履歴">
           <input type="submit" value="お届け住所変更">
@@ -100,5 +102,6 @@
        <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
        <h1><a href="logout.do">ログアウト</a></h1>
        
+    </div>
    </body>
    </html>

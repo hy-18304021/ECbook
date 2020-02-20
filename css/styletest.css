@@ -236,3 +236,12 @@ header #mobile-hamburger-menu-icon{
 .product-grid .price{
    color: #fa8231;
 }
+
+.footer{
+   /*footerの装飾*/
+   width: 100%;
+   background-color: #89c7de;
+   color: #fff;
+   text-align: center;
+   padding: 30px 0;
+}

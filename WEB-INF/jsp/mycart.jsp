@@ -27,18 +27,30 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
-<header>
-  <div>
-      <h1 class="logo"><a href="./">ECBook</a></h1>
-      <ul class="gnd">
-          <li id="mypage"><a href="mypage.do">マイページ</a></li>
-          <li id="loginli"><a href="logincall.do">ログイン</a></li>
-          <li id="logoutli"><a href="logout.do">ログアウト</a></li>
-          <li id="mycart"><a href="mycart.do">カート</a></li>
-      </ul>
-  </div>
-</header>
-<header1 id="site-header">
+<h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+    <div id="app">
+        <header class="page-element">
+            <div>
+                <h1>
+                    Logo
+                 </h1>
+              
+           <div class="book-finder">
+              <ul class="book-type-list">
+                <li id="mypage"><a href="mypage.do">MyPage</a></li>
+                <li id="loginli"><a href="logincall.do">Login</a></li>
+                <li id="logoutli"><a href="logout.do">Logout</a></li>
+                <li id="mycart"><a href="mycart.do">Cart</a></li>
+              </ul>
+              <form class="book-search" action="searchbook.do" method="post">
+                 <input type="text" name="book_name">
+                 <input type="submit" value="Search">
+              </form>
+           </div>
+
+        </div>
+    </header>
+    <header1 id="site-header">
   <div class="container">
     <h1>${sessionScope.user.id}様のカート</h1>
   </div>

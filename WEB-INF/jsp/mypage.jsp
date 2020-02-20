@@ -6,7 +6,9 @@
    <head>
    	<meta charset="UTF-8">
    	<title>My page</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/mypage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
@@ -25,39 +27,37 @@
    </head>
    <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <header>
-        <div>
-            <h1 class="logo"><a href="./">ECBook</a></h1>
-            <ul class="gnd">
-                <li id="mypage"><a href="mypage.do">マイページ</a></li>
-                <li id="loginli"><a href="logincall.do">ログイン</a></li>
-                <li id="logoutli"><a href="logout.do">ログアウト</a></li>
-                <li id="mycart"><a href="mycart.do">カート</a></li>
-            </ul>
+    <div id="app">
+        <header class="page-element">
+            <div>
+                <h1>
+                    Logo
+                 </h1>
+              
+           <div class="book-finder">
+              <ul class="book-type-list">
+                <li id="mypage"><a href="mypage.do">MyPage</a></li>
+                <li id="loginli"><a href="logincall.do">Login</a></li>
+                <li id="logoutli"><a href="logout.do">Logout</a></li>
+                <li id="mycart"><a href="mycart.do">Cart</a></li>
+              </ul>
+              <form class="book-search" action="searchbook.do" method="post">
+                 <input type="text" name="book_name">
+                 <input type="submit" value="Search">
+              </form>
+           </div>
+
         </div>
     </header>
-
-    <div class="memu_wrap">
-        <ul class="dep1">
-            <li>
-                <a href="#">コミック</a>
-                <ul class="dep2">
-                    <li>
-                        <a href="getbooktable.do">Book List</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">ライトノベル</a>
-            </li>
-        </ul>
-    </div>
+        <main>
+            <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+            <div class="leftcolumn">
+                <p style="font-weight: bold;">ジャンル</p>
+                <p>ライトノベル</p>
+                <p>少年コミック</p>
+                <p>少女コミック</p>
+            </div>
+    
       <ul>
           <input type="submit" value="注文履歴">
           <input type="submit" value="お届け住所変更">

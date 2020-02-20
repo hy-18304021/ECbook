@@ -45,12 +45,9 @@
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
                 <li id="mycart"><a href="mycart.do">Cart</a></li>
               </ul>
-<<<<<<< HEAD
               <form class="book-search" action="searchbook.do" method="post">
                 <input type="hidden" name="genre_id" value="0">
-=======
               <!-- <form class="book-search" action="searchbook.do" method="post">
->>>>>>> d153fb6d226a7fe935fc0a8aaaa70ab1297d6033
                 <input type="text" name="book_name">
                 <input type="submit" value="Search">
              </form> -->

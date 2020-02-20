@@ -4,9 +4,9 @@
 <html>
 <head>
     <title>register</title>
-    <style>
-		<%@ include file = "regist.css" %>
-	</style>
+    <link rel="stylesheet" href="css/regist.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
 
@@ -24,12 +24,28 @@
     </script>            
 </head>
 <body>
-    <header>
+    <header class="page-element">
         <div>
-            <h1 class="logo"><a href="./">ECBook</a></h1>
-        </div>
-    </header>
-    <div class="registbox">
+            <h1>
+                Logo
+             </h1>
+          
+       <div class="book-finder">
+          <ul class="book-type-list">
+            <li id="mypage"><a href="mypage.do">MyPage</a></li>
+            <li id="loginli"><a href="logincall.do">Login</a></li>
+            <li id="logoutli"><a href="logout.do">Logout</a></li>
+            <li id="mycart"><a href="mycart.do">Cart</a></li>
+          </ul>
+          <form class="book-search" action="searchbook.do" method="post">
+             <input type="text" name="book_name">
+             <input type="submit" value="Search">
+          </form>
+       </div>
+
+    </div>
+</header>
+<div class="registbox">
         <h1>Sign up</h1>
             <form name="register" action='/ecbook/registcomm.do' method="Post">
                 <p>UserID</p>

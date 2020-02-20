@@ -1,0 +1,196 @@
+*{
+    box-sizing: border-box;
+ }
+ html,body,#app{
+    height: 100%;
+    width: 100%;
+ }
+ body{
+    margin: 0;
+    padding: 0;
+    color: text;
+    font-family: Helvetica Neue, Arial, sans-serif;
+ 
+ }
+ .page-element{
+    display: flex;
+    justify-content: center;
+ }
+ .page-element  > div{
+       width: 100%;
+       max-width: 1400px;
+    }
+ 
+ 
+ header > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ header h1{
+    display: inline-block;
+    margin: 15px 0;
+ }
+ 
+ header .book-finder{
+    float: right;
+    display: flex;
+    align-items: center;
+ }
+ header .book-finder ul{
+    display: inline-block;
+    margin: 0 25px 0 0;
+    padding: 0;
+    list-style: none; 
+ }
+ header .book-finder ul li{
+    float: left;
+    padding: 5px 5px;
+    margin: 4.5px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    transition: .1s ease-out;
+    
+    
+ }
+ header .book-finder ul li a{
+    color: lightgreen;
+    text-decoration: none;
+    
+ }
+ header .book-finder form{
+    display: inline-block;
+ }
+ header .book-finder form input[type="text"]{
+    width: 130px;
+    border: 2px solid lightgreen;
+    height: 25px;
+    padding: 0 3px;
+ }
+ header .book-finder form input[type="submit"]{
+    background: lightgreen;
+    border: 0;
+    color: white;
+    padding: 0 7.5px;
+    float: right;
+    height: 25px;
+    cursor: pointer;
+ }
+ header #mobile-hamburger-menu-icon{
+    display: none;
+ }
+
+/* reigst */
+.registbox{
+    position: relative;
+    width: 480px;
+    height: 800px;
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+    color: #000;
+    top: 450px;
+    left:50%;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.registbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.registbox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.registbox input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #333;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+}
+
+.registbox input[type="submit"]{
+    border: none;
+    outline: none;
+    height:40px;
+    background-color: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.registbox input[type="submit"]:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.registbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgray;
+}
+
+.registbox a:hover{
+    color: #ffc107;
+}
+
+/* radio button */
+
+.radio{
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+    position: relative;
+    padding-left: 50px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.radio + .radio{
+    margin-left: 20px;
+}
+
+.radio input[type="radio"]{
+    display: none;
+}
+
+.radio span{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 3px solid #00aeef;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
+.radio span::after{
+    content: '';
+    height: 8px;
+    width: 8px;
+    background: #00aeef;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    border-radius: 50%;
+    transition: 300ms ease-in-out 0s;
+}
+
+.radio input[type="radio"]:checked ~ span:after{
+    transform: translate(-50%,-50%) scale(1);
+}

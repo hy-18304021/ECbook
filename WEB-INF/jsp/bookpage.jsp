@@ -30,15 +30,25 @@
      
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <h1 style="display:none;" class="sessionId">${sessionScope.user.id}</h1>
-    <header>
-        <div>
-            <h1 class="logo"><a href="./">ECBook</a></h1>
-            <ul class="gnd">
-                <li id="mypage"><a href="mypage.do">マイページ</a></li>
-                <li id="loginli"><a href="logincall.do">ログイン</a></li>
-                <li id="logoutli"><a href="logout.do">ログアウト</a></li>
-                <li id="mycart"><a href="mycart.do">カート</a></li>
-            </ul>
+    <header class="page-element">
+            <div>
+                <h1>
+                    Logo
+                 </h1>
+              
+           <div class="book-finder">
+              <ul class="book-type-list">
+                <li id="mypage"><a href="mypage.do">MyPage</a></li>
+                <li id="loginli"><a href="logincall.do">Login</a></li>
+                <li id="logoutli"><a href="logout.do">Logout</a></li>
+                <li id="mycart"><a href="mycart.do">Cart</a></li>
+              </ul>
+              <form class="book-search" action="searchbook.do" method="post">
+                 <input type="text" name="book_name">
+                 <input type="submit" value="Search">
+              </form>
+           </div>
+
         </div>
     </header>
     <div class="container">
@@ -57,10 +67,7 @@
               <span class="price">${result.book_price}</span>
             </p>
             <div>
-                <form action="addtocart.do" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-                    <input type="hidden" name="book_isbn" value="${result.book_isbn}">
-                    <input type="hidden" name="cart_amount" value="1">
+                <form action="addtocart.do?user_id=${sessionScope.user.id}&book_isbn=${result.book_isbn}&cart_amount=1" method="post" accept-charset="utf-8">
                     <button>Add to cart</button>
                 </form>
             </div>
@@ -68,17 +75,25 @@
         </div>
         <br clear="all"/>
         <div class="product-container">
+          <div class="leftcolumn" style="float: right;">
+            <p style="font-weight: bold;">同じジャンルの本</p>
+            <c:forEach var='book' items='${recommendedBook}'>
+              <p>${book.book_name}</p>
+            </c:forEach>
+        </div>
           <div class="product-left-container">
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
-                    内容:<textarea type="text" id="review_text" row='2' col='3' required></textarea>
+                    <textarea type="text" id="review_text" row='2' col='3' required style="resize: none; width: 100%; height: 130px;" placeholder="レビューを書いてください。"></textarea>
                     評価:<input type="number" id="review_star" min="1" max="5" required>
-                    <button type="button" class="write-review-button">Ajax Review</button>
+                    <input type="button" class="write-review-button" style="width:42px; font-size:15px; border-radius: 5px; height: 32px;" value="投稿">
                 </div>
-                  <h2 class="a-spacing-small customer-reviews-header">
+                
+                  <h2 class="a-spacing-small customer-reviews-header" style="margin-top: 50px;">
                       ${result.book_name}
                 </h2>
+                
 
                 <div class="a-section" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
@@ -110,7 +125,7 @@
                       <h4 class='review-text'>${review.review_text}</h4>
                       <h4 class='review-star'>${review.review_star}</h4>
                       <h4 class='user-id'>${review.user_id}</h4>
-                      <input type="button" class="delete-review-button" value="削除">
+                      <input type="button" class="delete-review-button" value="削除" style="width:42px; font-size:15px; border-radius: 5px; height: 32px;">
                     </div>
                       
                     </c:forEach>

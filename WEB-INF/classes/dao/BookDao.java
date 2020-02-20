@@ -11,5 +11,6 @@ public interface BookDao{
     public void upDateBook(EbBookBean eb);
     public void deleteBook(EbBookBean eb);
     public List getRecommendedBooks();
+    public List getRecommendedBooks(int genre_id);
     public List searchBook(EbBookBean eb);
 }

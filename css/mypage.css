@@ -108,46 +108,6 @@ header #mobile-hamburger-menu-icon{
   font-size: 60px;
 }
 
-
-/* <ul>
-          <input type="submit" value="注文履歴">
-          <input type="submit" value="お届け住所変更">
-      </ul>
-
-   	
-   	
-       <h1>Login as: ${sessionScope.user.id}</h1>
-       ${sessionScope.user.pass}
-       <br>${sessionScope.user.name}
-       <br>${sessionScope.user.mail}
-       <br>${sessionScope.user.sex}
-       <br>${sessionScope.user.birth}
-      <button onclick="appearUpdateForm()">修正</button>
-
-
-       <div id="update" style="display:none;">
-        <form action="updateuser.do" method="post" accept-charset="utf-8">
-            <input type="hidden" name="id" value="${sessionScope.user.id}">
-            Name:<input type="text" name="name" id="name">
-            <br>
-            Pass:<input type="text" name="pass" id="pass">
-            <br>
-            Mail:<input type="text" name="mail" id="mail">
-            <br>
-            Sex:
-            <input type="radio" name="sex" value="1" id="sex"checked>Male
-            <input type="radio" name="sex" value="2" id="sex">Female
-            <br>
-            Birth:<input type="date" name="birth" id="birth" value="2018-01-01">
-            <br>
-            <input type="submit" value="情報修正">
-         <button type="button" onclick="disappear()">閉じる</button>
-        </form>
-        
-       </div>
-       <div id="result">
-         
-       </div>
-       <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
-       <h1><a href="logout.do">ログアウト</a></h1>
-       */
+.mypage{
+  margin-top:30px;
+}

@@ -20,7 +20,7 @@ public class WebRequestContext implements RequestContext{
         String commandpath=servletpath.substring(1);
         // System.out.println("Commandpath:"+commandpath);
 
-
+        // getQueryString();
         return commandpath;
     }
 
@@ -38,6 +38,9 @@ public class WebRequestContext implements RequestContext{
         _parameters=_req.getParameterMap();
     	
     }
+    public Object getSessionAttribute(String attributeName){
+        return _session.getAttribute(attributeName);
+    }
 
     public void sessionAttribute(String attributeName, Object status){
         _session.setAttribute(attributeName, status);
@@ -46,17 +49,19 @@ public class WebRequestContext implements RequestContext{
     public void sessionRemove(String attributeName){
         _session.removeAttribute(attributeName);
     }
-    public String getPathInfo(){
-        String servletpath=_req.getServletPath();
+    public String getQueryString(){
+        String querystring=_req.getQueryString();
 
-        servletpath=servletpath.substring(1);
-        String pathInfo=servletpath.substring(servletpath.indexOf("/")+1);
-        System.out.println("pathInfo:"+pathInfo);
+        System.out.println("querystring:"+querystring);
 
 
-        return pathInfo;
+        return querystring;
     }
     public String getRealPath(String relPath){
         return _req.getServletContext().getRealPath(relPath);
+    }
+
+    public void setRequestAttribute(String attributeName, Object status){
+        _req.setAttribute(attributeName,status);
     }
 }

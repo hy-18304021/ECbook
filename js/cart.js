@@ -42,6 +42,7 @@ $(document).ready(function(){
   $(".remove").click(function(){
     var el = $(this);
     el.parent().parent().addClass("removed");
+    deleteBookFromUserCart(el);
     window.setTimeout(
       function(){
         el.parent().parent().slideUp('fast', function() { 
@@ -97,3 +98,14 @@ $(document).ready(function(){
   });
   // changeTotal();
 });
+
+
+function deleteBookFromUserCart(el){
+  var params = {
+    user_id:el.children("h3").children(".user-id").val(),
+    book_isbn:el.children("h3").children(".book-isbn").val()
+  };
+  $.post("deletebookfromusercart.do",$.param(params),function(responseJson){
+    // alert(responseJson);
+  });
+}

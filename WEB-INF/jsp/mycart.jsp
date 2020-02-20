@@ -9,7 +9,7 @@ pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="css/cart.css">
 <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
+<!-- <script type="text/javascript" src="js/ajax.js"></script> -->
 <script type="text/javascript" src="js/cart.js"></script>
 <script>
     $(document).ready(function(){
@@ -24,12 +24,39 @@ pageEncoding="UTF-8"%>
     })
     
 </script>
+<style>
+  .btn {
+	background: #53b5aa;
+	border: 1px solid #999;
+	border-style: none none solid none;
+	cursor: pointer;
+	display: block;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 300;
+	padding: 16px 0;
+	width: 290px;
+	text-align: center;
+
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	-ms-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+.btn:hover {
+	color: #fff;
+	background: #429188;
+}
+
+</style>
 </head>
 <body>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
 <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <div id="app">
-        <header class="page-element">
+    <div id="app" style="background: #eee;">
+       <header class="page-element" style="background: #fff;">
             <div>
                 <h1>
                     Logo
@@ -37,6 +64,7 @@ pageEncoding="UTF-8"%>
               
            <div class="book-finder">
               <ul class="book-type-list">
+                <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
@@ -67,11 +95,9 @@ pageEncoding="UTF-8"%>
           <img src="bookimage/${cart.book_isbn}" alt="">
 
           <h3>
-            <form action="deletebookfromusercart.do" method="post" accept-charset="utf-8">
-              <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-              <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+              <input type="hidden" class="user-id" value="${sessionScope.user.id}">
+              <input type="hidden" class="book-isbn" value="${cart.book_isbn}">
               <input type="submit" value="Remove">
-          </form>
           </h3>
         </a>
       </header>
@@ -120,6 +146,8 @@ pageEncoding="UTF-8"%>
         </c:forEach>
         <input type="hidden" class="totalprice" name="fullprice" value="${totalPrice}">
         <input type="submit" value="Checkout" class="btn"></input>
+        <br>
+        <button class="btn" onclick="location.href='booklistcall.do'">123</button>
       </form>
     </div>
   </div>

@@ -16,23 +16,22 @@ import bean.*;
 import froc.*;
 import dao.*;
 import java.util.List;
-
-public class MainPageFilter implements Filter{
+public class SessionCheckFilter implements Filter{
     public void init(FilterConfig config)throws ServletException{}
     public void destroy(){}
-    public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)throws IOException,ServletException{
-        // System.out.println("MainPageFilter");
+    public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain)
+    throws IOException,ServletException{
         HttpServletRequest hreq = (HttpServletRequest)req;
-        RequestContext reqc = new WebRequestContext();
-        reqc.setRequest(hreq);
+        
+        HttpSession session = hreq.getSession();
+        if(session.getAttribute("flag")==null){
+        	session.setAttribute("target",hreq.getServletPath()+"?"+hreq.getQueryString());
+        	// System.out.println(hreq.getServletPath());
 
-        AbstractDaoFactory daofac =AbstractDaoFactory.getFactory(reqc);
-        BookDao bookdao = daofac.getBookDao();
-
-        List recommendedBooks = bookdao.getRecommendedBooks();
-        hreq.setAttribute("recommendedBooks",recommendedBooks);
-
-
-        chain.doFilter(req,res);
+        	RequestDispatcher dis = req.getRequestDispatcher("logincall.do");
+        	dis.forward(req,res);
+        }else{
+        	chain.doFilter(req,res);
+        }
     }
 }

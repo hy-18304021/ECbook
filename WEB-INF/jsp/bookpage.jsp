@@ -77,9 +77,9 @@
         <div class="product-container">
           <div class="leftcolumn" style="float: right;">
             <p style="font-weight: bold;">同じジャンルの本</p>
-            <p>ライトノベル</p>
-            <p>少年コミック</p>
-            <p>少女コミック</p>
+            <c:forEach var='book' items='${recommendedBook}'>
+              <p>${book.book_name}</p>
+            </c:forEach>
         </div>
           <div class="product-left-container">
             <h2 class="product-page">Review</h2>

@@ -60,4 +60,8 @@ public class WebRequestContext implements RequestContext{
     public String getRealPath(String relPath){
         return _req.getServletContext().getRealPath(relPath);
     }
+
+    public void setRequestAttribute(String attributeName, Object status){
+        _req.setAttribute(attributeName,status);
+    }
 }

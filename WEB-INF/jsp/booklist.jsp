@@ -158,10 +158,10 @@
     <div id="app">
         <header class="page-element">
             <div>
-           <h1>
-              <a href="./"><img class="big-logo" src="http://ws2019.taipaweb.com/css-final-project/logo.png" alt="Logo"></a>
-              <span class="big-logo-text">EbBook</span>
-           </h1>
+                <h1>
+                    Logo
+                 </h1>
+              
            <div class="book-finder">
               <ul class="book-type-list">
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
@@ -189,7 +189,7 @@
                             <div class="product-grid">
                                 <div class="product-image">
                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">
-                                        <img src="bookimage/${book.book_isbn}" width="142" height="203" class="pic-1" alt="${book.book_name}">
+                                        <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" width="142" height="203" class="pic-1" alt="${book.book_name}">
                                     </a>
                                     <span class="product-discount-label">${book.genre_name}</span>
                                 </div>

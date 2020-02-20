@@ -24,7 +24,6 @@ public class SelectAddressCommand extends AbstractCommand{
 		OracleConnect.getInstance().commit();
 		OracleConnect.getInstance().closeConnection();
 
-		// Gson gson = new Gson();
         resc.setResult(address);
         reqc.sessionAttribute("address","adr");
 

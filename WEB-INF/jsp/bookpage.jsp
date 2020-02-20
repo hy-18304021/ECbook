@@ -57,10 +57,7 @@
               <span class="price">${result.book_price}</span>
             </p>
             <div>
-                <form action="addtocart.do" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-                    <input type="hidden" name="book_isbn" value="${result.book_isbn}">
-                    <input type="hidden" name="cart_amount" value="1">
+                <form action="addtocart.do?user_id=${sessionScope.user.id}&book_isbn=${result.book_isbn}&cart_amount=1" method="post" accept-charset="utf-8">
                     <button>Add to cart</button>
                 </form>
             </div>

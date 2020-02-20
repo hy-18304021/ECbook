@@ -32,8 +32,8 @@ public class DeleteBookFromUserCartCommand extends AbstractCommand{
 		reqc.sessionAttribute("mycart",mycart);
 
 		OracleConnect.getInstance().closeConnection();
-
-		resc.setTarget("mycart");
+		// resc.setResult("Delete OK");
+		// resc.setTarget("mycart");
 		return resc;
 	}
 }

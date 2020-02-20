@@ -19,10 +19,12 @@ public class BookInfoCommand extends AbstractCommand{
 		BookDao bookdao = daofac.getBookDao();
 		EbBookBean book = bookdao.getBook(book_isbn);
 
+
+		List recommendedBook = bookdao.getRecommendedBooks(book.getGenre_id());
+		reqc.setRequestAttribute("recommendedBook",recommendedBook);
 		// System.out.println(book);
 		OracleConnect.getInstance().commit();
 		OracleConnect.getInstance().closeConnection();
-
 		resc.setResult(book);
 		resc.setTarget("bookpage");
 		return resc;

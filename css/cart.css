@@ -17,38 +17,64 @@ ul, li{
   list-style: none;
 }
 
-header{
-  border-bottom: 1px solid;
-}
-
-header > div {
-  width:90%;
-  min-width:1000px;
-  /* max-width:1200px; */
-  height:80px;
-  margin: 0 auto;
-}
-
-header .logo{
-  float: left;
-  margin-top:15px;
-}
-
-header .gnd{
-  float: right;    
-}
-
-header .gnd li{
-  position: relative;
-  display: inline-block;
-  margin-top:28px;
-  margin-left: 30px;   
-}
-
-header .gnd li:first-child{
-  margin-left: 0px;
-}
-
+header > div{
+	width: 1400px;
+	margin-left: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+ }
+ header h1{
+	display: inline-block;
+	margin: 15px 0;
+ }
+ 
+ header .book-finder{
+	float: right;
+	display: flex;
+	align-items: center;
+ }
+ header .book-finder ul{
+	display: inline-block;
+	margin: 0 25px 0 0;
+	padding: 0;
+	list-style: none; 
+ }
+ header .book-finder ul li{
+	float: left;
+	padding: 5px 5px;
+	margin: 4.5px;
+	transition: .1s ease-out;
+	
+	
+ }
+ header .book-finder ul li a{
+	color: lightgreen;
+	text-decoration: none;
+	
+ }
+ header .book-finder form{
+	display: inline-block;
+ }
+ header .book-finder form input[type="text"]{
+	width: 130px;
+	border: 2px solid lightgreen;
+	height: 25px;
+	padding: 0 3px;
+ }
+ header .book-finder form input[type="submit"]{
+	background: lightgreen;
+	border: 0;
+	color: white;
+	padding: 0 7.5px;
+	float: right;
+	height: 25px;
+	cursor: pointer;
+ }
+ header #mobile-hamburger-menu-icon{
+	display: none;
+ }
+ 
 
 
 .clearfix {

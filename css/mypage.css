@@ -108,6 +108,50 @@ header #mobile-hamburger-menu-icon{
   font-size: 60px;
 }
 
+.frame{
+  width: 1300px;
+  margin: auto;
+}
+
+.meminfo{
+  height:400px;
+  width: 950px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#mem{
+  padding-bottom:30px;
+}
+
+.meminfo li{
+  list-style-type: none;
+  text-decoration: none;
+  position: relative;
+  float: right;
+  line-height: 40px;
+}
+
+.meminfo li a{
+  display: block;
+  padding: 5px;
+}
+
+.meminfo th{
+  border: 1px solid #000;
+  width:20%;
+  height:10%;
+  padding: 4px;
+  font-size: 17px;
+  }
+
+.meminfo td{
+  border: 1px solid #000;
+  width:60%;
+  height:10%;
+  padding: 4px;
+  }
+  
 .mypage{
   margin-top:30px;
 }

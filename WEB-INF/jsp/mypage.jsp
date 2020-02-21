@@ -37,7 +37,6 @@
            <div class="book-finder">
             <ul class="book-type-list">
                 <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
-                <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
                 <li id="mycart"><a href="mycart.do">Cart</a></li>
@@ -59,25 +58,93 @@
                 <p>少女コミック</p>
             </div>
     
-
+    <div class="frame">        
     <div class="mypage">
-      <ul>
-          <li><a href="orderhistorycall.do">注文履歴</a></li>
-          <li><a href="addresseditcall.do">お届け住所変更</a></li>
-      </ul>
-
-   	
-   	
-       <h1>Login as: ${sessionScope.user.id}</h1>
+    <div class="meminfo">
+        <h2>マイページ</h2>        
+        <ul id="mem">
+            <li><a href="orderhistorycall.do">注文履歴</a></li>
+            <li><a href="addresseditcall.do">お届け住所変更</a></li>
+        </ul>
+        
+        <hr>
+        
+          <table>
+            <tr>
+              <th>ユーザ名</th><td>${sessionScope.user.id}</td>
+            </tr>
+            <tr>
+                <th>名前</th><td>${sessionScope.user.name}</td>
+            </tr>
+            <tr>
+                <th>パスワード</th><td>${sessionScope.user.pass}</td>
+              </tr>
+            <tr>
+              <th>メール</th><td>${sessionScope.user.mail}</td>
+            </tr>
+            <tr>
+                <th>性別</th><td>${sessionScope.user.sex}</td>
+            </tr>
+            <tr>
+                <th>生年月日</th><td>${sessionScope.user.birth}</td>
+            </tr>
+            <tr>
+                <th colspan="2"><button onclick="appearUpdateForm()">修正</button></th>
+            </tr>
+            
+        </table>
+        <table style="float: right; margin-top:-243px;">
+        <div id="update" style="display:none;">
+            <form action="updateuser.do" method="post" accept-charset="utf-8">
+                <input type="hidden" name="id" value="${sessionScope.user.id}">
+                <tr>
+                    <th>ユーザ名</th>
+                    <td><input type="text" name="id" id="id"></td>
+                </tr>
+                <tr>
+                    <th>名前</th>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <th>パスワード</th>
+                    <td><input type="text" name="pass" id="pass"></td>
+                </tr>
+                <tr>
+                    <th>メール</th>
+                    <td><input type="text" name="mail" id="mail"></td>
+                </tr>
+                <tr>
+                    <th>性別</th>
+                    <td>
+                    <input type="radio" name="sex" value="1" id="sex"checked>Male
+                    <input type="radio" name="sex" value="2" id="sex">Female
+                    </td>
+                </tr>
+                <tr>
+                <th>生年月日</th>
+                <td><input type="date" name="birth" id="birth" value="2018-01-01">
+                </td>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                    <input type="submit" value="情報修正">
+                    <button type="button" onclick="disappear()">閉じる</button>
+                    </th>
+                </tr>
+        </form>
+            
+           </div>
+        </table>
+      </div>
+       <!-- <h1>Login as: ${sessionScope.user.id}</h1>
        ${sessionScope.user.pass}
        <br>${sessionScope.user.name}
        <br>${sessionScope.user.mail}
        <br>${sessionScope.user.sex}
-       <br>${sessionScope.user.birth}
-      <button onclick="appearUpdateForm()">修正</button>
+       <br>${sessionScope.user.birth} -->
+ 
 
-
-       <div id="update" style="display:none;">
+       <!-- <div id="update" style="display:none;">
         <form action="updateuser.do" method="post" accept-charset="utf-8">
             <input type="hidden" name="id" value="${sessionScope.user.id}">
             Name:<input type="text" name="name" id="name">
@@ -96,12 +163,11 @@
          <button type="button" onclick="disappear()">閉じる</button>
         </form>
         
-       </div>
+       </div> -->
        <div id="result">
          
        </div>
-       <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
-       <h1><a href="logout.do">ログアウト</a></h1>
+    </div>
        
     </div>
    </body>

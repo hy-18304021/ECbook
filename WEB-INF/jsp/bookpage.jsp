@@ -78,9 +78,15 @@
         <div class="product-container">
           <div class="leftcolumn" style="float: right;">
             <p style="font-weight: bold;">同じジャンルの本</p>
+            
+              
             <c:forEach var='book' items='${recommendedBook}'>
-              <p>${book.book_name}</p>
-            </c:forEach>
+              <div class="book1">  
+                <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="width: 60px; float: left;">
+              <p style="margin-top:40px; margin-left: 90px; padding-top: 25px;">${book.book_name}</p>
+            </div>
+          </c:forEach>
+          
         </div>
           <div class="product-left-container">
             <h2 class="product-page">Review</h2>

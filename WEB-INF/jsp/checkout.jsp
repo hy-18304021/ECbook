@@ -49,7 +49,7 @@
     <div id="app">
     
    
-<h2>Responsive Checkout Form</h2>
+<h2>注文情報入力</h2>
 
 <div class="row">
 
@@ -61,14 +61,14 @@
         <div class="row">
 
           <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname" id="fnamela"><i class="fa fa-user"></i> Full Name</label>
+            <h3>送り先情報</h3>
+            <label for="fname" id="fnamela"><i class="fa fa-user"></i> 名前</label>
             <input type="text" id="fname" name="firstname" placeholder="name" oninput="valueinName(this)">
-            <label for="postalcode" id="postalcodela"><i class="fa fa-institution"></i> Postal code</label>
+            <label for="postalcode" id="postalcodela"><i class="fa fa-institution"></i> 郵便番号</label>
             <input type="text" id="postalcode" name="postalcode" placeholder="postal code" oninput="valueinPostalcode(this)">
-             <label for="adr" id="adrla"><i class="fa fa-address-card-o"></i> Address</label>
+             <label for="adr" id="adrla"><i class="fa fa-address-card-o"></i> 住所</label>
             <input type="text" id="adr" name="address" placeholder="address" oninput="valueinAddress(this)">
-            <label for="tel" id="tella"><i class="fa fa-institution"></i> tel</label>
+            <label for="tel" id="tella"><i class="fa fa-institution"></i> 電話番号</label>
             <input type="text" id="tel" name="tel" placeholder="tel" oninput="valueinTel(this)">
             <c:forEach var="address" items="${result}" varStatus="starts">
               <div class="addresslist">
@@ -100,21 +100,21 @@
           </div>
 
           <div class="col-50">
-            <h3>Payment</h3>
+            <h3>カード情報</h3>
            
-            <label for="cname">Name on Card</label>
+            <label for="cname">カード名義人（半角ローマ字)</label>
             <input type="text" id="cname" name="cardname" placeholder="name" oninput="valueinCardname(this)">
-            <label for="ccnum">Credit card number</label>
+            <label for="ccnum">カード番号</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" oninput="valueinCardNumber(this)">
-            <label for="expmonth">Exp Month</label>
+            <label for="expmonth">有効期限(月)</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="12" oninput="valueinExpmonth(this)">
             <div class="row">
               <div class="col-50">
-                <label for="expyear">Exp Year</label>
+                <label for="expyear">有効期限(年)</label>
                 <input type="text" id="expyear" name="expyear" placeholder="2020" oninput="valueinExpyrar(this)">
               </div>
               <div class="col-50">
-                <label for="cvv">CVV</label>
+                <label for="cvv">CVV番号</label>
                 <input type="text" id="cvv" name="cvv" placeholder="123" oninput="valueinCvv(this)">
               </div>
             </div>
@@ -135,7 +135,7 @@
             <input type="hidden" id="bexpmonth" name="expmonth"> 
             <input type="hidden" id="bexpyear" name="expyear">
             <input type="hidden" id="bcvv" name="cvv">
-            <input type="submit" value="Continue to checkout" class="btn">
+            <input type="submit" value="注文確定" class="btn">
           </form>
         </div>
 

@@ -29,7 +29,7 @@ public class BuyCartBookCommand extends AbstractCommand{
         String btn=reqc.getParameter("btn")[0];
         String user=reqc.getParameter("user_id")[0];
         String name=reqc.getParameter("firstname")[0];
-        int address_id;
+        int address_id=0;
         int postalcode=Integer.parseInt(reqc.getParameter("postalcode")[0]);
         String address=reqc.getParameter("address")[0];
         String tel=reqc.getParameter("tel")[0];
@@ -90,13 +90,15 @@ public class BuyCartBookCommand extends AbstractCommand{
 
         //カート情報取得
         ArrayList<EbCartBean> mycart = cartdao.getUserCartInfo(user);
-
+        System.out.println(mycart.get(0).getBook_isbn());
         //カード情報をDBに入れる
         creditDao.addCredit(ecd);
         
         System.out.println(es.getAddress_id());
+        System.out.println("mycartSize:"+mycart.size());
 
         salesdao.addSales(es);
+        
         
         for(int i=0;i<mycart.size();i++){
                 System.out.println("sa");

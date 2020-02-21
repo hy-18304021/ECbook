@@ -149,6 +149,7 @@
         <c:forEach var="cart" items="${sessionScope.mycart}">
           <c:set var="totalPrice" value="${totalPrice + cart.book_price*cart.cart_amount}" />
           <p>${cart.book_name} <br><span class="price">${cart.book_price*cart.cart_amount}円</span></p>
+          <br>
           <hr>
           </c:forEach>
           <p>Total <span class="price" style="color:black"><b>${totalPrice}円</b></span></p>

@@ -32,7 +32,6 @@ public class OraAddressDao implements AddressDao{
             st.setString(5,ea.getAddress());
             st.setString(6,ea.getTel());
 
-
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理

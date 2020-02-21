@@ -85,6 +85,9 @@ public class BuyCartBookCommand extends AbstractCommand{
                 System.out.println(eaal.size()-1);
                 ea=eaal.get(eaal.size()-1);
                 es.setAddress_id(ea.getAddress_id());
+        }else{
+                address_id=Integer.parseInt(reqc.getParameter("address_id")[0]);
+                es.setAddress_id(address_id);
         }
 
         //ƒJ[ƒgî•ñæ“¾
@@ -95,25 +98,24 @@ public class BuyCartBookCommand extends AbstractCommand{
         
         System.out.println("ss"+mycart.size());
 
+        salesdao.addSales(es);
+        
         for(int i=0;i<mycart.size();i++){
                 System.out.println("sa");
                 ec=mycart.get(i);
                 System.out.println("s");
                 eb=bookdao.getBook(ec.getBook_isbn());
-                System.out.println(eb.getBook_amount() - ec.getCart_amount());
-                es.setAddress_id(Integer.parseInt(reqc.getParameter("address_id")[0]));
-                es=salesdao.getSales(String.valueOf(i));
-                esr.setSales_id(es.getSales_id());
                 esr.setBook_isbn(ec.getBook_isbn());
                 esr.setSales_amount(ec.getCart_amount());
                 sales_refdao.addSales_Ref(esr);
+                System.out.println(eb.getBook_amount() - ec.getCart_amount());
                 eb.setBook_amount(eb.getBook_amount()-ec.getCart_amount());
                 bookdao.upDateBook(eb);
+                System.out.println("‚©‚©");
                 cartdao.deleteBook(ec);
         }
 
-        //w“ü
-        salesdao.addSales(es);
+
         
         OracleConnect.getInstance().commit();
         OracleConnect.getInstance().closeConnection();

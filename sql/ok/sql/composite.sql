@@ -97,7 +97,7 @@ CREATE TABLE ebreview(
   CONSTRAINT  fk_ebreview_user_id           FOREIGN KEY(user_id) REFERENCES ebuser(id)
 );
 CREATE TABLE ebsales(
-  sales_id      NUMBER(10)        DEFAULT arrival_id_seq.nextval,
+  sales_id      NUMBER(10)        DEFAULT sales_id_seq.nextval,
   user_id       VARCHAR2(30)      NOT NULL,
   sales_date    date              DEFAULT sysdate,
   address_id    NUMBER(10)        NOT NULL,

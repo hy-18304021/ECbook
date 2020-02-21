@@ -82,6 +82,7 @@ public class BuyCartBookCommand extends AbstractCommand{
                 System.out.println("s");
                 addressdao.addAddress(ea);
                 ea=addressdao.getLastAddress_id();
+                System.out.println(ea.getAddress_id());
                 es.setAddress_id(ea.getAddress_id());
         }else{
                 address_id=Integer.parseInt(reqc.getParameter("address_id")[0]);

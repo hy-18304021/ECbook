@@ -15,6 +15,8 @@ public class DeleteBookFromUserCartCommand extends AbstractCommand{
 		String user_id=(String)reqc.getParameter("user_id")[0];
 		String book_isbn=(String)reqc.getParameter("book_isbn")[0];
 
+		// System.out.println("DeleteCart Command:"+user_id+book_isbn);
+
 		EbCartBean ec=new EbCartBean();
 
 		ec.setUser_id(user_id);

@@ -19,20 +19,19 @@ public class OraSales_RefDao implements Sales_RefDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebsales_ref values(?,?,?)";
+            String sql= "insert into ebsales_ref values(SALES_ID_SEQ.CURRVAL,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setInt(1,ec.getSales_id());
+            st.setString(1,ec.getBook_isbn());
             st.setInt(2,ec.getSales_amount());
-            st.setString(3,ec.getBook_isbn());
-
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放

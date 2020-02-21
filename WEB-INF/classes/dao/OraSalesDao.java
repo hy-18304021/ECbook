@@ -196,7 +196,7 @@ public class OraSalesDao implements SalesDao{
         PreparedStatement st=null;
         ResultSet rs=null;
 
-        ArrayList<EbSalesBean> salesdates=new ArrayList<>();
+        ArrayList<EbSalesBean> saless=new ArrayList<>();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
@@ -216,7 +216,7 @@ public class OraSalesDao implements SalesDao{
                 eb.setAddress_id(rs.getInt("address_id"));
                 eb.setPay_method(rs.getString("pay_method"));
 
-                salesdates.add(eb);
+                saless.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -231,6 +231,6 @@ public class OraSalesDao implements SalesDao{
                 e.printStackTrace();
             }
         }
-        return salesdates;
+        return saless;
     }
 }

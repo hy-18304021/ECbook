@@ -29,7 +29,7 @@ public class BuyCartBookCommand extends AbstractCommand{
         String btn=reqc.getParameter("btn")[0];
         String user=reqc.getParameter("user_id")[0];
         String name=reqc.getParameter("firstname")[0];
-        int address_id;
+        int address_id=0;
         int postalcode=Integer.parseInt(reqc.getParameter("postalcode")[0]);
         String address=reqc.getParameter("address")[0];
         String tel=reqc.getParameter("tel")[0];
@@ -81,9 +81,8 @@ public class BuyCartBookCommand extends AbstractCommand{
         if(btn.equals("0")){
                 System.out.println("s");
                 addressdao.addAddress(ea);
-                List<EbAddressBean> eaal=addressdao.getUserAddress(user);
-                System.out.println(eaal.size()-1);
-                ea=eaal.get(eaal.size()-1);
+                ea=addressdao.getLastAddress_id();
+                System.out.println(ea.getAddress_id());
                 es.setAddress_id(ea.getAddress_id());
         }else{
                 address_id=Integer.parseInt(reqc.getParameter("address_id")[0]);
@@ -92,13 +91,15 @@ public class BuyCartBookCommand extends AbstractCommand{
 
         //カート情報取得
         ArrayList<EbCartBean> mycart = cartdao.getUserCartInfo(user);
-
+        System.out.println(mycart.get(0).getBook_isbn());
         //カード情報をDBに入れる
         creditDao.addCredit(ecd);
         
-        System.out.println("ss"+mycart.size());
+        System.out.println(es.getAddress_id());
+        System.out.println("mycartSize:"+mycart.size());
 
         salesdao.addSales(es);
+        
         
         for(int i=0;i<mycart.size();i++){
                 System.out.println("sa");

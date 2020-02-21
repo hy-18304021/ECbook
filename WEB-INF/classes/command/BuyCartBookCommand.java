@@ -81,9 +81,7 @@ public class BuyCartBookCommand extends AbstractCommand{
         if(btn.equals("0")){
                 System.out.println("s");
                 addressdao.addAddress(ea);
-                List<EbAddressBean> eaal=addressdao.getUserAddress(user);
-                System.out.println(eaal.size()-1);
-                ea=eaal.get(eaal.size()-1);
+                ea=addressdao.getLastAddress_id();
                 es.setAddress_id(ea.getAddress_id());
         }else{
                 address_id=Integer.parseInt(reqc.getParameter("address_id")[0]);
@@ -96,7 +94,7 @@ public class BuyCartBookCommand extends AbstractCommand{
         //ƒJ[ƒhî•ñ‚ğDB‚É“ü‚ê‚é
         creditDao.addCredit(ecd);
         
-        System.out.println("ss"+mycart.size());
+        System.out.println(es.getAddress_id());
 
         salesdao.addSales(es);
         

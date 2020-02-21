@@ -11,4 +11,5 @@ public interface AddressDao{
    public List getUserAddress(String user);
    public void upDateAddress(EbAddressBean ea);
    public void deleteAddress(EbAddressBean ea);
+   public EbAddressBean getLastAddress_id();
 }

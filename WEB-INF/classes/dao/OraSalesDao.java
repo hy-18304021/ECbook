@@ -19,21 +19,20 @@ public class OraSalesDao implements SalesDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebsales values(?,?,?,?,?)";
+            String sql= "insert into ebsales values(DEFAULT,?,DEFAULT,?,DEFAULT)";
+            //insert into ebsales_ref values(SALES_ID_SEQ.CURRVAL,);
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setInt(1,ec.getSales_id());
-            st.setString(2,ec.getUser_id());
-            st.setInt(3,ec.getSales_date());
-            st.setInt(4,ec.getAddress_id());
-            st.setString(5,ec.getPay_method());
+            st.setString(1,ec.getUser_id());
+            st.setInt(2,ec.getAddress_id());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放
@@ -57,6 +56,7 @@ public class OraSalesDao implements SalesDao{
 
             //SQL文生成
             String sql= "select * from ebsales where sales_id = ?";
+            
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
@@ -196,7 +196,7 @@ public class OraSalesDao implements SalesDao{
         PreparedStatement st=null;
         ResultSet rs=null;
 
-        ArrayList<EbSalesBean> salesdates=new ArrayList<>();
+        ArrayList<EbSalesBean> saless=new ArrayList<>();
 
         try{
             cn=OracleConnect.getInstance().getConnection();
@@ -216,7 +216,7 @@ public class OraSalesDao implements SalesDao{
                 eb.setAddress_id(rs.getInt("address_id"));
                 eb.setPay_method(rs.getString("pay_method"));
 
-                salesdates.add(eb);
+                saless.add(eb);
             }
         }catch(SQLException e){
             //ロールバック処理
@@ -231,6 +231,6 @@ public class OraSalesDao implements SalesDao{
                 e.printStackTrace();
             }
         }
-        return salesdates;
+        return saless;
     }
 }

@@ -136,6 +136,7 @@ public class OraCartDao implements CartDao{
          st.executeUpdate();
       }catch(SQLException e){
          //ロールバック処理
+         e.printStackTrace();
          OracleConnect.getInstance().rollback();
             }finally{
          //リソース解放

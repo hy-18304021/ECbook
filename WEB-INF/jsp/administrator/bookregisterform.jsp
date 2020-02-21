@@ -29,12 +29,8 @@
             ジャンル:
                 <select id="magazine_area" class="active" name="genre_id">
                     <option value="1">少年</option>
-                    <option value="2">青年</option>
-                    <option value="3">少女</option>
-                    <option value="4">4コママンガ</option>
-                    <option value="5">BL</option>
-                    <option value="6">アダルト</option>
-                    <option value="7">ライトノベル</option>
+                    <option value="2">少女</option>
+                    <option value="3">ライトノベル</option>
             </select>
         </li>
          

@@ -30,7 +30,7 @@
 </head>
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <div id="app">
+    
         <header class="page-element">
             <div>
                 <h1>
@@ -65,7 +65,7 @@
             <div class="container">
                 <div class="row">
                     <c:forEach var="book" items="${result}">
-                        <div class="col-md-3">
+                        <div class="col3">
 
                             <div class="product-grid" style="margin-top: 10px;">
                                 <div class="product-image">
@@ -99,12 +99,12 @@
                 </c:forEach>
                 </div>
             </div>
-            <footer>
+            
+        </main>
+        <footer>
                 <div class="footer">
                     <p>東京テクニカルカレッジ情報処理科２年</p>
                 </div>
             </footer>
-        </main>
-    </div>
 </body>
 </html>

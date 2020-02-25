@@ -107,7 +107,7 @@ header #mobile-hamburger-menu-icon{
 }
 
 #popular-books{
-   width: 1200px;
+   max-width: 1200px;
    margin-left: 30px;
 }
 
@@ -135,7 +135,7 @@ header #mobile-hamburger-menu-icon{
 }
 
 .product-grid .product-image{
-   overflow: hidden;
+   overflow: inherit;
    position: relative;
    height: 300px;
 }
@@ -162,7 +162,7 @@ header #mobile-hamburger-menu-icon{
 }
 
 .product-grid .social{
-   width: 100%;
+   max-width: 100%;
    padding: 30px 0;
    margin: 0;
    list-style: none;
@@ -245,4 +245,30 @@ header #mobile-hamburger-menu-icon{
    text-align: center;
    padding: 30px 0;
    margin-top: 20px;
+}
+
+.col3{
+   position: relative;
+   width: 100%;
+   padding-right: 15px;
+   padding-left: 15px;
+}
+
+@media screen and (min-width: 1195px) {
+   .col3{
+      flex:0 0 25%;
+      max-width: 25%;
+   }
+}
+@media screen and (min-width: 985px) and (max-width:1194px){
+   .col3{
+      flex:0 0 33%;
+      max-width: 33%;
+   }
+}
+@media screen and (min-width: 761px) and (max-width:984px){
+   .col3{
+      flex:0 0 50%;
+      max-width: 50%;
+   }
 }

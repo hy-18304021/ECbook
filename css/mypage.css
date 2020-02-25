@@ -118,6 +118,7 @@ header #mobile-hamburger-menu-icon{
   width: 950px;
   margin: 0 auto;
   border-collapse: collapse;
+  overflow: auto;
 }
 
 #mem{
@@ -154,4 +155,7 @@ header #mobile-hamburger-menu-icon{
   
 .mypage{
   margin-top:30px;
+}
+#update{
+  display: none;
 }

@@ -86,7 +86,7 @@
                 <th>性別</th>
                 <td>
                     <c:choose>
-                        <c:when test="${sessionScope.user.sex}=='1'}">
+                        <c:when test="${sessionScope.user.sex=='1'}">
                             男
                         </c:when>    
                         <c:otherwise>

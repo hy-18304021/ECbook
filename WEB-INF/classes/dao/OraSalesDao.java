@@ -36,13 +36,13 @@ public class OraSalesDao implements SalesDao{
             OracleConnect.getInstance().rollback();
         }finally{
             //ÉäÉ\Å[ÉXâï˙
-            // try{
-            //     if(st!=null){
-            //         st.close();
-            //     }
-            // }catch(SQLException e){
-            //     e.printStackTrace();
-            // }
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
         }
     }
     public EbSalesBean getSales(String key){

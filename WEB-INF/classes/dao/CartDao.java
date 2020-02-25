@@ -13,4 +13,6 @@ public interface CartDao{
    public void updateCart(EbCartBean ec);
    public void deleteBook(EbCartBean ec);
    public ArrayList getUserCartInfo(String user_id);
+   public void deleteUserCart(String user);
+
 }

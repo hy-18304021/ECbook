@@ -45,12 +45,10 @@ public class PurchaseConfirmationCommand extends AbstractCommand{
         reqc.sessionAttribute("mycart",mycart);
         
         //‘—‚èæ‚Ìî•ñ‚ğæ“¾
-        List myaddress=addressdao.getAllAddress();
-        reqc.sessionAttribute("myaddress",myaddress);
+        List address = addressdao.getUserAddress(user_id);
+        resc.setResult(address);
 
         OracleConnect.getInstance().closeConnection();
-
-        reqc.sessionRemove("address");
         
         resc.setTarget("checkout");
         return resc;

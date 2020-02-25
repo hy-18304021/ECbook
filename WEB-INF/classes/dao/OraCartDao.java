@@ -221,4 +221,34 @@ public class OraCartDao implements CartDao{
       }
       return cart_amount;
    }
+
+   public void deleteUserCart(String user){
+      // PreparedStatement st=null;
+      // Connection cn=null;
+      String sql= "delete from ebcart where user_id=?";
+      try{
+         if(cn==null){
+            cn=OracleConnect.getInstance().getConnection();
+         }
+         //stのインスタンス取得
+         st=cn.prepareStatement(sql);
+
+         st.setString(1,user);
+
+         st.executeUpdate();
+      }catch(SQLException e){
+         //ロールバック処理
+         e.printStackTrace();
+         OracleConnect.getInstance().rollback();
+            }finally{
+         //リソース解放
+         try{
+            if(st!=null){
+                  st.close();
+               }
+         }catch(SQLException e){
+               e.printStackTrace();
+         }
+      }
+   }
 }

@@ -252,13 +252,20 @@ public class OraAddressDao implements AddressDao{
         try{
             cn=OracleConnect.getInstance().getConnection();
             //SQL文生成
-            String sql= "select * from ebaddress where address_id = ADDRESS_ID_SEQ.CURRVAL";
+            String sql= "select * from ebaddress where address_id = ?";
+            String sqls= "select ADDRESS_ID_SEQ.CURRVAL from dual";
 
             //stのインスタンス取得
-            st=cn.prepareStatement(sql);
+            st=cn.prepareStatement(sqls);
+            rs=st.executeQuery();
+            rs.next();
+            int adid=rs.getInt("CURRVAL");            
 
-            rs=st.executeQuery();            
+            PreparedStatement sts=cn.prepareStatement(sql);
+            sts.setInt(1,adid);
+            rs=sts.executeQuery();            
 
+            rs.next();
             eb.setAddress_id(rs.getInt("address_id"));
             eb.setUser_id(rs.getString("user_id"));
             eb.setReceiver_name(rs.getString("receiver_name"));
@@ -268,6 +275,7 @@ public class OraAddressDao implements AddressDao{
             
         }catch(SQLException e){
             //ロールバック処理
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放

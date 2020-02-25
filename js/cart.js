@@ -58,30 +58,36 @@ $(document).ready(function(){
         });
       }, 200);
   });
-  
+
   $(".qt-plus").click(function(){
     $(this).parent().children(".qt").html(parseInt($(this).parent().children(".qt").html()) + 1);
-    
+
     // $(this).parent().children(".cart_amount").val()=$(this).parent().children(".qt").html().toString();
     var cart_amount = parseInt($(this).parent().children(".cart_amount").val())+1;
     $(this).parent().children(".cart_amount").val(cart_amount);
+    updateUserCart($(this));
     // alert($(this).parent().children(".cart_amount").val());
     $(this).parent().children(".full-price").addClass("added");
-    
+
     var el = $(this);
     window.setTimeout(function(){el.parent().children(".full-price").removeClass("added"); changeVal(el);}, 150);
 
-    
+
   });
-  
+
   $(".qt-minus").click(function(){
-    
+
     child = $(this).parent().children(".qt");
-    
+
     if(parseInt(child.html()) > 1) {
       child.html(parseInt(child.html()) - 1);
       var cart_amount = parseInt($(this).parent().children(".cart_amount").val())-1;
       $(this).parent().children(".cart_amount").val(cart_amount);
+      updateUserCart($(this));
+    }else if(parseInt(child.html()) == 1){
+      var $remove = $(this).parent().parent().children("header").children(".remove");
+      // alert($remove);
+      $remove.click();
     }
     
     $(this).parent().children(".full-price").addClass("minused");
@@ -106,6 +112,18 @@ function deleteBookFromUserCart(el){
     book_isbn:el.children("h3").children(".book-isbn").val()
   };
   $.post("deletebookfromusercart.do",$.param(params),function(responseJson){
+    // alert(responseJson);
+  });
+}
+
+function updateUserCart(el){
+  var params = {
+    user_id:el.parent().children(".user-id").val(),
+    book_isbn:el.parent().children(".book-isbn").val(),
+    cart_amount:parseInt(el.parent().children(".cart_amount").val())
+  };
+  // alert(params.cart_amount);
+  $.post("updateusercart.do",$.param(params),function(responseJson){
     // alert(responseJson);
   });
 }

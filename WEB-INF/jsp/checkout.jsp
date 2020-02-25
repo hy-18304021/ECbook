@@ -22,30 +22,12 @@
             //     document.getElementById("mycart").style.display='none';
             //     document.getElementById("writereviewwithajax").style.display='none';
             // }
-
-            var address=document.getElementById("selectaddress").innerText;
-            console.log(address);
-            if(address=="adr"){
-              document.getElementById("fname").style.display='none';
-              document.getElementById("tel").style.display='none';
-              document.getElementById("postalcode").style.display='none';
-              document.getElementById("adr").style.display='none';
-              document.getElementById("tella").style.display='none';
-              document.getElementById("fnamela").style.display='none';
-              document.getElementById("adrla").style.display='none';
-              document.getElementById("postalcodela").style.display='none';
-              document.getElementById("select").style.display='none';
-            }else{
-              document.getElementById("reselect").style.display='none';
-              document.getElementsByClassName("address").style='display:none;';
-            }
         });
     </script>
     <title>checkout</title>
 </head>
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <h1 style="display:none;" id="selectaddress">${sessionScope.address}</h1>
     <div id="app">
     
    
@@ -62,23 +44,15 @@
 
           <div class="col-50">
             <h3>送り先情報</h3>
-            <label for="fname" id="fnamela"><i class="fa fa-user"></i> 名前</label>
-            <input type="text" id="fname" name="firstname" placeholder="name" oninput="valueinName(this)">
-            <label for="postalcode" id="postalcodela"><i class="fa fa-institution"></i> 郵便番号</label>
-            <input type="text" id="postalcode" name="postalcode" placeholder="postal code" oninput="valueinPostalcode(this)">
-             <label for="adr" id="adrla"><i class="fa fa-address-card-o"></i> 住所</label>
-            <input type="text" id="adr" name="address" placeholder="address" oninput="valueinAddress(this)">
-            <label for="tel" id="tella"><i class="fa fa-institution"></i> 電話番号</label>
-            <input type="text" id="tel" name="tel" placeholder="tel" oninput="valueinTel(this)">
             <c:forEach var="address" items="${result}" varStatus="starts">
               <div class="addresslist">
                 <label onclick="registeddata(${starts.index})">
                   <input type="radio" class="address" name="address">
                   <div>
                     Full Name:${address.receiver_name}<br>
-                    Postal code:${address.postal_code}<br>
+                    Postal Code:${address.postal_code}<br>
                     Address:${address.address}<br>
-                    tel:${address.tel}</div>
+                    Tel:${address.tel}</div>
                   </label>
               </div>
               <input type="hidden" class="address_id" value="${address.address_id}">
@@ -89,14 +63,7 @@
               <input type="hidden" class="tel" value="${address.tel}">
             </c:forEach>
 
-              <form action="removeselectaddress.do" method="post" accept-charset="utf-8">
-                <input type="submit" id="reselect" value="readdress" class="selectaddress">
-              </form>
 
-              <form action="selectaddress.do" method="post" accept-charset="utf-8">
-                <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-                <input type="submit" id="select" value="address" class="selectaddress">
-              </form>
           </div>
 
           <div class="col-50">

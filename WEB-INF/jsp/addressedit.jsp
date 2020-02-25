@@ -1,34 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>My Cart</title>
+<link rel="stylesheet" type="text/css" href="css/cart.css">
+<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!-- <script type="text/javascript" src="js/ajax.js"></script> -->
+<script type="text/javascript" src="js/cart.js"></script>
+<script>
+    $(document).ready(function(){
+        var flag=document.getElementById("flag").innerText;
+        if(flag=="OK"){
+            document.getElementById("loginli").style.display='none';
+        }else{
+            document.getElementById("logoutli").style.display='none';
+            document.getElementById("mypage").style.display='none';
+            document.getElementById("mycart").style.display='none';
+        }
+    })
+    
+</script>
+<style>
+  .btn {
+	background: #53b5aa;
+	border: 1px solid #999;
+	border-style: none none solid none;
+	cursor: pointer;
+	display: block;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 300;
+	padding: 16px 0;
+	width: 290px;
+	text-align: center;
 
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-   	<meta charset="UTF-8">
-   	<title>My page</title>
-    <link rel="stylesheet" type="text/css" href="css/mypage.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-    <script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-            }
-        })
-    </script>
-   </head>
-   <body>
-    <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <div id="app">
-        <header class="page-element">
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	-ms-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+.btn:hover {
+	color: #fff;
+	background: #429188;
+}
+
+</style>
+</head>
+<body>
+  <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
+<h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+    <div id="app" style="background: #eee;">
+       <header class="page-element" style="background: #fff;">
             <div>
                 <h1>
                     Logo
@@ -36,6 +64,7 @@
               
            <div class="book-finder">
               <ul class="book-type-list">
+                <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
@@ -49,56 +78,78 @@
 
         </div>
     </header>
-        <main>
-            <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-            <div class="leftcolumn">
-                <p style="font-weight: bold;">ジャンル</p>
-                <p>ライトノベル</p>
-                <p>少年コミック</p>
-                <p>少女コミック</p>
-            </div>
-    
-      <ul>
-          <li><a href="orderhistorycall.do">注文履歴</a></li>
-          <li><a href="addresseditcall.do">お届け住所変更</a></li>
-      </ul>
+    <header1 id="site-header">
+  <div class="container">
+    <h1>${sessionScope.user.id}様のカート</h1>
+  </div>
+</header1>
 
-   	
-   	
-       <h1>Login as: ${sessionScope.user.id}</h1>
-       ${sessionScope.user.pass}
-       <br>${sessionScope.user.name}
-       <br>${sessionScope.user.mail}
-       <br>${sessionScope.user.sex}
-       <br>${sessionScope.user.birth}
-      <button onclick="appearUpdateForm()">修正</button>
+<div class="container">
+  <c:set var="totalPrice" value="${0}" />
+  <c:forEach var="cart" items="${sessionScope.mycart}">
+  <c:set var="totalPrice" value="${totalPrice + cart.book_price*cart.cart_amount}" />
+  <section class="cart">
+    <article class="product">
+      <header>
+        <a class="remove">
+          <img src="bookimage/${cart.book_isbn}" alt="">
 
+          <h3 style="text-align: center;">
+              <input type="hidden" class="user-id" value="${sessionScope.user.id}">
+              <input type="hidden" class="book-isbn" value="${cart.book_isbn}">
+              <input type="submit" value="Remove">
+          </h3>
+        </a>
+      </header>
 
-       <div id="update" style="display:none;">
-        <form action="updateuser.do" method="post" accept-charset="utf-8">
-            <input type="hidden" name="id" value="${sessionScope.user.id}">
-            Name:<input type="text" name="name" id="name">
-            <br>
-            Pass:<input type="text" name="pass" id="pass">
-            <br>
-            Mail:<input type="text" name="mail" id="mail">
-            <br>
-            Sex:
-            <input type="radio" name="sex" value="1" id="sex"checked>Male
-            <input type="radio" name="sex" value="2" id="sex">Female
-            <br>
-            Birth:<input type="date" name="birth" id="birth" value="2018-01-01">
-            <br>
-            <input type="submit" value="情報修正">
-         <button type="button" onclick="disappear()">閉じる</button>
-        </form>
-        
-       </div>
-       <div id="result">
-         
-       </div>
-       <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
-       <h1><a href="logout.do">ログアウト</a></h1>
-       
-   </body>
-   </html>
+      <div class="content">
+
+        <h1>${cart.book_name}</h1>
+        ${cart.book_name}
+      </div>
+
+      <form action="updateusercart.do" method="post" accept-charset="utf-8">
+        <footer class="content">
+          <span class="qt-minus">-</span>
+          <span class="qt">${cart.cart_amount}</span>
+          <span class="qt-plus">+</span>
+          <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+          <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+          <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
+          
+          <!-- 合計金額 -->
+          <h2 class="full-price">
+            
+            ${cart.book_price*cart.cart_amount}円
+          </h2>
+          <!-- 1個の金額 -->
+          <h2 class="price">
+            ${cart.book_price}円
+          </h2>
+        </footer>
+      </form>
+    </article>
+  </section>
+</c:forEach>
+</div>
+
+<footer id="site-footer">
+  <div class="container clearfix">
+    <div class="right">
+      <h1 class="total">Total: <span>${totalPrice}</span>円</h1>
+      <form class="totalform" action="purchaseconfirmation.do" method="post" accept-charset="utf-8">
+        <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+        <c:forEach var="cart" items="${sessionScope.mycart}">
+            <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+            <input type="hidden" class="totalamount" name="cart_amount" value="${cart.cart_amount}">
+        </c:forEach>
+        <input type="hidden" class="totalprice" name="fullprice" value="${totalPrice}">
+        <input type="submit" value="Checkout" class="btn"></input>
+        <br>
+      </form>
+      <button class="btn" onclick="location.href='getbooktable.do'">買物を続く</button>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

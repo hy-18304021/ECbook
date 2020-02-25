@@ -107,7 +107,7 @@ header #mobile-hamburger-menu-icon{
 }
 
 #popular-books{
-   width: 1200px;
+   max-width: 1200px;
    margin-left: 30px;
 }
 
@@ -135,7 +135,7 @@ header #mobile-hamburger-menu-icon{
 }
 
 .product-grid .product-image{
-   overflow: hidden;
+   overflow: inherit;
    position: relative;
    height: 300px;
 }
@@ -162,7 +162,7 @@ header #mobile-hamburger-menu-icon{
 }
 
 .product-grid .social{
-   width: 100%;
+   max-width: 100%;
    padding: 30px 0;
    margin: 0;
    list-style: none;
@@ -245,4 +245,11 @@ header #mobile-hamburger-menu-icon{
    text-align: center;
    padding: 30px 0;
    margin-top: 20px;
+}
+
+@media screen and (min-width: 500px) {
+   .col-md-3{
+      flex:0 0 25%;
+      max-width: 25%;
+   }
 }

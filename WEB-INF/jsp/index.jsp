@@ -31,7 +31,7 @@
 </head>
 <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-    <div id="app">
+    
         <header class="page-element">
             <div>
            <h1>
@@ -107,10 +107,10 @@
                                         </div>
                                 </div>
                             </c:forEach>
+                            </div>
                             <!-- shounen -->
                             <h3>Shounen Books</h3>
                             <br>
-                            <div class="container">
                                 <div class="row">
                             <c:forEach var="book" items="${recommendedShounen}">
                                     <div class="col-md-3">
@@ -151,12 +151,12 @@
                                 </div>
                             </c:forEach>
                             </div>
-                            </div>
+
                             <!-- Shoujo -->
                             <h3>Shoujo Books</h3>
                             <br>
-                            <div class="container">
-                                <div class="row">
+                            <!-- <div class="container"> -->
+                            <div class="row">
                             <c:forEach var="book" items="${recommendedShoujo}">
                                     <div class="col-md-3">
                                     
@@ -196,11 +196,11 @@
                                 </div>
                             </c:forEach>
                             </div>
-                            </div>
+                            <!-- </div> -->
                             <!-- LightNovel -->
                             <h3>LightNovel Books</h3>
                             <br>
-                            <div class="container">
+                            <!-- <div class="container"> -->
                                 <div class="row">
                             <c:forEach var="book" items="${recommendedLightNovel}">
                                     <div class="col-md-3">
@@ -241,20 +241,21 @@
                                 </div>
                             </c:forEach>
                             </div>
-                            </div>
+                            <!-- </div> -->
                             </div>
                         </div>
                      </div>
                  </div>
-             </div>
+             </main>
+           
             <!-- footer -->
             <footer>
                 <div class="footer">
                     <p>東京テクニカルカレッジ情報処理科２年</p>
                 </div>
             </footer>
-        </main>
-    </div>
+        
+        
    
 </body>
 </html>

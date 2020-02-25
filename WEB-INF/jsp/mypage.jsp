@@ -93,14 +93,15 @@
             </tr>
             
         </table>
-        <table style="float: right; margin-top:-243px;">
+        
         <div id="update" style="display:none;">
+            <table style="float: right; margin-top:-243px;">
             <form action="updateuser.do" method="post" accept-charset="utf-8">
                 <input type="hidden" name="id" value="${sessionScope.user.id}">
-                <tr>
+                <!-- <tr>
                     <th>ユーザ名</th>
                     <td><input type="text" name="id" id="id"></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>名前</th>
                     <td><input type="text" name="name" id="name"></td>
@@ -131,10 +132,11 @@
                     <button type="button" onclick="disappear()">閉じる</button>
                     </th>
                 </tr>
-        </form>
+                </form>
             
-           </div>
-        </table>
+           
+            </table>
+        </div>
       </div>
        <!-- <h1>Login as: ${sessionScope.user.id}</h1>
        ${sessionScope.user.pass}
@@ -164,11 +166,11 @@
         </form>
         
        </div> -->
-       <div id="result">
-         
-       </div>
+
     </div>
        
+    </div>
+    </main>
     </div>
    </body>
    </html>

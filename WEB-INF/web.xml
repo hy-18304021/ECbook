@@ -66,19 +66,6 @@
     </filter-mapping>
 
 
-    <!-- Review Book Filter -->
-    <filter>
-        <filter-name>bookreviewfilter</filter-name>
-        <filter-class>filter.BookReviewFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>bookreviewfilter</filter-name>
-        <url-pattern>/bookinfo.do</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-
     <!-- Recommanded Book Filter -->
     <filter>
         <filter-name>recommandedbookfilter</filter-name>

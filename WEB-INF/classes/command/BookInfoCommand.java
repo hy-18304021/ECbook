@@ -2,12 +2,12 @@
 package command;
 import java.util.List;
 import dao.OracleConnect;
-import dao.BookDao;
+import dao.*;
 import dao.AbstractDaoFactory;
 import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
-import bean.EbBookBean;;
+import bean.*;
 public class BookInfoCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
@@ -19,11 +19,17 @@ public class BookInfoCommand extends AbstractCommand{
 		BookDao bookdao = daofac.getBookDao();
 		EbBookBean book = bookdao.getBook(book_isbn);
 
-
 		List recommendedBook = bookdao.getRecommendedBooks(book.getGenre_id());
 		reqc.setRequestAttribute("recommendedBook",recommendedBook);
 		// System.out.println(book);
-		OracleConnect.getInstance().commit();
+
+
+
+		ReviewDao reviewdao = daofac.getReviewDao();
+        List bookreviewlist = reviewdao.getBookReview(book_isbn);
+        reqc.setRequestAttribute("bookreviewlist",bookreviewlist);
+
+		// OracleConnect.getInstance().commit();
 		OracleConnect.getInstance().closeConnection();
 		resc.setResult(book);
 		resc.setTarget("bookpage");

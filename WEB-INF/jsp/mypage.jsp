@@ -117,8 +117,8 @@
                 <tr>
                     <th>性別</th>
                     <td>
-                    <input type="radio" name="sex" value="1" id="sex"checked>男
-                    <input type="radio" name="sex" value="2" id="sex">女
+                    <label><input type="radio" name="sex" value="1" id="sex"checked>男</label>
+                    <label><input type="radio" name="sex" value="2" id="sex">女</label>
                     </td>
                 </tr>
                 <tr>

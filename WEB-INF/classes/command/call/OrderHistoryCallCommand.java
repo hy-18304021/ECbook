@@ -15,7 +15,6 @@ public class OrderHistoryCallCommand extends AbstractCommand{
     public ResponseContext execute(ResponseContext resc){
 
         //userid使ってebsalesからデータ取得
-
         RequestContext reqc=getRequestContext();
 
         //オラクル始め

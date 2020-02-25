@@ -25,7 +25,7 @@
         })
     </script>
     <style>
-        
+
     </style>
 
 </head>
@@ -75,7 +75,7 @@
                             <div class="row">
                                 <!-- recommendedBooks -->
                                 <c:forEach var="book" items="${recommendedBooks}">
-                                    <div class="col-md-3">
+                                    <div class="col3">
                                     
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
@@ -113,7 +113,7 @@
                             <br>
                                 <div class="row">
                             <c:forEach var="book" items="${recommendedShounen}">
-                                    <div class="col-md-3">
+                                    <div class="col3">
                                     
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
@@ -158,7 +158,7 @@
                             <!-- <div class="container"> -->
                             <div class="row">
                             <c:forEach var="book" items="${recommendedShoujo}">
-                                    <div class="col-md-3">
+                                    <div class="col3">
                                     
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
@@ -203,7 +203,7 @@
                             <!-- <div class="container"> -->
                                 <div class="row">
                             <c:forEach var="book" items="${recommendedLightNovel}">
-                                    <div class="col-md-3">
+                                    <div class="col3">
                                     
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">

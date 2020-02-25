@@ -6,7 +6,7 @@
    <head>
    	<meta charset="UTF-8">
    	<title>My page</title>
-    <link rel="stylesheet" type="text/css" href="css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="css/orderhistory.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
@@ -57,14 +57,8 @@
             <p>少年コミック</p>
             <p>少女コミック</p>
         </div>
-
-        <ul>
-            <li><a href="mypage.do">戻る</a></li>
-        </ul>
-
-   	    <h1>${sessionScope.user.name}さまの購入履歴</h1>
     
-        <div class="container">
+        <!-- <div class="container">
             <c:forEach var="sales" items="${result}">
                 <%--1 rowに1 EBSalesの情報を入れる --%>
                 <div class="row">
@@ -92,13 +86,42 @@
                     </forEach>
                 </div>
             </forEach>
-        <div class="container">
-        
-       <div id="result">
-         
-       </div>
-       <h1><a href="${pageContext.request.contextPath}/">EbBook</a></h1>
-       <h1><a href="logout.do">ログアウト</a></h1>
-       
+             -->
+             <div class="frame">        
+                <div class="mypage">
+                <div class="meminfo">
+                    <h2>${sessionScope.user.name}さまの購入履歴</h2>        
+                    <ul id="mem">
+                        <li><a href="mypage.do">マイページ</a></li>
+                        <li><a href="addresseditcall.do">お届け住所変更</a></li>
+                    </ul>
+                    
+                    <hr>
+                    
+                    <table>
+                        <tr>
+                            <th>商品名</th>
+                            <th>イメージ</th>
+                            <th>値段</th>
+                            <th>購入日時</th>
+                            <th>数量</th>
+                            <th>金額</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </table>
+                    
+                    </div>
+                  </div>
+                </div>
+                   
+                </div>
+                
    </body>
    </html>

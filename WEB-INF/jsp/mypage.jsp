@@ -117,8 +117,8 @@
                 <tr>
                     <th>性別</th>
                     <td>
-                    <input type="radio" name="sex" value="1" id="sex"checked>Male
-                    <input type="radio" name="sex" value="2" id="sex">Female
+                    <input type="radio" name="sex" value="1" id="sex"checked>男
+                    <input type="radio" name="sex" value="2" id="sex">女
                     </td>
                 </tr>
                 <tr>
@@ -138,35 +138,6 @@
             </table>
         </div>
       </div>
-       <!-- <h1>Login as: ${sessionScope.user.id}</h1>
-       ${sessionScope.user.pass}
-       <br>${sessionScope.user.name}
-       <br>${sessionScope.user.mail}
-       <br>${sessionScope.user.sex}
-       <br>${sessionScope.user.birth} -->
- 
-
-       <!-- <div id="update" style="display:none;">
-        <form action="updateuser.do" method="post" accept-charset="utf-8">
-            <input type="hidden" name="id" value="${sessionScope.user.id}">
-            Name:<input type="text" name="name" id="name">
-            <br>
-            Pass:<input type="text" name="pass" id="pass">
-            <br>
-            Mail:<input type="text" name="mail" id="mail">
-            <br>
-            Sex:
-            <input type="radio" name="sex" value="1" id="sex"checked>Male
-            <input type="radio" name="sex" value="2" id="sex">Female
-            <br>
-            Birth:<input type="date" name="birth" id="birth" value="2018-01-01">
-            <br>
-            <input type="submit" value="情報修正">
-         <button type="button" onclick="disappear()">閉じる</button>
-        </form>
-        
-       </div> -->
-
     </div>
        
     </div>

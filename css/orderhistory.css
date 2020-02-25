@@ -1,0 +1,161 @@
+
+
+*{
+    box-sizing: border-box;
+  }
+  html,body,#app{
+    height: 100%;
+    width: 100%;
+  }
+  body{
+    margin: 0;
+    padding: 0;
+    color: text;
+    font-family: Helvetica Neue, Arial, sans-serif;
+  
+  }
+  .page-element{
+    display: flex;
+    justify-content: center;
+  }
+  .page-element  > div{
+       width: 100%;
+       max-width: 1400px;
+    }
+  
+  
+  header > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1{
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  header .book-finder{
+    float: right;
+    display: flex;
+    align-items: center;
+  }
+  header .book-finder ul{
+    display: inline-block;
+    margin: 0 25px 0 0;
+    padding: 0;
+    list-style: none; 
+  }
+  header .book-finder ul li{
+    float: left;
+    padding: 5px 5px;
+    margin: 4.5px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    transition: .1s ease-out;
+    
+    
+  }
+  header .book-finder ul li a{
+    color: lightgreen;
+    text-decoration: none;
+    
+  }
+  header .book-finder form{
+    display: inline-block;
+  }
+  header .book-finder form input[type="text"]{
+    width: 130px;
+    border: 2px solid lightgreen;
+    height: 25px;
+    padding: 0 3px;
+  }
+  header .book-finder form input[type="submit"]{
+    background: lightgreen;
+    border: 0;
+    color: white;
+    padding: 0 7.5px;
+    float: right;
+    height: 25px;
+    cursor: pointer;
+  }
+  header #mobile-hamburger-menu-icon{
+    display: none;
+  }
+  
+  #navigation {
+    color: #333;
+    padding: 10px;
+    margin: 0px 0px 5px 70px;
+    width: 1400px;
+    }
+  
+  .leftcolumn { 
+    border: 1px solid;
+    border-color:#E4E4E4;
+    border-radius : 5px;
+    display: inline;
+    color: #333;
+    width: 195px;
+    height: 400px;
+    float: left;
+    margin:10px;
+    margin-left: 70px;
+    padding:20px;
+    text-align: center;
+   }
+  
+  .leftcolum:first-line{
+    font-size: 60px;
+  }
+  
+  .frame{
+    width: 1300px;
+    margin: auto;
+  }
+  
+  .meminfo{
+    height:400px;
+    width: 950px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    overflow: auto;
+  }
+  
+  #mem{
+    padding-bottom:30px;
+  }
+  
+  .meminfo li{
+    list-style-type: none;
+    text-decoration: none;
+    position: relative;
+    float: right;
+    line-height: 40px;
+  }
+  
+  .meminfo li a{
+    display: block;
+    padding: 5px;
+  }
+  
+  .meminfo th{
+    border: 1px solid #000;
+    width:1%;
+    height:10%;
+    padding: 4px;
+    font-size: 17px;
+    }
+  
+  .meminfo td{
+    border: 1px solid #000;
+    width:60%;
+    height:10%;
+    padding: 4px;
+    }
+    
+  .mypage{
+    margin-top:30px;
+  }
+  #update{
+    display: none;
+  }

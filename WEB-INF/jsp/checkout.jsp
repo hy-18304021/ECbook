@@ -49,10 +49,10 @@
                 <label onclick="registeddata(${starts.index})">
                   <input type="radio" class="address" name="address">
                   <div>
-                    Full Name:${address.receiver_name}<br>
-                    Postal Code:${address.postal_code}<br>
-                    Address:${address.address}<br>
-                    Tel:${address.tel}</div>
+                    名前:${address.receiver_name}<br>
+                    郵便番号:${address.postal_code}<br>
+                    住所:${address.address}<br>
+                    電話番号:${address.tel}</div>
                   </label>
               </div>
               <input type="hidden" class="address_id" value="${address.address_id}">

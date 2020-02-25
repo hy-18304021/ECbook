@@ -2,6 +2,7 @@ package command.call;
 
 import dao.OracleConnect;
 import dao.SalesDao;
+import dao.Sales_RefDao;
 import dao.AbstractDaoFactory;
 import froc.RequestContext;
 import froc.ResponseContext;
@@ -23,9 +24,11 @@ public class OrderHistoryCallCommand extends AbstractCommand{
 		//インテグレーションレイヤの処理呼び出し
         AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
         
-        SalesDao dao=factory.getSalesDao();
+        SalesDao salesdao=factory.getSalesDao();
+        Sales_RefDao salesrefdao=factory.getSales_RefDao();
         String userid=((EbUserBean)reqc.getSessionAttribute("user")).getId();
-        List sales=dao.getUserSales(userid);
+        
+        List sales=salesdao.getUserSales(userid);
         
         resc.setResult(sales);
 

@@ -1,10 +1,10 @@
 
-SQL*Loader: Release 12.2.0.1.0 - Production on 火 2月 18 14:39:52 2020
+SQL*Loader: Release 12.2.0.1.0 - Production on 金 2月 21 09:49:01 2020
 
 Copyright (c) 1982, 2017, Oracle and/or its affiliates.  All rights reserved.
 
 制御ファイル:    EBUSER_DATA_TABLE.ctl
-データファイルC:\Users\koyama\Documents\ECBook\sql\ok\loader\ldr\EBUSER_DATA_TABLE.ldr
+データファイルEBUSER_DATA_TABLE.ldr
   ファイル処理オプション文字列: "str '\r\n'"
   不良ファイル:  EBUSER_DATA_TABLE.bad
   廃棄ファイル:  指定なし
@@ -37,14 +37,13 @@ TRAILING NULLCOLSオプションは有効です。
 "BIRTH"                             NEXT    *  , O(")DATE YYYY-MM-DD HH24:MI:SS
                                                       O(")
 
-SQL*Loader-500: ファイル(C:\Users\koyama\Documents\ECBook\sql\ok\loader\ldr\EBUSER_DATA_TABLE.ldr)をオープンできません
-SQL*Loader-553: ファイルが見つかりません。
-SQL*Loader-509: システム・エラー: 指定されたファイルが見つかりません。
-SQL*Loader-2026: SQLローダーが続行できないため、ロードは異常終了しました。
+レコード1: 拒否されました。- 表"EBTEST"."EBUSER"でエラーが発生しました。
+ORA-00001: 一意制約(EBTEST.PK_EBUSER)に反しています
+
 
 表"EBTEST"."EBUSER":
   0 行は正常にロードされました。
-  0 行はデータ・エラーのためロードされませんでした。
+  1 行はデータ・エラーのためロードされませんでした。
   0 行は、すべてのWHEN句が失敗したためロードされませんでした。
   0 行はすべてのフィールドがNULLであったためロードされませんでした。
 
@@ -53,12 +52,12 @@ SQL*Loader-2026: SQLローダーが続行できないため、ロードは異常終了しました。
 読取りバッファのバイト数:  1048576
 
 スキップされた論理レコードの合計:          0
-読み込まれた論理レコードの合計:             0
-拒否された論理レコードの合計:               0
+読み込まれた論理レコードの合計:             1
+拒否された論理レコードの合計:               1
 廃棄された論理レコードの合計:        0
 
-実行開始火 2月  18 14:39:52 2020
-実行終了火 2月  18 14:39:52 2020
+実行開始金 2月  21 09:49:01 2020
+実行終了金 2月  21 09:49:01 2020
 
-実行時間:        00: 00: 00.23
-CPU時間 :        00: 00: 00.15
+実行時間:        00: 00: 00.39
+CPU時間 :        00: 00: 00.14

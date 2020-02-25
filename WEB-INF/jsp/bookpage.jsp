@@ -37,12 +37,13 @@
                  </h1>
               
            <div class="book-finder">
-              <ul class="book-type-list">
-                <li id="mypage"><a href="mypage.do">MyPage</a></li>
-                <li id="loginli"><a href="logincall.do">Login</a></li>
-                <li id="logoutli"><a href="logout.do">Logout</a></li>
-                <li id="mycart"><a href="mycart.do">Cart</a></li>
-              </ul>
+            <ul class="book-type-list">
+              <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
+              <li id="mypage"><a href="mypage.do">MyPage</a></li>
+              <li id="loginli"><a href="logincall.do">Login</a></li>
+              <li id="logoutli"><a href="logout.do">Logout</a></li>
+              <li id="mycart"><a href="mycart.do">Cart</a></li>
+            </ul>
               <form class="book-search" action="searchbook.do" method="post">
                  <input type="text" name="book_name">
                  <input type="submit" value="Search">
@@ -77,9 +78,15 @@
         <div class="product-container">
           <div class="leftcolumn" style="float: right;">
             <p style="font-weight: bold;">同じジャンルの本</p>
+            
+              
             <c:forEach var='book' items='${recommendedBook}'>
-              <p>${book.book_name}</p>
-            </c:forEach>
+              <div class="book1">  
+                <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="width: 60px; float: left;">
+              <p style="margin-top:40px; margin-left: 90px; padding-top: 25px;">${book.book_name}</p>
+            </div>
+          </c:forEach>
+          
         </div>
           <div class="product-left-container">
             <h2 class="product-page">Review</h2>

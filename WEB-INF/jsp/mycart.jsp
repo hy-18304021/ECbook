@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
         <a class="remove">
           <img src="bookimage/${cart.book_isbn}" alt="">
 
-          <h3>
+          <h3 style="text-align: center;">
               <input type="hidden" class="user-id" value="${sessionScope.user.id}">
               <input type="hidden" class="book-isbn" value="${cart.book_isbn}">
               <input type="submit" value="Remove">
@@ -116,8 +116,7 @@ pageEncoding="UTF-8"%>
           <input type="hidden" name="user_id" value="${sessionScope.user.id}">
           <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
           <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
-          <input type="submit" value="修正" style="position: absolute; margin-top: 15px; background-color: #c66; color:#fff; font-size: 12px; border:none; border-radius: 3px;">
-        
+          
           <!-- 合計金額 -->
           <h2 class="full-price">
             
@@ -125,7 +124,7 @@ pageEncoding="UTF-8"%>
           </h2>
           <!-- 1個の金額 -->
           <h2 class="price">
-            ${cart.book_price}
+            ${cart.book_price}円
           </h2>
         </footer>
       </form>

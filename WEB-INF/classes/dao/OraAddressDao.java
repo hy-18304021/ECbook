@@ -19,23 +19,22 @@ public class OraAddressDao implements AddressDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "insert into ebuser values(?,?,?,?,?,?)";
+            String sql= "insert into ebaddress values(DEFAULT,?,?,?,?,?)";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
 
             //バインド変数の設定
-            st.setInt(1,ea.getAddress_id());
-            st.setString(2,ea.getUser_id());
-            st.setString(3,ea.getReceiver_name());
-            st.setInt(4,ea.getPostal_code());
-            st.setString(5,ea.getAddress());
-            st.setString(6,ea.getTel());
-
+            st.setString(1,ea.getUser_id());
+            st.setString(2,ea.getReceiver_name());
+            st.setInt(3,ea.getPostal_code());
+            st.setString(4,ea.getAddress());
+            st.setString(5,ea.getTel());
 
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放
@@ -243,5 +242,43 @@ public class OraAddressDao implements AddressDao{
                 e.printStackTrace();
             }
         }
+    }
+    public EbAddressBean getLastAddress_id(){
+        Connection cn=null;
+        PreparedStatement st=null;
+        ResultSet rs=null;
+        EbAddressBean eb=new EbAddressBean();
+
+        try{
+            cn=OracleConnect.getInstance().getConnection();
+            //SQL文生成
+            String sql= "select * from ebaddress where address_id = ADDRESS_ID_SEQ.CURRVAL";
+
+            //stのインスタンス取得
+            st=cn.prepareStatement(sql);
+
+            rs=st.executeQuery();            
+
+            eb.setAddress_id(rs.getInt("address_id"));
+            eb.setUser_id(rs.getString("user_id"));
+            eb.setReceiver_name(rs.getString("receiver_name"));
+            eb.setPostal_code(rs.getInt("postal_code"));
+            eb.setAddress(rs.getString("address"));
+            eb.setTel(rs.getString("tel"));
+            
+        }catch(SQLException e){
+            //ロールバック処理
+            OracleConnect.getInstance().rollback();
+        }finally{
+            //リソース解放
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return eb;
     }
 }

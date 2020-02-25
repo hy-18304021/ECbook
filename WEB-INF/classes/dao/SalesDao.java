@@ -10,4 +10,5 @@ public interface SalesDao{
    public List getAllSales();
    public void upDateSales(EbSalesBean es);
    public void deleteSales(EbSalesBean es);
+   public List getUserSales(String userid);
 }

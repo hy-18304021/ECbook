@@ -2,10 +2,10 @@ drop sequence address_id_seq;
 drop sequence sales_id_seq;
 drop sequence arrival_id_seq;
 drop sequence genre_id_seq;
-create sequence address_id_seq;
-create sequence sales_id_seq;
-create sequence arrival_id_seq;
-create sequence genre_id_seq;
+create sequence address_id_seq start with 100;
+create sequence sales_id_seq start with 100;
+create sequence arrival_id_seq start with 100;
+create sequence genre_id_seq start with 100;
 DROP TABLE ebarrival;
 DROP TABLE ebsales_ref;
 DROP TABLE ebsales;
@@ -97,7 +97,7 @@ CREATE TABLE ebreview(
   CONSTRAINT  fk_ebreview_user_id           FOREIGN KEY(user_id) REFERENCES ebuser(id)
 );
 CREATE TABLE ebsales(
-  sales_id      NUMBER(10)        DEFAULT arrival_id_seq.nextval,
+  sales_id      NUMBER(10)        DEFAULT sales_id_seq.nextval,
   user_id       VARCHAR2(30)      NOT NULL,
   sales_date    date              DEFAULT sysdate,
   address_id    NUMBER(10)        NOT NULL,

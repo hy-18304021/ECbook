@@ -207,7 +207,7 @@ a:hover {
 	overflow: hidden;
 	padding: 0;
 	position: relative;
-	width: 24%;
+	width: 17%;
 	height: 195px;
 }
 
@@ -226,7 +226,7 @@ a:hover {
 	font-weight: 300;
 	line-height: 49px;
 	margin: 0;
-	padding: 0 30px;
+	padding: 0 10px;
 	position: absolute;
 	bottom: -50px;
 	right: 0;
@@ -244,7 +244,7 @@ a:hover {
   background: #53b5aa;
   font-size: 22px;
   color: #fff;
-  width: 180px;
+  width: 137px;
   height: 48px;
   margin-right: 0px;
   border: none;

@@ -104,13 +104,9 @@
                 <li>
                     <label for="book_kind">ジャンル</label>
                     <select id="book_kind" name="book_kind">
-                        <option value="21">少年</option>
-                        <option value="22">青年</option>
-                        <option value="23">少女</option>
-                        <option value="24">4コママンガ</option>
-                        <option value="25">BL</option>
-                        <option value="26">アダルト</option>
-                        <option value="27">ライトノベル</option>
+                        <option value="1">少年</option>
+                        <option value="2">少女</option>
+                        <option value="3">ライトノベル</option>
                 </select>
                 </li>
                 <li>

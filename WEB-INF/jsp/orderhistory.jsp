@@ -63,12 +63,12 @@
         </ul>
 
    	    <h1>${sessionScope.user.name}さまの購入履歴</h1>
-
+    
         <div class="container">
-            <%-- <c:forEach var="sales" items="${result}"> --%>
+            <c:forEach var="sales" items="${result}">
                 <%--1 rowに1 EBSalesの情報を入れる --%>
                 <div class="row">
-                    <%-- <c:forEach var="book" items="${sales}"> --%>
+                    <c:forEach var="book" items="${sales}">
                         <div class="col-md-8">
                             <div class="product-image">
                                 <a href="bookinfo.do?book_isbn=${book.book_isbn}">
@@ -89,9 +89,9 @@
                                 <button>再度購入</button>
                             </div>
                         </div>
-                    <%-- </forEach> --%>
+                    </forEach>
                 </div>
-            <%-- </forEach> --%>
+            </forEach>
         <div class="container">
         
        <div id="result">

@@ -34,9 +34,9 @@
     
         <header class="page-element">
             <div>
-           <h1>
-              Logo
-           </h1>
+                <h1>
+                    <a href="indexcall.do">Logo</a>
+                 </h1>
            <div class="book-finder">
               <ul class="book-type-list">
                 <li id="booklistli"><a href="getbooktable.do">BookList</a></li>

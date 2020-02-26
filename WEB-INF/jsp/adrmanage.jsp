@@ -6,7 +6,7 @@
    <head>
    	<meta charset="UTF-8">
    	<title>My page</title>
-    <link rel="stylesheet" type="text/css" href="css/addressedit.css">
+    <link rel="stylesheet" type="text/css" href="css/orderhistory.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
@@ -60,32 +60,28 @@
              <div class="frame">        
                 <div class="mypage">
                 <div class="meminfo">
-                    <h2>送り先住所登録</h2>        
+                    <h2>${sessionScope.user.name}さまの送り先住所</h2>        
                     <ul id="mem">
                         <li><a href="mypage.do">マイページ</a></li>
-                        <li><a href="">お届け住所管理</a></li>
+                        <li><a href="addresseditcall.do">お届け住所変更</a></li>
                     </ul>
                     
                     <hr>
                     
-                    <div class="registbox">
-                            <form action='.do' method="Post">
-                                <p>名前</p>
-                                <input type="text" name="reciver_name">
-                                
-                                <p>郵便番号</p>
-                                <input type="text" name="postal_code">
-                                
-                                <p>住所</p>
-                                <input type="text" name="address">
-                                
-                                <p>電話番号</p>
-                                <input type="text" name="tel">
-                                <br>
-                                <input type="submit" value="登録">
-                            
-                            </form>	
-                    </div>
+                    <table>
+                        <tr>
+                            <th>名前</th>
+                            <th>郵便番号</th>
+                            <th>住所</th>
+                            <th>電話番号</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </table>
                     
                     </div>
                   </div>

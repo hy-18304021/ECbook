@@ -6,7 +6,7 @@ public class EbSalesBean implements Serializable{
 
     private int sales_id;
     private String user_id;
-    private int sales_date;
+    private String sales_date;
     private int address_id;
     private String pay_method;
 
@@ -21,7 +21,7 @@ public class EbSalesBean implements Serializable{
         user_id=user;
     }
 
-    public void setSales_date(int date){
+    public void setSales_date(String date){
         sales_date=date;
     }
 
@@ -41,7 +41,7 @@ public class EbSalesBean implements Serializable{
         return user_id;
     }
 
-    public int getSales_date(){
+    public String getSales_date(){
         return sales_date;
     }
     

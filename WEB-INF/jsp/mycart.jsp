@@ -107,13 +107,12 @@ pageEncoding="UTF-8"%>
         ${cart.book_name}
       </div>
 
-      <form action="updateusercart.do" method="post" accept-charset="utf-8">
         <footer class="content">
           <span class="qt-minus">-</span>
           <span class="qt">${cart.cart_amount}</span>
           <span class="qt-plus">+</span>
-          <input type="hidden" name="user_id" value="${sessionScope.user.id}">
-          <input type="hidden" name="book_isbn" value="${cart.book_isbn}">
+          <input type="hidden" class="user-id" name="user_id" value="${sessionScope.user.id}">
+          <input type="hidden" class="book-isbn" name="book_isbn" value="${cart.book_isbn}">
           <input type="hidden" name="cart_amount" class="cart_amount" value="${cart.cart_amount}">
           
           <!-- 合計金額 -->
@@ -126,7 +125,6 @@ pageEncoding="UTF-8"%>
             ${cart.book_price}円
           </h2>
         </footer>
-      </form>
     </article>
   </section>
 </c:forEach>

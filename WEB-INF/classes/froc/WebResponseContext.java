@@ -35,13 +35,17 @@ public class WebResponseContext implements ResponseContext{
         return _response;
     }
     public void write(){
-        try{
-            _response.setContentType("application/json");
-            _response.setCharacterEncoding("UTF-8");
-            _response.getWriter().write(result.toString());
-            // System.out.println("WebResponseContext: written");
-        }catch(IOException e){
-            e.printStackTrace();
+        if(result!=null){
+            try{
+                _response.setContentType("application/json");
+                _response.setCharacterEncoding("UTF-8");
+                _response.getWriter().write(result.toString());
+                // System.out.println("WebResponseContext: written");
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }else{
+            // System.out.println("Nothing");
         }
     }
 }

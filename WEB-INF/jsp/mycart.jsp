@@ -64,7 +64,6 @@ pageEncoding="UTF-8"%>
               
            <div class="book-finder">
               <ul class="book-type-list">
-                <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>

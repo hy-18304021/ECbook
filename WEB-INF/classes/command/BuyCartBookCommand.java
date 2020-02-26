@@ -6,7 +6,6 @@ import dao.Sales_RefDao;
 import dao.BookDao;
 import dao.CartDao;
 import dao.CreditDao;
-import dao.AddressDao;
 import dao.AbstractDaoFactory;
 import froc.RequestContext;
 import froc.ResponseContext;
@@ -67,7 +66,6 @@ public class BuyCartBookCommand extends AbstractCommand{
         AbstractDaoFactory daofac=AbstractDaoFactory.getFactory(reqc);
         CartDao cartdao=daofac.getCartDao();
         CreditDao creditDao=daofac.getCreditDao();
-        AddressDao addressdao=daofac.getAddressDao();
 	BookDao bookdao=daofac.getBookDao();
 	SalesDao salesdao=daofac.getSalesDao();
         Sales_RefDao sales_refdao=daofac.getSales_RefDao();

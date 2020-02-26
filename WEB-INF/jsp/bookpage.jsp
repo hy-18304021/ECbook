@@ -32,9 +32,9 @@
     <h1 style="display:none;" class="sessionId">${sessionScope.user.id}</h1>
     <header class="page-element">
             <div>
-                <h1>
-                    Logo
-                 </h1>
+              <h1>
+                <a href="indexcall.do">Logo</a>
+             </h1>
               
            <div class="book-finder">
             <ul class="book-type-list">

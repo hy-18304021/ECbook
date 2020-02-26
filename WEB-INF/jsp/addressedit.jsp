@@ -69,7 +69,7 @@
                     <hr>
                     
                     <div class="registbox">
-                            <form name="" action='' method="Post">
+                            <form action='.do' method="Post">
                                 <p>名前</p>
                                 <input type="text" name="reciver_name">
                                 

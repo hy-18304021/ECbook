@@ -57,40 +57,10 @@
             <p>少年コミック</p>
             <p>少女コミック</p>
         </div>
-    
-        <!-- <div class="container">
-            <c:forEach var="sales" items="${result}">
-                <%--1 rowに1 EBSalesの情報を入れる --%>
-                <div class="row">
-                    <c:forEach var="book" items="${sales}">
-                        <div class="col-md-8">
-                            <div class="product-image">
-                                <a href="bookinfo.do?book_isbn=${book.book_isbn}">
-                                    <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" width="142" height="203" class="pic-1" alt="${book.book_name}">
-                                </a>
-                                <span class="product-discount-label">${book.genre_name}</span>
-                            </div>
-                            <div class="product-content">
-                                <h3 class="title">
-                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
-                                </h3>
-                                <div class="price">${book.book_price}￥</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="col-md-4">
-                                <button>商品レビューを書く</button>
-                                <button>再度購入</button>
-                            </div>
-                        </div>
-                    </forEach>
-                </div>
-            </forEach>
-             -->
              <div class="frame">        
                 <div class="mypage">
                 <div class="meminfo">
-                    <h2>${sessionScope.user.name}さまの購入履歴</h2>        
+                    <h2>${sessionScope.user.name}さまの送り先住所</h2>        
                     <ul id="mem">
                         <li><a href="mypage.do">マイページ</a></li>
                         <li><a href="addresseditcall.do">お届け住所変更</a></li>
@@ -100,16 +70,12 @@
                     
                     <table>
                         <tr>
-                            <th>商品名</th>
-                            <th>イメージ</th>
-                            <th>値段</th>
-                            <th>購入日時</th>
-                            <th>数量</th>
-                            <th>金額</th>
+                            <th>名前</th>
+                            <th>郵便番号</th>
+                            <th>住所</th>
+                            <th>電話番号</th>
                         </tr>
                         <tr>
-                            <th></th>
-                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

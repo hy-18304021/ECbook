@@ -92,17 +92,18 @@ public class OraReviewDao implements ReviewDao{
         return bookreviewdata;
     }
     public void updateReview(EbReviewBean ec){
-        String sql="update ebreview set book_isbn=?,review_text=?,review_star=? where user_id=? AND review_date=?";
+        String sql="update ebreview set review_text=?,review_star=? where user_id=? AND book_isbn = ?";
         try{
             if(cn==null){
                 cn=OracleConnect.getInstance().getConnection();
             }
             st=cn.prepareStatement(sql);
-            st.setString(1,ec.getBook_isbn());
-            st.setString(2,ec.getReview_text());
-            st.setInt(3,ec.getReview_star());
-            st.setString(4,ec.getUser_id());
-            st.setString(5,ec.getReview_date());
+
+            st.setString(1,ec.getReview_text());
+            st.setInt(2,ec.getReview_star());
+            st.setString(3,ec.getUser_id());
+            st.setString(4,ec.getBook_isbn());
+            // st.setString(5,ec.getReview_date());
 
             st.executeUpdate();
         }catch(SQLException e){

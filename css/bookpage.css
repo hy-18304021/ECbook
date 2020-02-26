@@ -237,17 +237,45 @@ button {
 .delete-review-button{
   position: relative;
   
-  margin-left: 360px;
+  margin-left: 1px;
   /*margin-top:-100px;*/
-  background-color: #1BB0CE; 
-  color:#fff; 
-  font-size: 15px; 
-  border:none; 
-  border-radius: 3px;
+  background-color: #1BB0CE;
+  color:#fff;
+  font-size: 15px;
+  border:none;
+  width:42px;
+  font-size:15px;
+  border-radius: 5px;
+  height: 32px;
+
 }
+.update-review-button,.appear-update-review-form-button{
+  position: relative;
+  
+  margin-left: 305px;
+  /*margin-top:-100px;*/
+  background-color: #1BB0CE;
+  color:#fff;
+  font-size: 15px;
+  border:none;
+
+  width:42px;
+  font-size:15px;
+  border-radius: 5px;
+  height: 32px;
+}
+
 .delete-review-button:hover{
   background-color: #000000;
   color:#444;
+}
+.update-review-button:hover{
+  background-color: #000000;
+  color:#00ff00;
+}
+.appear-update-review-form-button:hover{
+  background-color: #000000;
+  color:#00ff00;
 }
 .review-star {
   display: none;
@@ -267,4 +295,9 @@ button {
   text-align: center;
   padding: 30px 0;
   margin-top: 20px;
+}
+
+
+.write-review-area{
+  resize: none; width: 100%; height: 130px;
 }

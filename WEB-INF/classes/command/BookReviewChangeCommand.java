@@ -47,7 +47,7 @@ public class BookReviewChangeCommand extends AbstractCommand{
 			reviewdao.addReview(review);
 		}
 		if(method.contains("update")){
-			System.out.println("update");
+			// System.out.println("update");
 			reviewdao.updateReview(review);
 		}
 		if(method.contains("delete")){

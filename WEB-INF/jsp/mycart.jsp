@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
                 <a href="indexcall.do">Logo</a>
              </h1>
               
-           <div class="book-finder">
+           <!-- <div class="book-finder">
               <ul class="book-type-list">
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
@@ -73,7 +73,7 @@ pageEncoding="UTF-8"%>
                  <input type="text" name="book_name">
                  <input type="submit" value="Search">
               </form>
-           </div>
+           </div> -->
 
         </div>
     </header>

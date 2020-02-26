@@ -69,7 +69,8 @@
                     <hr>
                     
                     <div class="registbox">
-                            <form action='.do' method="Post">
+                            <form action='addressadd.do' method="Post">
+                                <input type="hidden" name="user_id" value="${sessionScope.user.id}">
                                 <p>名前</p>
                                 <input type="text" name="reciver_name">
                                 

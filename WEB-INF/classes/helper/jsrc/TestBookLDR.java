@@ -24,14 +24,14 @@ import helper.IsbnDataGetter;
 import java.text.SimpleDateFormat;
 
 public class TestBookLDR{
-    //isbn“ü—Í‚µ‚½‚ç–{‚Ìƒf[ƒ^DB‚Éinsert‚·‚é‚â‚Â
+    //isbnï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½Ìƒfï¿½[ï¿½^DBï¿½ï¿½insertï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static void main(String[] args){
-        // //isbn‚ğargs‚©‚çó‚¯æ‚é
+        // //isbnï¿½ï¿½argsï¿½ï¿½ï¿½ï¿½ó‚¯ï¿½ï¿½
         // String isbn=args[0];
         
 
-        //isbn.txt‚©‚çisbn‚ğ“Ç‚İ‚İ‚»‚êg‚Á‚ÄEbBookBean‚ÌList‚ğì‚é
-        //isbn‚ÌƒŠƒXƒg
+        //isbn.txtï¿½ï¿½ï¿½ï¿½isbnï¿½ï¿½Ç‚İï¿½ï¿½İ‚ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½EbBookBeanï¿½ï¿½Listï¿½ï¿½ï¿½ï¿½ï¿½
+        //isbnï¿½Ìƒï¿½ï¿½Xï¿½g
         ArrayList<String> isbns=new ArrayList<String>();
         ArrayList<EbBookBean> books=new ArrayList<EbBookBean>();
         String filename = "helper/jsrc/isbn.txt";
@@ -40,14 +40,14 @@ public class TestBookLDR{
             while((line = in.readLine()) != null) isbns.add(line);
         } catch (FileNotFoundException e){ 
             e.printStackTrace();
-            System.exit(-1); // 0 ˆÈŠO‚ÍˆÙíI—¹
+            System.exit(-1); // 0 ï¿½ÈŠOï¿½ÍˆÙï¿½Iï¿½ï¿½
         } catch (IOException e){ 
             e.printStackTrace();
             System.exit(-1);
         }
         for(int i=0;i<isbns.size();i++){
             String isbn=isbns.get(i);
-            //isbng‚Á‚Äƒf[ƒ^bean‚É“Ë‚Á‚Ş
+            //isbnï¿½gï¿½ï¿½ï¿½Äƒfï¿½[ï¿½^beanï¿½É“Ë‚ï¿½ï¿½ï¿½ï¿½ï¿½
             EbBookBean bbb=new EbBookBean();
             bbb.setBook_isbn(isbn);
             bbb.setBook_amount(100);
@@ -56,18 +56,18 @@ public class TestBookLDR{
             IsbnDataGetter.getIsbnData(bbb);
             books.add(bbb);
         }
-        //ldrƒtƒ@ƒCƒ‹‚É’Ç‰Á‚·‚é
+        //ldrï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½É’Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½
         registLDR(books);
     }
     public static void registLDR(ArrayList<EbBookBean> books){
         try {
  
-            // o—Íƒtƒ@ƒCƒ‹‚Ìì¬
+            // ï¿½oï¿½Íƒtï¿½@ï¿½Cï¿½ï¿½ï¿½Ìì¬
             FileWriter f = new FileWriter("helper/jsrc/EBBOOK_DATA_TABLE.ldr", true);
             PrintWriter p = new PrintWriter(new BufferedWriter(f));
  
  
-            // “à—e‚ğƒZƒbƒg‚·‚é
+            // ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
             for(int i = 0; i < books.size(); i++){
                 p.print(books.get(i).getBook_amount());p.print(",");// book_amount
                 p.print(books.get(i).getBook_price());p.print(",");// book_price
@@ -82,13 +82,13 @@ public class TestBookLDR{
                 p.print(books.get(i).getAudience());p.print(",");// audience
                 p.print(books.get(i).getLabel());p.print(",");// label
                 p.print(books.get(i).getText_content());p.print(",");// text_content
-                p.println();    // ‰üs
+                p.println();    // ï¿½ï¿½ï¿½s
             }
  
-            // ƒtƒ@ƒCƒ‹‚É‘‚«o‚µ•Â‚¶‚é
+            // ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
             p.close();
  
-            System.out.println("ƒtƒ@ƒCƒ‹o—ÍŠ®—¹I");
+            System.out.println("ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½oï¿½ÍŠï¿½ï¿½ï¿½ï¿½I");
  
         } catch (IOException ex) {
             ex.printStackTrace();

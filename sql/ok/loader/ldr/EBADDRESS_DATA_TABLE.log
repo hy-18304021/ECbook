@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 SQL*Loader: Release 12.2.0.1.0 - Production on –Ø 2Œ 27 14:44:56 2020
+=======
+SQL*Loader: Release 12.2.0.1.0 - Production on –Ø 2Œ 27 14:17:02 2020
+>>>>>>> 53e71b70fde8ab12838f7602d618346fe79e1803
 
 Copyright (c) 1982, 2017, Oracle and/or its affiliates.  All rights reserved.
 
@@ -56,8 +60,16 @@ ORA-02291: ®‡«§–ñ(EBTEST.FK_EBADDRESS_USER_ID)‚Éˆá”½‚µ‚Ü‚µ‚½ - eƒL[‚ª‚ ‚è‚
 ‹‘”Û‚³‚ê‚½˜_—ƒŒƒR[ƒh‚Ì‡Œv:               1
 ”pŠü‚³‚ê‚½˜_—ƒŒƒR[ƒh‚Ì‡Œv:        0
 
+<<<<<<< HEAD
 ÀsŠJn–Ø 2Œ  27 14:44:56 2020
 ÀsI—¹–Ø 2Œ  27 14:44:57 2020
 
 ÀsŠÔ:        00: 00: 01.61
 CPUŠÔ :        00: 00: 00.58
+=======
+ÀsŠJn–Ø 2Œ  27 14:17:02 2020
+ÀsI—¹–Ø 2Œ  27 14:17:02 2020
+
+ÀsŠÔ:        00: 00: 00.43
+CPUŠÔ :        00: 00: 00.22
+>>>>>>> 53e71b70fde8ab12838f7602d618346fe79e1803

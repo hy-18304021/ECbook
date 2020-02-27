@@ -56,7 +56,7 @@
     <div class="container">
         <div class="product-container main-product-container">
           <div class="product-left-container">
-            <img src="bookimage/${result.book_isbn}" alt="" width="540"/>
+            <img src="https://cover.openbd.jp//${result.book_isbn}.jpg" alt="" width="540"/>
           </div>
           <div class="product-col-container">
             <h1 class="product-page">${result.book_name}</h1>

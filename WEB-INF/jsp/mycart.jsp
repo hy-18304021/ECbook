@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
     <article class="product">
       <header>
         <a class="remove">
-          <img src="bookimage/${cart.book_isbn}" alt="">
+          <img src="https://cover.openbd.jp//${cart.book_isbn}.jpg" alt="">
 
           <h3 style="text-align: center;">
               <input type="hidden" class="user-id" value="${sessionScope.user.id}">

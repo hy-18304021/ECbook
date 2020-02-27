@@ -50,6 +50,9 @@ $(document).ready(function(){
 		if($(this).parent().children(".user-id").html()==$(".sessionId").html()){
 			$("#writereviewwithajax").css("display","none");
 			$("#written").css("display","block");
+			if($("#flag").html()==""){
+				$("#writereviewwithajax").css("display","none");
+			}
 			// alert(1);
 		}
 		// else{

@@ -98,7 +98,6 @@
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
-<<<<<<< HEAD
                     <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください。"></textarea>
                     評価:<div>
                             <img class="star-image" src="starimage/emptystar.png" alt="review-star-1">
@@ -113,11 +112,6 @@
                 </div>
                 <div id="written" style="display: none;">
                   レビューを書いてくれてありがとうございます。
-=======
-                    <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください"></textarea>
-                    評価:<input type="number" id="review_star" min="1" max="5">
-                    <input type="button" class="write-review-button" style="width:42px; font-size:15px; border-radius: 5px; height: 32px;" value="投稿">
->>>>>>> 3e655729b996509ef678345db86c9936fa6604af
                 </div>
                 <h2 class="a-spacing-small customer-reviews-header" style="margin-top: 50px;">
                       ${result.book_name}

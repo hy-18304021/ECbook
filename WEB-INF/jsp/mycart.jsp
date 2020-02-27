@@ -34,7 +34,7 @@ pageEncoding="UTF-8"%>
                 <a href="indexcall.do">Logo</a>
              </h1>
               
-           <div class="book-finder">
+           <!-- <div class="book-finder">
               <ul class="book-type-list">
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
@@ -45,7 +45,7 @@ pageEncoding="UTF-8"%>
                  <input type="text" name="book_name">
                  <input type="submit" value="Search">
               </form>
-           </div>
+           </div> -->
 
         </div>
     </header>
@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
     <article class="product">
       <header>
         <a class="remove">
-          <img src="bookimage/${cart.book_isbn}" alt="">
+          <img src="https://cover.openbd.jp//${cart.book_isbn}.jpg" alt="">
 
           <h3 style="text-align: center;">
               <input type="hidden" class="user-id" value="${sessionScope.user.id}">
@@ -119,7 +119,7 @@ pageEncoding="UTF-8"%>
         <input type="submit" value="Checkout" class="btn" id="checkout-button"></input>
         <br>
       </form>
-      <button class="btn" onclick="location.href='getbooktable.do'">買物を続く</button>
+      <button class="btn" onclick="location.href='getbooktable.do'">買物を続ける</button>
     </div>
   </div>
 </footer>

@@ -10,4 +10,5 @@ public interface Sales_RefDao{
    public List getAllSales_Ref();
    public void upDateSales_Ref(EbSales_RefBean esr);
    public void deleteSales_Ref(EbSales_RefBean esr);
+   public List getUserSales_Ref(String userid);
 }

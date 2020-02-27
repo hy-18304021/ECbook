@@ -29,8 +29,10 @@ public class OrderHistoryCallCommand extends AbstractCommand{
         String userid=((EbUserBean)reqc.getSessionAttribute("user")).getId();
         
         List sales=salesdao.getUserSales(userid);
+        List sales_ref=salesrefdao.getUserSales_Ref(userid);
         
         resc.setResult(sales);
+        reqc.sessionAttribute("sales_ref",sales_ref);
 
 		//コミット	
 		OracleConnect.getInstance().commit();

@@ -44,10 +44,11 @@
               <li id="logoutli"><a href="logout.do">Logout</a></li>
               <li id="mycart"><a href="mycart.do">Cart</a></li>
             </ul>
-              <form class="book-search" action="searchbook.do" method="post">
-                 <input type="text" name="book_name">
-                 <input type="submit" value="Search">
-              </form>
+            <form class="book-search" action="searchbook.do" method="post">
+              <input type="text" name="book_name">
+              <input type="hidden" name="genre_id" value="0">
+              <input type="submit" value="Search">
+           </form>    
            </div>
 
         </div>
@@ -55,7 +56,7 @@
     <div class="container">
         <div class="product-container main-product-container">
           <div class="product-left-container">
-            <img src="bookimage/${result.book_isbn}" alt="" width="540"/>
+            <img src="https://cover.openbd.jp//${result.book_isbn}.jpg" alt="" width="540"/>
           </div>
           <div class="product-col-container">
             <h1 class="product-page">${result.book_name}</h1>
@@ -68,8 +69,11 @@
               <span class="price">${result.book_price}</span>
             </p>
             <div>
-                <form action="addtocart.do?user_id=${sessionScope.user.id}&book_isbn=${result.book_isbn}&cart_amount=1" method="post" accept-charset="utf-8">
-                    <button>Add to cart</button>
+                <form action="addtocart.do" method="post" accept-charset="utf-8">
+                  <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+                  <input type="hidden" name="book_isbn" value="${result.book_isbn}">
+                  <input type="hidden" name="cart_amount" value="1">
+                    <button>カートに入れる</button>
                 </form>
             </div>
           </div>
@@ -81,10 +85,12 @@
             
               
             <c:forEach var='book' items='${recommendedBook}'>
+              <a href="bookinfo.do?book_isbn=${book.book_isbn}">
               <div class="book1">  
                 <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="width: 60px; float: left;">
               <p style="margin-top:40px; margin-left: 90px; padding-top: 25px;">${book.book_name}</p>
             </div>
+          </a>
           </c:forEach>
           
         </div>
@@ -92,6 +98,7 @@
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
+<<<<<<< HEAD
                     <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください。"></textarea>
                     評価:<div>
                             <img class="star-image" src="starimage/emptystar.png" alt="review-star-1">
@@ -106,6 +113,11 @@
                 </div>
                 <div id="written" style="display: none;">
                   レビューを書いてくれてありがとうございます。
+=======
+                    <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください"></textarea>
+                    評価:<input type="number" id="review_star" min="1" max="5">
+                    <input type="button" class="write-review-button" style="width:42px; font-size:15px; border-radius: 5px; height: 32px;" value="投稿">
+>>>>>>> 3e655729b996509ef678345db86c9936fa6604af
                 </div>
                 <h2 class="a-spacing-small customer-reviews-header" style="margin-top: 50px;">
                       ${result.book_name}
@@ -156,7 +168,7 @@
       <!-- footer -->
       <footer>
         <div class="footer">
-            <p>東京テクニカルカレッジ情報処理科２年</p>
+            <p>東京テクニカルカレッジ２年</p>
         </div>
     </footer>
 

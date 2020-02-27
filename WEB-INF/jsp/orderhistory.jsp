@@ -111,7 +111,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
+                            <c:forEach var="sales" items="${result}" varStatus="starts"><th>${sales.sales_date}</th></c:forEach>
                             <th></th>
                             <th></th>
                         </tr>

@@ -60,10 +60,10 @@
              <div class="frame">        
                 <div class="mypage">
                 <div class="meminfo">
-                    <h2>送り先住所登録</h2>        
+                    <h2>お届け先住所登録</h2>        
                     <ul id="mem">
                         <li><a href="mypage.do">マイページ</a></li>
-                        <li><a href="">お届け住所管理</a></li>
+                        <li><a href="">お届け先住所管理</a></li>
                     </ul>
                     
                     <hr>

@@ -146,7 +146,7 @@ pageEncoding="UTF-8"%>
         <input type="submit" value="Checkout" class="btn" id="checkout-button"></input>
         <br>
       </form>
-      <button class="btn" onclick="location.href='getbooktable.do'">買物を続く</button>
+      <button class="btn" onclick="location.href='getbooktable.do'">買物を続ける</button>
     </div>
   </div>
 </footer>

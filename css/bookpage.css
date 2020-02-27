@@ -301,3 +301,10 @@ button {
 .write-review-area{
   resize: none; width: 100%; height: 130px;
 }
+
+
+
+/*star image*/
+.star-image{
+  width: 25px;
+}

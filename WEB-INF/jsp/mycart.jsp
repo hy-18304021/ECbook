@@ -24,39 +24,12 @@ pageEncoding="UTF-8"%>
     })
     
 </script>
-<style>
-  .btn {
-	background: #53b5aa;
-	border: 1px solid #999;
-	border-style: none none solid none;
-	cursor: pointer;
-	display: block;
-	color: #fff;
-	font-size: 20px;
-	font-weight: 300;
-	padding: 16px 0;
-	width: 290px;
-	text-align: center;
-
-	-webkit-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	-ms-transition: all .2s linear;
-	-o-transition: all .2s linear;
-	transition: all .2s linear;
-}
-
-.btn:hover {
-	color: #fff;
-	background: #429188;
-}
-
-</style>
 </head>
 <body>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
-    <div id="app" style="background: #eee;">
-       <header class="page-element" style="background: #fff;">
-            <div>
+  <div id="app" style="background: #eee;">
+    <header class="page-element" style="background: #fff;">
+        <div>
               <h1>
                 <a href="indexcall.do">Logo</a>
              </h1>

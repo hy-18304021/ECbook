@@ -1,12 +1,14 @@
 var changedreviewtext = null;
-var changedreviewstar = null;
+// var reviewstarvalue = null;
 $(document).ready(function(){
 	$(".write-review-button").click(function(){
-		addReview();
+		addReview($(this));
 	})
 
 	$(".delete-review-button").click(function(){
 		deleteReview($(this));
+		$("#writereviewwithajax").css("display","block");
+		$("#written").css("display","none");
 	})
 
 	$(".appear-update-review-form-button").click(function(){
@@ -19,11 +21,10 @@ $(document).ready(function(){
 	$("#review").on('DOMNodeInserted', "input", function() {
     	$(".delete-review-button").click(function(){
 			deleteReview($(this));
+			$("#writereviewwithajax").css("display","block");
+			$("#written").css("display","none");
 		})
 		$(".appear-update-review-form-button").click(function(){
-			// var changedreviewtext = el.parent().children(".review-text").html().replace(/<br>/g,"\r\n");
-			// var changedreviewstar = el.parent().children(".review-star").val();
-			// 	alert(changedreviewtext);
 			changeform($(this));
 			$(".update-review-button").click(function(){
 				updateReview($(this));
@@ -46,15 +47,33 @@ $(document).ready(function(){
 		if($(this).parent().children(".user-id").html()!=$(".sessionId").html()){
 			$(this).css("display","none");
 		}
+		if($(this).parent().children(".user-id").html()==$(".sessionId").html()){
+			$("#writereviewwithajax").css("display","none");
+			$("#written").css("display","block");
+			// alert(1);
+		}
+		// else{
+		// 	$("#writereviewwithajax").css("display","block");
+		// 	$("#written").css("display","none");
+		// }
 	})
 	$(".appear-update-review-form-button").each(function(){
 		if($(this).parent().children(".user-id").html()!=$(".sessionId").html()){
 			$(this).css("display","none");
 		}
 	})
+	$(".star-image").click(function(){
+		changestar($(this));
+	})
 });
 
-function addReview(){
+function addReview(clickedButton){
+	if(typeof reviewstarvalue==='undefined'){
+		// reviewstarvalue = 0;
+		location.href = "#writereviewwithajax";
+		$("#checkreview").html("レビューを更新するには全体的な評価が必要です");
+		return 0;
+	}
 	var params = {
 		method: "addreview",
 		book_isbn:$(".book-isbn").html(),
@@ -64,10 +83,11 @@ function addReview(){
 				.replace(/</g,"&lt;")
 				.replace(/>/g,"&gt;")
 				.replace(/\r?\n/g,"<br>"),
-		review_star: $("#review_star").val(),
+		// review_star: clickedButton.parent().children(".review_star").val(),
+		review_star:reviewstarvalue,
 		review_date:null
 	};
-		// alert(params.review_text);
+		// alert(params.review_text+"\n"+params.review_star);
 	$.post("bookreviewchange.do",$.param(params),function(responseJson){
 		changeResponse(responseJson);
 	});
@@ -92,8 +112,8 @@ function updateReview(clickedButton){
 	if(changedreviewtext == null){
 		changedreviewtext = clickedButton.parent().children(".review-text").html().replace(/<br>/g,"\r\n");
 	}
-	if(changedreviewstar == null){
-		changedreviewstar = clickedButton.parent().children(".review-star").html().replace(/<br>/g,"\r\n");
+	if(typeof reviewstarvalue === 'undefined'){
+		reviewstarvalue = clickedButton.parent().children(".review-star").html();
 	}
 	var params={
 		method:"updatereview",
@@ -103,7 +123,7 @@ function updateReview(clickedButton){
 									.replace(/</g,"&lt;")
 									.replace(/>/g,"&gt;")
 									.replace(/\r?\n/g,"<br>"),
-		review_star:changedreviewstar,
+		review_star:reviewstarvalue,
 		review_date:clickedButton.parent().children(".a-spacing-micro").children(".a-color-secondary").text()
 	};
 		// alert(params.review_text+"\n"+params.review_star);
@@ -113,28 +133,35 @@ function updateReview(clickedButton){
 }
 
 function changeform(el){
-	var $review_text = el.parent().children(".a-spacing-small").children(".a-section");
+	var $div = el.parent().children(".a-spacing-small").children(".a-section");
 	var review_text=el.parent().children(".review-text").html().replace(/<br>/g,"\r\n");
-	
-	$review_text.html("")
+	var review_star=el.parent().children(".review-star").text();
+	// alert("??/");
+	$div.html("")
 				.append($("<textarea>").attr({col:3,row:2})
 									.addClass("write-review-area")
 									.html(review_text))
-				.append($("<input>").attr({type:"number",min:1,max:5,required:"required",value:el.parent().children(".review-star").text()})
-									.addClass("changed-review-star"));
+				.append($("<input>").attr({type:"hidden",min:1,max:5,required:"required",value: review_star})
+									.addClass("changed-review-star review-star"));
 	el.addClass("update-review-button").removeClass("appear-update-review-form-button");
+	
+	for(var i=1;i<=review_star;i++){
+		$div.append($("<img>").attr({src:"starimage/star.png",alt:"review-star-"+i})
+									.addClass("star-image"));
+	}
+	for(var i=parseInt(review_star)+1;i<=5;i++){
+		$div.append($("<img>").attr({src:"starimage/emptystar.png",alt:"review-star-"+i})
+									.addClass("star-image"));
+	}
+	$(".star-image").click(function(){
+		changestar($(this));
+	})
+	// var stars = $div.children('.star-image');
+	// stars[parseInt(el.parent().children(".review-star").text())-1].click();
+	// alert("changeform");
 	$(".write-review-area").keyup(function(){
 		changedreviewtext = $(this).val();
 	})
-	$(".changed-review-star").keyup(function(){
-		changedreviewstar =$(this).val();
-		// alert(changedreviewstar);
-	})
-	$(".changed-review-star").change(function(){
-		changedreviewstar=$(this).val();
-		// alert(changedreviewstar);
-	})
-	return changedreviewtext;
 }
 
 function changeResponse(responseJson){
@@ -162,10 +189,37 @@ function changeResponse(responseJson){
 							.append($("<h4>").addClass("user-id").text(review.user_id))
 							.append($("<input>").addClass("appear-update-review-form-button").attr({type:"button",value:"修正"}))
 							.append($("<input>").addClass("delete-review-button").attr({type:"button",value:"削除"}));
-			});
+				if($(".sessionId").text()==review.user_id){
+					$("#writereviewwithajax").css("display","none");
+					// alert(review.user_id);
+					$("#written").css("display","block");
+				}
+				// alert(review.user_id);
+			})
 }
 
 
-function change(el){
-	el.val(1);
+// star iamge
+function changestar(thisstar){
+	if($("#checkreview").html()!=""){
+		$("#checkreview").html("");
+	}
+	var $div=thisstar.parent();
+	// var stars = $div.children(".star-image").map(function(){
+		
+	// })
+	var stars = $div.children('.star-image');
+	// alert(stars.length);
+	for(var i = 0;i<stars.length;i++){
+		stars[i].src="starimage/emptystar.png";
+	}
+	var index = stars.index(thisstar);
+	// alert(index);
+	for(var i = 0;i<=index;i++){
+		stars[i].src="starimage/star.png";
+	}
+	reviewstarvalue = index+1;
+	// reviewstarvalue=index+1;
+	// alert(reviewstarvalue);
+	return reviewstarvalue;
 }

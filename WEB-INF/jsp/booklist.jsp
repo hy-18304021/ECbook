@@ -66,7 +66,7 @@
                 <div class="row">
                     <c:forEach var="book" items="${result}">
                         <div class="col3">
-
+                            <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                             <div class="product-grid" style="margin-top: 10px;">
                                 <div class="product-image">
                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">
@@ -74,26 +74,15 @@
                                     </a>
                                     <span class="product-discount-label">${book.genre_name}</span>
                                 </div>
+                                
                                 <div class="product-content">
+                                    <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
                                     <h3 class="title">
                                         <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                     </h3>
-                                    <div class="price">${book.book_price}￥</div>
+                                
                                 </div>
-                                <ul class="social">
-                                    <li>
-                                        <a href="bookinfo.do?book_isbn=${book.book_isbn}" data-trip="quick view">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       <a href="addtocart.do?user_id=${sessionScope.user.id}&book_isbn=${book.book_isbn}&cart_amount=1" data-trip="add to cart">
-                                           <i class="fa fa-shopping-cart">
-                                           </i>
-                                       </a>
-                                   </li>
-
-                                </ul>
+                                </a>
                             </div>
                     </div>
                 </c:forEach>

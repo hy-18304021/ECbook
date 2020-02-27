@@ -102,7 +102,7 @@
             <input type="hidden" id="bexpmonth" name="expmonth"> 
             <input type="hidden" id="bexpyear" name="expyear">
             <input type="hidden" id="bcvv" name="cvv">
-            <input type="submit" value="注文確定" class="btn">
+            <input type="submit" value="購入確定" class="btn">
           </form>
         </div>
 

@@ -68,7 +68,10 @@
               <span class="price">${result.book_price}</span>
             </p>
             <div>
-                <form action="addtocart.do?user_id=${sessionScope.user.id}&book_isbn=${result.book_isbn}&cart_amount=1" method="post" accept-charset="utf-8">
+                <form action="addtocart.do" method="post" accept-charset="utf-8">
+                  <input type="hidden" name="user_id" value="${sessionScope.user.id}">
+                  <input type="hidden" name="book_isbn" value="${result.book_isbn}">
+                  <input type="hidden" name="cart_amount" value="1">
                     <button>Add to cart</button>
                 </form>
             </div>
@@ -92,7 +95,7 @@
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
-                    <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください。"></textarea>
+                    <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書�?てください�?"></textarea>
                     評価:<input type="number" id="review_star" min="1" max="5" required>
                     <input type="button" class="write-review-button" style="width:42px; font-size:15px; border-radius: 5px; height: 32px;" value="投稿">
                 </div>
@@ -146,7 +149,7 @@
       <!-- footer -->
       <footer>
         <div class="footer">
-            <p>東京テクニカルカレッジ情報処理科２年</p>
+            <p>東京�?クニカルカレ�?ジ�?報処�?科２年</p>
         </div>
     </footer>
 

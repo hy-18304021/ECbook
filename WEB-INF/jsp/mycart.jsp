@@ -54,7 +54,6 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1> 
-<h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <div id="app" style="background: #eee;">
        <header class="page-element" style="background: #fff;">
             <div>
@@ -80,6 +79,9 @@ pageEncoding="UTF-8"%>
     <header1 id="site-header">
   <div class="container">
     <h1>${sessionScope.user.id}様のカート</h1>
+    <div id="cart">
+      
+    </div>
   </div>
 </header1>
 
@@ -141,10 +143,10 @@ pageEncoding="UTF-8"%>
             <input type="hidden" class="totalamount" name="cart_amount" value="${cart.cart_amount}">
         </c:forEach>
         <input type="hidden" class="totalprice" name="fullprice" value="${totalPrice}">
-        <input type="submit" value="Checkout" class="btn"></input>
+        <input type="submit" value="Checkout" class="btn" id="checkout-button"></input>
         <br>
       </form>
-      <button class="btn" onclick="location.href='getbooktable.do'">買物を続く</button>
+      <button class="btn" onclick="location.href='getbooktable.do'">買物を続ける</button>
     </div>
   </div>
 </footer>

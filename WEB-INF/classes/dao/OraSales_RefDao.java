@@ -183,4 +183,50 @@ public class OraSales_RefDao implements Sales_RefDao{
             }
         }
     }
+
+    public List getUserSales_Ref(String userid){
+        Connection cn=null;
+        PreparedStatement st=null;
+        ResultSet rs=null;
+
+        ArrayList<EbSales_RefBean> saless=new ArrayList<>();
+
+        try{
+            cn=OracleConnect.getInstance().getConnection();
+
+            String sql="select * from ebsales_ref where sales_id IN (select sales_id from ebsales where user_id=?)";
+            //あるuser_idのsales_refを取ってくる文
+            
+            
+            
+            st=cn.prepareStatement(sql);
+            st.setString(1, userid);
+
+            rs=st.executeQuery();
+
+            while(rs.next()){
+                EbSales_RefBean eb=new EbSales_RefBean();
+
+                eb.setSales_id(rs.getInt("sales_id"));
+                eb.setBook_isbn(rs.getString("book_isbn"));
+                eb.setSales_amount(rs.getInt("sales_amount"));
+
+                saless.add(eb);
+            }
+        }catch(SQLException e){
+            //ロールバック処理
+            e.printStackTrace();
+            OracleConnect.getInstance().rollback();
+        }finally{
+            //リソース解放
+            try{
+                if(st!=null){
+                    st.close();
+                }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return saless;
+    }
 }

@@ -64,7 +64,7 @@
         <h2>マイページ</h2>        
         <ul id="mem">
             <li><a href="orderhistorycall.do">注文履歴</a></li>
-            <li><a href="addresseditcall.do">お届け住所変更</a></li>
+            <li><a href="addresseditcall.do">お届け住所登録</a></li>
         </ul>
         
         <hr>

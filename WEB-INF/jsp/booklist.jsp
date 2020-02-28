@@ -67,9 +67,9 @@
                         <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                             <div class="product-grid" style="margin-top: 10px;">
                                 <div class="product-image">
-                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">
+                                    
                                         <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" width="142" height="203" class="pic-1" alt="${book.book_name}">
-                                    </a>
+                                    
                                     <span class="product-discount-label">${book.genre_name}</span>
                                 </div>
                                 

@@ -49,7 +49,7 @@ public class OraReviewDao implements ReviewDao{
     //     return null;
     // }
     public List getBookReview(String book_isbn){
-        String sql="select * from ebreview where book_isbn = ? order by review_date";
+        String sql="select * from ebreview where book_isbn = ? order by review_date desc";
 
         ArrayList bookreviewdata=new ArrayList();
 

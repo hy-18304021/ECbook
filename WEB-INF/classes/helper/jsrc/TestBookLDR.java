@@ -24,50 +24,58 @@ import helper.IsbnDataGetter;
 import java.text.SimpleDateFormat;
 
 public class TestBookLDR{
-    //isbnï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½Ìƒfï¿½[ï¿½^DBï¿½ï¿½insertï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //isbn“ü—Í‚µ‚½‚ç–{‚Ìƒf[ƒ^DB‚Éinsert‚·‚é‚â‚Â
     public static void main(String[] args){
-        // //isbnï¿½ï¿½argsï¿½ï¿½ï¿½ï¿½ó‚¯ï¿½ï¿½
+        // //isbn‚ğargs‚©‚çó‚¯æ‚é
         // String isbn=args[0];
         
 
-        //isbn.txtï¿½ï¿½ï¿½ï¿½isbnï¿½ï¿½Ç‚İï¿½ï¿½İ‚ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½EbBookBeanï¿½ï¿½Listï¿½ï¿½ï¿½ï¿½ï¿½
-        //isbnï¿½Ìƒï¿½ï¿½Xï¿½g
-        ArrayList<String> isbns=new ArrayList<String>();
+        //isbn.txt‚©‚çisbn‚ğ“Ç‚İ‚İ‚»‚êg‚Á‚ÄEbBookBean‚ÌList‚ğì‚é
         ArrayList<EbBookBean> books=new ArrayList<EbBookBean>();
         String filename = "helper/jsrc/isbn.txt";
         try (BufferedReader in = new BufferedReader(new FileReader(new File(filename)))){
             String line;
-            while((line = in.readLine()) != null) isbns.add(line);
+            String[] arr=null;
+            String isbn;
+            int genre_id=0;
+            while((line = in.readLine()) != null){
+                arr=line.split(",");
+                isbn=arr[0];
+                if(arr.length>1){
+                    genre_id=Integer.parseInt(arr[1]);
+                }
+                //isbng‚Á‚Äƒf[ƒ^bean‚É“Ë‚Á‚Ş
+                EbBookBean bbb=new EbBookBean();
+                bbb.setBook_isbn(isbn);
+                bbb.setBook_amount(100);
+                bbb.setBook_price(100*(1+books.size()%3));
+                bbb.setGenre_id(genre_id);
+                bbb=IsbnDataGetter.getIsbnData(bbb);
+                if(bbb!=null){
+                    books.add(bbb);
+                }
+
+            } 
         } catch (FileNotFoundException e){ 
             e.printStackTrace();
-            System.exit(-1); // 0 ï¿½ÈŠOï¿½ÍˆÙï¿½Iï¿½ï¿½
+            System.exit(-1); // 0 ˆÈŠO‚ÍˆÙíI—¹
         } catch (IOException e){ 
             e.printStackTrace();
             System.exit(-1);
         }
-        for(int i=0;i<isbns.size();i++){
-            String isbn=isbns.get(i);
-            //isbnï¿½gï¿½ï¿½ï¿½Äƒfï¿½[ï¿½^beanï¿½É“Ë‚ï¿½ï¿½ï¿½ï¿½ï¿½
-            EbBookBean bbb=new EbBookBean();
-            bbb.setBook_isbn(isbn);
-            bbb.setBook_amount(100);
-            bbb.setBook_price(100*(1+i%4));
-            bbb.setGenre_id(i%3);
-            IsbnDataGetter.getIsbnData(bbb);
-            books.add(bbb);
-        }
-        //ldrï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½É’Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½
+        
+        //ldrƒtƒ@ƒCƒ‹‚É’Ç‰Á‚·‚é
         registLDR(books);
     }
     public static void registLDR(ArrayList<EbBookBean> books){
         try {
  
-            // ï¿½oï¿½Íƒtï¿½@ï¿½Cï¿½ï¿½ï¿½Ìì¬
+            // o—Íƒtƒ@ƒCƒ‹‚Ìì¬
             FileWriter f = new FileWriter("helper/jsrc/EBBOOK_DATA_TABLE.ldr", true);
             PrintWriter p = new PrintWriter(new BufferedWriter(f));
  
  
-            // ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
+            // “à—e‚ğƒZƒbƒg‚·‚é
             for(int i = 0; i < books.size(); i++){
                 p.print(books.get(i).getBook_amount());p.print(",");// book_amount
                 p.print(books.get(i).getBook_price());p.print(",");// book_price
@@ -82,13 +90,13 @@ public class TestBookLDR{
                 p.print(books.get(i).getAudience());p.print(",");// audience
                 p.print(books.get(i).getLabel());p.print(",");// label
                 p.print(books.get(i).getText_content());p.print(",");// text_content
-                p.println();    // ï¿½ï¿½ï¿½s
+                p.println();    // ‰üs
             }
  
-            // ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
+            // ƒtƒ@ƒCƒ‹‚É‘‚«o‚µ•Â‚¶‚é
             p.close();
  
-            System.out.println("ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½oï¿½ÍŠï¿½ï¿½ï¿½ï¿½I");
+            System.out.println("ƒtƒ@ƒCƒ‹o—ÍŠ®—¹I");
  
         } catch (IOException ex) {
             ex.printStackTrace();

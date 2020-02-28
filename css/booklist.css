@@ -233,3 +233,14 @@ header{
   padding: 30px 0;
   margin-top: 20px;
 }
+
+
+.previous-button{
+  float:left;
+  position: absolute;
+}
+
+.next-button{
+  float:right;
+  position: absolute;
+}

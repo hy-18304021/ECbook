@@ -237,3 +237,27 @@ header{
      max-width: 50%;
   }
 }
+<<<<<<< HEAD
+=======
+
+.footer{
+  /*footerの装飾*/
+  width: 100%;
+  background-color: #89c7de;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 20px;
+}
+
+
+.previous-button{
+  float:left;
+  position: absolute;
+}
+
+.next-button{
+  float:right;
+  position: absolute;
+}
+>>>>>>> 6dcf95e04fe9fdf2bdecc1f64e2f1f6f75267b2a

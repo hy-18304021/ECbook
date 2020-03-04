@@ -120,13 +120,14 @@
 
                 <div class="a-section" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
+                      
+                    <div class="a-section">
                       <hr>
                       <h4>${review.user_id}</h4>
                       <hr>
-                    <div class="a-section">
                       <div class="a-row a-spacing-micro">
-                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base"><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
-                          
+                        <div class="a-icon-row a-spacing-none">
+                          <a class="a-link-normal a-text-normal a-color-base"><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
                           <span class="a-letter-space"></span>
                           <a class="a-link-normal a-text-normal a-color-base">
                           </a>
@@ -151,9 +152,10 @@
                       <input type="button" class="appear-update-review-form-button" value="修正">
                       <input type="button" class="delete-review-button" value="削除">
                     </div>
-                      
-                    </c:forEach>
+                  </c:forEach>
                 </div>
+                <button class="newer-review-button" onclick="newerreview()">前のレビューへ</button>
+                <button class="older-review-button" onclick="olderreview()">もっと古いレビューを見たいい</button>
               </p>
           </div>
         </div>

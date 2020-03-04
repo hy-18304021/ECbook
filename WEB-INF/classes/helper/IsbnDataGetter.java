@@ -11,8 +11,10 @@ public class IsbnDataGetter{
         // try {
             //Beanからisbn取り出し
             //isbn使ってjson取得。openBDのAPI使ってるクラスのメソッド。
+        
             JsonNode node = getIsbnJson(eb);
-
+            System.out.println(node.toString());
+        if(!node.toString().equals("null")){
 
             String name = node.get("onix").get("DescriptiveDetail").get("TitleDetail").get("TitleElement").get("TitleText").get("content").asText();
             eb.setBook_name(name);
@@ -22,19 +24,24 @@ public class IsbnDataGetter{
             eb.setSeries(series);
             int volume=node.get("summary").get("volume").asInt();
             eb.setVolume(volume);
-
-            //著者。ContributorRoleが[A01]のものを選んで取得。他の選べばイラストレーターとか訳者とかとれる。
-            Iterator<JsonNode> contributors=node.get("onix").get("DescriptiveDetail").get("Contributor").iterator();
-            String author=null;
-            while(contributors.hasNext()){
-                JsonNode contributor=contributors.next();
-                if(contributor.get("ContributorRole").get(0).asText().equals("A01")){
-                    author=contributor.get("PersonName").get("content").asText();
-                }
-            }
             
-            eb.setAuthor(author);
+            String author=null;
+            try{
+                 //著者。ContributorRoleが[A01]のものを選んで取得。他の選べばイラストレーターとか訳者とかとれる。
+                Iterator<JsonNode> contributors=node.get("onix").get("DescriptiveDetail").get("Contributor").iterator();
+                
+                while(contributors.hasNext()){
+                    JsonNode contributor=contributors.next();
+                    if(contributor.get("ContributorRole").get(0).asText().equals("A01")){
+                        author=contributor.get("PersonName").get("content").asText();
+                    }
+                }
+                
+            }catch(NullPointerException e){
 
+            }finally{
+                eb.setAuthor(author);
+            }
 
             String release_date=node.get("summary").get("pubdate").asText();
             eb.setRelease_date(release_date);
@@ -103,6 +110,7 @@ public class IsbnDataGetter{
             }finally{
                 eb.setText_content(text_content);
             }
+        }
         // } catch (Exception e) {
         //     e.printStackTrace();
         // }

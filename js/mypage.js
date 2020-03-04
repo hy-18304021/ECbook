@@ -38,7 +38,7 @@ function getBookInfo(i){
 	};
 	$.post("bookinfo.do",$.param(params),function(responseJson){
 		$("#overlay_result_image").html("")
-								.append($("<img>").attr({src:"bookimage/"+responseJson.book_isbn,width:180,height:230}));
+								.append($("<img>").attr({src:"https://cover.openbd.jp//"+responseJson.book_isbn+".jpg",width:180,height:230}));
 		$("#overlay_result").html(responseJson.book_name+"<br><br>値段："+responseJson.book_price+"円<br><br>")
 							.append($("<button>").text("詳細を見る")
 												.attr({onclick:"window.location.href='bookinfo.do?book_isbn="+responseJson.book_isbn+"';"}))

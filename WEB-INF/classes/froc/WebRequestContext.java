@@ -64,4 +64,9 @@ public class WebRequestContext implements RequestContext{
     public void setRequestAttribute(String attributeName, Object status){
         _req.setAttribute(attributeName,status);
     }
+
+    public boolean checkAjax(){
+        boolean ajax = "XMLHttpRequest".equals(_req.getHeader("X-Requested-With"));
+        return ajax;
+    }
 }

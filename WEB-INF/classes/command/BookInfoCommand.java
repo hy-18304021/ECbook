@@ -8,6 +8,7 @@ import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
 import bean.*;
+import com.google.gson.*;
 public class BookInfoCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
@@ -28,10 +29,18 @@ public class BookInfoCommand extends AbstractCommand{
 		ReviewDao reviewdao = daofac.getReviewDao();
         List bookreviewlist = reviewdao.getBookReview(book_isbn);
         reqc.setRequestAttribute("bookreviewlist",bookreviewlist);
-
+        
+        
 		// OracleConnect.getInstance().commit();
 		OracleConnect.getInstance().closeConnection();
-		resc.setResult(book);
+		
+
+		if(reqc.checkAjax()){
+			resc.setResult(new Gson().toJson(book));
+
+        	return resc;
+        }
+        resc.setResult(book);
 		resc.setTarget("bookpage");
 		return resc;
 	}

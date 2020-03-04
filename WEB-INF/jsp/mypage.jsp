@@ -63,7 +63,7 @@
     <div class="meminfo">
         <h2>マイページ</h2>        
         <ul id="mem">
-            <li><a href="orderhistorycall.do">注文履歴</a></li>
+            <li><a href="">お届け先住所管理</a></li><!--userのアドレス受け取りつつadrmanageヘ-->
             <li><a href="addresseditcall.do">お届け先住所登録</a></li>
         </ul>
         

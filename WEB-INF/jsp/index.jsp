@@ -11,19 +11,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
-	<script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-            }
-        })
-    </script>
+	<script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
     <style>
 
     </style>

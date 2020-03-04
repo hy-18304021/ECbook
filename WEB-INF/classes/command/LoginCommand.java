@@ -1,8 +1,6 @@
 package command;
 
-import dao.OracleConnect;
-import dao.UserDao;
-import dao.AbstractDaoFactory;
+import dao.*;
 import bean.EbUserBean;
 import froc.RequestContext;
 import froc.ResponseContext;
@@ -44,6 +42,10 @@ public class LoginCommand extends AbstractCommand{
 				ArrayList mycart = cartdao.getUserCartInfo(id);
 				reqc.sessionAttribute("mycart",mycart);
 
+				FavoriteDao favoritedao = factory.getFavoriteDao();
+				ArrayList myfavorite = favoritedao.getUserFavorite(id);
+				reqc.sessionAttribute("myfavorite",myfavorite);
+
 				String target = (String)reqc.getSessionAttribute("target");
 				if(target==null){
 					resc.setTarget("mypage");
@@ -51,7 +53,7 @@ public class LoginCommand extends AbstractCommand{
 					int firstequal = target.indexOf("=");
 					target = target.substring(0,firstequal+1)+eb.getId()+target.substring(firstequal+1);
 					resc.setTarget(target,1);
-					reqc.sessionRemove("target");
+					// reqc.sessionRemove("target");
 				}
 			}else{
 				resc.setTarget("login");

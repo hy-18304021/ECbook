@@ -40,7 +40,7 @@ public abstract class AbstractDaoFactory{
     public abstract BookDao getBookDao();
     public abstract CartDao getCartDao();
     public abstract CreditDao getCreditDao();
-    public abstract FavotiteDao getFavotiteDao();
+    public abstract FavoriteDao getFavoriteDao();
     public abstract GenreDao getGenreDao();
     public abstract ReviewDao getReviewDao();
     public abstract Sales_RefDao getSales_RefDao();

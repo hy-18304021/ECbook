@@ -14,5 +14,6 @@ public interface RequestContext{
 
    	public String getQueryString();
     public String getRealPath(String relPath);
+    public boolean checkAjax();
 
 }

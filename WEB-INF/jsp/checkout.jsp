@@ -52,7 +52,8 @@
                     名前:${address.receiver_name}<br>
                     郵便番号:${address.postal_code}<br>
                     住所:${address.address}<br>
-                    電話番号:${address.tel}</div>
+                    電話番号:${address.tel}
+                  </div>
                   </label>
               </div>
               <input type="hidden" class="address_id" value="${address.address_id}">

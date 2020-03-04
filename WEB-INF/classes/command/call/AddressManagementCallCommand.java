@@ -18,17 +18,17 @@ public class AddressManagementCallCommand extends AbstractCommand{
 		AbstractDaoFactory daofac=AbstractDaoFactory.getFactory(reqc);
 		AddressDao addressdao=daofac.getAddressDao();
         EbUserBean user=(EbUserBean)reqc.getSessionAttribute("user");
-        System.out.println(user.getId());
         
         OracleConnect.getInstance().beginTransaction();
         
         //‘—‚èæ‚Ìî•ñ‚ğæ“¾
         List address = addressdao.getUserAddress(user.getId());
-        resc.setResult(address);
-
+        
         OracleConnect.getInstance().commit();
 
         OracleConnect.getInstance().closeConnection();
+        
+        resc.setResult(address);
 
         resc.setTarget("adrmanage");
         return resc;

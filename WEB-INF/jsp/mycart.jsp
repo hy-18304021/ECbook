@@ -18,9 +18,9 @@ pageEncoding="UTF-8"%>
   <div id="app" style="background: #eee;">
     <header class="page-element" style="background: #fff;">
         <div>
-              <h1>
-                <a href="indexcall.do">Logo</a>
-             </h1>
+          <a href="indexcall.do">
+            <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
+        </a>
               
            <!-- <div class="book-finder">
               <ul class="book-type-list">

@@ -28,9 +28,18 @@ public class OrderHistoryCallCommand extends AbstractCommand{
         Sales_RefDao salesrefdao=factory.getSales_RefDao();
         String userid=((EbUserBean)reqc.getSessionAttribute("user")).getId();
         
-        List sales=salesdao.getUserSales(userid);
-        List sales_ref=salesrefdao.getUserSales_Ref(userid);
+        //ToDo:このユーザーのSalesBeanのリストを取得
+        ArrayList<EbSalesBean> salesBeans=salesdao.getUserSales(userid);
+        for(EbSalesBean sales : salesDaos){
+            //ToDo:SalesDaoにSales_RefDaoのリスト。ループ回す
+            List sales_RefDaos=salesrefdao.getUserSales_Ref(sales.getBook_isbn());
+            sales.setSales_ref()
+            //ToDo:Sales_RefDaoにBookDaoインスタンス
+            
+        }
         
+
+
         resc.setResult(sales);
         reqc.sessionAttribute("sales_ref",sales_ref);
 

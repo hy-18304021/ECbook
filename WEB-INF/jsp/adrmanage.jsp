@@ -63,7 +63,6 @@
                     <h2>${sessionScope.user.name}さまの送り先住所</h2>        
                     <ul id="mem">
                         <li><a href="mypage.do">マイページ</a></li>
-                        <li><a href="addresseditcall.do">お届け住所変更</a></li>
                     </ul>
                     
                     <hr>

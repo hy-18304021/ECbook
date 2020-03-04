@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 12.2.0.1.0 - Production on … 3Œ 4 16:16:13 2020
+SQL*Loader: Release 12.2.0.1.0 - Production on … 3Œ 4 16:18:45 2020
 
 Copyright (c) 1982, 2017, Oracle and/or its affiliates.  All rights reserved.
 
@@ -56,8 +56,8 @@ ORA-02291: ®‡«§–ñ(EBTEST.FK_EBADDRESS_USER_ID)‚Éˆá”½‚µ‚Ü‚µ‚½ - eƒL[‚ª‚ ‚è‚
 ‹‘”Û‚³‚ê‚½˜_—ƒŒƒR[ƒh‚Ì‡Œv:               1
 ”pŠü‚³‚ê‚½˜_—ƒŒƒR[ƒh‚Ì‡Œv:        0
 
-ÀsŠJn… 3Œ  04 16:16:13 2020
-ÀsI—¹… 3Œ  04 16:16:13 2020
+ÀsŠJn… 3Œ  04 16:18:45 2020
+ÀsI—¹… 3Œ  04 16:18:45 2020
 
-ÀsŠÔ:        00: 00: 00.58
-CPUŠÔ :        00: 00: 00.23
+ÀsŠÔ:        00: 00: 00.28
+CPUŠÔ :        00: 00: 00.12

@@ -57,7 +57,7 @@ public class OraAddressDao implements AddressDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "select * from ebaddress where user_id = ?";
+            String sql= "select * from ebaddress where address_id = ?";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
@@ -201,6 +201,7 @@ public class OraAddressDao implements AddressDao{
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放
@@ -221,7 +222,7 @@ public class OraAddressDao implements AddressDao{
             cn=OracleConnect.getInstance().getConnection();
 
             //SQL文生成
-            String sql= "delete from ebuser where address_id=?";
+            String sql= "delete from ebaddress where address_id=?";
 
             //stのインスタンス取得
             st=cn.prepareStatement(sql);
@@ -231,6 +232,7 @@ public class OraAddressDao implements AddressDao{
             st.executeUpdate();
         }catch(SQLException e){
             //ロールバック処理
+            e.printStackTrace();
             OracleConnect.getInstance().rollback();
         }finally{
             //リソース解放

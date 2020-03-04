@@ -153,7 +153,7 @@
         <c:forEach var="favor" items="${myfavorite}">
             <c:set var="totalFavorBooks" value="${totalFavorBooks}+1" />
             <i class="open-overlay">
-                 <img src="bookimage/${favor.book_isbn}" width="180" height="230" alt="${favor.book_isbn}">
+                 <img src="https://cover.openbd.jp//${favor.book_isbn}.jpg" width="180" height="230" alt="${favor.book_isbn}">
             </i>
         </c:forEach>
         <c:choose>

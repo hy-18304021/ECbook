@@ -6,35 +6,19 @@
 <head>
     <title>BookList</title>
     <link rel="stylesheet" type="text/css" href="css/styletest.css">
-    <link rel="stylesheet" type="text/css" href="css/button.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/booklist.js"></script>
-	<script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-            }
-        })
-    </script>
-    <style>
-        
-    </style>
-
+	<script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
     <header class="page-element">
        <div>
-            <h1>
-                <a href="indexcall.do">Logo</a>
-             </h1>
+        <a href="indexcall.do">
+            <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
+        </a>
             <div class="book-finder">
                 <ul class="book-type-list">
                     <li id="booklistli"><a href="getbooktable.do">BookList</a></li>

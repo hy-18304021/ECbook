@@ -11,30 +11,33 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!-- <script type="text/javascript" src="js/ajax.js"></script> -->
     <script type="text/javascript" src="js/bookreview.js"></script>
+    <script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="js/bookpagefavorite.js" type="text/javascript" charset="utf-8" async defer></script>
     <script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-                document.getElementById("writereviewwithajax").style.display='none';
-            }
-        })
+      $(document).ready(function(){
+        var flag=document.getElementById("flag").innerText;
+        if(flag=="OK"){
+          $("#add-to-favorite-logout").css("display","none");
+          $("#add-to-favorite-login").css("display","block");
+        }else{
+        document.getElementById("writereviewwithajax").style.display='none';
+          $("#add-to-cart").css("display","none");
+          $("#add-to-favorite-logout").css("display","block");
+          $("#add-to-favorite-login").css("display","none");
+
+        }
+      });
     </script>
     <title>${result.book_name}</title>
 </head>
 <body>
-     
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <h1 style="display:none;" class="sessionId">${sessionScope.user.id}</h1>
     <header class="page-element">
             <div>
-              <h1>
-                <a href="indexcall.do">Logo</a>
-             </h1>
+              <a href="indexcall.do">
+                <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
+            </a>
               
            <div class="book-finder">
             <ul class="book-type-list">
@@ -53,6 +56,27 @@
 
         </div>
     </header>
+    <div class="wishlist-result" aria-hidden="true">
+      <center>
+        <div class="wishlist-result-x">
+          <div class="close-button">
+            欲しいリストに追加する
+            <i class="a-icon a-icon-close close-overlay" ></i>
+          </div>
+          <div id="wishlist_result">
+          <p>
+              <span class="result1" style="display:none;">
+                このアイテムを欲しいリストに追加しました。
+              </span>
+              <span class="result2" style="display:none;">
+                このアイテムは既に欲しいリストにありました。
+              </span>
+            </p>
+          </div>
+           <img src="https://cover.openbd.jp//${result.book_isbn}.jpg" alt="" width="120"/>
+        </div>
+      </center>
+    </div>
     <div class="container">
         <div class="product-container main-product-container">
           <div class="product-left-container">
@@ -68,13 +92,21 @@
               <b>Price:</b>
               <span class="price">${result.book_price}</span>
             </p>
-            <div>
+            <div id="add-to-cart">
                 <form action="addtocart.do" method="post" accept-charset="utf-8">
                   <input type="hidden" name="user_id" value="${sessionScope.user.id}">
                   <input type="hidden" name="book_isbn" value="${result.book_isbn}">
                   <input type="hidden" name="cart_amount" value="1">
                     <button>カートに入れる</button>
                 </form>
+            </div>
+            <div id="add-to-favorite-logout">
+              <form action="addtofavorite.do?user_id=${sessionScope.user.id}&book_isbn=${result.book_isbn}" method="post" accept-charset="utf-8">
+              <button type="submit">欲しいものリストに追加</button>
+              </form>
+            </div>
+            <div id="add-to-favorite-login">
+              <i class="open-overlay"><button type="button" class="add-to-favorite-button">欲しいものリストに追加</button></i>
             </div>
           </div>
         </div>
@@ -167,6 +199,7 @@
             <p>東京テクニカルカレッジ２年</p>
         </div>
     </footer>
+
 
 </body>
 </html>

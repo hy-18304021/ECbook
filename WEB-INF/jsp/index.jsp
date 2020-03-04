@@ -11,19 +11,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
-	<script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-            }
-        })
-    </script>
+	<script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
     <style>
 
     </style>
@@ -35,7 +23,7 @@
         <header class="page-element">
             <div>
                     <a href="indexcall.do">
-                        <img src="img/logo.png" style="margin-top:8px; width:250px; height: 80px;">
+                        <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
                     </a>
            <div class="book-finder">
               <ul class="book-type-list">

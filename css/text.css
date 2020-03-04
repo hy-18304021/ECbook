@@ -155,3 +155,17 @@ background-position: -205px -396px;
         position: relative;
         vertical-align: text-top;
     }
+
+.a-icon-close {
+    opacity: 0.5;
+        width: 18px;
+        height: 18px;
+    background-position: -368px -229px;
+    /*color:#111111;*/
+    float:right;
+    margin-top: 7px;
+    margin-right:5px;
+}
+.a-icon-close:hover{
+    opacity: 1;
+}

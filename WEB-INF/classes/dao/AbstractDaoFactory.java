@@ -36,11 +36,13 @@ public abstract class AbstractDaoFactory{
         return factory;
     }
     public abstract AddressDao getAddressDao();
+    public abstract ArrivalDao getArrivalDao();
     public abstract BookDao getBookDao();
     public abstract CartDao getCartDao();
     public abstract CreditDao getCreditDao();
     public abstract GenreDao getGenreDao();
     public abstract ReviewDao getReviewDao();
+    public abstract FavotiteDao getFavotiteDao();
     public abstract Sales_RefDao getSales_RefDao();
     public abstract SalesDao getSalesDao();
     public abstract UserDao getUserDao();

@@ -7,26 +7,18 @@
    	<meta charset="UTF-8">
    	<title>My page</title>
     <link rel="stylesheet" type="text/css" href="css/mypage.css">
+    <link rel="stylesheet" type="text/css" href="css/text.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/ajax.js"></script>
-    <script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-            }
-        })
-    </script>
+    <script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="js/mypage.js" type="text/javascript" charset="utf-8" async defer></script>
    </head>
    <body>
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+    <h1 style="display:none;" class="sessionId">${sessionScope.user.id}</h1>
     <div id="app">
         <header class="page-element">
             <div>
@@ -50,12 +42,10 @@
         </div>
     </header>
         <main>
-            <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             <div class="leftcolumn">
-                <p style="font-weight: bold;">ジャンル</p>
-                <p>ライトノベル</p>
-                <p>少年コミック</p>
-                <p>少女コミック</p>
+                <p style="font-weight: bold;" onclick="display('meminfo')">情報</p>
+                <p style="font-weight: bold;" onclick="display('favorite')">欲しいリスト</p>
+                <p style="font-weight: bold;"></p>
             </div>
     
     <div class="frame">        
@@ -127,8 +117,16 @@
                 <tr>
                     <th>性別</th>
                     <td>
-                    <label><input type="radio" name="sex" value="1" id="sex"checked>男</label>
-                    <label><input type="radio" name="sex" value="2" id="sex">女</label>
+                        <c:choose>
+                        <c:when test="${sessionScope.user.sex=='1'}">
+                            <label><input type="radio" name="sex" value="1"checked>男</label>
+                            <label><input type="radio" name="sex" value="2">女</label>
+                        </c:when>    
+                        <c:otherwise>
+                            <label><input type="radio" name="sex" value="1">男</label>
+                            <label><input type="radio" name="sex" value="2" checked>女</label>
+                        </c:otherwise>
+                    </c:choose>
                     </td>
                 </tr>
                 <tr>
@@ -147,6 +145,40 @@
            
             </table>
         </div>
+      </div>
+      <div class="favorite" style="display:none;">
+        <h2>欲しいリスト</h2>
+        <hr>
+        <c:set var="totalFavorBooks" value="${0}" />
+        <c:forEach var="favor" items="${myfavorite}">
+            <c:set var="totalFavorBooks" value="${totalFavorBooks}+1" />
+            <i class="open-overlay">
+                 <img src="bookimage/${favor.book_isbn}" width="180" height="230" alt="${favor.book_isbn}">
+            </i>
+        </c:forEach>
+        <c:choose>
+            <c:when test="${totalFavorBooks=='0'}">
+            <br><br>
+                <p style="font-weight: 800; color:red; font-size: 20px">欲しい本がありません。</p>
+            </c:when>    
+            <c:otherwise>
+            </c:otherwise>
+        </c:choose>
+      </div>
+      <div class="overlay-result"  aria-hidden="true">
+        <center>
+          <div class="overlay-result-x">
+          <div class="close-button">
+            本の情報
+            <i class="a-icon a-icon-close close-overlay" ></i>
+          </div>
+          <div id="overlay_result_image">
+          </div>
+          <div id="overlay_result">
+              
+          </div>
+        </div>
+        </center>
       </div>
     </div>
        

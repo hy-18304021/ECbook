@@ -8,18 +8,7 @@
 	<link rel="stylesheet" href="css/login.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-        $(document).ready(function(){
-            var flag=document.getElementById("flag").innerText;
-            if(flag=="OK"){
-                document.getElementById("loginli").style.display='none';
-            }else{
-                document.getElementById("logoutli").style.display='none';
-                document.getElementById("mypage").style.display='none';
-                document.getElementById("mycart").style.display='none';
-            }
-        })
-    </script>
+    <script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>

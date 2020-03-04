@@ -94,7 +94,7 @@
 
     <filter-mapping>
         <filter-name>sessioncheckfilter</filter-name>
-        <url-pattern>/addtocart.do</url-pattern>
+        <url-pattern>/addtofavorite.do</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

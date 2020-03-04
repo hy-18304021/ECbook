@@ -27,9 +27,9 @@ public class OraDaoFactory extends AbstractDaoFactory{
         return new OraCreditDao();
     }
 
-    //OraFavotiteDaoのインスタンスを返す
-    public FavotiteDao getFavotiteDao(){
-        return new OraFavotiteDao();
+    //OraFavoriteDaoのインスタンスを返す
+    public FavoriteDao getFavoriteDao(){
+        return new OraFavoriteDao();
     }
 
     //OraGenreDaoのインスタンスを返す

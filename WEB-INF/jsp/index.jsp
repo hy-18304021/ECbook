@@ -23,7 +23,7 @@
         <header class="page-element">
             <div>
                     <a href="indexcall.do">
-                        <img src="img/logo.png" style="margin-top:8px; width:250px; height: 80px;">
+                        <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
                     </a>
            <div class="book-finder">
               <ul class="book-type-list">

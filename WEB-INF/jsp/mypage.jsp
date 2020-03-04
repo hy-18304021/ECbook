@@ -22,9 +22,9 @@
     <div id="app">
         <header class="page-element">
             <div>
-                <h1>
-                    <a href="indexcall.do">Logo</a>
-                 </h1>
+                <a href="indexcall.do">
+                    <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
+                </a>
               
            <div class="book-finder">
             <ul class="book-type-list">
@@ -153,7 +153,7 @@
         <c:forEach var="favor" items="${myfavorite}">
             <c:set var="totalFavorBooks" value="${totalFavorBooks}+1" />
             <i class="open-overlay">
-                 <img src="bookimage/${favor.book_isbn}" width="180" height="230" alt="${favor.book_isbn}">
+                 <img src="https://cover.openbd.jp//${favor.book_isbn}.jpg" width="180" height="230" alt="${favor.book_isbn}">
             </i>
         </c:forEach>
         <c:choose>

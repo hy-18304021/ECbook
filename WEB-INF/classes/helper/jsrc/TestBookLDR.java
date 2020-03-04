@@ -77,6 +77,7 @@ public class TestBookLDR{
  
             // 内容をセットする
             for(int i = 0; i < books.size(); i++){
+                p.print(" ");
                 p.print(books.get(i).getBook_amount());p.print(",");// book_amount
                 p.print(books.get(i).getBook_price());p.print(",");// book_price
                 p.print(books.get(i).getGenre_id());p.print(",");// genre_id

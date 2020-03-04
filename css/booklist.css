@@ -237,8 +237,6 @@ header{
      max-width: 50%;
   }
 }
-<<<<<<< HEAD
-=======
 
 .footer{
   /*footerの装飾*/
@@ -250,8 +248,11 @@ header{
   margin-top: 20px;
 }
 
+.row input{
+  margin: 30px;
+}
 
-.previous-button{
+/* .previous-button{
   float:left;
   position: absolute;
 }
@@ -259,5 +260,4 @@ header{
 .next-button{
   float:right;
   position: absolute;
-}
->>>>>>> 6dcf95e04fe9fdf2bdecc1f64e2f1f6f75267b2a
+} */

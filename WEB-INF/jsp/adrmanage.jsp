@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
+    <script type="text/javascript" src="js/adrmanage.js"></script>
     <script>
         $(document).ready(function(){
             var flag=document.getElementById("flag").innerText;
@@ -51,16 +51,22 @@
     </header>
     <main>
         <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
-        <div class="leftcolumn">
-            <p style="font-weight: bold;">ジャンル</p>
-            <p>ライトノベル</p>
-            <p>少年コミック</p>
-            <p>少女コミック</p>
-        </div>
+            <div id="update" style="display:none;" class="leftcolumn">
+                    <form action='addressupdate.do' method="Post">
+                        <input type="hidden" name="address_id" id="address_id">
+                        名前<br><input id="name" name="name" type="text"size="15"><br>
+                        郵便番号<br><input id="code" name="code" type="text"size="15" maxlength="7"><br>
+                        住所<br><input id="address" name="address" type="text"size="15"><br>
+                        電話番号<br><input id="tel" name="tel" type="text"size="15" maxlength="11"><br>
+                        <input type="hidden" id="book_isbn" name="book_isbn">
+                        <input type="submit" value="修正">
+                    </form>
+                    <button type="button" onclick="disappear()">閉じる</button>
+            </div>
              <div class="frame">        
                 <div class="mypage">
                 <div class="meminfo">
-                    <h2>${sessionScope.user.name}さまの送り先住所</h2>        
+                    <h2>${sessionScope.user.id}さまの送り先住所</h2>        
                     <ul id="mem">
                         <li><a href="mypage.do">マイページ</a></li>
                     </ul>
@@ -73,20 +79,25 @@
                             <th>郵便番号</th>
                             <th>住所</th>
                             <th>電話番号</th>
+                            <th>修正</th>
                         </tr>
+                        <c:forEach var="address" items="${result}">
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                                <th>${address.receiver_name}</th>
+                                <th>${address.postal_code}</th>
+                                <th>${address.address}</th>
+                                <th>${address.tel}</th>
+                                <th><button type="button" onclick="appearadd(${address.address_id})">修正</button></th>
                         </tr>
+                        </c:forEach>
                     </table>
+                    
+
                     
                     </div>
                   </div>
-                </div>
-                   
-                </div>
+                </div> 
+            </div>
                 
    </body>
    </html>

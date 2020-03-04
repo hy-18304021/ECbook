@@ -145,8 +145,10 @@ header #mobile-hamburger-menu-icon{
 }
 
 .product-grid .product-image img{
-   width: 100%;
-   height: auto;
+   width: 205px;
+  height: 300px;
+  max-width: auto;
+  max-height: auto;
 }
 
 .product-discount-label{

@@ -63,7 +63,6 @@
                     <h2>お届け先住所登録</h2>        
                     <ul id="mem">
                         <li><a href="mypage.do">マイページ</a></li>
-                        <li><a href="">お届け先住所管理</a></li>
                     </ul>
                     
                     <hr>

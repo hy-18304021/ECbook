@@ -12,19 +12,11 @@ public class AddressAddCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
 
-<<<<<<< HEAD
-        String user_id=reqc.getParameter("user_id")[0];//ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½ï¿½ 
-        String receiver_name=reqc.getParameter("reciver_name")[0];//ï¿½ï¿½ï¿½l
-        int postal_code=Integer.parseInt(reqc.getParameter("postal_code")[0]);//ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Ö”Ôï¿½
-        String address=reqc.getParameter("address")[0];//ï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½
-        String tel=reqc.getParameter("tel")[0];//ï¿½ï¿½ï¿½ï¿½ï¿½dï¿½bï¿½Ôï¿½
-=======
-        String user_id=reqc.getParameter("user_id")[0];//ƒ†[ƒU[–¼ 
-        String receiver_name=reqc.getParameter("reciver_name")[0];//óæl
-        int postal_code=Integer.parseInt(reqc.getParameter("postal_code")[0]);//‘—‚èæ—X•Ö”Ô†
-        String address=reqc.getParameter("address")[0];//‘—‚èæZŠ
-        String tel=reqc.getParameter("tel")[0];//‘—‚èæ“d˜b”Ô†
->>>>>>> 78b960eb7bd1db56145b7d503ce0e0a455335e3f
+        String user_id=reqc.getParameter("user_id")[0];//ãƒ¦ãƒ¼ã‚¶ãƒ¼å 
+        String receiver_name=reqc.getParameter("reciver_name")[0];//å—å–äºº
+        int postal_code=Integer.parseInt(reqc.getParameter("postal_code")[0]);//é€ã‚Šå…ˆéƒµä¾¿ç•ªå·
+        String address=reqc.getParameter("address")[0];//é€ã‚Šå…ˆä½æ‰€
+        String tel=reqc.getParameter("tel")[0];//é€ã‚Šå…ˆé›»è©±ç•ªå·
         
         //bean
 		EbAddressBean eb=new EbAddressBean();
@@ -35,32 +27,18 @@ public class AddressAddCommand extends AbstractCommand{
         eb.setTel(tel);
 
 
-<<<<<<< HEAD
-		//ï¿½Iï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½nï¿½ï¿½
+		//ã‚ªãƒ©ã‚¯ãƒ«å§‹ã‚
 		OracleConnect.getInstance().beginTransaction();
 
-		//ï¿½Cï¿½ï¿½ï¿½eï¿½Oï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½
-=======
-		//ƒIƒ‰ƒNƒ‹n‚ß
-		OracleConnect.getInstance().beginTransaction();
-
-		//ƒCƒ“ƒeƒOƒŒ[ƒVƒ‡ƒ“ƒŒƒCƒ„‚Ìˆ—ŒÄ‚Ño‚µ
->>>>>>> 78b960eb7bd1db56145b7d503ce0e0a455335e3f
+		//ã‚¤ãƒ³ãƒ†ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ¬ã‚¤ãƒ¤ã®å‡¦ç†å‘¼ã³å‡ºã—
 		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		AddressDao dao=factory.getAddressDao();
 		dao.addAddress(eb);
 
-<<<<<<< HEAD
-		//ï¿½Rï¿½~ï¿½bï¿½g	
+		//ã‚³ãƒŸãƒƒãƒˆ	
 		OracleConnect.getInstance().commit();
 
-		//ï¿½Iï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½
-=======
-		//ƒRƒ~ƒbƒg	
-		OracleConnect.getInstance().commit();
-
-		//ƒIƒ‰ƒNƒ‹I‚í‚è
->>>>>>> 78b960eb7bd1db56145b7d503ce0e0a455335e3f
+		//ã‚ªãƒ©ã‚¯ãƒ«çµ‚ã‚ã‚Š
 		OracleConnect.getInstance().closeConnection();
 
 		resc.setTarget("mypage");

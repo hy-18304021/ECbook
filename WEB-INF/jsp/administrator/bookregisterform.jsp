@@ -40,9 +40,9 @@
         <li>在庫:
         <input id="book_count" name="book_amount" type="text" size="10" placeholder="在庫" maxlength="5">冊
         </li>
-        <li>イメージ:
+        <%-- <li>イメージ:
         <input id="book_image" name="book_image" type="file" accept="image/*">
-        </li>
+        </li> --%>
 
         <input type="submit" value="登録">
     </form>

@@ -98,7 +98,6 @@
             <h2 class="product-page">Review</h2>
             <p class="product-body">
                 <div id ="writereviewwithajax">
-<<<<<<< HEAD
                     <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください。"></textarea>
                     評価:<div>
                             <img class="star-image" src="starimage/emptystar.png" alt="review-star-1">
@@ -113,11 +112,6 @@
                 </div>
                 <div id="written" style="display: none;">
                   レビューを書いてくれてありがとうございます。
-=======
-                    <textarea type="text" id="review_text" class="write-review-area" row='2' col='3' required placeholder="レビューを書いてください"></textarea>
-                    評価:<input type="number" id="review_star" min="1" max="5">
-                    <input type="button" class="write-review-button" style="width:42px; font-size:15px; border-radius: 5px; height: 32px;" value="投稿">
->>>>>>> 3e655729b996509ef678345db86c9936fa6604af
                 </div>
                 <h2 class="a-spacing-small customer-reviews-header" style="margin-top: 50px;">
                       ${result.book_name}
@@ -126,13 +120,14 @@
 
                 <div class="a-section" id='review'>
                   <c:forEach var="review" items="${bookreviewlist}">
+                      
+                    <div class="a-section">
                       <hr>
                       <h4>${review.user_id}</h4>
                       <hr>
-                    <div class="a-section">
                       <div class="a-row a-spacing-micro">
-                        <div class="a-icon-row a-spacing-none"><a class="a-link-normal a-text-normal a-color-base"><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
-                          
+                        <div class="a-icon-row a-spacing-none">
+                          <a class="a-link-normal a-text-normal a-color-base"><i class="a-icon a-icon-star a-star-${review.review_star}"></i></a>
                           <span class="a-letter-space"></span>
                           <a class="a-link-normal a-text-normal a-color-base">
                           </a>
@@ -157,9 +152,10 @@
                       <input type="button" class="appear-update-review-form-button" value="修正">
                       <input type="button" class="delete-review-button" value="削除">
                     </div>
-                      
-                    </c:forEach>
+                  </c:forEach>
                 </div>
+                <button class="newer-review-button" onclick="newerreview()">前のレビューへ</button>
+                <button class="older-review-button" onclick="olderreview()">もっと古いレビューを見たいい</button>
               </p>
           </div>
         </div>

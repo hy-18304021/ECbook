@@ -1,4 +1,6 @@
 var changedreviewtext = null;
+var i = 0, $reviewdivs;
+
 // var reviewstarvalue = null;
 $(document).ready(function(){
 	$(".write-review-button").click(function(){
@@ -19,17 +21,7 @@ $(document).ready(function(){
 	})
 
 	$("#review").on('DOMNodeInserted', "input", function() {
-    	$(".delete-review-button").click(function(){
-			deleteReview($(this));
-			$("#writereviewwithajax").css("display","block");
-			$("#written").css("display","none");
-		})
-		$(".appear-update-review-form-button").click(function(){
-			changeform($(this));
-			$(".update-review-button").click(function(){
-				updateReview($(this));
-			})
-		})
+    	
 		$(".delete-review-button").each(function(){
 			if($(this).parent().children(".user-id").html()!=$(".sessionId").html()){
 				$(this).css("display","none");
@@ -50,6 +42,9 @@ $(document).ready(function(){
 		if($(this).parent().children(".user-id").html()==$(".sessionId").html()){
 			$("#writereviewwithajax").css("display","none");
 			$("#written").css("display","block");
+			if($("#flag").html()==""){
+				$("#writereviewwithajax").css("display","none");
+			}
 			// alert(1);
 		}
 		// else{
@@ -65,7 +60,9 @@ $(document).ready(function(){
 	$(".star-image").click(function(){
 		changestar($(this));
 	})
+	displayreview(i);
 });
+
 
 function addReview(clickedButton){
 	if(typeof reviewstarvalue==='undefined'){
@@ -90,6 +87,8 @@ function addReview(clickedButton){
 		// alert(params.review_text+"\n"+params.review_star);
 	$.post("bookreviewchange.do",$.param(params),function(responseJson){
 		changeResponse(responseJson);
+		i=0;
+		displayreview(i);
 	});
 }
 
@@ -105,6 +104,8 @@ function deleteReview(clickedButton){
 		// alert(params.review_date);
 	$.post("bookreviewchange.do",$.param(params),function(responseJson){
 		changeResponse(responseJson);
+		i=0;
+		displayreview(i);
 	});
 }
 
@@ -129,6 +130,8 @@ function updateReview(clickedButton){
 		// alert(params.review_text+"\n"+params.review_star);
 	$.post("bookreviewchange.do",$.param(params),function(responseJson){
 		changeResponse(responseJson);
+		i=0;
+		displayreview(i);
 	});
 }
 
@@ -168,12 +171,12 @@ function changeResponse(responseJson){
 	var $review =$("#review");
 			$review.html("");
 			$.each(responseJson,function(index,review){
-				$("<hr>").appendTo($review);
-				$("<h4>").appendTo($review).text(review.user_id);
-				$("<hr>").appendTo($review);
-				// alert("Ajax:"+review.review_text);
 				$("<div>").appendTo($review)
 							.addClass("a-section")
+							// .css("display","none")
+							.append($("<hr>"))
+							.append($("<h4>").text(review.user_id))
+							.append($("<hr>"))
 							.append($("<div>").addClass("a-row a-spacing-micro")
 											.append($("<div>").addClass("a-icon-row a-spacing-none")
 												.append($("<a>").addClass("a-link-normal a-text-normal a-color-base")
@@ -196,6 +199,17 @@ function changeResponse(responseJson){
 				}
 				// alert(review.user_id);
 			})
+			$(".delete-review-button").click(function(){
+			deleteReview($(this));
+			$("#writereviewwithajax").css("display","block");
+			$("#written").css("display","none");
+		})
+		$(".appear-update-review-form-button").click(function(){
+			changeform($(this));
+			$(".update-review-button").click(function(){
+				updateReview($(this));
+			})
+		})
 }
 
 
@@ -222,4 +236,44 @@ function changestar(thisstar){
 	// reviewstarvalue=index+1;
 	// alert(reviewstarvalue);
 	return reviewstarvalue;
+}
+
+
+function olderreview() {
+  if (i < $reviewdivs.length/4-1) {
+    i++;
+    displayreview(i);
+  }
+}
+
+function newerreview() {
+  if (i > 0) {
+    i--;
+    displayreview(i);
+  }
+}
+function displayreview(i){
+	// alert(i)
+	$reviewdivs = $("#review").children(".a-section");
+	if(i>=$reviewdivs.length/4-1){
+		$(".older-review-button").css("display","none");
+	}else{
+		$(".older-review-button").css("display","block");
+	}
+	if(i==0){
+	  	$(".newer-review-button").css("display","none");
+	 }else{
+	 	$(".newer-review-button").css("display","block");
+	 }
+	// alert($reviewdivs.length);
+	for(var a=0;a<$reviewdivs.length;a++){
+		var $review = $reviewdivs[a];
+		$review.style.display = 'none';
+	}
+	for(var y=i*4;y<((i+1)*4);y++){
+		var $review = $reviewdivs[y];
+		if(typeof $review !=='undefined'){
+			$review.style.display = 'block';
+		}
+	}
 }

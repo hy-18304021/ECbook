@@ -124,7 +124,7 @@ public class BuyCartBookCommand extends AbstractCommand{
         OracleConnect.getInstance().commit();
         OracleConnect.getInstance().closeConnection();
 
-        resc.setTarget("mypage");
+        resc.setTarget("buyresult");
         return resc;
 	}
 }

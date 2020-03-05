@@ -42,7 +42,7 @@
             <p style="font-weight: bold;">ジャンル</p>
             <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
             <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
-            <a href="searchbook.do?genre_id=3&book_name="><p>少女コミック</p></a>
+            <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
         </div>
         <div class="container">
 

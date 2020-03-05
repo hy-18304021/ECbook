@@ -49,7 +49,7 @@ public class BookInfoCommand extends AbstractCommand{
 		}else{
 			String error="この商品はありません";
 			String href="indexcall.do";
-			String mes="トップへ";
+			String mes="トップページへ";
 			ArrayList<String> errors=new ArrayList<String>();
 			errors.add(error);
 			errors.add(href);

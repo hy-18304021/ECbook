@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 12.2.0.1.0 - Production on 水 3月 4 18:11:53 2020
+SQL*Loader: Release 12.2.0.1.0 - Production on 木 3月 5 11:55:29 2020
 
 Copyright (c) 1982, 2017, Oracle and/or its affiliates.  All rights reserved.
 
@@ -49,8 +49,8 @@ TRAILING NULLCOLSオプションは有効です。
 拒否された論理レコードの合計:               0
 廃棄された論理レコードの合計:        0
 
-実行開始水 3月  04 18:11:53 2020
-実行終了水 3月  04 18:11:54 2020
+実行開始木 3月  05 11:55:29 2020
+実行終了木 3月  05 11:55:29 2020
 
-実行時間:        00: 00: 00.50
-CPU時間 :        00: 00: 00.25
+実行時間:        00: 00: 00.24
+CPU時間 :        00: 00: 00.17

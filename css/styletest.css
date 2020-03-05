@@ -277,3 +277,13 @@ header #mobile-hamburger-menu-icon{
    }
 }
 
+.cartnumber{
+  width:30px;
+  height:30px;
+  border-radius: 15px;
+  background-color:#ff070099;
+  float:right;
+  line-height: 28px;
+  font-weight: 500;
+  margin-left: 10px;
+}

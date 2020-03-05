@@ -35,7 +35,7 @@
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
                 <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
               </ul>
-              <form class="book-search" action="searchbook.do" method="post">
+              <form style="margin:0px;" class="book-search" action="searchbook.do" method="post">
                     <input type="text" name="book_name">
                     <input type="hidden" name="genre_id" value="0">
                     <input type="submit" value="Search">
@@ -56,29 +56,9 @@
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             <div class="leftcolumn">
                 <p style="font-weight: bold;">ジャンル</p>
-<<<<<<< HEAD
                 <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
                 <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
                 <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
-=======
-                <form action='searchbook.do' method="Post">
-                    <input type="hidden" name="genre_id" value="1">
-                    <input type="hidden" name="book_name" value="">
-                    <button>少年コミック</button>
-                </form>
-                <br>
-                <form action='searchbook.do' method="Post">
-                    <input type="hidden" name="genre_id" value="2">
-                    <input type="hidden" name="book_name" value="">
-                    <button>少女コミック</button>
-                </form>
-                <br>
-                <form action='searchbook.do' method="Post">
-                    <input type="hidden" name="genre_id" value="3">
-                    <input type="hidden" name="book_name" value="">
-                    <button>ライトノベル</button>
-                </form>
->>>>>>> 7814754e01bc509ed82f0d631709b9d6805b29d1
             </div>
             <div id="content" class="page-element">
                 <div>

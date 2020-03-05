@@ -49,9 +49,23 @@
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             <div class="leftcolumn">
                 <p style="font-weight: bold;">ジャンル</p>
-                <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
-                <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
-                <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
+                <form action='searchbook.do' method="Post">
+                    <input type="hidden" name="genre_id" value="1">
+                    <input type="hidden" name="book_name" value="">
+                    <button>少年コミック</button>
+                </form>
+                <br>
+                <form action='searchbook.do' method="Post">
+                    <input type="hidden" name="genre_id" value="2">
+                    <input type="hidden" name="book_name" value="">
+                    <button>少女コミック</button>
+                </form>
+                <br>
+                <form action='searchbook.do' method="Post">
+                    <input type="hidden" name="genre_id" value="3">
+                    <input type="hidden" name="book_name" value="">
+                    <button>ライトノベル</button>
+                </form>
             
             </div>
             <div id="content" class="page-element">

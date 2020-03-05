@@ -73,7 +73,7 @@
             <label for="cname">カード名義人（半角ローマ字)</label>
             <input type="text" id="cname" name="cardname" placeholder="name" oninput="valueinCardname(this)">
             <label for="ccnum">カード番号</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" oninput="valueinCardNumber(this)" maxlength="12">
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" oninput="valueinCardNumber(this)" maxlength="16">
             <label for="expmonth">有効期限(月)</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="12" oninput="valueinExpmonth(this)" maxlength="2">
             <div class="row">

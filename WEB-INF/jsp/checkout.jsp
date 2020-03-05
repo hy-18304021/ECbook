@@ -73,17 +73,17 @@
             <label for="cname">カード名義人（半角ローマ字)</label>
             <input type="text" id="cname" name="cardname" placeholder="name" oninput="valueinCardname(this)">
             <label for="ccnum">カード番号</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" oninput="valueinCardNumber(this)" maxlength="16">
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" oninput="value = value.replace(/[^0-9]+/i,''); valueinCardNumber(this)" maxlength="16">
             <label for="expmonth">有効期限(月)</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="12" oninput="valueinExpmonth(this)" maxlength="2">
+            <input type="text" id="expmonth" name="expmonth" placeholder="12" oninput="value = value.replace(/[^0-9]+/i,''); valueinExpmonth(this)" maxlength="2">
             <div class="row">
               <div class="col-50">
                 <label for="expyear">有効期限(年)</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2020" oninput="valueinExpyrar(this)" maxlength="4">
+                <input type="text" id="expyear" name="expyear" placeholder="2020" oninput="value = value.replace(/[^0-9]+/i,''); valueinExpyrar(this)" maxlength="4">
               </div>
               <div class="col-50">
                 <label for="cvv">CVV番号</label>
-                <input type="text" id="cvv" name="cvv" placeholder="123" oninput="valueinCvv(this)" maxlength="3">
+                <input type="text" id="cvv" name="cvv" placeholder="123" oninput="value = value.replace(/[^0-9]+/i,''); valueinCvv(this)" maxlength="3">
               </div>
             </div>
           </div>

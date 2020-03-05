@@ -8,6 +8,7 @@ import froc.RequestContext;
 import froc.ResponseContext;
 import froc.AbstractCommand;
 import java.util.List;
+import java.util.ArrayList;
 import bean.*;
 import com.google.gson.*;
 
@@ -20,6 +21,19 @@ public class SearchBookCommand extends AbstractCommand{
 		// System.out.println(book_name+"\t"+genre_id);
 
 		// System.out.println("SearchBookCommand");
+
+		if(genre_id>3){
+			String error="このジャンルは存在しません";
+			String href="indexcall.do";
+			String mes="トップページへ";
+			ArrayList<String> errors=new ArrayList<String>();
+			errors.add(error);
+			errors.add(href);
+			errors.add(mes);
+			resc.setResult(errors);
+			resc.setTarget("error");
+			return resc;     
+		}
 
 		EbBookBean bookbean = new EbBookBean();
 		bookbean.setBook_name(book_name);

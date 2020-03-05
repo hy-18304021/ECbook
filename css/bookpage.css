@@ -358,7 +358,9 @@ button {
   font-weight: bold;
 }
 
-.noscroll { overflow: hidden; }
+.noscroll {
+  /*overflow: hidden;*/
+}
 
 @media (min-device-width: 1025px) {
   .noscroll { 

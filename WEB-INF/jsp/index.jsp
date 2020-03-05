@@ -35,7 +35,7 @@
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
                 <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
               </ul>
-              <form class="book-search" action="searchbook.do" method="post">
+              <form style="margin:0px;" class="book-search" action="searchbook.do" method="post">
                     <input type="text" name="book_name">
                     <input type="hidden" name="genre_id" value="0">
                     <input type="submit" value="Search">

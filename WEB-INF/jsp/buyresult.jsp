@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html>
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -31,7 +33,7 @@
                 <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
-                <li id="mycart"><a href="mycart.do">Cart</a></li>
+                <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
               </ul>
               <form class="book-search" action="searchbook.do" method="post">
                  <input type="text" name="book_name">

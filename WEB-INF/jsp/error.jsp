@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     import="java.util.ArrayList, bean.EbBookBean"
 	pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html>
 
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
-                <li id="mycart"><a href="mycart.do">Cart</a></li>
+                <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
               </ul>
            </div>
      

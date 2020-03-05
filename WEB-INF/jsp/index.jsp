@@ -63,14 +63,15 @@
             <div id="content" class="page-element">
                 <div>
                     <div id="popular-books">
-                        <h3>Popular Books</h3>
+                        
 
                         <div class="container">
+                            <h3>Popular Books</h3>
                             <div class="row">
                                 <!-- recommendedBooks -->
                                 <c:forEach var="book" items="${recommendedBooks}">
                                     <div class="col3">
-                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">
+                                        <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
                                                     <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" onclick="bookinfo.do" class="pic-1" alt="${book.book_name}">
@@ -84,7 +85,7 @@
                                                 </h3>
                                                 </center>
                                             </div>
-                                        </a>
+                                            </a>
                                             <!-- <ul class="social">
                                                 <li>
                                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}" data-trip="quick view">
@@ -92,30 +93,30 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                   <form href="addtocart.do" method="post" data-trip="add to cart">
+                                                    <form href="addtocart.do" method="post" data-trip="add to cart">
                                                     <a>
                                                         <input type="hidden" name="user_id" value="${sessionScope.user.id}">
                                                         <input type="hidden" name="book_isbn" value="${book.book_isbn}">
                                                         <input type="hidden" name="cart_amount" value="1">
-                                                       <i class="fa fa-shopping-cart">
-                                                       </i>
-                                                   </a>
+                                                        <i class="fa fa-shopping-cart">
+                                                        </i>
+                                                    </a>
                                                 </form>
                                                     
-                                               </li>
+                                                </li>
 
                                             </ul> -->
                                         </div>
-                                </div>
-                            </c:forEach>
+                                    </div>
+                                </c:forEach>
                             </div>
                             <!-- shounen -->
                             <h3>Shounen Books</h3>
                             <br>
-                                <div class="row">
-                            <c:forEach var="book" items="${recommendedShounen}">
+                            <div class="row">
+                                <c:forEach var="book" items="${recommendedShounen}">
                                     <div class="col3">
-                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">
+                                        <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
                                                     <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}">
@@ -125,15 +126,15 @@
                                             <div class="product-content">
                                                 <center>
                                                     <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
-                                                <h3 class="title">
-                                                    <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
-                                                </h3>
+                                                    <h3 class="title">
+                                                        <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
+                                                    </h3>
                                                 </center>
                                             </div>
-                                           </a>
+                                            </a>
                                         </div>
-                                </div>
-                            </c:forEach>
+                                    </div>
+                                </c:forEach>
                             </div>
 
                             <!-- Shoujo -->

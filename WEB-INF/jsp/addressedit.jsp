@@ -52,11 +52,11 @@
     <main>
         <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
         <div class="leftcolumn">
-            <p style="font-weight: bold;">ジャンル</p>
-            <p>ライトノベル</p>
-            <p>少年コミック</p>
-            <p>少女コミック</p>
+            <p style="font-weight: bold;" onclick="display('meminfo')">情報</p>
+            <p style="font-weight: bold;" onclick="display('favorite')">欲しいリスト</p>
+            <p style="font-weight: bold;"></p>
         </div>
+
              <div class="frame">        
                 <div class="mypage">
                 <div class="meminfo">

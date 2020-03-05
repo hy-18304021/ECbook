@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>main</title>
+    <title>ハセガワ書房</title>
     <link rel="stylesheet" type="text/css" href="css/styletest.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,28 +33,32 @@
                 <li id="mypage"><a href="mypage.do">MyPage</a></li>
                 <li id="loginli"><a href="logincall.do">Login</a></li>
                 <li id="logoutli"><a href="logout.do">Logout</a></li>
-                <li id="mycart"><a href="mycart.do">Cart</a></li>
+                <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
               </ul>
+              <form style="margin:0px;" class="book-search" action="searchbook.do" method="post">
+                    <input type="text" name="book_name">
+                    <input type="hidden" name="genre_id" value="0">
+                    <input type="submit" value="Search">
+                </form>
            </div>
      
         </div>
     </header>
-    <div id="navigation">
+    <!-- <div id="navigation">
         <form class="book-search" action="searchbook.do" method="post">
             <input type="text" name="book_name">
             <input type="hidden" name="genre_id" value="0">
             <input type="submit" value="Search">
          </form>    
         
-    </div>
+    </div> -->
         <main>
             <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
             <div class="leftcolumn">
                 <p style="font-weight: bold;">ジャンル</p>
-                <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
                 <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
                 <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
-            
+                <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
             </div>
             <div id="content" class="page-element">
                 <div>
@@ -67,17 +73,16 @@
                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
-                                                
                                                     <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" onclick="bookinfo.do" class="pic-1" alt="${book.book_name}">
-                            
                                                 <span class="product-discount-label">${book.genre_name}</span>
                                             </div>
                                             <div class="product-content">
-                                                <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
+                                                <center>
+                                                    <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
                                                 <h3 class="title">
                                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                                 </h3>
-                                            
+                                                </center>
                                             </div>
                                         </a>
                                             <!-- <ul class="social">
@@ -113,20 +118,20 @@
                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
-                                                
                                                     <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}">
                                                 </a>
                                                 <span class="product-discount-label">${book.genre_name}</span>
                                             </div>
                                             <div class="product-content">
-                                                <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
+                                                <center>
+                                                    <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
                                                 <h3 class="title">
                                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                                 </h3>
-                                            
+                                                </center>
                                             </div>
-                                           </a> 
-                                        </div>                             
+                                           </a>
+                                        </div>
                                 </div>
                             </c:forEach>
                             </div>
@@ -141,7 +146,6 @@
                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
-                                                
                                                     <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}">
                                                 </a>
                                                 <span class="product-discount-label">${book.genre_name}</span>
@@ -151,10 +155,9 @@
                                                 <h3 class="title">
                                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                                 </h3>
-                                            
                                             </div>
                                         </a>
-                                        </div>                             
+                                        </div>
                                 </div>
                             </c:forEach>
                             </div>
@@ -169,20 +172,20 @@
                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                                         <div class="product-grid" style="width: 221px;">
                                             <div class="product-image">
-                                                
                                                     <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}">
                                                 </a>
                                                 <span class="product-discount-label">${book.genre_name}</span>
                                             </div>
                                             <div class="product-content">
-                                                <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
+                                                <center>
+                                                     <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
                                                 <h3 class="title">
                                                     <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                                 </h3>
-                                            
+                                                </center>
                                             </div>
                                         </a>
-                                        </div>                             
+                                        </div>
                                 </div>
                             </c:forEach>
                             </div>

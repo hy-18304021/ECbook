@@ -12,10 +12,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 import bean.EbBookBean;
@@ -71,8 +73,7 @@ public class TestBookLDR{
         try {
  
             // 出力ファイルの作成
-            FileWriter f = new FileWriter("helper/jsrc/EBBOOK_DATA_TABLE.ldr", true);
-            PrintWriter p = new PrintWriter(new BufferedWriter(f));
+            PrintWriter p = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream("helper/jsrc/EBBOOK_DATA_TABLE.ldr"),"Shift-JIS")));
  
  
             // 内容をセットする
@@ -91,7 +92,7 @@ public class TestBookLDR{
                 p.print(books.get(i).getAudience());p.print(",");// audience
                 p.print(books.get(i).getLabel());p.print(",");// label
                 p.print(books.get(i).getText_content());p.print(",");// text_content
-                p.println();    // 改行
+                p.print("\r\n");    // 改行
             }
  
             // ファイルに書き出し閉じる

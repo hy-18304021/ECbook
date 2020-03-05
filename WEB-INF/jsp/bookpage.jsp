@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +47,7 @@
               <li id="mypage"><a href="mypage.do">MyPage</a></li>
               <li id="loginli"><a href="logincall.do">Login</a></li>
               <li id="logoutli"><a href="logout.do">Logout</a></li>
-              <li id="mycart"><a href="mycart.do">Cart</a></li>
+              <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
             </ul>
             <form class="book-search" action="searchbook.do" method="post">
               <input type="text" name="book_name">
@@ -64,7 +66,7 @@
             <i class="a-icon a-icon-close close-overlay" ></i>
           </div>
           <div id="wishlist_result">
-          <p>
+          <p style="color:red;">
               <span class="result1" style="display:none;">
                 このアイテムを欲しいリストに追加しました。
               </span>
@@ -78,6 +80,7 @@
       </center>
     </div>
     <div class="container">
+
         <div class="product-container main-product-container">
           <div class="product-left-container">
             <img src="https://cover.openbd.jp//${result.book_isbn}.jpg" alt="" width="540"/>
@@ -108,6 +111,19 @@
             <div id="add-to-favorite-login">
               <i class="open-overlay"><button type="button" class="add-to-favorite-button">欲しいものリストに追加</button></i>
             </div>
+            <p style="color:red;">
+              <c:choose>
+               <c:when test="${favoriteresult=='1'}">
+                  このアイテムを欲しいリストに追加しました。
+              </c:when>
+              <c:when test="${favoriteresult=='2'}">
+                  このアイテムは既に欲しいリストにありました。
+              </c:when>
+                <c:otherwise>
+                </c:otherwise>
+            </c:choose>
+            </p>
+            
           </div>
         </div>
         <br clear="all"/>
@@ -119,8 +135,8 @@
             <c:forEach var='book' items='${recommendedBook}'>
               <a href="bookinfo.do?book_isbn=${book.book_isbn}">
               <div class="book1">  
-                <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="width: 60px; float: left;">
-              <p style="margin-top:40px; margin-left: 90px; padding-top: 25px;">${book.book_name}</p>
+                <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="height:95px;width: 60px; float: left;">
+              <p style="margin-top:40px; margin-left: 75px; padding-top: 25px;">${book.book_name}</p>
             </div>
           </a>
           </c:forEach>

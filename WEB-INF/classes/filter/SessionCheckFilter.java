@@ -25,7 +25,7 @@ public class SessionCheckFilter implements Filter{
         
         HttpSession session = hreq.getSession();
         if(session.getAttribute("flag")==null){
-        	session.setAttribute("target",hreq.getServletPath()+"?"+hreq.getQueryString());
+        	session.setAttribute("target1",hreq.getServletPath()+"?"+hreq.getQueryString());
         	// System.out.println(hreq.getServletPath());
 
         	RequestDispatcher dis = req.getRequestDispatcher("logincall.do");

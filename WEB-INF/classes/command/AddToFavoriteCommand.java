@@ -25,9 +25,10 @@ public class AddToFavoriteCommand extends AbstractCommand{
 
 		if(favordao.checkFavorite(favorite)){
 			resc.setResult(2);
-			if((String)reqc.getSessionAttribute("target")!=null){
+			if((String)reqc.getSessionAttribute("target1")!=null){
 				resc.setTarget("bookinfo.do?book_isbn="+book_isbn,1);
 				reqc.setRequestAttribute("favoriteresult",2);
+				reqc.sessionRemove("target1");
 			return resc;
 			}
 			return resc;
@@ -43,9 +44,10 @@ public class AddToFavoriteCommand extends AbstractCommand{
 		// OracleConnect.getInstance().closeConnnection();
 		// resc.setTarget("mypage");
 		// String result = new Gson().toJson(myfavorite);
-		if((String)reqc.getSessionAttribute("target")!=null){
+		if((String)reqc.getSessionAttribute("target1")!=null){
 			resc.setTarget("bookinfo.do?book_isbn="+book_isbn,1);
 			reqc.setRequestAttribute("favoriteresult",1);
+			reqc.sessionRemove("target1");
 			return resc;
 		}
 		resc.setResult(1);

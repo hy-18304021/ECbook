@@ -62,16 +62,16 @@
       <center>
         <div class="wishlist-result-x">
           <div class="close-button">
-            欲しいリストに追加する
+            欲しいものリストに追加する
             <i class="a-icon a-icon-close close-overlay" ></i>
           </div>
           <div id="wishlist_result">
           <p style="color:red;">
               <span class="result1" style="display:none;">
-                このアイテムを欲しいリストに追加しました。
+                このアイテムを欲しいものリストに追加しました。
               </span>
               <span class="result2" style="display:none;">
-                このアイテムは既に欲しいリストにありました。
+                このアイテムは既に欲しいものリストにあります。
               </span>
             </p>
           </div>
@@ -114,10 +114,10 @@
             <p style="color:red;">
               <c:choose>
                <c:when test="${favoriteresult=='1'}">
-                  このアイテムを欲しいリストに追加しました。
+                  このアイテムを欲しいものリストに追加しました。
               </c:when>
               <c:when test="${favoriteresult=='2'}">
-                  このアイテムは既に欲しいリストにありました。
+                  このアイテムは既に欲しいものリストにあります。
               </c:when>
                 <c:otherwise>
                 </c:otherwise>
@@ -159,7 +159,7 @@
                         </div>
                 </div>
                 <div id="written" style="display: none;">
-                  レビューを書いてくれてありがとうございます。
+                  レビューしていただきありがとうございます。
                 </div>
                 <h2 class="a-spacing-small customer-reviews-header" style="margin-top: 50px;">
                       ${result.book_name}

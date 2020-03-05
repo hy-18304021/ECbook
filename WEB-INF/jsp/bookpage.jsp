@@ -78,7 +78,7 @@
       </center>
     </div>
     <div class="container">
-      
+
         <div class="product-container main-product-container">
           <div class="product-left-container">
             <img src="https://cover.openbd.jp//${result.book_isbn}.jpg" alt="" width="540"/>
@@ -133,8 +133,8 @@
             <c:forEach var='book' items='${recommendedBook}'>
               <a href="bookinfo.do?book_isbn=${book.book_isbn}">
               <div class="book1">  
-                <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="width: 60px; float: left;">
-              <p style="margin-top:40px; margin-left: 90px; padding-top: 25px;">${book.book_name}</p>
+                <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" class="pic-1" alt="${book.book_name}" style="height:95px;width: 60px; float: left;">
+              <p style="margin-top:40px; margin-left: 75px; padding-top: 25px;">${book.book_name}</p>
             </div>
           </a>
           </c:forEach>

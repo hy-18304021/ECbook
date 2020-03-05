@@ -173,11 +173,14 @@ button {
 	width: 290px;
 	text-align: center;
     margin-left: 40px;
-	-webkit-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	-ms-transition: all .2s linear;
-	-o-transition: all .2s linear;
-	transition: all .2s linear;
+	-webkit-transition: all 0.8s linear;
+	-moz-transition: all 0.8s linear;
+	-ms-transition: all 0.8s linear;
+	-o-transition: all 0.8s linear;
+	transition: all 0.8s linear;
+}
+button:hover{
+  background-color:#d9534f;;
 }
 .product-price {
   border-top: 1px solid #ddd;
@@ -218,12 +221,18 @@ button {
 
  .book1{
    position: relative;
-   width: 250px;
-   height: 68px;
+   width: 280px;
+   height: 95px;
    padding: 0px 10px;
+   transition: background 1s;
+ }
+ .book1:hover{
+  background: #ec000b36;
+  transition: background 1s;
  }
 
 .write-review-button{
+  transition: background-color 1s, color 1s;
   position: absolute;
   margin-left: 270px;
   margin-top: 20px;
@@ -233,8 +242,13 @@ button {
   border:none; 
   border-radius: 3px;
 }
+.write-review-button:hover{
+  background-color: #d9534f;
+  transition: background-color 1s, color 1s;
+}
 
 .delete-review-button{
+  transition: background-color 1s, color 1s;
   position: relative;
   
   margin-left: 1px;
@@ -250,6 +264,7 @@ button {
 
 }
 .update-review-button,.appear-update-review-form-button{
+  transition: background-color 1s, color 1s;
   position: relative;
   
   margin-left: 305px;
@@ -266,14 +281,17 @@ button {
 }
 
 .delete-review-button:hover{
+  transition: background-color 1s, color 1s;
   background-color: #000000;
   color:#444;
 }
 .update-review-button:hover{
+  transition: background-color 1s, color 1s;
   background-color: #000000;
   color:#00ff00;
 }
 .appear-update-review-form-button:hover{
+  transition: background-color 1s, color 1s;
   background-color: #000000;
   color:#00ff00;
 }

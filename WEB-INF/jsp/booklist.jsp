@@ -51,19 +51,19 @@
                         <a href="bookinfo.do?book_isbn=${book.book_isbn}">
                             <div class="product-grid" style="margin-top: 10px;">
                                 <div class="product-image">
-                                    
                                         <img src="https://cover.openbd.jp//${book.book_isbn}.jpg" width="142" height="203" class="pic-1" alt="${book.book_name}">
-                                    
                                     <span class="product-discount-label">${book.genre_name}</span>
                                 </div>
-                                
+                                <center>
                                 <div class="product-content">
-                                    <div class="price" style="margin: 0px 0px 10px -10px;">${book.book_price}円</div>
+                                    <div class="price" style="margin: 0px 0px 10px -10px;">
+                                    ${book.book_price}円
+                                </div>
                                     <h3 class="title">
                                         <a href="bookinfo.do?book_isbn=${book.book_isbn}">${book.book_name}</a>
                                     </h3>
                                 
-                                </div>
+                                </div></center>
                             </div>
                         </a>
                     </div>

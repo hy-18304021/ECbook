@@ -13,16 +13,6 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
-    <!-- Book Image Servlet -->
-    <servlet>
-        <servlet-name>BookImage</servlet-name>
-        <servlet-class>BookImageServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>BookImage</servlet-name>
-        <url-pattern>/bookimage/*</url-pattern>
-    </servlet-mapping>
-
 
      <!--(manager login) checkfilter -->
     <filter>
@@ -98,5 +88,22 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+
+
+    <!-- Error Page -->
+    <error-page>
+		<error-code>404</error-code>
+		<location>/notfound.do</location>
+	</error-page>
+    <error-page>
+		<error-code>500</error-code>
+		<location>/notfound.do</location>
+	</error-page>
+
+<!-- 
+	<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/nocontent.jsp</location>
+	</error-page> -->
 
 </web-app>

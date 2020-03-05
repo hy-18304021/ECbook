@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ハセガワ書房</title>
+    <link rel="stylesheet" type="text/css" href="css/styletest.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+	<script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
+    <style>
+
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+        <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+        
+            <header class="page-element">
+                <div>
+                        <a href="indexcall.do">
+                            <img src="img/logo.png" style="margin-top:8px; width:182px; height: 66px;">
+                        </a>
+            <div class="book-finder">
+                <ul class="book-type-list">
+                    <li id="booklistli"><a href="getbooktable.do">BookList</a></li>
+                    <li id="mypage"><a href="mypage.do">MyPage</a></li>
+                    <li id="loginli"><a href="logincall.do">Login</a></li>
+                    <li id="logoutli"><a href="logout.do">Logout</a></li>
+                    <li id="mycart"><a href="mycart.do">Cart<div class='cartnumber'><center>${fn:length(sessionScope.mycart)}</center></div></a></li>
+                </ul>
+                <form style="margin:0px;" class="book-search" action="searchbook.do" method="post">
+                        <input type="text" name="book_name">
+                        <input type="hidden" name="genre_id" value="0">
+                        <input type="submit" value="Search">
+                    </form>
+            </div>
+        
+            </div>
+        </header>
+        <!-- <div id="navigation">
+            <form class="book-search" action="searchbook.do" method="post">
+                <input type="text" name="book_name">
+                <input type="hidden" name="genre_id" value="0">
+                <input type="submit" value="Search">
+            </form>    
+            
+        </div> -->
+            <main>
+                <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
+                <div class="leftcolumn">
+                    <p style="font-weight: bold;">ジャンル</p>
+                    <a href="searchbook.do?genre_id=1&book_name="><p>少年コミック</p></a>
+                    <a href="searchbook.do?genre_id=2&book_name="><p>少女コミック</p></a>
+                    <a href="searchbook.do?genre_id=3&book_name="><p>ライトノベル</p></a>
+                </div>
+                <div id="content" class="page-element">
+                    <div>
+                        <div id="popular-books">
+                            
+
+                            <div class="container">
+                                <h3>存在しないページです</h3>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            
+                <!-- footer -->
+                <footer>
+                    <div class="footer">
+                        <p>東京テクニカルカレッジ情報処理科２年</p>
+                    </div>
+                </footer>
+            
+            
+    </div><!--wrapper-->
+</body>
+</html>

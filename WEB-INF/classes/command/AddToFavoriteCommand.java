@@ -25,6 +25,11 @@ public class AddToFavoriteCommand extends AbstractCommand{
 
 		if(favordao.checkFavorite(favorite)){
 			resc.setResult(2);
+			if((String)reqc.getSessionAttribute("target")!=null){
+				resc.setTarget("bookinfo.do?book_isbn="+book_isbn,1);
+				reqc.setRequestAttribute("favoriteresult",2);
+			return resc;
+			}
 			return resc;
 		}
 
@@ -39,8 +44,8 @@ public class AddToFavoriteCommand extends AbstractCommand{
 		// resc.setTarget("mypage");
 		// String result = new Gson().toJson(myfavorite);
 		if((String)reqc.getSessionAttribute("target")!=null){
-			resc.setTarget("addedfavor");
-			resc.setResult(favorite);
+			resc.setTarget("bookinfo.do?book_isbn="+book_isbn,1);
+			reqc.setRequestAttribute("favoriteresult",1);
 			return resc;
 		}
 		resc.setResult(1);

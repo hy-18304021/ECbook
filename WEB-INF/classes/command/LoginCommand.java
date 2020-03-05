@@ -53,7 +53,7 @@ public class LoginCommand extends AbstractCommand{
 					int firstequal = target.indexOf("=");
 					target = target.substring(0,firstequal+1)+eb.getId()+target.substring(firstequal+1);
 					resc.setTarget(target,1);
-					// reqc.sessionRemove("target");
+					reqc.sessionRemove("target");
 				}
 			}else{
 				resc.setTarget("login");

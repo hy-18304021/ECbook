@@ -107,7 +107,7 @@ pageEncoding="UTF-8"%>
             <input type="hidden" class="totalamount" name="cart_amount" value="${cart.cart_amount}">
         </c:forEach>
         <input type="hidden" class="totalprice" name="fullprice" value="${totalPrice}">
-        <input type="submit" value="Checkout" class="btn" id="checkout-button"></input>
+        <input type="submit" value="購入確認" class="btn" id="checkout-button"></input>
         <br>
       </form>
       <button class="btn" onclick="location.href='getbooktable.do'">買物を続ける</button>

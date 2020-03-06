@@ -11,12 +11,13 @@ import java.util.List;
 import java.util.ArrayList;
 import bean.*;
 import com.google.gson.*;
-
+import escape.Escape;
 public class SearchBookCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
 		// reqc.setCharacterEncoding("UTF-8");
 		String book_name = reqc.getParameter("book_name")[0];
+		book_name = Escape.wholeEscape(book_name);
 		int genre_id = Integer.parseInt(reqc.getParameter("genre_id")[0]);
 		// System.out.println(book_name+"\t"+genre_id);
 

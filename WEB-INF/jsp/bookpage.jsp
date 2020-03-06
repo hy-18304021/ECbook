@@ -19,11 +19,13 @@
     <script>
       $(document).ready(function(){
         var flag=document.getElementById("flag").innerText;
+        // ログイン時の動作
         if(flag=="OK"){
           $("#add-to-favorite-logout").css("display","none");
           $("#add-to-favorite-login").css("display","block");
         }else{
-        document.getElementById("writereviewwithajax").style.display='none';
+          // 非ログイン時
+          document.getElementById("writereviewwithajax").style.display='none';
           $("#add-to-cart").css("display","none");
           $("#add-to-favorite-logout").css("display","block");
           $("#add-to-favorite-login").css("display","none");
@@ -160,7 +162,7 @@
                         </div>
                 </div>
                 <div id="written" style="display: none;">
-                  レビューしていただきありがとうございます。
+                  レビューありがとうございます。
                 </div>
                 <h2 class="a-spacing-small customer-reviews-header" style="margin-top: 50px;">
                       ${result.book_name}
@@ -204,7 +206,7 @@
                   </c:forEach>
                 </div>
                 <button class="newer-review-button" onclick="newerreview()">前のレビューへ</button>
-                <button class="older-review-button" onclick="olderreview()">もっと古いレビューを見たいい</button>
+                <button class="older-review-button" onclick="olderreview()">もっと古いレビューを見たい</button>
               </p>
           </div>
         </div>

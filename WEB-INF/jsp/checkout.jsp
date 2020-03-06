@@ -67,7 +67,7 @@
           <div class="col-50">
             <h3>カード情報</h3>
            
-            <label for="cname">カード名義人（半角ローマ字)</label>
+            <label for="cname">カード名義</label>
             <input type="text" id="cname" name="cardname" placeholder="name" oninput="valueinCardname(this)">
             <label for="ccnum">カード番号</label>
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" oninput="value = value.replace(/[^0-9]+/i,''); valueinCardNumber(this)" maxlength="16">

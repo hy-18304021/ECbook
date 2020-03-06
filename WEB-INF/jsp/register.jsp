@@ -24,6 +24,7 @@
     </script>            
 </head>
 <body>
+<div class="wrapper">
     <header class="page-element">
         <div>
             <a href="indexcall.do">
@@ -76,5 +77,6 @@
             
             </form>	
     </div>
+</div><%-- wrapper --%>
 </body>
 </html>

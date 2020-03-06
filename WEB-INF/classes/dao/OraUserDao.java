@@ -15,8 +15,9 @@ public class OraUserDao implements UserDao{
     Connection cn=null;
     PreparedStatement st=null;
     ResultSet rs = null;
-    public void addUser(EbUserBean eu){
+    public int addUser(EbUserBean eu){
         String sql= "insert into ebuser values(?,?,?,?,?,?)";
+        int success=0;
         try{
             if(cn==null){
                 cn=OracleConnect.getInstance().getConnection();
@@ -32,7 +33,8 @@ public class OraUserDao implements UserDao{
             st.setInt(5,eu.getSex());
             st.setString(6,eu.getBirth());
 
-            st.executeUpdate();
+            success=st.executeUpdate();
+            System.out.println(success);
         }catch(SQLException e){
             //ロールバック処理
             OracleConnect.getInstance().rollback();
@@ -46,6 +48,8 @@ public class OraUserDao implements UserDao{
                 e.printStackTrace();
             }
         }
+        System.out.println(success);
+        return success;
     }
 
     public EbUserBean getUser(String key){

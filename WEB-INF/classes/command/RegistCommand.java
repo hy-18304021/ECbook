@@ -35,14 +35,23 @@ public class RegistCommand extends AbstractCommand{
 		//インテグレーションレイヤの処理呼び出し
 		AbstractDaoFactory factory=AbstractDaoFactory.getFactory(reqc);
 		UserDao dao=factory.getUserDao();
-		dao.addUser(eb);
-
+		int succase=dao.addUser(eb);
+		if(succase==0){
+			resc.setTarget("register");
+			resc.setResult("Redist Failed");
+			return resc;
+		}
+		System.out.println(succase);
 		//コミット	
 		OracleConnect.getInstance().commit();
 
 		//オラクル終わり
 		OracleConnect.getInstance().closeConnection();
 
+		LoginCommand logcom=new LoginCommand();
+		logcom.init(reqc);
+		resc=logcom.execute(resc);
+		
 		resc.setTarget("registresult");
         return resc;
 	}

@@ -26,6 +26,7 @@
     </script>
    </head>
    <body>
+   <div class="wrapper">
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <div id="app">
         <header class="page-element">
@@ -98,6 +99,6 @@
                   </div>
                 </div> 
             </div>
-                
+    </div><%-- wrapper --%>
    </body>
    </html>

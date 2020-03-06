@@ -6,6 +6,7 @@
 <html>
 <html lang="en">
 <head>
+<div class="wrapper">
     <meta charset="UTF-8">
      <link rel="stylesheet" type="text/css" href="css/bookpage.css">
      <link rel="stylesheet" type="text/css" href="css/text.css">
@@ -216,6 +217,6 @@
         </div>
     </footer>
 
-
+</div><%-- wrapper --%>
 </body>
 </html>

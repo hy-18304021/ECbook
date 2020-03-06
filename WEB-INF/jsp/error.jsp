@@ -23,6 +23,7 @@
 
 </head>
 <body>
+<div class="wrapper">
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     
         <header class="page-element">
@@ -76,5 +77,6 @@
     <h1>${result.get(0)}</h1>
     <a href="${result.get(1)}">${result.get(2)}</a>
     </main>
+    </div><%-- wrapper --%>
 </body>
 </html>

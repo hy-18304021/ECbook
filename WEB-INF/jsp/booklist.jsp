@@ -15,6 +15,7 @@
 	<script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
+<div class="wrapper">
     <header class="page-element">
        <div>
         <a href="indexcall.do">
@@ -77,5 +78,6 @@
             <p>東京テクニカルカレッジ情報処理科２年</p>
             </div>
     </footer>
+</div><%-- wrapper --%>
 </body>
 </html>

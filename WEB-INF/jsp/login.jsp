@@ -11,6 +11,7 @@
     <script src="js/pageload.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
+<div class="wrapper">
   <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
 	<header class="page-element">
             <div>
@@ -47,5 +48,6 @@
 	</div>
   <br>${result}
   <!-- <br>Target from filter: ${target} -->
+  </div><%-- wrapper --%>
 </body>
 </html> 

@@ -13,20 +13,17 @@
      <script type="text/javascript" src="js/checkout.js"></script>
      <script>
         $(document).ready(function(){
-            //var flag=document.getElementById("flag").innerText;
-            //if(flag=="OK"){
-                //document.getElementById("loginli").style.display='none';
-            //}else{
-            //     document.getElementById("logoutli").style.display='none';
-            //     document.getElementById("mypage").style.display='none';
-            //     document.getElementById("mycart").style.display='none';
-            //     document.getElementById("writereviewwithajax").style.display='none';
-            // }
+            valueinCardname(this);
+            valueinCardNumber(this);
+            valueinExpmonth(this);
+            valueinExpyrar(this);
+            valueinCvv(this);
         });
     </script>
     <title>checkout</title>
 </head>
 <body>
+<div class="wrapper">
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <div id="app">
     
@@ -124,6 +121,6 @@
     </div>
   </div>
 </div>
-
+</div><!--wrapper-->
 </body>
 </html>

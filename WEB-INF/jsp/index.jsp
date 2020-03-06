@@ -20,6 +20,7 @@
 
 </head>
 <body>
+    <div class="wrapper">
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     
         <header class="page-element">
@@ -67,6 +68,7 @@
 
                         <div class="container">
                             <h3>Popular Books</h3>
+                            <br>
                             <div class="row">
                                 <!-- recommendedBooks -->
                                 <c:forEach var="book" items="${recommendedBooks}">
@@ -111,7 +113,7 @@
                                 </c:forEach>
                             </div>
                             <!-- shounen -->
-                            <h3>Shounen Books</h3>
+                            <h3>Sh&omacr;nen Comic</h3>
                             <br>
                             <div class="row">
                                 <c:forEach var="book" items="${recommendedShounen}">
@@ -138,7 +140,7 @@
                             </div>
 
                             <!-- Shoujo -->
-                            <h3>Shoujo Books</h3>
+                            <h3>Sh&omacr;jo Comic</h3>
                             <br>
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -164,7 +166,7 @@
                             </div>
                             <!-- </div> -->
                             <!-- LightNovel -->
-                            <h3>LightNovel Books</h3>
+                            <h3>LightNovel</h3>
                             <br>
                             <!-- <div class="container"> -->
                                 <div class="row">
@@ -204,7 +206,7 @@
                 </div>
             </footer>
         
-        
-   
+        </div>
+   <%-- wrapper --%>
 </body>
 </html>

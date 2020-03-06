@@ -19,6 +19,7 @@
     <script src="js/mypage.js" type="text/javascript" charset="utf-8" async defer></script>
    </head>
    <body>
+   <div class="wrapper">
     <h1 style="display:none;" id="flag">${sessionScope.flag}</h1>
     <h1 style="display:none;" class="sessionId">${sessionScope.user.id}</h1>
     <div id="app">
@@ -188,5 +189,6 @@
     </div>
     </main>
     </div>
+    </div><%-- wrapper --%>
    </body>
    </html>

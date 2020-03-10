@@ -122,19 +122,5 @@ CREATE TABLE ebarrival(
   CONSTRAINT  pk_ebarrival_arrival       PRIMARY KEY(arrival_id),
   CONSTRAINT  fk_ebarrival_book_isbn        FOREIGN KEY(book_isbn) REFERENCES ebbook(book_isbn)
 );
-insert into ebuser values(
-  'watashidesu',
-  '私',
-  'mypass',
-  'mail@mail.com',
-  1,
-  '2000/11/20'
-);
-commit;
-insert into ebgenre values(
-  default,
-  '少年コミック'
-);
-exit;
 exit
 

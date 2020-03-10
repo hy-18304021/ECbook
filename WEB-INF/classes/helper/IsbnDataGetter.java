@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import bean.EbBookBean;
 import java.io.IOException;
 import java.util.Iterator;
+import escape.Escape;
 public class IsbnDataGetter{
     //jsonからデータ取り出してBeanにデータ入れる。
     
@@ -101,7 +102,9 @@ public class IsbnDataGetter{
                 while(texts.hasNext()){
                     JsonNode textNode=texts.next();
                     if(textNode.get("TextType").asText().equals("03")){
-                        text_content=textNode.get("Text").asText();
+                        //wholeEscapeの中で改行を<br>に変換している
+                        text_content=Escape.wholeEscape(textNode.get("Text").asText());
+
                         System.out.println(text_content);
                     }
                 }

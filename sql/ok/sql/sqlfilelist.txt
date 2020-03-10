@@ -11,5 +11,4 @@ ebreview
 ebsales
 ebsalesref
 ebarrival
-insert
 exit
